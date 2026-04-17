@@ -1,0 +1,61 @@
+## STATE: Idle
+## Plays random idle animations.
+## Transitions to Hunt when combat is initiated
+## (player walks too close OR shoots the enemy).
+class_name StateIdle
+extends EnemyState
+
+## Distance at which the enemy auto-detects the player and enters Hunt.
+@export var detection_radius: float = 5.0
+
+## Set to true externally (e.g. by a bullet hit) to trigger combat.
+var combat_initiated: bool = false
+
+# Simple list of idle animation names — swap with real anim names later.
+const IDLE_ANIMS: Array[String] = ["idle_01", "idle_02", "idle_03"]
+var _idle_timer: float = 0.0
+var _idle_interval: float = 3.0  # seconds between random idle swaps
+
+func enter() -> void:
+	combat_initiated = false
+	_idle_timer = 0.0
+	_pick_random_idle()
+	print("[StateIdle] Entered Idle.")
+
+func exit() -> void:
+	pass
+
+func physics_update(delta: float) -> void:
+	# ── Proximity check ─────────────────────────────────────────────────
+	# TODO: swap enemy.get_player_position() with real player node lookup.
+	var player_pos: Vector3 = _get_placeholder_target_position()
+	var dist: float = enemy.global_position.distance_to(player_pos)
+	if dist <= detection_radius or combat_initiated:
+		state_machine.transition_to("StateHunt")
+		return
+
+	# ── Random idle cycling ──────────────────────────────────────────────
+	_idle_timer += delta
+	if _idle_timer >= _idle_interval:
+		_idle_timer = 0.0
+		_idle_interval = randf_range(2.0, 5.0)
+		_pick_random_idle()
+
+func handle_hit(_hit_data: Dictionary) -> String:
+	# Any hit wakes the enemy up.
+	combat_initiated = true
+	# Resolve whether this hit also stuns/takes-down — delegate to Hunt's logic
+	# by transitioning there first; Hunt will immediately re-evaluate.
+	return "StateHunt"
+
+# ─── Helpers ───────────────────────────────────────────────────────────────
+func _pick_random_idle() -> void:
+	var anim: String = IDLE_ANIMS[randi() % IDLE_ANIMS.size()]
+	print("[StateIdle] Playing anim: %s" % anim)
+	# TODO: _anim_player.play(anim)
+
+func _get_placeholder_target_position() -> Vector3:
+	# Reads mouse-projected world position set by TestWorld controller.
+	if enemy and enemy.has_meta("target_position"):
+		return enemy.get_meta("target_position")
+	return Vector3(9999, 0, 9999)  # fallback: far away so idle stays idle

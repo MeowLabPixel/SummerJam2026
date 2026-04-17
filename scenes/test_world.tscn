@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://sx2lfrw3gahc"]
+
+[ext_resource type="Script" uid="uid://bw20hhytpnu8j" path="res://scripts/test_world.gd" id="1_kyfjp"]
+[ext_resource type="PackedScene" uid="uid://qeaipwg5cq4v" path="res://scenes/enemy/enemy.tscn" id="2_amxg5"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_ynswa"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_dvny0"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_xwrkq"]
+
+[sub_resource type="Environment" id="Environment_nrstc"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_7448y"]
+
+[sub_resource type="Resource" id="Resource_ar7ra"]
+script = ExtResource("4_dvny0")
+
+[node name="TestWorld" type="Node3D" unique_id=385713028]
+script = ExtResource("1_kyfjp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=140459747]
+environment = SubResource("Environment_nrstc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=320326091]
+transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.70710677, -0.5, -0.6123724, 0.6123724, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1096472683]
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground" unique_id=351348984]
+
+[node name="GroundCollision" type="CollisionShape3D" parent="Ground" unique_id=371408297]
+shape = SubResource("WorldBoundaryShape3D_7448y")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1212049831]
+
+[node name="Instructions" type="Label" parent="HUD" unique_id=467248342]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 10.0
+text = "LMB = Shoot Body | Shift+LMB = Head Shot | Ctrl+LMB = Foot Shot
+Head/Foot shot = TAKEDOWNABLE state
+E to attempt Takedown"
+
+[node name="Enemy" parent="." unique_id=1434836882 instance=ExtResource("2_amxg5")]
+
+[node name="CamRig" type="Node3D" parent="." unique_id=1124648829]
+
+[node name="PhantomCamera3D" type="Node3D" parent="CamRig" unique_id=66034776]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 11.43254, 0)
+script = ExtResource("3_ynswa")
+tween_resource = SubResource("Resource_ar7ra")
+
+[node name="Camera3D" type="Camera3D" parent="CamRig" unique_id=223642431]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 11.43254, 0)
+top_level = true
+
+[node name="PhantomCameraHost" type="Node" parent="CamRig/Camera3D" unique_id=775252121]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_xwrkq")

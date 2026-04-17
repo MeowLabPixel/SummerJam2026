@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://qeaipwg5cq4v"]
+
+[ext_resource type="Script" uid="uid://dbsdvbgtyd0jy" path="res://scripts/enemy/enemy_base.gd" id="1_peoo5"]
+[ext_resource type="Script" uid="uid://crh7ttepk8wbr" path="res://scripts/enemy/enemy_state_machine.gd" id="2_2f3il"]
+[ext_resource type="Script" uid="uid://saf7ighv0nbi" path="res://scripts/enemy/state_idle.gd" id="3_dtxhd"]
+[ext_resource type="Script" uid="uid://fxr5osux372y" path="res://scripts/enemy/state_hunt.gd" id="4_so3kp"]
+[ext_resource type="Script" uid="uid://btv1q61avhw8q" path="res://scripts/enemy/state_attack.gd" id="5_5woo5"]
+[ext_resource type="Script" uid="uid://cq5ffbhr6djco" path="res://scripts/enemy/state_turn_back.gd" id="6_pb0yv"]
+[ext_resource type="Script" uid="uid://dh488idnaj836" path="res://scripts/enemy/state_stun.gd" id="7_prup0"]
+[ext_resource type="Script" uid="uid://bn4tk2qb16e3" path="res://scripts/enemy/state_takedownable.gd" id="8_dxjon"]
+[ext_resource type="Script" uid="uid://beiq7i7sumyfv" path="res://scripts/enemy/state_knockdown.gd" id="9_f5q6l"]
+[ext_resource type="Script" uid="uid://c2380ydsn0sgi" path="res://scripts/enemy/state_get_up.gd" id="10_8ed2q"]
+[ext_resource type="Script" uid="uid://dv0tmkky7d57f" path="res://scripts/enemy/state_defeated.gd" id="11_wk82e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_peoo5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_2f3il"]
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1434836882]
+script = ExtResource("1_peoo5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=733067435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_peoo5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=693047426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_2f3il")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=212384938]
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1607134270]
+script = ExtResource("2_2f3il")
+
+[node name="StateIdle" type="Node" parent="EnemyStateMachine" unique_id=1518355083]
+script = ExtResource("3_dtxhd")
+
+[node name="StateHunt" type="Node" parent="EnemyStateMachine" unique_id=1547854310]
+script = ExtResource("4_so3kp")
+
+[node name="StateAttack" type="Node" parent="EnemyStateMachine" unique_id=438288548]
+script = ExtResource("5_5woo5")
+
+[node name="StateTurnBack" type="Node" parent="EnemyStateMachine" unique_id=714422611]
+script = ExtResource("6_pb0yv")
+
+[node name="StateStun" type="Node" parent="EnemyStateMachine" unique_id=2024073324]
+script = ExtResource("7_prup0")
+
+[node name="StateTakedownable" type="Node" parent="EnemyStateMachine" unique_id=962335223]
+script = ExtResource("8_dxjon")
+
+[node name="StateKnockdown" type="Node" parent="EnemyStateMachine" unique_id=699776120]
+script = ExtResource("9_f5q6l")
+
+[node name="StateGetUp" type="Node" parent="EnemyStateMachine" unique_id=1535047963]
+script = ExtResource("10_8ed2q")
+
+[node name="StateDefeated" type="Node" parent="EnemyStateMachine" unique_id=1877558210]
+script = ExtResource("11_wk82e")
