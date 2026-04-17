@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c6uqvqrlxwm0g"]
+
+[ext_resource type="Script" uid="uid://d20webbkc4idu" path="res://scripts/ashley/ashley_base.gd" id="1_ak0x7"]
+[ext_resource type="Script" uid="uid://b2k54i3g80daa" path="res://scripts/ashley/ashley_state_machine.gd" id="2_soyvl"]
+[ext_resource type="Script" uid="uid://bjkr24175n87i" path="res://scripts/ashley/ashley_state_follow.gd" id="3_6r0d4"]
+[ext_resource type="Script" uid="uid://d2bipf7o1w5vp" path="res://scripts/ashley/ashley_state_evade.gd" id="4_i4tsk"]
+[ext_resource type="Script" uid="uid://bovwopvhjxcu8" path="res://scripts/ashley/ashley_state_duck.gd" id="5_4jr6e"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ak0x7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_soyvl"]
+albedo_color = Color(1, 0.87058824, 0.6901961, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6r0d4"]
+material = SubResource("StandardMaterial3D_soyvl")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i4tsk"]
+radius = 3.0
+
+[node name="Ashley" type="CharacterBody3D" unique_id=1099023628]
+script = ExtResource("1_ak0x7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=982274225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ak0x7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1794865154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_6r0d4")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1256189685]
+
+[node name="ThreatArea" type="Area3D" parent="." unique_id=1298103914]
+
+[node name="ThreatShape" type="CollisionShape3D" parent="ThreatArea" unique_id=2031670638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_i4tsk")
+
+[node name="AshleyStateMachine" type="Node" parent="." unique_id=2076411736]
+script = ExtResource("2_soyvl")
+
+[node name="AshleyStateFollow" type="Node" parent="AshleyStateMachine" unique_id=971160823]
+script = ExtResource("3_6r0d4")
+
+[node name="AshleyStateEvade" type="Node" parent="AshleyStateMachine" unique_id=1332248064]
+script = ExtResource("4_i4tsk")
+
+[node name="AshleyStateDuck" type="Node" parent="AshleyStateMachine" unique_id=2060801514]
+script = ExtResource("5_4jr6e")
+
+[node name="HelpLabel" type="Label3D" parent="." unique_id=1391055199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+visible = false
+billboard = 1
+modulate = Color(1, 0.76862746, 0.52156866, 1)
+text = "Leon, help!"
+font_size = 100

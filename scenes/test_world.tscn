@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_ynswa"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_dvny0"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_xwrkq"]
+[ext_resource type="PackedScene" uid="uid://c6uqvqrlxwm0g" path="res://scenes/ashley/ashley.tscn" id="6_dvny0"]
 
 [sub_resource type="Environment" id="Environment_nrstc"]
 
@@ -58,3 +59,6 @@ top_level = true
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("5_xwrkq")
+
+[node name="Ashley" parent="." unique_id=1099023628 instance=ExtResource("6_dvny0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
