@@ -21,8 +21,7 @@ func enter() -> void:
 	_timer = 0.0
 	takedown_triggered = false
 	print("[StateTakedownable] TAKEDOWN-able! Type: %s" % stun_type)
-	# TODO: play HEADSHOT_stun or FOOTSHOT_stun animation based on stun_type.
-	# TODO: stop all movement.
+	_play_anim("rig|Duck")
 
 func exit() -> void:
 	stun_type = "head"

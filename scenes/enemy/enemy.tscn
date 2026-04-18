@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbsdvbgtyd0jy" path="res://scripts/enemy/enemy_base.gd" id="1_peoo5"]
 [ext_resource type="Script" uid="uid://crh7ttepk8wbr" path="res://scripts/enemy/enemy_state_machine.gd" id="2_2f3il"]
+[ext_resource type="PackedScene" uid="uid://ld4jynwr5lv1" path="res://models/enemies/zombie_test.tscn" id="2_dtxhd"]
 [ext_resource type="Script" uid="uid://saf7ighv0nbi" path="res://scripts/enemy/state_idle.gd" id="3_dtxhd"]
 [ext_resource type="Script" uid="uid://fxr5osux372y" path="res://scripts/enemy/state_hunt.gd" id="4_so3kp"]
 [ext_resource type="Script" uid="uid://btv1q61avhw8q" path="res://scripts/enemy/state_attack.gd" id="5_5woo5"]
@@ -13,23 +14,17 @@
 [ext_resource type="Script" uid="uid://dv0tmkky7d57f" path="res://scripts/enemy/state_defeated.gd" id="11_wk82e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_peoo5"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_peoo5"]
-albedo_color = Color(0.34509805, 0.7372549, 0.0627451, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_2f3il"]
-material = SubResource("StandardMaterial3D_peoo5")
+radius = 0.33496094
+height = 1.6464844
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1434836882]
 script = ExtResource("1_peoo5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=733067435]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8232422, 0)
 shape = SubResource("CapsuleShape3D_peoo5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=693047426]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_2f3il")
+[node name="Ashley_Test" parent="." unique_id=883596392 instance=ExtResource("2_dtxhd")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=212384938]
 

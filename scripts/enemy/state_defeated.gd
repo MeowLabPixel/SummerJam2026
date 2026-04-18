@@ -15,9 +15,8 @@ var _was_aiming: bool = false
 func enter() -> void:
 	player_is_aiming = false
 	_was_aiming = false
-	print("[StateDefeated] Enemy defeated! Playing defeat animation.")
-	# TODO: play defeated (collapse) animation.
-	# TODO: disable hitbox / navigation / physics.
+	print("[StateDefeated] Enemy defeated!")
+	_play_anim("rig|Duck")
 
 func exit() -> void:
 	pass  # Defeated is a terminal state — should never exit normally.
@@ -26,7 +25,7 @@ func physics_update(_delta: float) -> void:
 	# React to being aimed at: play wave animation.
 	if player_is_aiming and not _was_aiming:
 		_was_aiming = true
-		print("[StateDefeated] Enemy waves — 'No more Songkran for me, please!'")
+		print("[StateDefeated]")
 		# TODO: play wave animation (transition from defeated idle to wave).
 	elif not player_is_aiming and _was_aiming:
 		_was_aiming = false

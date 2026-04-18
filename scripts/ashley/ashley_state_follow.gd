@@ -1,52 +1,69 @@
 ## STATE: Follow
 ## Player-following is the ALWAYS-ON base behaviour.
-## Zombie avoidance is layered ON TOP as an additive repulsion vector —
-## it never switches off following, it only nudges the direction.
+## Zombie avoidance steers her while moving. When resting near the player,
+## all movement stops completely — no repulsion micro-nudges.
 ## Duck is the only true interrupt (shooting / cornered).
 class_name AshleyStateFollow
 extends AshleyState
 
 @export var move_speed: float = 3.5
-## Stop moving once within this distance of the player.
+## Ashley stops moving toward the player once within this distance.
 @export var follow_stop_distance: float = 2.0
+## Ashley won't start moving again until the player is this far away.
+## The gap between start and stop is the dead zone that prevents oscillation.
+@export var follow_start_distance: float = 3.2
 ## Threat repulsion radius — zombie influence fades beyond this (units).
 @export var repulsion_radius: float = 4.0
 ## Maximum extra speed added when fleeing a close zombie.
 @export var flee_speed_bonus: float = 1.0
-## Rotation smoothing (higher = snappier).
+## Rotation smoothing.
 @export var rotation_speed: float = 10.0
+## Brief cooldown after returning from Duck before cornered can re-trigger.
+@export var duck_cooldown: float = 0.5
+## Seconds zombie must be pushing while resting before we duck.
+@export var cornered_confirm_time: float = 0.4
+
+var _duck_cooldown_timer: float = 0.0
+var _is_resting: bool = false
+var _cornered_timer: float = 0.0
 
 func enter() -> void:
 	print("[AshleyStateFollow] Following player.")
-	# TODO: play walk / idle animation.
+	_duck_cooldown_timer = duck_cooldown
+	_is_resting = false
+	_cornered_timer = 0.0
+	_play_anim("rig|Idle")
 
 func exit() -> void:
-	pass
+	_cornered_timer = 0.0
 
 func physics_update(delta: float) -> void:
-	# ── Duck interrupt: player is shooting ───────────────────────────────
+	if _duck_cooldown_timer > 0.0:
+		_duck_cooldown_timer -= delta
+
 	if ashley.is_player_shooting():
 		state_machine.transition_to("AshleyStateDuck")
 		return
 
 	var my_pos: Vector3 = ashley.global_position
 	var target_pos: Vector3 = ashley.get_follow_target()
-
 	var to_target: Vector3 = (target_pos - my_pos)
 	to_target.y = 0.0
 	var dist_to_target: float = to_target.length()
 
-	# ── Base follow vector ────────────────────────────────────────────────
-	# Always points toward player. Zero when already close enough.
-	var follow_vec: Vector3 = Vector3.ZERO
-	if dist_to_target > follow_stop_distance:
-		follow_vec = to_target.normalized()
+	# ── Hysteresis: rest state only changes on threshold crossings, never
+	# re-evaluated mid-frame from a live distance. Prevents oscillation.
+	if _is_resting:
+		if dist_to_target > follow_start_distance:
+			_is_resting = false
+			_cornered_timer = 0.0
+	else:
+		if dist_to_target <= follow_stop_distance:
+			_is_resting = true
 
-	# ── Additive repulsion vector (zombie avoidance) ──────────────────────
-	# Sum repulsion from every nearby threat, weighted by proximity.
-	# Closer zombies push harder. This is ADDED to follow, never replaces it.
+	# ── Build repulsion vector (used while moving only).
 	var repulsion_vec: Vector3 = Vector3.ZERO
-	var strongest_threat_dist: float = repulsion_radius  # Track closest for speed bonus.
+	var strongest_threat_dist: float = repulsion_radius
 	for threat in ashley.nearby_threats:
 		if not is_instance_valid(threat):
 			continue
@@ -55,46 +72,45 @@ func physics_update(delta: float) -> void:
 		var d: float = away.length()
 		if d < 0.01 or d > repulsion_radius:
 			continue
-		# Weight: 1.0 at d=0, 0.0 at d=repulsion_radius.
 		var weight: float = 1.0 - (d / repulsion_radius)
 		repulsion_vec += away.normalized() * weight
 		if d < strongest_threat_dist:
 			strongest_threat_dist = d
 
-	# ── Combine and move ─────────────────────────────────────────────────
-	var steer: Vector3 = follow_vec + repulsion_vec
-	steer.y = 0.0
-
-	if steer.length() < 0.01:
-		# Perfectly cancelled — already at player with zombie on top of us.
-		# Just stop; duck will handle the cornered case via stuck timer.
+	# ── Resting: full stop. No steering, no repulsion nudges.
+	# A cornered timer accumulates while a zombie is actively pushing.
+	if _is_resting:
 		ashley.velocity = Vector3.ZERO
-	else:
-		var move_dir: Vector3 = steer.normalized()
-		# Speed bonus when a zombie is very close.
-		var proximity_t: float = 1.0 - clampf(strongest_threat_dist / repulsion_radius, 0.0, 1.0)
-		var speed: float = move_speed + flee_speed_bonus * proximity_t
-
-		ashley.nav_agent.target_position = target_pos
-		ashley.velocity = move_dir * speed
 		ashley.move_and_slide()
-		if move_dir.length() > 0.01:
-			_face_toward(move_dir, delta)
+		_play_anim("rig|Idle")
 
-	# ── Cornered check ───────────────────────────────────────────────────
-	# Conditions that must ALL be true:
-	#   1. A zombie is actively pushing her (repulsion has real magnitude).
-	#   2. That push is opposing her path to the player (dot < -0.15).
-	#   3. She's already within the follow stop radius (can't get any closer).
-	if not ashley.nearby_threats.is_empty() \
-			and repulsion_vec.length() > 0.4 \
-			and dist_to_target <= follow_stop_distance + 0.3 \
-			and repulsion_vec.normalized().dot(to_target.normalized()) < -0.15:
-		print("[AshleyStateFollow] Cornered — ducking. dist=%.2f rep=%.2f" \
-				% [dist_to_target, repulsion_vec.length()])
-		# Set is_cornered AFTER exit() can no longer clear it — pass via Duck's enter.
-		state_machine.transition_to("AshleyStateDuck")
+		if not ashley.nearby_threats.is_empty() and repulsion_vec.length() > 0.4:
+			_cornered_timer += delta
+		else:
+			_cornered_timer = 0.0
+
+		if _duck_cooldown_timer <= 0.0 and _cornered_timer >= cornered_confirm_time:
+			print("[AshleyStateFollow] Cornered — ducking.")
+			state_machine.transition_to("AshleyStateDuck")
 		return
+
+	# ── Moving: follow + repulsion blend.
+	var steer: Vector3 = to_target.normalized() + repulsion_vec
+	steer.y = 0.0
+	if steer.length() < 0.01:
+		ashley.velocity = Vector3.ZERO
+		ashley.move_and_slide()
+		_play_anim("rig|Idle")
+		return
+
+	var move_dir: Vector3 = steer.normalized()
+	var proximity_t: float = 1.0 - clampf(strongest_threat_dist / repulsion_radius, 0.0, 1.0)
+	var speed: float = move_speed + flee_speed_bonus * proximity_t
+	ashley.nav_agent.target_position = target_pos
+	ashley.velocity = move_dir * speed
+	ashley.move_and_slide()
+	_face_toward(move_dir, delta)
+	_play_anim("rig|Run")
 
 # ─── Helpers ───────────────────────────────────────────────────────────────
 func _face_toward(dir: Vector3, delta: float) -> void:

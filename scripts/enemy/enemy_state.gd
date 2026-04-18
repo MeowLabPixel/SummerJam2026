@@ -29,3 +29,9 @@ func update(_delta: float) -> void:
 ## Return the name (String) of the state to transition to, or "" to stay in current state.
 func handle_hit(_hit_data: Dictionary) -> String:
 	return ""
+
+## Plays an animation only if it isn't already playing.
+## Call this instead of anim_player.play() directly to prevent per-frame restarts.
+func _play_anim(anim_name: String) -> void:
+	if enemy and enemy.anim_player and enemy.anim_player.current_animation != anim_name:
+		enemy.anim_player.play(anim_name)

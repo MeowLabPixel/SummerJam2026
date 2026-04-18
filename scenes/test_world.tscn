@@ -47,12 +47,12 @@ E to attempt Takedown"
 [node name="CamRig" type="Node3D" parent="." unique_id=1124648829]
 
 [node name="PhantomCamera3D" type="Node3D" parent="CamRig" unique_id=66034776]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 11.43254, 0)
+transform = Transform3D(1, 0, 0, 0, 0.44282076, 0.8966101, 0, -0.8966101, 0.44282076, 0, 6.0314703, 3.5492096)
 script = ExtResource("3_ynswa")
 tween_resource = SubResource("Resource_ar7ra")
 
 [node name="Camera3D" type="Camera3D" parent="CamRig" unique_id=223642431]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 11.43254, 0)
+transform = Transform3D(1, 0, 0, 0, 0.44282076, 0.8966101, 0, -0.8966101, 0.44282076, 0, 6.0314703, 3.5492096)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="CamRig/Camera3D" unique_id=775252121]

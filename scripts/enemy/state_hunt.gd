@@ -15,7 +15,7 @@ extends EnemyState
 
 func enter() -> void:
 	print("[StateHunt] Entered Hunt — pathfinding to target.")
-	# TODO: play walk animation.
+	_play_anim("rig|Run")
 
 func exit() -> void:
 	pass
@@ -33,6 +33,7 @@ func physics_update(_delta: float) -> void:
 	var flat_dist: float = to_target.length()
 
 	if flat_dist < 0.1:
+		_play_anim("rig|Idle")
 		return  # Already on top of target.
 
 	var dir_to_target: Vector3 = to_target.normalized()
@@ -53,22 +54,23 @@ func physics_update(_delta: float) -> void:
 			return
 
 	# ── Move toward target via nav agent ────────────────────────────────
+	var move_dir: Vector3
 	if nav_agent and not nav_agent.is_navigation_finished():
 		var next_pos: Vector3 = nav_agent.get_next_path_position()
-		var move_dir: Vector3 = (next_pos - enemy.global_position).normalized()
-		move_dir.y = 0.0
+		move_dir = (next_pos - enemy.global_position).normalized()
+	else:
+		move_dir = dir_to_target
+	move_dir.y = 0.0
+
+	if move_dir.length() > 0.01:
 		enemy.velocity = move_dir * move_speed
 		enemy.move_and_slide()
-		# Smoothly rotate to face direction of travel.
-		if move_dir.length() > 0.01:
-			var look_target: Vector3 = enemy.global_position + move_dir
-			enemy.look_at(look_target, Vector3.UP)
-	else:
-		# No nav agent yet — move directly (placeholder).
-		enemy.velocity = dir_to_target * move_speed
-		enemy.move_and_slide()
-		var look_target: Vector3 = enemy.global_position + dir_to_target
+		var look_target: Vector3 = enemy.global_position + move_dir
 		enemy.look_at(look_target, Vector3.UP)
+		_play_anim("rig|Run")
+	else:
+		enemy.velocity = Vector3.ZERO
+		_play_anim("rig|Idle")
 
 func handle_hit(hit_data: Dictionary) -> String:
 	var zone: String = hit_data.get("hit_zone", "body")
@@ -80,7 +82,6 @@ func handle_hit(hit_data: Dictionary) -> String:
 
 # ─── Helpers ───────────────────────────────────────────────────────────────
 func _get_target_position() -> Vector3:
-	# Reads mouse-projected world position set by TestWorld controller.
 	if enemy and enemy.has_meta("target_position"):
 		return enemy.get_meta("target_position")
-	return enemy.global_position  # fallback: stand still
+	return enemy.global_position

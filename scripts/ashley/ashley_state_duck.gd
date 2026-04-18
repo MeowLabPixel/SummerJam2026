@@ -8,7 +8,7 @@ class_name AshleyStateDuck
 extends AshleyState
 
 ## Minimum time Ashley stays crouched before re-evaluating. Prevents jitter.
-@export var duck_duration: float = 1.2
+@export var duck_duration: float = 2.0
 
 var _timer: float = 0.0
 
@@ -17,13 +17,14 @@ func enter() -> void:
 	ashley.is_cornered = true
 	_timer = 0.0
 	print("[AshleyStateDuck] Ducking!")
-	# TODO: play duck/scared-crouch animation.
+	# Only play duck if not already playing it — prevents restart on re-entry.
+	if ashley and ashley.anim_player and ashley.anim_player.current_animation != "rig|Duck":
+		ashley.anim_player.play("rig|Duck")
 
 func exit() -> void:
-	# Always clear the label when leaving duck, regardless of why we entered.
 	ashley.is_cornered = false
 	print("[AshleyStateDuck] Recovering.")
-	# TODO: play stand-up / recover animation.
+	# Don't play idle here — AshleyStateGetUp handles the transition animation.
 
 func physics_update(delta: float) -> void:
 	# Keep velocity zeroed every frame so physics don’t drift her.
@@ -40,4 +41,4 @@ func physics_update(delta: float) -> void:
 
 	# Hold duration elapsed and no longer shooting — return to Follow.
 	# Follow will immediately re-evaluate threats and corner again if needed.
-	state_machine.transition_to("AshleyStateFollow")
+	state_machine.transition_to("AshleyStateGetUp")

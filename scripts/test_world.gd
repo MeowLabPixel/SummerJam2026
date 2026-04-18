@@ -50,10 +50,26 @@ func _tick_shoot_flag(delta: float) -> void:
 			ashley.set_meta("player_shooting", false)
 
 ## Shoot on left mouse button press.
+## Performs a physics raycast — only hits the enemy if the ray intersects it.
 func _check_shoot() -> void:
 	if not Input.is_action_just_pressed("shoot"):
 		return
-	if not enemy:
+	if not enemy or not camera:
+		return
+
+	var mouse_pos := get_viewport().get_mouse_position()
+	var ray_origin := camera.project_ray_origin(mouse_pos)
+	var ray_end := ray_origin + camera.project_ray_normal(mouse_pos) * 100.0
+
+	var space := get_world_3d().direct_space_state
+	var query := PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
+	query.collide_with_areas = false
+	var result := space.intersect_ray(query)
+
+	# Only proceed if we actually hit the enemy's collider.
+	if result.is_empty():
+		return
+	if result["collider"] != enemy and not result["collider"].get_parent() == enemy:
 		return
 
 	var zone := "body"
@@ -65,7 +81,6 @@ func _check_shoot() -> void:
 	var hit_data := {"damage": 5, "hit_zone": zone}
 	print("[TestWorld] Shot fired! Zone: %s, Damage: 5" % zone)
 	enemy.take_hit(hit_data)
-	# Tell Ashley the player is shooting so she ducks.
 	if ashley:
 		ashley.set_meta("player_shooting", true)
 		_shoot_flag_timer = SHOOT_FLAG_DURATION

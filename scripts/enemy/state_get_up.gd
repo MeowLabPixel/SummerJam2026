@@ -13,8 +13,7 @@ var _timer: float = 0.0
 func enter() -> void:
 	_timer = 0.0
 	print("[StateGetUp] Enemy getting up.")
-	# TODO: play get-up animation.
-	# TODO: keep movement disabled.
+	_play_anim("rig|GetUp")
 
 func exit() -> void:
 	pass

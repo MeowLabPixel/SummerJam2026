@@ -12,8 +12,7 @@ var _timer: float = 0.0
 func enter() -> void:
 	_timer = 0.0
 	print("[StateKnockdown] Enemy knocked down!")
-	# TODO: play knockdown animation.
-	# TODO: disable collision / movement.
+	_play_anim("rig|Duck")  # Placeholder — swap for a knockdown anim when available.
 
 func exit() -> void:
 	pass

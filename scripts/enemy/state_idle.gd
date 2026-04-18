@@ -12,7 +12,7 @@ extends EnemyState
 var combat_initiated: bool = false
 
 # Simple list of idle animation names — swap with real anim names later.
-const IDLE_ANIMS: Array[String] = ["idle_01", "idle_02", "idle_03"]
+const IDLE_ANIMS: Array[String] = ["rig|Idle"]
 var _idle_timer: float = 0.0
 var _idle_interval: float = 3.0  # seconds between random idle swaps
 
@@ -51,8 +51,7 @@ func handle_hit(_hit_data: Dictionary) -> String:
 # ─── Helpers ───────────────────────────────────────────────────────────────
 func _pick_random_idle() -> void:
 	var anim: String = IDLE_ANIMS[randi() % IDLE_ANIMS.size()]
-	print("[StateIdle] Playing anim: %s" % anim)
-	# TODO: _anim_player.play(anim)
+	_play_anim(anim)
 
 func _get_placeholder_target_position() -> Vector3:
 	# Reads mouse-projected world position set by TestWorld controller.

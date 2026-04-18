@@ -18,3 +18,8 @@ func physics_update(_delta: float) -> void:
 
 func update(_delta: float) -> void:
 	pass
+
+## Plays an animation only if it isn't already playing.
+func _play_anim(anim_name: String) -> void:
+	if ashley and ashley.anim_player and ashley.anim_player.current_animation != anim_name:
+		ashley.anim_player.play(anim_name)

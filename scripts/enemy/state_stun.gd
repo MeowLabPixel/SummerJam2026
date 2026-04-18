@@ -14,8 +14,7 @@ var hit_zone: String = "body"
 func enter() -> void:
 	_timer = 0.0
 	print("[StateStun] Stun! Zone: %s" % hit_zone)
-	# TODO: play hit-reaction animation for hit_zone variant.
-	# TODO: stop movement / disable attack.
+	_play_anim("rig|Duck")
 
 func exit() -> void:
 	hit_zone = "body"

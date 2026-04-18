@@ -12,6 +12,7 @@ signal threat_cleared()
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var threat_area: Area3D = $ThreatArea
 @onready var help_label: Label3D = $HelpLabel
+@onready var anim_player: AnimationPlayer = $Ashley_Test/AnimationPlayer
 
 # ─── Threat tracking ───────────────────────────────────────────────────────
 ## All CharacterBody3D nodes (enemies) currently inside the threat radius.
@@ -29,7 +30,9 @@ var is_cornered: bool = false:
 			help_label.visible = value
 
 func _ready() -> void:
-	help_label.visible = false  # Guarantee hidden at start regardless of exported default.
+	help_label.visible = false
+	if not anim_player:
+		push_error("[AshleyBase] AnimationPlayer not found — check path Ashley_Test3/AnimationPlayer")
 	threat_area.body_entered.connect(_on_threat_entered)
 	threat_area.body_exited.connect(_on_threat_exited)
 	state_machine.initialize("AshleyStateFollow")

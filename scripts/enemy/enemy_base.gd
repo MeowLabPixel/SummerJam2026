@@ -19,10 +19,13 @@ var is_defeated: bool = false
 
 # ─── References ────────────────────────────────────────────────────────────
 @onready var state_machine: EnemyStateMachine = $EnemyStateMachine
+@onready var anim_player: AnimationPlayer = $Ashley_Test/AnimationPlayer
 
 # ─── Ready ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
 	current_hp = MAX_HP
+	if not anim_player:
+		push_error("[EnemyBase] AnimationPlayer not found — check path Ashley_Test3/AnimationPlayer")
 	# Boot into Idle once the scene tree is fully built.
 	state_machine.initialize("StateIdle")
 	state_machine.state_changed.connect(_on_state_changed)
