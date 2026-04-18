@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://csdtdj7sci5vk"]
+
+[ext_resource type="Script" uid="uid://b7mx3yabujwtb" path="res://bullet.gd" id="1_5imwg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhoe8"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7lrwy"]
+size = Vector3(0.2, 0.2, 1)
+
+[node name="bullet" type="CharacterBody3D" unique_id=9548320]
+collision_layer = 4
+script = ExtResource("1_5imwg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1428490851]
+shape = SubResource("BoxShape3D_vhoe8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1247520650]
+mesh = SubResource("BoxMesh_7lrwy")

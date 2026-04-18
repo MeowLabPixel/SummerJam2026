@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ek1ncjc2swrw"]
+
+[ext_resource type="Texture2D" uid="uid://c42d3fusvwvg5" path="res://player/kenney_prototype-textures/PNG/Red/texture_05.png" id="1_ittie"]
+[ext_resource type="Script" path="res://player/enemy_head.gd" id="2_6us26"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6us26"]
+radius = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j67du"]
+albedo_texture = ExtResource("1_ittie")
+uv1_triplanar = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fkqch"]
+material = SubResource("StandardMaterial3D_j67du")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3sowk"]
+radius = 0.6
+
+[node name="Temp_enemi" type="CharacterBody3D" unique_id=1389743187 groups=["enemy"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1337153923]
+shape = SubResource("CapsuleShape3D_6us26")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2006550567]
+mesh = SubResource("CapsuleMesh_fkqch")
+
+[node name="Head" type="Area3D" parent="." unique_id=333156231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19216919, 0)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_6us26")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head" unique_id=1270268792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6279883, 0)
+shape = SubResource("SphereShape3D_3sowk")
+
+[connection signal="body_entered" from="Head" to="Head" method="_on_body_entered"]
