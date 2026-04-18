@@ -1,8 +1,7 @@
 ## STATE: Defeated
 ## HP has reached 0. Enemy is out of the fight.
 ## Plays defeated animation on loop.
-## If the player aims at the enemy, it waves to indicate
-## it no longer wants to play Songkran (visual gag / mercy signal).
+
 class_name StateDefeated
 extends EnemyState
 
@@ -22,11 +21,9 @@ func exit() -> void:
 	pass  # Defeated is a terminal state — should never exit normally.
 
 func physics_update(_delta: float) -> void:
-	# React to being aimed at: play wave animation.
 	if player_is_aiming and not _was_aiming:
 		_was_aiming = true
 		print("[StateDefeated]")
-		# TODO: play wave animation (transition from defeated idle to wave).
 	elif not player_is_aiming and _was_aiming:
 		_was_aiming = false
 		# TODO: return to defeated idle animation.

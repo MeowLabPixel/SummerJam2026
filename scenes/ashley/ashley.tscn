@@ -37,11 +37,6 @@ script = ExtResource("2_soyvl")
 
 [node name="AshleyStateFollow" type="Node" parent="AshleyStateMachine" unique_id=971160823]
 script = ExtResource("3_6r0d4")
-move_speed = null
-follow_stop_distance = null
-repulsion_radius = null
-flee_speed_bonus = null
-rotation_speed = null
 
 [node name="AshleyStateEvade" type="Node" parent="AshleyStateMachine" unique_id=1332248064]
 script = ExtResource("4_i4tsk")
