@@ -13,7 +13,6 @@ extends Node3D
 @export var sprint_tween_speed:float =0.5
 
 var camera_rotation: Vector2= Vector2.ZERO
-var camera_turning_rotation: Vector2= Vector2.ZERO
 var mouse_sensitivity: float = 0.001
 var max_y_rot:float= 1.2
 var max_x_rot:float= 1
@@ -41,8 +40,8 @@ func _input(event: InputEvent)-> void:
 	if event is InputEventMouseMotion:
 		var mouse_event: Vector2 = event.screen_relative * mouse_sensitivity
 		camera_look(mouse_event)
-	if event.is_action_pressed("swap_camera_alignment"):
-		swap_camera_align()
+	#if event.is_action_pressed("swap_camera_alignment"):
+		#swap_camera_align()
 	if event.is_action_pressed("aim"):
 		enter_aim()
 	if event.is_action_released("aim"):
@@ -59,8 +58,7 @@ func camera_look(mouse_movement: Vector2)-> void:
 	if not character.is_quick_turn:
 		character.rotate_object_local(Vector3(0,1,0),-camera_rotation.x)
 	rotate_object_local(Vector3(1,0,0),-camera_rotation.y)	
-	camera_rotation.y = clamp(camera_rotation.y,camera_turning_rotation.y-max_y_rot,camera_turning_rotation.y+max_y_rot)
-	camera_rotation.x = clamp(camera_rotation.x,camera_turning_rotation.x-max_x_rot,camera_turning_rotation.x+max_x_rot)
+	camera_rotation.y = clamp(camera_rotation.y,camera_rotation.y-max_y_rot,camera_rotation.y+max_y_rot)
 
 
 func swap_camera_align()-> void:

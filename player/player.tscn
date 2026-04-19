@@ -1,9 +1,19 @@
-[gd_scene format=3 uid="uid://mcuitu45nrbp"]
+[gd_scene format=3 uid="uid://ctw3pf8lekk71"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_4eg07"]
-[ext_resource type="Script" path="res://player/player_camera.gd" id="2_eja1v"]
-[ext_resource type="Texture2D" uid="uid://cp07rkh3t1t7w" path="res://player/crosshair.png" id="3_nqdqj"]
-[ext_resource type="Script" path="res://player/gun.gd" id="4_g5cgg"]
+[ext_resource type="Script" uid="uid://ddvy2c6r527pb" path="res://player/player.gd" id="1_4eg07"]
+[ext_resource type="Script" uid="uid://2fqcch46tyf7" path="res://player/player_camera.gd" id="2_eja1v"]
+[ext_resource type="Texture2D" uid="uid://cp07rkh3t1t7w" path="res://player/img/crosshair.png" id="3_nqdqj"]
+[ext_resource type="Script" uid="uid://d3ud7nhc41q5x" path="res://player/test/gun.gd" id="4_g5cgg"]
+[ext_resource type="Script" uid="uid://bkree4hn7lmpd" path="res://player/Statemachine/player_state_machine.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://b8wnffsfqx6ec" path="res://player/Statemachine/player_idle.gd" id="6_ebec5"]
+[ext_resource type="Script" uid="uid://q8rdo04vclx0" path="res://player/Statemachine/player_run.gd" id="7_yllr7"]
+[ext_resource type="Script" uid="uid://bq06jvgk2c8ow" path="res://player/Statemachine/player_reload.gd" id="8_kb6p2"]
+[ext_resource type="Script" uid="uid://dfuibfvlj76fe" path="res://player/quick_turn.gd" id="8_yllr7"]
+[ext_resource type="Script" uid="uid://cxhknelq4t202" path="res://player/player_sprint.gd" id="9_kb6p2"]
+[ext_resource type="Script" uid="uid://xou4sjteglpa" path="res://player/Statemachine/player_aim.gd" id="9_wodsf"]
+[ext_resource type="Script" uid="uid://88nqcyhvt3qh" path="res://player/Statemachine/player_grab.gd" id="10_32hag"]
+[ext_resource type="Script" uid="uid://cpdbw6oifs8m2" path="res://player/Statemachine/player_knockdown.gd" id="11_tqiix"]
+[ext_resource type="Script" uid="uid://bhn03nq0rsppn" path="res://player/Statemachine/player_die.gd" id="12_e7oew"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vbped"]
 radius = 0.8
@@ -76,3 +86,34 @@ script = ExtResource("4_g5cgg")
 
 [node name="Node3D" type="Node3D" parent="MeshInstance3D2" unique_id=607105022]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0025565028, 0, -0.67409587)
+
+[node name="Statemachine" type="Node" parent="." unique_id=474127841 node_paths=PackedStringArray("Start_state")]
+script = ExtResource("5_qjkh3")
+Start_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="Statemachine" unique_id=1550964532]
+script = ExtResource("6_ebec5")
+
+[node name="Run" type="Node" parent="Statemachine" unique_id=425441096]
+script = ExtResource("7_yllr7")
+
+[node name="Quick_turn" type="Node" parent="Statemachine" unique_id=589198026]
+script = ExtResource("8_yllr7")
+
+[node name="Sprint" type="Node" parent="Statemachine" unique_id=585832642]
+script = ExtResource("9_kb6p2")
+
+[node name="Reload" type="Node" parent="Statemachine" unique_id=906216806]
+script = ExtResource("8_kb6p2")
+
+[node name="Aim" type="Node" parent="Statemachine" unique_id=1671472409]
+script = ExtResource("9_wodsf")
+
+[node name="Grab" type="Node" parent="Statemachine" unique_id=1256774596]
+script = ExtResource("10_32hag")
+
+[node name="Knockdown" type="Node" parent="Statemachine" unique_id=1528629056]
+script = ExtResource("11_tqiix")
+
+[node name="Die" type="Node" parent="Statemachine" unique_id=17486247]
+script = ExtResource("12_e7oew")
