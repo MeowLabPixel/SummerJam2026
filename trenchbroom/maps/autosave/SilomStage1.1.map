@@ -1,0 +1,18 @@
+// Game: SongkranHazard
+// Format: Valve
+// entity 0
+{
+"mapversion" "220"
+"wad" ""
+"classname" "worldspawn"
+"_tb_mod" "trenchbroom"
+// brush 0
+{
+( -16 -16 0 ) ( -16 -15.75 0 ) ( -16 -16 1 ) special/default_texture [ 0 -4 0 0 ] [ 0 0 -1 16 ] 0 1 1
+( -16 -16 0 ) ( -16 -16 1 ) ( -15.75 -16 0 ) special/default_texture [ 4 0 0 0 ] [ 0 0 -1 16 ] 0 1 1
+( -16 -16 0 ) ( -15.75 -16 0 ) ( -16 -15.75 0 ) special/default_texture [ -4 0 0 0 ] [ 0 -4 0 0 ] 0 1 1
+( 16 16 32 ) ( 16 16.25 32 ) ( 16.25 16 32 ) special/default_texture [ 4 0 0 0 ] [ 0 -4 0 0 ] 0 1 1
+( 16 16 32 ) ( 16.25 16 32 ) ( 16 16 33 ) special/default_texture [ -4 0 0 0 ] [ 0 0 -1 16 ] 0 1 1
+( 16 16 32 ) ( 16 16 33 ) ( 16 16.25 32 ) special/default_texture [ 0 4 0 0 ] [ 0 0 -1 16 ] 0 1 1
+}
+}

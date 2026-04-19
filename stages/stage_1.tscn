@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bg7xlxw2vb5v5"]
+
+[ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_p6prp"]
+[ext_resource type="Resource" uid="uid://csr38uefj3rk8" path="res://trenchbroom/SongkranHazardSettings.tres" id="2_p6prp"]
+
+[node name="Stage1" type="Node3D" unique_id=393898919]
+
+[node name="FuncGodotMap" type="Node3D" parent="." unique_id=1296878279]
+script = ExtResource("1_p6prp")
+local_map_file = "uid://wplfw0jgamvk"
+map_settings = ExtResource("2_p6prp")
+metadata/_custom_type_script = "uid://cwu5cf7a0awcd"

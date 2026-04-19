@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://wplfw0jgamvk"
+path="res://.godot/imported/SilomStage1.map-5c4ee21c68f8dcd1ac1e7ca7cee33e02.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/SilomStage1.map"
+dest_files=["res://.godot/imported/SilomStage1.map-5c4ee21c68f8dcd1ac1e7ca7cee33e02.tres"]
+
+[params]
+

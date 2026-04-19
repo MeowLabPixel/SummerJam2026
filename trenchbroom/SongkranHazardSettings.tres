@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FuncGodotMapSettings" format=3 uid="uid://csr38uefj3rk8"]
+
+[ext_resource type="Material" uid="uid://cvex6toty8yn7" path="res://addons/func_godot/textures/default_material.tres" id="1_wx52x"]
+[ext_resource type="Resource" uid="uid://cyrn1k6fo20l8" path="res://trenchbroom/SongkranHazardFGD.tres" id="2_wx52x"]
+[ext_resource type="Script" uid="uid://38q6k0ctahjn" path="res://addons/func_godot/src/map/func_godot_map_settings.gd" id="3_6q71p"]
+[ext_resource type="Script" uid="uid://cij36hpqc46c" path="res://addons/func_godot/src/import/quake_wad_file.gd" id="4_45p67"]
+
+[resource]
+script = ExtResource("3_6q71p")
+entity_fgd = ExtResource("2_wx52x")
+base_texture_dir = "res://trenchbroom/textures"
+clip_texture = "special/clip"
+skip_texture = "special/skip"
+origin_texture = "special/origin"
+metadata/_custom_type_script = "uid://38q6k0ctahjn"
