@@ -1,6 +1,7 @@
 extends Motion
 
 func _enter() -> void:
+	owner.aim_bone.start()
 	if owner.is_aimming:
 		finished.emit("Aim")
 	print(name)
@@ -8,6 +9,10 @@ func _enter() -> void:
 			owner.anim.get("parameters/playback").travel("Idle") #HUrt anim
 	else:	
 			owner.anim.get("parameters/playback").travel("Idle")
+	if not owner.hitboxF.body_entered.is_connected(hitfront):
+		owner.hitboxF.body_entered.connect(hitfront)
+	if not owner.hitboxB.body_entered.is_connected(hitback):
+		owner.hitboxB.body_entered.connect(hitback)
 
 func _update(_delta:float) -> void:
 	set_direction()
@@ -34,3 +39,14 @@ func _state_input(event: InputEvent) -> void:
 		finished.emit("Get_hit")
 	if Input.is_action_pressed("knock_down") :
 		finished.emit("Knockdown")
+
+func hitfront(body: Node3D):
+	if body.is_in_group("attack"):
+		owner.Hit_info.bullet = body
+		owner.Hit_info.location = "front"
+		finished.emit("Get_hit")
+func hitback(body: Node3D):
+	if body.is_in_group("attack"):
+		owner.Hit_info.bullet = body
+		owner.Hit_info.location = "back"
+		finished.emit("Get_hit")

@@ -60,11 +60,6 @@ func camera_look(mouse_movement: Vector2)-> void:
 		character.rotate_object_local(Vector3(0,1,0),-camera_rotation.x)
 	rotate_object_local(Vector3(1,0,0),-camera_rotation.y)	
 	
-	var move_bone = bone.find_bone(look_bone)
-	var bone_rotation = bone.get_bone_pose(move_bone)
-	bone_rotation.basis = Basis()
-	var new_rot = bone_rotation.rotated_local(Vector3(1,0,0),-camera_rotation.y)
-	bone.set_bone_pose(move_bone,new_rot)
 	camera_rotation.y = clamp(camera_rotation.y,-max_y_rot,+max_y_rot)
 
 func swap_camera_align()-> void:

@@ -6,6 +6,7 @@ class_name Player extends CharacterBody3D
 @export var trun_speed:= 180.0
 @export var quick_trun_speed:= 0.3 #in second
 @export var run_speed:=380.0
+@export var aim_bone: SkeletonIK3D
 
 @export_group("animation setting")
 #@export var anim_player:AnimationPlayer
@@ -17,6 +18,10 @@ class_name Player extends CharacterBody3D
 @export var hitboxF: Area3D
 @export var hitboxB: Area3D
 var HP = MaxHP
+var Hit_info = {
+	"bullet": null,
+	"location": null
+}
 
 #timer
 @onready var knockdown_timer: Timer = $Knockdown_timer

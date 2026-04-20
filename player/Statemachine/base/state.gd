@@ -15,3 +15,6 @@ func _state_input(_event: InputEvent) -> void:
 	
 func _update(_delta:float) -> void:
 	return
+	
+func anim_done(namee: String):
+	return
