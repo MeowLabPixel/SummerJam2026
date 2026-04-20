@@ -7,7 +7,7 @@ var hit_anim = "HIT Body"
 func _enter() -> void:
 	print(name)
 	owner.aim_bone.stop()
-	owner.HP -=1
+	owner.lost_HP(1)
 	if owner.Hit_info.location == "front":
 		owner.anim.get("parameters/playback").travel("Hit")
 	elif owner.Hit_info.location == "back":

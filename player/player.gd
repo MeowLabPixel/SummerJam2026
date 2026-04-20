@@ -83,7 +83,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func change_gun():
-	print("swap gun")
 	#animation
 	if curr_gun_index == Gun.size()-1:
 		curr_gun_index = 0
@@ -91,3 +90,15 @@ func change_gun():
 		curr_gun_index +=1
 	curr_gun = Gun[curr_gun_index]
 	#spawan new gun
+
+func lost_HP(amount):
+	if HP -amount <= 0:
+		HP = 0
+	else:
+		HP -=amount
+		
+func Heal(amount):
+	if HP +amount >= MaxHP:
+		HP = MaxHP
+	else:
+		HP +=amount

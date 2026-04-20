@@ -27,7 +27,7 @@ func _update(_delta:float) -> void:
 		if owner.start_qte:
 			owner.qte_bar.value -= 1
 		if owner.qte_bar.value <= 0 and owner.start_qte and not mini_done:
-			owner.HP -= 5
+			owner.lost_HP(5)
 			mini_done = true
 			#some attac anim with zombie
 			owner.qte.visible = false
