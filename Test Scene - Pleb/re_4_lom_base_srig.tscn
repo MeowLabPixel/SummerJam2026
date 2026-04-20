@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b4t4jkyruuqo0"]
+
+[ext_resource type="PackedScene" uid="uid://bytxgl5m4vmsr" path="res://3D Character/Re4Lom Base Rig.glb" id="1_t5hp4"]
+[ext_resource type="Script" uid="uid://cwge4dfrnycgp" path="res://mesh_instance_3d.gd" id="2_q3tn2"]
+
+[node name="Re4Lom Base Rig" unique_id=1031959263 instance=ExtResource("1_t5hp4")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rig/Skeleton3D" parent_id_path=PackedInt32Array(707113044) index="16" unique_id=1394864579]
+script = ExtResource("2_q3tn2")

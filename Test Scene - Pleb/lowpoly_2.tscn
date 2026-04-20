@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bb77ca31qm31c"]
+
+[ext_resource type="PackedScene" uid="uid://dfmflp3d8myl" path="res://3D Character/lowpoly2.glb" id="1_awxyt"]
+[ext_resource type="Shader" uid="uid://dka74v5jnejx3" path="res://test2.gdshader" id="2_xxoo4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obhu4"]
+render_priority = 0
+shader = ExtResource("2_xxoo4")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/use_stepped = true
+shader_parameter/steps = 3.0
+shader_parameter/step_smoothness = 0.3
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+shader_parameter/use_rim = true
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/rim_amount = 2.0
+shader_parameter/rim_smoothness = 0.2
+shader_parameter/rim_mask_shadow = 1.0
+shader_parameter/rim_blend = 1.0
+shader_parameter/use_pattern = true
+shader_parameter/pattern_uv_mode = 2
+shader_parameter/pattern_tiling = 32.0
+shader_parameter/pattern_amount = 0.5
+shader_parameter/pattern_smoothness = 0.5
+shader_parameter/pattern_blend = 0.2
+
+[node name="lowpoly2" unique_id=324602921 instance=ExtResource("1_awxyt")]
+
+[node name="Shirt Top_002" parent="." index="21" unique_id=1670501884]
+surface_material_override/0 = SubResource("ShaderMaterial_obhu4")

@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dr50abnas7cvf"]
+
+[ext_resource type="PackedScene" uid="uid://bytxgl5m4vmsr" path="res://3D Character/Re4Lom Base Rig.glb" id="2_ts8a0"]
+[ext_resource type="Shader" uid="uid://dvhq5jhobmqo" path="res://Test Scene - Pleb/water.gdshader" id="2_x420r"]
+[ext_resource type="PackedScene" uid="uid://5n40syyek6eh" path="res://3D Character/lowpoly2.glb" id="3_ts8a0"]
+[ext_resource type="Shader" uid="uid://di5ko0dr8kpm4" path="res://Test Scene - Pleb/node_3d.gdshader" id="4_5q4yo"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ts8a0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5q4yo"]
+render_priority = 0
+shader = ExtResource("2_x420r")
+shader_parameter/wave_0 = Vector4(0.3, 2, 1, 0)
+shader_parameter/wave_1 = Vector4(0.2, 1.355, 0.8, 1.31)
+shader_parameter/wave_2 = Vector4(0.15, 1, 1.2, 2)
+shader_parameter/wave_3 = Vector4(0.1, 0.8, 0.6, 3166)
+shader_parameter/noise_scale = 1.0
+shader_parameter/noise_strength = 0.3
+shader_parameter/albedo = Color(0.76, 0.94, 0.93, 0.8)
+shader_parameter/metallic = 0.1
+shader_parameter/roughness = 0.3
+shader_parameter/water_level = 0.0
+shader_parameter/edge_threshold = 0.1
+shader_parameter/edge_softness = 0.5
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5l6r"]
+render_priority = 0
+shader = ExtResource("4_5q4yo")
+shader_parameter/shadow_color = Color(0.7294118, 0, 1, 1)
+shader_parameter/shadow_thickness = 2.055
+
+[sub_resource type="QuadMesh" id="QuadMesh_b2b0c"]
+material = SubResource("ShaderMaterial_v5l6r")
+size = Vector2(2, 2)
+
+[node name="Node3D" type="Node3D" unique_id=833064796]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=739243926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0590266, 0, 1.2416998)
+mesh = SubResource("PlaneMesh_ts8a0")
+surface_material_override/0 = SubResource("ShaderMaterial_5q4yo")
+
+[node name="Re4Lom Base Rig" parent="." unique_id=1031959263 instance=ExtResource("2_ts8a0")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.9681816, 0.0061774254, 1.1048832)
+
+[node name="lowpoly2" parent="." unique_id=759361497 instance=ExtResource("3_ts8a0")]
+transform = Transform3D(3.196894, 0, 0, 0, 3.196894, 0, 0, 0, 1, 1.1642354, 1.9705858, 1.3899035)
+
+[node name="Camera3D" type="Camera3D" parent="lowpoly2" unique_id=1007190297]
+transform = Transform3D(-0.3021451, 0, 0.25881913, 0, 0.31280363, 0, -0.080959566, 0, -0.9659258, 0, 0, -4.635618)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lowpoly2/Camera3D" unique_id=874976890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05848372, 0, -0.6977682)
+mesh = SubResource("QuadMesh_b2b0c")
