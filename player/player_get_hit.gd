@@ -12,6 +12,8 @@ func _enter() -> void:
 		owner.anim.get("parameters/playback").travel("Hit")
 	elif owner.Hit_info.location == "back":
 		owner.anim.get("parameters/playback").travel("Hit")
+	else:
+		owner.anim.get("parameters/playback").travel("Hit")
 	if not owner.anim.animation_finished.is_connected(anim_done):
 		owner.anim.animation_finished.connect(anim_done)
 		
