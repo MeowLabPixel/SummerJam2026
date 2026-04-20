@@ -1,1 +1,7 @@
 extends State
+
+func _enter() -> void:
+	print(name)
+	owner.anim.get("parameters/playback").travel("Die")
+	owner.die.visible = true
+	owner.die_anim.play("in")

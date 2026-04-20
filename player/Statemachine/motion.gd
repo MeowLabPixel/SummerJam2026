@@ -2,6 +2,7 @@ extends State
 class_name Motion
 signal velocity_updated(vel:Vector3)
 const SPEED: float = 5.0
+const SPEED_sprint: float = 8.0
 const acceleration:float = 1000
 const Gravity: float = 9.8
 
