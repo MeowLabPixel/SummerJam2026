@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bljas2yeqo4rd"]
+
+[ext_resource type="Script" uid="uid://bbre8s2owdelg" path="res://GunSystem/Script/WaterLine.gd" id="1_5ca5g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3puto"]
+albedo_color = Color(0.31764707, 0.87058824, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.73333335, 0.9019608, 1)
+emission_energy_multiplier = 1.86
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ca5g"]
+material = SubResource("StandardMaterial3D_3puto")
+size = Vector3(0.02, 0.02, 1)
+
+[node name="WaterLineVFX" type="Node3D" unique_id=140256862]
+script = ExtResource("1_5ca5g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=647306067]
+mesh = SubResource("BoxMesh_5ca5g")
