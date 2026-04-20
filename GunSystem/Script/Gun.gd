@@ -6,6 +6,9 @@ class_name Gun
 @export var shot_vfx_scene: PackedScene
 @export var hit_vfx_scene: PackedScene
 
+#Damage
+var damage: float = 10
+
 # Water
 var water: float = 100.0
 var max_water: float = 100.0
