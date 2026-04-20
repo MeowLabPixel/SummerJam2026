@@ -35,8 +35,12 @@ func _state_input(event: InputEvent) -> void:
 		finished.emit("Idle")
 	if Input.is_action_pressed("Reload") :
 		finished.emit("Reload")
-	if Input.is_action_pressed("gun swap") :
-		owner.change_gun()
+	if Input.is_action_pressed("Gun1"):
+		switch_gun(0)
+	if Input.is_action_pressed("Gun2"):
+		switch_gun(1)
+	if Input.is_action_pressed("Gun3"):
+		switch_gun(2)
 	if Input.is_action_pressed("click")and owner.curr_gun.ammo!=0:
 		print("pew")
 		var instance = owner.BULLET.instantiate()
@@ -46,3 +50,8 @@ func _state_input(event: InputEvent) -> void:
 		instance.add_to_group("bullet")
 		get_parent().add_child(instance)
 		owner.curr_gun.ammo-=1
+
+func switch_gun(num:float):
+	owner.curr_gun_index = num
+	owner.curr_gun = owner.Gun[owner.curr_gun_index]
+	#one shot anim

@@ -33,8 +33,6 @@ func _state_input(event: InputEvent) -> void:
 		finished.emit("Grab")
 	if Input.is_action_pressed("die_butt") :
 		owner.HP =0
-	if Input.is_action_pressed("gun swap") :
-		owner.change_gun()
 	if Input.is_action_pressed("hit") :
 		finished.emit("Get_hit")
 	if Input.is_action_pressed("knock_down") :
@@ -45,6 +43,8 @@ func _state_input(event: InputEvent) -> void:
 		switch_gun(1)
 	if Input.is_action_pressed("Gun3"):
 		switch_gun(2)
+	if Input.is_action_pressed("Takedown") and owner.is_near_stunt:
+		finished.emit("Takedown")
 
 func hitfront(body: Node3D):
 	if body.is_in_group("attack"):

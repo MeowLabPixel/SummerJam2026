@@ -32,6 +32,8 @@ func _state_input(_event: InputEvent) -> void:
 		switch_gun(1)
 	if Input.is_action_pressed("Gun3"):
 		switch_gun(2)
+	if Input.is_action_pressed("Takedown") and owner.is_near_stunt:
+		finished.emit("Takedown")
 
 func hitfront(body: Node3D):
 	if body.is_in_group("attack"):

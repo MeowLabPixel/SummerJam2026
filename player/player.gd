@@ -17,6 +17,8 @@ class_name Player extends CharacterBody3D
 @export var MaxHP = 100
 @export var hitboxF: Area3D
 @export var hitboxB: Area3D
+@export var stun_detect: Area3D
+@export var pickup_detect: Area3D
 var HP = MaxHP
 var Hit_info = {
 	"bullet": null,
@@ -42,6 +44,7 @@ var is_aimming:bool = false
 var is_reload:bool = false
 var is_grab:bool = false
 var is_knockdown:bool = false
+var is_near_stunt:bool = false
 
 #gun
 var GunA = {
@@ -65,6 +68,7 @@ var GunC = {
 var Gun = [GunA,GunB,GunC]
 var curr_gun = Gun[0]
 var curr_gun_index = 0
+var near_enemy_list = []
 
 @onready var camera: Node3D = $Camera
 @onready var cross_hair: TextureRect = $Camera/edgeSpringArm3D/rearSpringArm3D/Camera3D/TextureRect
@@ -75,6 +79,11 @@ const BULLET = preload("uid://csdtdj7sci5vk")
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+
+func _ready() -> void:
+	stun_detect.body_entered.connect(stun_detect_in)
+	stun_detect.body_exited.connect(stun_detect_out)
+	pickup_detect.body_entered.connect(pickup_detect_area)
 
 func set_velocity_from_motion(vel: Vector3)-> void:
 	velocity = vel
@@ -102,3 +111,24 @@ func Heal(amount):
 		HP = MaxHP
 	else:
 		HP +=amount
+		
+func stun_detect_in (body: Node3D):
+	if body.is_in_group("enemy"):
+		near_enemy_list.append(body)
+	check_if_near_stun()
+
+func stun_detect_out (body: Node3D):
+	if body.is_in_group("enemy"):
+		var index = near_enemy_list.find(body,0)
+		near_enemy_list.remove_at(index)
+	check_if_near_stun()
+		
+func check_if_near_stun():
+	is_near_stunt = false
+	for i in near_enemy_list:
+		if i.stun:
+			is_near_stunt = true
+			
+func pickup_detect_area(body: Node3D):
+	if body.is_in_group("object"):
+		pass
