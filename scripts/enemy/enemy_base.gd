@@ -17,6 +17,17 @@ var current_hp: int = MAX_HP
 var _second_chance_used: bool = false   # Can only trigger once per life.
 var is_defeated: bool = false
 
+# ─── Drop Table ────────────────────────────────────────────────────────────
+## Each entry is a Dictionary with keys:
+##   item_type : String  — matches ItemPickup.item_type ("coin", "health", etc.)
+##   value     : int     — worth of each individual pickup spawned
+##   count_min : int     — minimum number of pickups dropped
+##   count_max : int     — maximum number of pickups dropped
+## Example default: drop 2–4 coins worth 1 each.
+@export var drop_table: Array[Dictionary] = [
+	{"item_type": "coin", "value": 1, "count_min": 2, "count_max": 4}
+]
+
 # ─── References ────────────────────────────────────────────────────────────
 @onready var state_machine: EnemyStateMachine = $EnemyStateMachine
 @onready var anim_player: AnimationPlayer = $Ashley_Test/AnimationPlayer
@@ -71,6 +82,20 @@ func _trigger_defeat() -> void:
 	is_defeated = true
 	state_machine.transition_to("StateDefeated")
 	enemy_defeated.emit()
+	_spawn_drops()
+
+## Spawns all drops defined in drop_table at the enemy's current position.
+func _spawn_drops() -> void:
+	var parent: Node = get_tree().current_scene
+	for entry in drop_table:
+		var item_type: String = entry.get("item_type", "coin")
+		var value: int = entry.get("value", 1)
+		var count_min: int = entry.get("count_min", 1)
+		var count_max: int = entry.get("count_max", 1)
+		var count: int = randi_range(count_min, count_max)
+		print("[EnemyBase] Dropping %d x %s" % [count, item_type])
+		for i in count:
+			ItemPickup.instantiate_drop(parent, global_position, item_type, value)
 
 # ─── Debug ─────────────────────────────────────────────────────────────────
 func _on_state_changed(old_state: String, new_state: String) -> void:

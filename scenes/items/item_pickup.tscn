@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://wst0d3ylafwt"]
+
+[ext_resource type="Script" uid="uid://d6i4dyn6401q" path="res://scripts/items/item_pickup.gd" id="1_72j5x"]
+
+[node name="ItemPickup" type="Area3D" unique_id=1955694054]
+script = ExtResource("1_72j5x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=867107624]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1245871321]
