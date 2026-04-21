@@ -1,0 +1,350 @@
+[gd_scene format=3 uid="uid://k5a3bwu0vqie"]
+
+[ext_resource type="Script" uid="uid://c74le8e1ab6op" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/script/vfx_beam_controller.gd" id="1_ebs2f"]
+[ext_resource type="Shader" uid="uid://dmykglgtyfjqi" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_ball.gdshader" id="2_pqdqv"]
+[ext_resource type="Shader" uid="uid://bvmabxdggohq0" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_core.gdshader" id="3_gmcti"]
+[ext_resource type="Shader" uid="uid://0i3m3bvegkqm" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_outer.gdshader" id="4_rywfr"]
+[ext_resource type="Shader" uid="uid://bkj7m81o5nt7c" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_flare.gdshader" id="5_4gao2"]
+[ext_resource type="Shader" uid="uid://bwkkq8vv7od6e" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/glow_particle.gdshader" id="6_w4bq1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lygp"]
+render_priority = 0
+shader = ExtResource("2_pqdqv")
+shader_parameter/primary_color = Color(4.235506e-06, 0.5737692, 0.6998102, 1)
+shader_parameter/tertiary_color = Color(0.01720376, 0.46729136, 0.7655979, 1)
+shader_parameter/emission = 3.0
+shader_parameter/flash_amount = 0.0
+shader_parameter/flash_emission = 5.999999865888
+
+[sub_resource type="SphereMesh" id="SphereMesh_8nl8c"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a55gb"]
+render_priority = 0
+shader = ExtResource("3_gmcti")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_16tsm"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+radial_segments = 32
+rings = 64
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cun65"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anw6r"]
+render_priority = 0
+shader = ExtResource("4_rywfr")
+shader_parameter/primary_color = Color(4.235506e-06, 0.5737692, 0.6998102, 1)
+shader_parameter/secondary_color = Color(0.4144398, 0.9367474, 1, 1)
+shader_parameter/tertiary_color = Color(0.01720376, 0.46729136, 0.7655979, 1)
+shader_parameter/emission = 3.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_cun65")
+shader_parameter/noise_twist = 0.0
+shader_parameter/scroll_speed = Vector2(0, 2)
+shader_parameter/beam_length = 4.0
+shader_parameter/pulse_speed = 30.0
+shader_parameter/pulse_strength = 0.0
+shader_parameter/pulse_frequency = 30.0
+shader_parameter/open_amount = 1.0
+shader_parameter/speed_scale = 1.0
+shader_parameter/edge_softness = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2virs"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 1.0
+radial_segments = 32
+rings = 64
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p5j6o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ivtj"]
+render_priority = 0
+shader = ExtResource("5_4gao2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_p5j6o")
+shader_parameter/noise_twist = 0.0
+shader_parameter/scroll_speed = Vector2(0, 2)
+shader_parameter/beam_length = 4.0
+shader_parameter/secondary_color = Color(0.4144398, 0.9367474, 1, 1)
+shader_parameter/tertiary_color = Color(0.01720376, 0.46729136, 0.7655979, 1)
+shader_parameter/emission = 3.0
+shader_parameter/is_tertiary = true
+shader_parameter/open_amount = 1.0
+shader_parameter/speed_scale = 1.0
+shader_parameter/edge_softness = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vqjau"]
+top_radius = 0.3
+bottom_radius = 0.36
+height = 2.1
+cap_bottom = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_resw7"]
+render_priority = 0
+shader = ExtResource("5_4gao2")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_p5j6o")
+shader_parameter/noise_twist = 0.0
+shader_parameter/scroll_speed = Vector2(0, 2)
+shader_parameter/beam_length = 4.0
+shader_parameter/secondary_color = Color(0.4144398, 0.9367474, 1, 1)
+shader_parameter/tertiary_color = Color(0.01720376, 0.46729136, 0.7655979, 1)
+shader_parameter/emission = 3.0
+shader_parameter/is_tertiary = false
+shader_parameter/open_amount = 1.0
+shader_parameter/speed_scale = 1.0
+shader_parameter/edge_softness = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_svpl7"]
+top_radius = 0.3
+bottom_radius = 0.51
+height = 1.1
+cap_bottom = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_af72l"]
+render_priority = 0
+shader = ExtResource("6_w4bq1")
+shader_parameter/tertiary_color = Color(0.01720376, 0.46729136, 0.7655979, 1)
+shader_parameter/emission = 3.0
+
+[sub_resource type="Curve" id="Curve_xbck7"]
+
+[sub_resource type="Curve" id="Curve_87nky"]
+
+[sub_resource type="Curve" id="Curve_xtgak"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_mivb2"]
+curve_x = SubResource("Curve_xbck7")
+curve_y = SubResource("Curve_87nky")
+curve_z = SubResource("Curve_xtgak")
+
+[sub_resource type="Curve" id="Curve_mlro7"]
+_data = [Vector2(0, 0), 0.0, 7.7099075, 0, 0, Vector2(0.30405408, 0.94382024), -1.2791698, -1.2791698, 0, 0, Vector2(1, 0), -0.39127585, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6pa8y"]
+curve = SubResource("Curve_mlro7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6hjry"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 2
+emission_sphere_radius = 0.3
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, -1)
+spread = 15.0
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+orbit_velocity_min = -0.49999994
+orbit_velocity_max = 0.5000001
+orbit_velocity_curve = SubResource("CurveXYZTexture_mivb2")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -5.000002
+radial_accel_max = -5.000002
+scale_curve = SubResource("CurveTexture_6pa8y")
+
+[sub_resource type="SphereMesh" id="SphereMesh_fqy8c"]
+radius = 0.03
+height = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pe1wu"]
+render_priority = 0
+shader = ExtResource("2_pqdqv")
+shader_parameter/primary_color = Color(4.235506e-06, 0.5737692, 0.6998102, 1)
+shader_parameter/tertiary_color = Color(0.01720376, 0.46729136, 0.7655979, 1)
+shader_parameter/emission = 3.0
+shader_parameter/flash_amount = 0.999999977648
+shader_parameter/flash_emission = 3.999999910592
+
+[sub_resource type="SphereMesh" id="SphereMesh_tds3u"]
+radius = 0.4
+height = 0.8
+
+[sub_resource type="Curve" id="Curve_1o7w0"]
+_data = [Vector2(0, 1), 0.0, -1.0023087, 0, 0, Vector2(1, 0), -1.212547, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mivb2"]
+curve = SubResource("Curve_1o7w0")
+
+[sub_resource type="Curve" id="Curve_qps5k"]
+_data = [Vector2(0, 1), 0.0, -2.370547, 0, 0, Vector2(1, 0), -0.30882844, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p5j6o"]
+curve = SubResource("Curve_qps5k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0sd8b"]
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, 1)
+spread = 90.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+damping_min = 20.0
+damping_max = 30.000002
+scale_curve = SubResource("CurveTexture_p5j6o")
+alpha_curve = SubResource("CurveTexture_mivb2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_vxkl2"]
+radius = 0.1
+
+[sub_resource type="Shader" id="Shader_qrt4r"]
+code = "shader_type spatial;
+render_mode unshaded, cull_disabled;
+
+group_uniforms Color;
+uniform vec3 primary_color : source_color;
+uniform vec3 secondary_color : source_color;
+uniform float emission : hint_range(0.0, 10.0, 0.01) = 3.0;
+
+group_uniforms Pulse;
+uniform float pulse_speed = 30.0;
+uniform float pulse_strength = 0.05;
+uniform float pulse_frequency = 30.0;
+
+group_uniforms General;
+uniform float open_amount : hint_range(0.0, 1.0, 0.01) = 1.0;
+uniform float speed_scale : hint_range(0.0, 1.0, 0.01) = 1.0;
+
+void vertex() {
+	float closed_offset = 1.0 - abs(UV.y * 4.0 - 1.0);
+	closed_offset = pow(closed_offset, 1.0 - closed_offset);
+	closed_offset = UV.y * 4.0;
+	closed_offset *= (1.0 - open_amount);
+	
+	VERTEX += (NORMAL * closed_offset);
+	
+	float pulse_base = UV.y;
+	float pulse = sin((pulse_base * pulse_frequency) - TIME * pulse_speed) * pulse_strength;
+	VERTEX += (NORMAL * pulse);
+}
+
+void fragment() {
+	float fresnel = clamp(dot(VIEW, NORMAL), 0.0, 1.0);
+	
+	vec3 color = mix(primary_color, primary_color * emission, fresnel);
+	
+	ALBEDO = color;
+	
+	float alpha = 1.0;
+	float open_mask = UV.y*2.0;
+	open_mask = clamp(1.0 - smoothstep(open_amount - 0.1, open_amount + 0.1, open_mask), 0.0, 1.0);
+	alpha *= open_mask;
+	
+	ALPHA = alpha;
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pa8y"]
+render_priority = 0
+shader = SubResource("Shader_qrt4r")
+shader_parameter/primary_color = Color(1, 1, 1, 1)
+shader_parameter/secondary_color = Color(0.45, 0.45, 0.45, 1)
+shader_parameter/emission = 3.0
+shader_parameter/pulse_speed = 30.0
+shader_parameter/pulse_strength = 0.0
+shader_parameter/pulse_frequency = 30.0
+shader_parameter/open_amount = 1.0
+shader_parameter/speed_scale = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1ycyw"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+radial_segments = 32
+rings = 64
+cap_top = false
+cap_bottom = false
+
+[node name="BaseBeamVFX" type="Node3D" unique_id=335639217]
+script = ExtResource("1_ebs2f")
+primary_color = Color(4.235506e-06, 0.5737692, 0.6998102, 1)
+secondary_color = Color(0.4144398, 0.9367474, 1, 1)
+tertiary_color = Color(0.01720376, 0.46729136, 0.7655979, 1)
+
+[node name="BeamStart" type="MeshInstance3D" parent="." unique_id=1923619505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001, -0.006, 0)
+material_override = SubResource("ShaderMaterial_2lygp")
+mesh = SubResource("SphereMesh_8nl8c")
+
+[node name="AudioStart" type="AudioStreamPlayer3D" parent="." unique_id=2145091727]
+
+[node name="BeamPivot" type="Node3D" parent="." unique_id=1485116725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.99999964, 0, 0, 0)
+
+[node name="BeamScalor" type="Node3D" parent="BeamPivot" unique_id=1218900074]
+transform = Transform3D(1, 6.938894e-18, 1.8626451e-08, 0, 1, -9.313226e-09, -3.7252903e-09, 1.8626451e-09, 5, 0, 0, 0)
+
+[node name="BeamCore" type="MeshInstance3D" parent="BeamPivot/BeamScalor" unique_id=129748878]
+transform = Transform3D(1, 0, -1.490116e-08, 0, -1.1920929e-07, -0.99999994, 0, 1, -4.097819e-08, 0, 2.15393, -0.5)
+sorting_offset = -0.1
+material_override = SubResource("ShaderMaterial_a55gb")
+mesh = SubResource("CylinderMesh_16tsm")
+
+[node name="BeamOuter" type="MeshInstance3D" parent="BeamPivot/BeamScalor" unique_id=1979448011]
+transform = Transform3D(1, 0, -1.490116e-08, 0, -1.1920929e-07, -0.99999994, 0, 1, -4.097819e-08, -1.0231595e-08, 2.15393, -0.5)
+material_override = SubResource("ShaderMaterial_anw6r")
+mesh = SubResource("CylinderMesh_2virs")
+
+[node name="AudioMid" type="AudioStreamPlayer3D" parent="BeamPivot/BeamScalor" unique_id=209415801]
+transform = Transform3D(1, 0, -3.7252916e-09, 6.938894e-18, 1, 1.8626458e-09, 7.4505807e-10, -3.7252904e-10, 0.20000008, 0, 0, -0.5)
+
+[node name="BeamFlare1" type="MeshInstance3D" parent="BeamPivot" unique_id=72157017]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1)
+sorting_offset = 1.0
+material_override = SubResource("ShaderMaterial_1ivtj")
+mesh = SubResource("CylinderMesh_vqjau")
+
+[node name="BeamFlare2" type="MeshInstance3D" parent="BeamPivot" unique_id=672264532]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -0.5)
+sorting_offset = 2.0
+material_override = SubResource("ShaderMaterial_resw7")
+mesh = SubResource("CylinderMesh_svpl7")
+
+[node name="BeamParticles" type="GPUParticles3D" parent="BeamPivot" unique_id=510382670]
+transform = Transform3D(0.99999994, 0, 0, 2.3283064e-10, 0.99999994, 0, 1.8626451e-09, 0, 0.99999994, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_af72l")
+amount = 64
+lifetime = 0.5
+local_coords = true
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_6hjry")
+draw_pass_1 = SubResource("SphereMesh_fqy8c")
+
+[node name="BeamEndPivot" type="Node3D" parent="." unique_id=1227742675]
+transform = Transform3D(0.99994636, 0, 0, 0, 0.9999232, 0, 0, 0, 0.99994844, 0, 0, -5)
+
+[node name="BeamEnd" type="MeshInstance3D" parent="BeamEndPivot" unique_id=160767194]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_pe1wu")
+mesh = SubResource("SphereMesh_tds3u")
+
+[node name="AudioEnd" type="AudioStreamPlayer3D" parent="BeamEndPivot" unique_id=49957222]
+transform = Transform3D(1.0000536, 0, 0, 0, 1.0000768, 0, 0, 0, 1.0000516, 0, 0, 0)
+
+[node name="BeamEndParticles" type="GPUParticles3D" parent="BeamEndPivot" unique_id=166699825]
+material_override = SubResource("ShaderMaterial_pe1wu")
+amount = 64
+lifetime = 0.2
+preprocess = 0.06
+local_coords = true
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_0sd8b")
+draw_pass_1 = SubResource("SphereMesh_vxkl2")
+
+[node name="BeamCore" type="MeshInstance3D" parent="." unique_id=631459670]
+transform = Transform3D(1, 0, -1.4901161e-08, 0, -1.1920929e-07, -0.99999994, 0, 1, -4.0978193e-08, 0, 0, -0.5)
+sorting_offset = -0.1
+material_override = SubResource("ShaderMaterial_6pa8y")
+mesh = SubResource("CylinderMesh_1ycyw")
