@@ -41,15 +41,19 @@ func _state_input(event: InputEvent) -> void:
 		switch_gun(1)
 	if Input.is_action_pressed("Gun3"):
 		switch_gun(2)
-	if Input.is_action_pressed("click")and owner.curr_gun.ammo!=0:
-		print("pew")
-		var instance = owner.BULLET.instantiate()
-		var lo = owner.bullet_lo.global_position
-		instance.position = lo
-		instance.transform.basis = owner.bullet_lo.transform.basis
-		instance.add_to_group("bullet")
-		get_parent().add_child(instance)
-		owner.curr_gun.ammo-=1
+	if Input.is_action_pressed("click"):
+		if owner.gun_controller and owner.gun_controller.current_gun:
+			owner.gun_controller.current_gun.shoot()
+		elif owner.curr_gun.ammo != 0:
+			# Fallback to old system
+			print("pew")
+			var instance = owner.BULLET.instantiate()
+			var lo = owner.bullet_lo.global_position
+			instance.position = lo
+			instance.transform.basis = owner.bullet_lo.transform.basis
+			instance.add_to_group("bullet")
+			get_parent().add_child(instance)
+			owner.curr_gun.ammo-=1
 
 func switch_gun(num:float):
 	owner.curr_gun_index = num

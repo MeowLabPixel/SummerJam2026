@@ -72,6 +72,12 @@ var curr_gun = Gun[0]
 var curr_gun_index = 0
 var near_enemy_list = []
 
+@export_group("Crosshair")
+@export var crosshair_texture: Texture2D
+@export var min_scale: float = 0.5
+@export var max_scale: float = 2.0
+@export var crosshair_color: Color = Color.WHITE
+
 @onready var camera: Node3D = $Camera
 @onready var cross_hair: TextureRect = $Camera/edgeSpringArm3D/rearSpringArm3D/Camera3D/TextureRect
 @onready var reload_timer: Timer = $Reload_timer
@@ -87,6 +93,34 @@ func _ready() -> void:
 	stun_detect.body_exited.connect(stun_detect_out)
 	pickup_detect.body_entered.connect(pickup_detect_area)
 
+	if cross_hair:
+		cross_hair.visible = false
+		cross_hair.texture = crosshair_texture
+		cross_hair.modulate = crosshair_color
+		# Ensure size matches the image to maintain quality
+		cross_hair.size = Vector2(512, 512)
+		cross_hair.pivot_offset = Vector2(256, 256)
+		cross_hair.set_anchors_and_offsets_preset(Control.PRESET_CENTER, Control.PRESET_MODE_KEEP_SIZE)
+		
+func _process(delta: float) -> void:
+	update_crosshair_accuracy(delta)
+
+func update_crosshair_accuracy(delta: float) -> void:
+	if not cross_hair:
+		return
+
+	cross_hair.visible = is_aimming
+	if not cross_hair.visible:
+		return
+
+	if gun_controller and gun_controller.current_gun:
+		var gun: Gun = gun_controller.current_gun
+		# Normalize spread based on the gun's min/max spread
+		var spread_factor = clamp((gun.current_spread - gun.min_spread) / (gun.max_spread - gun.min_spread), 0.0, 1.0)
+		var target_scale_val = lerp(min_scale, max_scale, spread_factor)
+
+		cross_hair.scale = cross_hair.scale.lerp(Vector2(target_scale_val, target_scale_val), delta * 20.0)
+		
 func set_velocity_from_motion(vel: Vector3)-> void:
 	velocity = vel
 
