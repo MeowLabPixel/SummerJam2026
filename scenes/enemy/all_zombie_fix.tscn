@@ -1,0 +1,394 @@
+[gd_scene format=3 uid="uid://bd7pagsi67ay5"]
+
+[ext_resource type="PackedScene" uid="uid://dm3rgmlareuxk" path="res://models/enemies/All zombie fix.glb" id="1_e035i"]
+[ext_resource type="Script" uid="uid://rk4yb4oq18ft" path="res://scripts/enemy/hitbox_zone.gd" id="2_bnhrn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dhc5f"]
+radius = 0.17520592
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qof7f"]
+size = Vector3(0.19885254, 0.40382385, 0.16925049)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t8m5d"]
+radius = 0.080566406
+height = 0.30282497
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_locf5"]
+radius = 0.123535156
+height = 0.24707031
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_if1kg"]
+radius = 0.080566406
+height = 0.42010307
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c0qx7"]
+radius = 0.080566406
+height = 0.29012966
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mpebe"]
+radius = 0.10498047
+height = 0.26757813
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vpt1t"]
+radius = 0.09082031
+height = 0.5391078
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_87tvm"]
+radius = 0.07763672
+height = 0.49423122
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7qy5o"]
+radius = 0.09082031
+height = 0.5391078
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_isfon"]
+size = Vector3(0.20745182, 0.17785561, 0.18688202)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r4aki"]
+size = Vector3(0.310524, 0.22752942, 0.2316513)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bnhrn"]
+size = Vector3(0.30628967, 0.17455387, 0.17154694)
+
+[node name="All zombie fix" unique_id=867409154 instance=ExtResource("1_e035i")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="rig_001" parent_id_path=PackedInt32Array(1735597300) index="0" unique_id=1103015369]
+bones/0/position = Vector3(-0.005575928, 0.86848074, -0.028723896)
+bones/0/rotation = Quaternion(0.010061232, 0.08274156, -0.032148656, 0.9960016)
+bones/0/scale = Vector3(0.9999987, 0.9999989, 0.9999976)
+bones/1/rotation = Quaternion(0.0051921867, 0.00038544013, 0.021424131, 0.99975693)
+bones/1/scale = Vector3(0.9999998, 1.0000002, 0.9999998)
+bones/2/rotation = Quaternion(-0.044485483, 0.033282764, -0.03673844, 0.9977793)
+bones/2/scale = Vector3(1.0000015, 1.0000006, 1.000002)
+bones/3/rotation = Quaternion(-0.037979912, 0.08757532, 0.013018682, 0.9953486)
+bones/3/scale = Vector3(0.99999964, 1.0000006, 1.0000001)
+bones/4/rotation = Quaternion(0.63273835, -0.051781848, 0.045519233, 0.77129036)
+bones/5/rotation = Quaternion(-0.4863297, 0.005368684, -0.0029884984, 0.87375385)
+bones/6/rotation = Quaternion(-0.03590192, -0.02730133, 0.058699585, 0.9972563)
+bones/7/position = Vector3(-0.002396248, 0.8538497, -0.01907204)
+bones/7/rotation = Quaternion(-0.26336834, -0.6910255, -0.38762552, 0.55033404)
+bones/7/scale = Vector3(0.99999756, 0.99999774, 0.99999964)
+bones/8/position = Vector3(-0.0072357636, 0.85415655, -0.018258492)
+bones/8/rotation = Quaternion(-0.15196455, 0.7876205, 0.3907765, 0.45150268)
+bones/8/scale = Vector3(0.9999982, 0.9999993, 0.9999978)
+bones/9/position = Vector3(0.06257048, 0.7810933, -0.044535678)
+bones/9/rotation = Quaternion(0.9267371, 0.1810296, -0.2152324, 0.24912168)
+bones/9/scale = Vector3(1.0055016, 0.9890873, 1.0055016)
+bones/10/rotation = Quaternion(3.252204e-08, -0.077847004, 2.9895497e-09, 0.9969653)
+bones/11/rotation = Quaternion(0.30505008, -0.076854415, 0.024528367, 0.9489132)
+bones/11/scale = Vector3(0.99972844, 0.9954169, 1.004994)
+bones/12/rotation = Quaternion(-3.2474695e-08, 0.04773859, -2.9223173e-08, 0.99885994)
+bones/13/rotation = Quaternion(-0.67013055, 0.09508754, 0.1195859, 0.72634894)
+bones/13/scale = Vector3(0.9950477, 0.9948842, 1.0101583)
+bones/14/rotation = Quaternion(-0.06849764, 0.9955997, -0.06379195, -0.0044690026)
+bones/14/scale = Vector3(0.99990916, 1.0001935, 0.999887)
+bones/15/position = Vector3(-0.08534171, 0.7904453, -0.019670583)
+bones/15/rotation = Quaternion(0.9762153, -0.20305927, 0.069148734, 0.031451844)
+bones/15/scale = Vector3(1.0059448, 0.98821586, 1.005945)
+bones/16/rotation = Quaternion(-4.3724455e-09, 0.17231855, 5.2722655e-08, 0.9850414)
+bones/17/rotation = Quaternion(0.31429726, 0.17150357, -0.057414114, 0.93193746)
+bones/17/scale = Vector3(0.99971116, 0.99461156, 1.005852)
+bones/18/rotation = Quaternion(-2.0436055e-08, 0.11061147, 1.3444161e-08, 0.99386376)
+bones/18/scale = Vector3(1.0000006, 1.0000002, 1.0000087)
+bones/19/rotation = Quaternion(-0.7548588, 0.06731733, -0.13754109, 0.63776094)
+bones/19/scale = Vector3(0.9956854, 0.9947673, 1.0096793)
+bones/20/rotation = Quaternion(0.06848682, 0.99559826, -0.06382623, 0.0044722855)
+bones/20/scale = Vector3(0.99997365, 1.0000637, 0.9999519)
+bones/21/position = Vector3(0.1628463, 1.2614739, -0.12430658)
+bones/21/rotation = Quaternion(0.90410507, -0.052425947, 0.33876958, -0.2551095)
+bones/22/position = Vector3(0.18727902, 1.0996512, -0.20004928)
+bones/22/rotation = Quaternion(-0.019818977, 0.22360466, -0.9731692, 0.050498027)
+bones/23/rotation = Quaternion(-4.7216645e-07, 0.009661455, -1.6962401e-08, 0.9999534)
+bones/24/rotation = Quaternion(0.13674907, 0.009528414, 0.047926657, 0.9893998)
+bones/25/rotation = Quaternion(7.178659e-08, 0.020004388, 7.6616274e-08, 0.9997999)
+bones/26/rotation = Quaternion(0.20347424, 0.0244705, -0.0010575099, 0.97877395)
+bones/27/position = Vector3(-0.116600975, 1.2903833, -0.09645848)
+bones/27/rotation = Quaternion(0.8170639, -0.01243912, -0.4711361, -0.3320884)
+bones/28/position = Vector3(-0.18237661, 1.1425827, -0.17625834)
+bones/28/rotation = Quaternion(0.13852172, -0.27137557, 0.94298595, 0.13395764)
+bones/29/rotation = Quaternion(2.4355182e-07, -0.076393835, 5.1208595e-08, 0.9970778)
+bones/30/rotation = Quaternion(0.29313123, -0.07640566, -0.38818055, 0.8703747)
+bones/31/rotation = Quaternion(1.3683e-07, 0.0076165344, 1.7086604e-07, 0.99997103)
+bones/32/rotation = Quaternion(0.24768034, 0.003040661, -0.08930985, 0.96471184)
+bones/33/position = Vector3(0.057570092, 1.244814, -0.086935446)
+bones/33/rotation = Quaternion(0.17666432, 0.66476494, 0.71796805, -0.106767714)
+bones/34/position = Vector3(-0.046317115, 1.254744, -0.04216569)
+bones/34/rotation = Quaternion(0.17666425, 0.6647649, 0.7179681, -0.10676777)
+
+[node name="HitboxAttachHead" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="16" unique_id=1471523219]
+transform = Transform3D(0.97745216, -0.010225961, 0.21090746, 0.046029497, 0.9851256, -0.16555929, -0.2060769, 0.17153433, 0.9633833, 0.03433201, 1.4046186, -0.012985329)
+bone_name = "DEF-spine.006"
+bone_idx = 6
+
+[node name="HitboxHead" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachHead" index="0" unique_id=1799077663]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachHead/HitboxHead" index="0" unique_id=1793753342]
+transform = Transform3D(1, -1.0164395e-20, 0, 7.1150755e-20, 1, 0, 0, -1.9895197e-13, 1, -4.0925596e-14, 0.13578784, -0.020606514)
+shape = SubResource("SphereShape3D_dhc5f")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachHead/HitboxHead" index="1" unique_id=2003495464]
+script = ExtResource("2_bnhrn")
+zone_name = "head"
+base_damage = 10
+
+[node name="HitboxAttachLeftFoot" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="17" unique_id=158510859]
+transform = Transform3D(0.9242581, 0.3787532, -0.04125389, 0.0032872953, -0.081775464, -0.9968074, -0.38150275, 0.92051023, -0.08931066, 0.25138, 0.034569338, 0.09155356)
+bone_name = "DEF-foot.L"
+bone_idx = 13
+
+[node name="HitboxLeftFoot" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftFoot" index="0" unique_id=800396227]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftFoot/HitboxLeftFoot" index="0" unique_id=1692041369]
+transform = Transform3D(0.9999926, -3.1664968e-08, -3.1432137e-09, -2.7939677e-09, 0.9999928, -1.7136335e-07, -1.2223609e-09, 4.4703484e-08, 0.99999136, -0.015807942, 0.11304459, -3.7252903e-09)
+shape = SubResource("BoxShape3D_qof7f")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachLeftFoot/HitboxLeftFoot" index="1" unique_id=1439883841]
+script = ExtResource("2_bnhrn")
+zone_name = "foot"
+base_damage = 2
+
+[node name="HitboxAttachRightFoot" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="18" unique_id=1295094372]
+transform = Transform3D(0.48339844, -0.87314224, 0.08509587, -0.0042547695, -0.08582395, -0.9927456, 0.87597144, 0.4850438, -0.042620167, -0.20107737, 0.03549996, -0.1654064)
+bone_name = "DEF-foot.R"
+bone_idx = 19
+
+[node name="HitboxRightFoot" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightFoot" index="0" unique_id=154506703]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightFoot/HitboxRightFoot" index="0" unique_id=1007857737]
+transform = Transform3D(1, 3.0128285e-07, 0, 0, 0.9999994, 0, 9.313226e-10, -5.2154064e-07, 1, 0.0147704035, 0.128723, -0.031158688)
+shape = SubResource("BoxShape3D_qof7f")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachRightFoot/HitboxRightFoot" index="1" unique_id=1368614239]
+script = ExtResource("2_bnhrn")
+zone_name = "foot"
+base_damage = 2
+
+[node name="HitboxAttachRightForeArm" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="19" unique_id=1031889170]
+transform = Transform3D(-0.41468647, -0.54536027, 0.7284346, 0.70733047, -0.69679433, -0.1189997, 0.5724669, 0.46589646, 0.6747013, -0.27343664, 0.98510945, -0.17646547)
+bone_name = "DEF-forearm.R.001"
+bone_idx = 31
+
+[node name="HitboxRightArm" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightForeArm" index="0" unique_id=1375651829]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightForeArm/HitboxRightArm" index="0" unique_id=2141598236]
+transform = Transform3D(0.99999845, -1.9231811e-06, -1.6987324e-06, 1.6670674e-06, 0.99999964, 1.598522e-05, 2.413988e-06, -1.594983e-05, 0.99999976, 1.1920929e-07, -0.013810042, 7.1525574e-07)
+shape = SubResource("CapsuleShape3D_t8m5d")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachRightForeArm/HitboxRightArm" index="1" unique_id=170373179]
+script = ExtResource("2_bnhrn")
+zone_name = "right_arm"
+base_damage = 3
+
+[node name="HitboxAttachRightHand" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="20" unique_id=1174242151]
+transform = Transform3D(-0.35141024, -0.19412255, 0.9158751, 0.8210161, -0.5340411, 0.20182244, 0.44993666, 0.8228706, 0.34704548, -0.33061826, 0.9120498, -0.12761575)
+bone_name = "DEF-hand.R"
+bone_idx = 32
+
+[node name="HitboxRightHand" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightHand" index="0" unique_id=525467876]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightHand/HitboxRightHand" index="0" unique_id=971953859]
+transform = Transform3D(0.9792988, 0.20202665, 0.012532294, -0.20174189, 0.96913165, 0.14171432, 0.016486436, -0.14130919, 0.98982847, 0.009399533, 0.074212424, -0.0065079927)
+shape = SubResource("CapsuleShape3D_locf5")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachRightHand/HitboxRightHand" index="1" unique_id=172920463]
+script = ExtResource("2_bnhrn")
+zone_name = "right_arm"
+base_damage = 3
+
+[node name="HitboxAttachRightUpperArm" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="21" unique_id=124618306]
+transform = Transform3D(0.555752, -0.3332447, -0.7616345, 0.2925904, -0.779125, 0.55439574, -0.77815807, -0.53095376, -0.3354961, -0.116600975, 1.2903833, -0.09645848)
+bone_name = "DEF-shoulder.R"
+bone_idx = 27
+
+[node name="HitboxRightArm" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightUpperArm" index="0" unique_id=2080401500]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightUpperArm/HitboxRightArm" index="0" unique_id=206497425]
+transform = Transform3D(0.99999845, -1.7881393e-06, -1.6242266e-06, 1.6838312e-06, 0.9999996, 1.6082078e-05, 2.4288893e-06, -1.648441e-05, 0.99999976, 1.1920929e-07, 0.101560295, -8.34465e-07)
+shape = SubResource("CapsuleShape3D_if1kg")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachRightUpperArm/HitboxRightArm" index="1" unique_id=133571592]
+script = ExtResource("2_bnhrn")
+zone_name = "right_arm"
+base_damage = 3
+
+[node name="HitboxAttachLeftForeArm" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="22" unique_id=1012028412]
+transform = Transform3D(-0.98047704, 0.18883471, -0.054824337, -0.1756156, -0.96637356, -0.18783252, -0.088450134, -0.17453767, 0.98066974, 0.21631983, 0.9058432, -0.26353294)
+bone_name = "DEF-forearm.L.001"
+bone_idx = 25
+
+[node name="HitboxLeftArm" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftForeArm" index="0" unique_id=116977318]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftForeArm/HitboxLeftArm" index="0" unique_id=161971513]
+transform = Transform3D(0.99999976, 7.143244e-07, 0, -3.0733645e-08, 0.99999845, -1.8626451e-09, 0, 2.9057264e-07, 1, 2.3841858e-07, -0.034894984, -4.172325e-07)
+shape = SubResource("CapsuleShape3D_c0qx7")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachLeftForeArm/HitboxLeftArm" index="1" unique_id=1424224604]
+script = ExtResource("2_bnhrn")
+zone_name = "left_arm"
+
+[node name="HitboxAttachLeftHand" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="23" unique_id=2038648462]
+transform = Transform3D(-0.97516125, 0.13957028, -0.17198868, -0.17394932, -0.9632704, 0.20457561, -0.13711901, 0.22941141, 0.9636226, 0.23611933, 0.8045181, -0.2818333)
+bone_name = "DEF-hand.L"
+bone_idx = 26
+
+[node name="HitboxLeftHand" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftHand" index="0" unique_id=180617104]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftHand/HitboxLeftHand" index="0" unique_id=719339786]
+transform = Transform3D(0.98109, -0.19322129, -0.011360496, 0.19296294, 0.9718021, 0.13551764, -0.015143782, -0.13514689, 0.990712, -0.014081597, 0.070249274, -0.009748161)
+shape = SubResource("CapsuleShape3D_mpebe")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachLeftHand/HitboxLeftHand" index="1" unique_id=413708028]
+script = ExtResource("2_bnhrn")
+zone_name = "left_arm"
+
+[node name="HitboxAttachLeftUpperArm" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="24" unique_id=2085671135]
+transform = Transform3D(0.7649733, 0.07804953, 0.6393152, -0.26764375, -0.8643412, 0.42577085, 0.58581775, -0.49681202, -0.6403087, 0.1628463, 1.2614739, -0.12430658)
+bone_name = "DEF-shoulder.L"
+bone_idx = 21
+
+[node name="HitboxLeftArm" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftUpperArm" index="0" unique_id=690016286]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftUpperArm/HitboxLeftArm" index="0" unique_id=1138611587]
+transform = Transform3D(0.99999976, 7.143244e-07, 0, -3.0733645e-08, 0.99999845, -1.8626451e-09, 0, 2.9057264e-07, 1, 1.1920929e-07, 0.058900382, -1.7881393e-07)
+shape = SubResource("CapsuleShape3D_if1kg")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachLeftUpperArm/HitboxLeftArm" index="1" unique_id=76515179]
+script = ExtResource("2_bnhrn")
+zone_name = "left_arm"
+
+[node name="HitboxAttachLeftThigh" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="25" unique_id=1952756321]
+transform = Transform3D(0.78799355, 0.43793994, -0.43805236, 0.14254051, -0.8014905, -0.5716909, -0.60809714, 0.37962523, -0.7016504, 0.15049314, 0.6201827, 0.031679507)
+bone_name = "DEF-thigh.L.001"
+bone_idx = 10
+
+[node name="HitboxLeftThigh" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftThigh" index="0" unique_id=1712311608]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftThigh/HitboxLeftThigh" index="0" unique_id=652191664]
+transform = Transform3D(0.9992377, -0.03297174, -0.020890623, 0.029291973, 0.98713386, -0.15713747, 0.025799453, 0.15640612, 0.9873459, -0.008022204, -0.00986734, -0.0130032)
+shape = SubResource("CapsuleShape3D_vpt1t")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachLeftThigh/HitboxLeftThigh" index="1" unique_id=698037140]
+script = ExtResource("2_bnhrn")
+zone_name = "foot"
+
+[node name="HitboxAttachLeftShin" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="26" unique_id=1686875359]
+transform = Transform3D(0.7717453, 0.030187903, -0.64255434, 0.04975414, -0.9889401, -0.0054973746, -0.6421951, -0.03805109, -0.77267504, 0.24489789, 0.24692072, 0.09972411)
+bone_name = "DEF-shin.L.001"
+bone_idx = 12
+
+[node name="HitboxLeftShin" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftShin" index="0" unique_id=1413230357]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftShin/HitboxLeftShin" index="0" unique_id=2117827460]
+transform = Transform3D(0.9999995, 4.046131e-06, -4.5001507e-06, -2.4601468e-07, 0.99999106, 3.0010706e-06, 5.9604645e-08, -3.2358803e-06, 0.99998975, 1.4901161e-08, -0.016828224, -1.7881393e-07)
+shape = SubResource("CapsuleShape3D_87tvm")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachLeftShin/HitboxLeftShin" index="1" unique_id=381063157]
+script = ExtResource("2_bnhrn")
+zone_name = "foot"
+base_damage = 2
+
+[node name="HitboxAttachRightShin" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="27" unique_id=1777576202]
+transform = Transform3D(0.42267907, 0.10083522, 0.907965, -0.2990308, -0.9119893, 0.23033978, 0.8621057, -0.37014365, -0.36508742, -0.22272933, 0.23132792, -0.08592687)
+bone_name = "DEF-shin.R.001"
+bone_idx = 18
+
+[node name="HitboxRightShin" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightShin" index="0" unique_id=336856980]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightShin/HitboxRightShin" index="0" unique_id=1019735599]
+transform = Transform3D(0.9999995, 4.046131e-06, -4.5001507e-06, -2.4601468e-07, 0.99999106, 3.0010706e-06, 5.9604645e-08, -3.2358803e-06, 0.99998975, 1.4901161e-08, -0.016828224, -1.7881393e-07)
+shape = SubResource("CapsuleShape3D_87tvm")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachRightShin/HitboxRightShin" index="1" unique_id=1442578211]
+script = ExtResource("2_bnhrn")
+zone_name = "foot"
+base_damage = 2
+
+[node name="HitboxAttachRightThigh" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="28" unique_id=747430121]
+transform = Transform3D(0.8173828, -0.39608577, 0.4257312, -0.34045488, -0.9047666, -0.2185813, 0.47738987, 0.032932233, -0.88481677, -0.1648615, 0.6088006, -0.013058966)
+bone_name = "DEF-thigh.R.001"
+bone_idx = 16
+
+[node name="HitboxRightThigh" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightThigh" index="0" unique_id=864676159]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightThigh/HitboxRightThigh" index="0" unique_id=151401403]
+transform = Transform3D(0.9990654, 0.00014965655, -0.043223277, -0.0059535597, 0.9909391, -0.1341799, 0.042811558, 0.13431184, 0.99001384, 0.0004721582, -0.031942368, -0.007198423)
+shape = SubResource("CapsuleShape3D_7qy5o")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachRightThigh/HitboxRightThigh" index="1" unique_id=1534556595]
+script = ExtResource("2_bnhrn")
+zone_name = "foot"
+
+[node name="HitboxAttachWaist" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="29" unique_id=889463265]
+transform = Transform3D(0.98606026, 0.025189647, 0.16446166, -0.019559411, 0.999168, -0.03576437, -0.16522601, 0.032049123, 0.9857323, 0.0018445146, 0.98115987, -0.027061265)
+bone_name = "DEF-spine.001"
+bone_idx = 1
+
+[node name="HitboxWaist" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachWaist" index="0" unique_id=1323472362]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachWaist/HitboxWaist" index="0" unique_id=136977158]
+transform = Transform3D(1, 5.555019e-08, 2.0196533e-09, -5.508088e-08, 0.9853514, 0.1705365, 7.483267e-09, -0.1705365, 0.9853514, -0.0021271459, 0.08054674, -0.022521362)
+shape = SubResource("BoxShape3D_isfon")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachWaist/HitboxWaist" index="1" unique_id=1323583944]
+script = ExtResource("2_bnhrn")
+
+[node name="HitboxAttachChest" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="30" unique_id=1545642197]
+transform = Transform3D(0.91416204, 0.030397007, 0.40420684, -0.081447765, 0.9906217, 0.10970757, -0.39708084, -0.13321207, 0.9080642, 0.01541882, 1.211435, -0.034205668)
+bone_name = "DEF-spine.003"
+bone_idx = 3
+
+[node name="HitboxChest" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachChest" index="0" unique_id=919464083]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachChest/HitboxChest" index="0" unique_id=1134875331]
+transform = Transform3D(1, -1.9615992e-07, 2.2644713e-07, 1.4045443e-07, -0.36068147, -0.9326915, 2.6463078e-07, 0.9326926, -0.36068124, -1.9024592e-05, 0.03582406, -0.012703091)
+shape = SubResource("BoxShape3D_r4aki")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachChest/HitboxChest" index="1" unique_id=1509373254]
+script = ExtResource("2_bnhrn")
+
+[node name="HitboxAttachPelvis" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="31" unique_id=1616859410]
+transform = Transform3D(0.9842393, 0.06570511, 0.16417414, -0.06237517, 0.9977294, -0.025362005, -0.16546811, 0.014721931, 0.9861029, -0.005575928, 0.86848074, -0.028723896)
+bone_name = "DEF-spine"
+bone_idx = 0
+
+[node name="HitboxPelvis" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachPelvis" index="0" unique_id=181850101]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachPelvis/HitboxPelvis" index="0" unique_id=1584050123]
+transform = Transform3D(1, 8.754705e-08, 5.8619776e-14, -1.4210855e-14, -1.1175871e-08, -1.0000042, -8.7548756e-08, 1.0000042, -1.1175871e-08, 8.617218e-09, 0.028584003, 0.016214788)
+shape = SubResource("BoxShape3D_bnhrn")
+
+[node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachPelvis/HitboxPelvis" index="1" unique_id=96601982]
+script = ExtResource("2_bnhrn")
