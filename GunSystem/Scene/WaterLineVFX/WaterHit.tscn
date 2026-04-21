@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://br7b12d8xsajy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n26py"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="WaterHitVfx" type="Node3D" unique_id=1609448356]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=485119884]
+mesh = SubResource("BoxMesh_n26py")

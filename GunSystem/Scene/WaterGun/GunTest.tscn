@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c550emsx1kyq5"]
+
+[ext_resource type="PackedScene" uid="uid://bfy7etesnxt5w" path="res://GunSystem/Scene/WaterGun/Gun.tscn" id="1_vh2g4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_n0404"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vh2g4"]
+sky_material = SubResource("ProceduralSkyMaterial_n0404")
+
+[sub_resource type="Environment" id="Environment_2syvx"]
+background_mode = 2
+sky = SubResource("Sky_vh2g4")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_snenn"]
+size = Vector3(20, 0.002, 20)
+
+[node name="Node3D" type="Node3D" unique_id=435038982]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1949992696]
+environment = SubResource("Environment_2syvx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=960473211]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1553733471]
+mesh = SubResource("BoxMesh_snenn")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="." unique_id=638644805]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -14.00679)
+mesh = SubResource("BoxMesh_snenn")
+
+[node name="Node3D" parent="." unique_id=870463544 node_paths=PackedStringArray("camera") instance=ExtResource("1_vh2g4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7683716e-07, 1.6180146, 3.6374817)
+camera = NodePath("../Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=192194089]
+transform = Transform3D(0.91735214, 0, 0.3980767, 0, 1, 0, -0.3980767, 0, 0.91735214, 1.2868466, 2.134322, 4.6697936)
