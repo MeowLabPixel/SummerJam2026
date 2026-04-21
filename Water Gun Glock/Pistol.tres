@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c0iywywg2ojw3"]
+
+[ext_resource type="Texture2D" uid="uid://brbgm4470it67" path="res://Water Gun Glock/WaterGun_Base_color.png" id="1_aosmp"]
+
+[resource]
+albedo_texture = ExtResource("1_aosmp")
