@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://d2bipf7o1w5vp" path="res://scripts/ashley/ashley_state_evade.gd" id="4_i4tsk"]
 [ext_resource type="Script" uid="uid://bovwopvhjxcu8" path="res://scripts/ashley/ashley_state_duck.gd" id="5_4jr6e"]
 [ext_resource type="Script" uid="uid://vjg241m71x3j" path="res://scripts/ashley/ashley_state_get_up.gd" id="7_6r0d4"]
+[ext_resource type="Script" uid="uid://bpynr0rvl5xy1" path="res://scripts/ashley/ashley_state_wait.gd" id="8_i4tsk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ak0x7"]
 radius = 0.35351563
@@ -46,6 +47,9 @@ script = ExtResource("5_4jr6e")
 
 [node name="AshleyStateGetUp" type="Node" parent="AshleyStateMachine" unique_id=521092294]
 script = ExtResource("7_6r0d4")
+
+[node name="AshleyStateWait" type="Node" parent="AshleyStateMachine" unique_id=571980857]
+script = ExtResource("8_i4tsk")
 
 [node name="HelpLabel" type="Label3D" parent="." unique_id=1391055199]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)

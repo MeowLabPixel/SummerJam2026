@@ -58,9 +58,11 @@ func handle_hit(hit_data: Dictionary) -> void:
 	if current_state:
 		var next := current_state.handle_hit(hit_data)
 		if next != "":
-			# Pre-load any state-specific data before enter() is called.
+			# Pre-load zone data into destination state before enter() runs.
 			if next == "StateTakedownable" and _states.has("StateTakedownable"):
 				_states["StateTakedownable"].stun_type = hit_data.get("hit_zone", "head")
+			if next == "StateStun" and _states.has("StateStun"):
+				_states["StateStun"].hit_zone = hit_data.get("hit_zone", "body")
 			transition_to(next)
 
 ## Returns the name of the current state, or "" if uninitialised.

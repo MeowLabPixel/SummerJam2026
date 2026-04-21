@@ -12,7 +12,7 @@ extends EnemyState
 var combat_initiated: bool = false
 
 # Simple list of idle animation names — swap with real anim names later.
-const IDLE_ANIMS: Array[String] = ["rig|Idle"]
+var IDLE_ANIMS: Array[String] = [ZombieAnims.IDLE]
 var _idle_timer: float = 0.0
 var _idle_interval: float = 3.0  # seconds between random idle swaps
 
@@ -42,11 +42,15 @@ func physics_update(delta: float) -> void:
 		_pick_random_idle()
 
 func handle_hit(_hit_data: Dictionary) -> String:
-	# Any hit wakes the enemy up.
+	# Wake the enemy and immediately react to the hit zone.
+	# Returning StateStun lets the state machine pre-load hit_zone before enter().
 	combat_initiated = true
-	# Resolve whether this hit also stuns/takes-down — delegate to Hunt's logic
-	# by transitioning there first; Hunt will immediately re-evaluate.
-	return "StateHunt"
+	var zone: String = _hit_data.get("hit_zone", "body")
+	match zone:
+		"head", "foot":
+			return "StateTakedownable"
+		_:
+			return "StateStun"
 
 # ─── Helpers ───────────────────────────────────────────────────────────────
 func _pick_random_idle() -> void:

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dbsdvbgtyd0jy" path="res://scripts/enemy/enemy_base.gd" id="1_peoo5"]
 [ext_resource type="Script" uid="uid://crh7ttepk8wbr" path="res://scripts/enemy/enemy_state_machine.gd" id="2_2f3il"]
-[ext_resource type="PackedScene" uid="uid://ld4jynwr5lv1" path="res://models/enemies/zombie_test.tscn" id="2_dtxhd"]
 [ext_resource type="Script" uid="uid://saf7ighv0nbi" path="res://scripts/enemy/state_idle.gd" id="3_dtxhd"]
 [ext_resource type="Script" uid="uid://fxr5osux372y" path="res://scripts/enemy/state_hunt.gd" id="4_so3kp"]
 [ext_resource type="Script" uid="uid://btv1q61avhw8q" path="res://scripts/enemy/state_attack.gd" id="5_5woo5"]
@@ -12,6 +11,7 @@
 [ext_resource type="Script" uid="uid://beiq7i7sumyfv" path="res://scripts/enemy/state_knockdown.gd" id="9_f5q6l"]
 [ext_resource type="Script" uid="uid://c2380ydsn0sgi" path="res://scripts/enemy/state_get_up.gd" id="10_8ed2q"]
 [ext_resource type="Script" uid="uid://dv0tmkky7d57f" path="res://scripts/enemy/state_defeated.gd" id="11_wk82e"]
+[ext_resource type="PackedScene" uid="uid://6e22838bg0ne" path="res://scenes/enemy/zombie_animated.tscn" id="12_2f3il"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_peoo5"]
 radius = 0.33496094
@@ -23,8 +23,6 @@ script = ExtResource("1_peoo5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=733067435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8232422, 0)
 shape = SubResource("CapsuleShape3D_peoo5")
-
-[node name="Ashley_Test" parent="." unique_id=883596392 instance=ExtResource("2_dtxhd")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=212384938]
 
@@ -57,3 +55,6 @@ script = ExtResource("10_8ed2q")
 
 [node name="StateDefeated" type="Node" parent="EnemyStateMachine" unique_id=1877558210]
 script = ExtResource("11_wk82e")
+
+[node name="ZombieModel" parent="." unique_id=1607223245 instance=ExtResource("12_2f3il")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)

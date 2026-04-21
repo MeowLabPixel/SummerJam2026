@@ -13,9 +13,13 @@ extends EnemyState
 
 @onready var nav_agent: NavigationAgent3D = enemy.get_node_or_null("NavigationAgent3D") if enemy else null
 
+## Walk animation chosen on enter — fixed for the duration of this Hunt.
+var _walk_anim: String = ""
+
 func enter() -> void:
 	print("[StateHunt] Entered Hunt — pathfinding to target.")
-	_play_anim("rig|Run")
+	_walk_anim = ZombieAnims.random_walk()
+	_play_anim(_walk_anim)
 
 func exit() -> void:
 	pass
@@ -33,7 +37,7 @@ func physics_update(_delta: float) -> void:
 	var flat_dist: float = to_target.length()
 
 	if flat_dist < 0.1:
-		_play_anim("rig|Idle")
+		_play_anim(ZombieAnims.IDLE)
 		return  # Already on top of target.
 
 	var dir_to_target: Vector3 = to_target.normalized()
@@ -67,10 +71,10 @@ func physics_update(_delta: float) -> void:
 		enemy.move_and_slide()
 		var look_target: Vector3 = enemy.global_position + move_dir
 		enemy.look_at(look_target, Vector3.UP)
-		_play_anim("rig|Run")
+		_play_anim(_walk_anim)
 	else:
 		enemy.velocity = Vector3.ZERO
-		_play_anim("rig|Idle")
+		_play_anim(ZombieAnims.IDLE)
 
 func handle_hit(hit_data: Dictionary) -> String:
 	var zone: String = hit_data.get("hit_zone", "body")

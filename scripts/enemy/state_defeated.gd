@@ -15,7 +15,7 @@ func enter() -> void:
 	player_is_aiming = false
 	_was_aiming = false
 	print("[StateDefeated] Enemy defeated!")
-	_play_anim("rig|Duck")
+	_play_anim(ZombieAnims.IDLE)  # Placeholder — swap for a real defeated-collapse anim when available.
 
 func exit() -> void:
 	pass  # Defeated is a terminal state — should never exit normally.

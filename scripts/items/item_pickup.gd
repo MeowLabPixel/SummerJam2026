@@ -90,14 +90,10 @@ func _type_color() -> Color:
 		"ammo":   return Color(0.3, 0.7,  1.0)
 		_:        return Color(0.8, 0.8,  0.8)
 
-## Called when any CharacterBody3D (or body) enters the pickup area.
+## Called when a body enters the pickup area.
 func _on_body_entered(body: Node3D) -> void:
-	# For now the test world has no player node, so collect on ANY body
-	# that isn't an enemy (EnemyBase). Replace this check with a player
-	# group check once a real player exists.
-	if body is EnemyBase:
-		return
-	_collect()
+	if body.is_in_group("player"):
+		_collect()
 
 func _collect() -> void:
 	collected.emit(item_type, value)

@@ -30,13 +30,35 @@ var is_defeated: bool = false
 
 # ─── References ────────────────────────────────────────────────────────────
 @onready var state_machine: EnemyStateMachine = $EnemyStateMachine
-@onready var anim_player: AnimationPlayer = $Ashley_Test/AnimationPlayer
+var anim_player: AnimationPlayer = null
+
+## Finds the AnimationPlayer that actually contains the gameplay animations.
+## The GLB may place multiple AnimationPlayers under ZombieModel — the correct
+## one has more than just the rest-pose "Base" track.
+func _find_anim_player() -> AnimationPlayer:
+	var zombie_model := get_node_or_null("ZombieModel")
+	if not zombie_model:
+		return null
+	for child in zombie_model.get_children():
+		if child is AnimationPlayer:
+			var ap := child as AnimationPlayer
+			if ap.get_animation_list().size() > 1:
+				return ap
+	# Fallback: return any AnimationPlayer found under ZombieModel.
+	var fallback := zombie_model.find_child("AnimationPlayer", true, false)
+	return fallback as AnimationPlayer if fallback else null
 
 # ─── Ready ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
 	current_hp = MAX_HP
+	anim_player = _find_anim_player()
 	if not anim_player:
-		push_error("[EnemyBase] AnimationPlayer not found — check path Ashley_Test3/AnimationPlayer")
+		push_error("[EnemyBase] No AnimationPlayer with gameplay animations found under ZombieModel")
+	else:
+		print("[EnemyBase] AnimationPlayer found at: %s (animations: %d)" % [anim_player.get_path(), anim_player.get_animation_list().size()])
+		# Print every animation name so we can verify ZombieAnims constants match exactly.
+		for anim_name in anim_player.get_animation_list():
+			print("  [ANIM] '%s'" % anim_name)
 	# Boot into Idle once the scene tree is fully built.
 	state_machine.initialize("StateIdle")
 	state_machine.state_changed.connect(_on_state_changed)
@@ -50,6 +72,12 @@ func _ready() -> void:
 func take_hit(hit_data: Dictionary) -> void:
 	if is_defeated:
 		return
+	print("[EnemyBase] take_hit — zone:'%s' dmg:%d state:%s hp:%d" % [
+		hit_data.get("hit_zone", "?"),
+		hit_data.get("damage", 0),
+		state_machine.get_current_state_name(),
+		current_hp
+	])
 
 	var dmg: int = hit_data.get("damage", 1)
 	var new_hp: int = current_hp - dmg

@@ -13,7 +13,7 @@ var _timer: float = 0.0
 func enter() -> void:
 	_timer = 0.0
 	print("[StateGetUp] Enemy getting up.")
-	_play_anim("rig|GetUp")
+	_play_anim(ZombieAnims.HIT_HEAD_ACT4_TAKEDOWN_IDLE)
 
 func exit() -> void:
 	pass

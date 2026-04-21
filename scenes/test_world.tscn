@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_dvny0"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_xwrkq"]
 [ext_resource type="PackedScene" uid="uid://c6uqvqrlxwm0g" path="res://scenes/ashley/ashley.tscn" id="6_dvny0"]
+[ext_resource type="PackedScene" uid="uid://drcv0pbkynjyy" path="res://scenes/player/player.tscn" id="7_xwrkq"]
 
 [sub_resource type="Environment" id="Environment_nrstc"]
 
@@ -40,19 +41,16 @@ offset_right = 10.0
 offset_bottom = 10.0
 text = "LMB = Shoot Body | Shift+LMB = Head Shot | Ctrl+LMB = Foot Shot
 Head/Foot shot = TAKEDOWNABLE state
-E to attempt Takedown"
+E to attempt Takedown
+Z to order Ashley to wait or follow."
 
 [node name="Enemy" parent="." unique_id=1434836882 instance=ExtResource("2_amxg5")]
 
 [node name="CamRig" type="Node3D" parent="." unique_id=1124648829]
 
-[node name="PhantomCamera3D" type="Node3D" parent="CamRig" unique_id=66034776]
-transform = Transform3D(1, 0, 0, 0, 0.44282076, 0.8966101, 0, -0.8966101, 0.44282076, 0, 6.0314703, 3.5492096)
-script = ExtResource("3_ynswa")
-tween_resource = SubResource("Resource_ar7ra")
-
 [node name="Camera3D" type="Camera3D" parent="CamRig" unique_id=223642431]
-transform = Transform3D(1, 0, 0, 0, 0.44282076, 0.8966101, 0, -0.8966101, 0.44282076, 0, 6.0314703, 3.5492096)
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.7547096, 0.6560591, 0, -0.6560591, 0.7547096, 0, 3.1884472, 0.66788864)
 top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="CamRig/Camera3D" unique_id=775252121]
@@ -60,5 +58,21 @@ process_priority = 300
 process_physics_priority = 300
 script = ExtResource("5_xwrkq")
 
+[node name="PhantomCamera3D" type="Node3D" parent="CamRig" unique_id=66034776 node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(1, 0, 0, 0, 0.7547096, 0.6560591, 0, -0.6560591, 0.7547096, 0, 3.1884472, 0.66788864)
+script = ExtResource("3_ynswa")
+follow_mode = 6
+follow_target = NodePath("../../Player")
+tween_resource = SubResource("Resource_ar7ra")
+follow_distance = 4.86
+vertical_rotation_offset = 0.7155849933176751
+spring_length = 4.86
+align_transform_with_view = Callable()
+align_position_with_view = Callable()
+align_rotation_with_view = Callable()
+
 [node name="Ashley" parent="." unique_id=1099023628 instance=ExtResource("6_dvny0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Player" parent="." unique_id=88255837 instance=ExtResource("7_xwrkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)

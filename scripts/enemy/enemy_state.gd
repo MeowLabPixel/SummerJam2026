@@ -30,8 +30,20 @@ func update(_delta: float) -> void:
 func handle_hit(_hit_data: Dictionary) -> String:
 	return ""
 
-## Plays an animation only if it isn't already playing.
-## Call this instead of anim_player.play() directly to prevent per-frame restarts.
+## Plays an animation, skipping only if it is actively mid-play right now.
+## Uses is_playing() + current_animation so a finished one-shot can replay.
 func _play_anim(anim_name: String) -> void:
-	if enemy and enemy.anim_player and enemy.anim_player.current_animation != anim_name:
-		enemy.anim_player.play(anim_name)
+	if not (enemy and enemy.anim_player):
+		return
+	var ap: AnimationPlayer = enemy.anim_player
+	# Only skip if this exact animation is actively running (not just last played).
+	if ap.is_playing() and ap.current_animation == anim_name:
+		return
+	ap.play(anim_name)
+
+## Force-replays an animation even if it is currently mid-play.
+## Use this for re-stun hits that must restart the flinch from frame 0.
+func _force_anim(anim_name: String) -> void:
+	if not (enemy and enemy.anim_player):
+		return
+	enemy.anim_player.play(anim_name)
