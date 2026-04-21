@@ -34,7 +34,7 @@ func _state_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("die_butt") :
 		owner.HP =0
 	if Input.is_action_pressed("gun swap") :
-		owner.change_gun()
+		finished.emit("Gun_swap")
 	if Input.is_action_pressed("hit") :
 		finished.emit("Get_hit")
 	if Input.is_action_pressed("knock_down") :
@@ -57,7 +57,11 @@ func hitback(body: Node3D):
 		owner.Hit_info.location = "back"
 		finished.emit("Get_hit")
 
-func switch_gun(num:float):
-	owner.curr_gun_index = num
-	owner.curr_gun = owner.Gun[owner.curr_gun_index]
+func switch_gun(num:int):
+	if owner.gun_controller:
+		owner.gun_controller.switch_gun(num)
+		owner.curr_gun_index = num
+	else:
+		owner.curr_gun_index = num
+		owner.curr_gun = owner.Gun[owner.curr_gun_index]
 	#one shot anim

@@ -36,13 +36,18 @@ func _state_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("Reload") :
 		finished.emit("Reload")
 	if Input.is_action_pressed("gun swap") :
-		owner.change_gun()
-	if Input.is_action_pressed("click")and owner.curr_gun.ammo!=0:
-		print("pew")
-		var instance = owner.BULLET.instantiate()
-		var lo = owner.bullet_lo.global_position
-		instance.position = lo
-		instance.transform.basis = owner.bullet_lo.transform.basis
-		instance.add_to_group("bullet")
-		get_parent().add_child(instance)
-		owner.curr_gun.ammo-=1
+		finished.emit("Gun_swap")
+	
+	if Input.is_action_pressed("click"):
+		if owner.gun_controller and owner.gun_controller.current_gun:
+			owner.gun_controller.current_gun.shoot()
+		elif owner.curr_gun.ammo != 0:
+			# Fallback to old system
+			print("pew")
+			var instance = owner.BULLET.instantiate()
+			var lo = owner.bullet_lo.global_position
+			instance.position = lo
+			instance.transform.basis = owner.bullet_lo.transform.basis
+			instance.add_to_group("bullet")
+			get_parent().add_child(instance)
+			owner.curr_gun.ammo-=1

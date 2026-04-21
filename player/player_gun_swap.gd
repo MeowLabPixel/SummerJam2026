@@ -1,7 +1,11 @@
 extends Motion
 
 func _enter() -> void:
-	owner.curr_gun = owner.Gun[owner.curr_gun_index]
+	if owner.gun_controller:
+		owner.gun_controller.next_gun()
+		owner.curr_gun_index = owner.gun_controller.current_gun_index
+	else:
+		owner.change_gun()
 	#play gunswap anim
 
 func anim_done(namee: String):

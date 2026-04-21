@@ -13,25 +13,30 @@ func _enter() -> void:
 	
 	
 func _state_input(event: InputEvent) -> void:
-	if Input.is_action_pressed("Reload"):
-		var next_ammo = owner.curr_gun.ammo +1
-		if next_ammo < owner.curr_gun.Max_ammo:
-			reloading()
+	if Input.is_action_just_pressed("Reload"):
+		reloading()
 		
 func reloading():
-	var next_ammo = owner.curr_gun.ammo +1
-	if next_ammo > owner.curr_gun.Max_ammo:
-		#play super pump
-		#super shot here
+	if owner.gun_controller and owner.gun_controller.current_gun:
+		owner.gun_controller.current_gun.pump_air()
+		
+		# Animation and state management
 		owner.anim.get("parameters/playback").travel("Reload")
-		owner.anim.get("parameters/playback").start("Reload")
+		# owner.anim.get("parameters/playback").start("Reload") # start() can be intrusive if already playing
+		
 		if not owner.anim.animation_finished.is_connected(anim_done):
 			owner.anim.animation_finished.connect(anim_done)
+		
+		# Restart timer if they pump again
+		owner.reload_timer.start()
+		if not owner.reload_timer.timeout.is_connected(reload_timeout):
+			owner.reload_timer.timeout.connect(reload_timeout)
 	else:
-		owner.curr_gun.ammo +=1
-		#reload anim
+		# Fallback to old system
+		var next_ammo = owner.curr_gun.ammo + 1
+		owner.curr_gun.ammo = min(next_ammo, owner.curr_gun.Max_ammo)
+		
 		owner.anim.get("parameters/playback").travel("Reload")
-		owner.anim.get("parameters/playback").start("Reload")
 		if not owner.anim.animation_finished.is_connected(anim_done):
 			owner.anim.animation_finished.connect(anim_done)
 		if not owner.reload_timer.timeout.is_connected(reload_timeout):

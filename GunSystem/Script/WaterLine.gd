@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var life_time: float = 0.08
+@export var life_time: float = 0.03
 
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 

@@ -44,6 +44,8 @@ var is_grab:bool = false
 var is_knockdown:bool = false
 
 #gun
+@export var gun_controller: GunController
+
 var GunA = {
 	"name": "Gun A",
 	"Max_ammo": 10,
@@ -83,13 +85,18 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func change_gun():
-	#animation
-	if curr_gun_index == Gun.size()-1:
-		curr_gun_index = 0
+	if gun_controller:
+		gun_controller.next_gun()
+		curr_gun_index = gun_controller.current_gun_index
+		# We can still keep curr_gun if other systems use it, 
+		# but ideally we should transition to use gun_controller.current_gun
 	else:
-		curr_gun_index +=1
-	curr_gun = Gun[curr_gun_index]
-	#spawan new gun
+		# Fallback to old system if no gun_controller
+		if curr_gun_index == Gun.size()-1:
+			curr_gun_index = 0
+		else:
+			curr_gun_index +=1
+		curr_gun = Gun[curr_gun_index]
 
 func lost_HP(amount):
 	if HP -amount <= 0:

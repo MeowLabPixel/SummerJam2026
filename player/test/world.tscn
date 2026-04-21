@@ -76,12 +76,32 @@ environment = SubResource("Environment_1da4k")
 [node name="Temp_enemi" parent="." unique_id=1389743187 instance=ExtResource("7_ih2au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=424261850 node_paths=PackedStringArray("ammo", "player")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=424261850 node_paths=PackedStringArray("water", "air", "player")]
 script = ExtResource("8_6c3wv")
-ammo = NodePath("Ammo")
+water = NodePath("Water")
+air = NodePath("Air")
 player = NodePath("../player")
 
-[node name="Ammo" type="Label" parent="CanvasLayer" unique_id=1425413778]
+[node name="HP" type="Label" parent="CanvasLayer" unique_id=2143956174]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -185.0
+offset_right = -42.0
+offset_bottom = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(79, 28)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 41
+text = "AAAAAA"
+
+[node name="Air" type="Label" parent="CanvasLayer" unique_id=212945901]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -100,16 +120,16 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 41
 text = "AAAAAA"
 
-[node name="HP" type="Label" parent="CanvasLayer" unique_id=2143956174]
+[node name="Water" type="Label" parent="CanvasLayer" unique_id=1425413778]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -205.0
-offset_top = -137.0
+offset_top = -133.0
 offset_right = -42.0
-offset_bottom = -80.0
+offset_bottom = -76.0
 grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(79, 28)
