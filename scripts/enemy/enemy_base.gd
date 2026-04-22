@@ -36,17 +36,23 @@ var anim_player: AnimationPlayer = null
 ## The GLB may place multiple AnimationPlayers under ZombieModel — the correct
 ## one has more than just the rest-pose "Base" track.
 func _find_anim_player() -> AnimationPlayer:
-	var zombie_model := get_node_or_null("ZombieModel")
-	if not zombie_model:
-		return null
-	for child in zombie_model.get_children():
-		if child is AnimationPlayer:
-			var ap := child as AnimationPlayer
-			if ap.get_animation_list().size() > 1:
-				return ap
-	# Fallback: return any AnimationPlayer found under ZombieModel.
-	var fallback := zombie_model.find_child("AnimationPlayer", true, false)
-	return fallback as AnimationPlayer if fallback else null
+	# Try both the old model name and the new one so this works during transition.
+	var model_names := ["All zombie fix", "ZombieModel"]
+	for model_name in model_names:
+		var model := get_node_or_null(model_name)
+		if not model:
+			continue
+		# Prefer a direct AnimationPlayer child that has gameplay animations (>1 clip).
+		for child in model.get_children():
+			if child is AnimationPlayer:
+				var ap := child as AnimationPlayer
+				if ap.get_animation_list().size() > 1:
+					return ap
+		# Fallback: any AnimationPlayer anywhere under this model node.
+		var fallback := model.find_child("AnimationPlayer", true, false)
+		if fallback:
+			return fallback as AnimationPlayer
+	return null
 
 # ─── Ready ─────────────────────────────────────────────────────────────────
 func _ready() -> void:

@@ -15,7 +15,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_peoo5"]
 radius = 0.33496094
-height = 1.6464844
+height = 0.711
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1434836882]
 script = ExtResource("1_peoo5")

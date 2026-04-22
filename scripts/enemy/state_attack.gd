@@ -1,152 +1,253 @@
-## STATE: Attack / Grab
+## STATE: Attack
 ## Enemy is in attack range and facing the player.
-## Mostly attacks (timed lunge + damage pulse); small random chance to grab.
-##
-## GRAB FLOW:
-##   1. Play ZOMBIE_ATTEMPT_GRAB
-##   2. Player has until _escape_window_end to press "grab_escape"
-##   3a. Player escapes → ZOMBIE_GRAB_FAIL → back to Hunt
-##   3b. Player doesn't escape → ZOMBIE_GRAB_SUCCESS → deal grab_damage → back to Hunt
+## Randomly chooses between a standard attack swing and a grab attempt.
 ##
 ## ATTACK FLOW:
-##   1. Play ZOMBIE_ATTEMPT_GRAB as a stand-in melee swing (TODO: replace)
-##   2. At _damage_pulse_time deal attack_damage to player
-##   3. Return to Hunt when anim finishes
+##   1. Play a random ZombieAnims.ATTACK_* animation.
+##   2. Enable both hand hitboxes during the swing window (fraction of anim).
+##   3. If a hand Area3D overlaps the player, deal attack_damage once.
+##   4. Return to Hunt when the animation finishes.
+##
+## GRAB FLOW:
+##   Phase 1 – GRAB_REACH  : zombie lunges; must make hand contact to latch.
+##   Phase 2 – GRAB_HOLD   : zombie holds on, GrabQteHud spawns on screen.
+##     QTE: player shakes mouse to escape within the time limit.
+##     Success (escaped) -> Phase 3b GRAB_FAIL anim -> Hunt (no damage).
+##     Failure (caught)  -> Phase 3a GRAB_SUCCESS anim -> Hunt + grab_damage.
+##   If the reach whiffs (no contact), skip straight back to Hunt.
 class_name StateAttack
 extends EnemyState
 
-## Probability (0–1) of choosing Grab over Attack.
-@export var grab_chance: float = 0.15
-## Damage dealt by a successful grab.
-@export var grab_damage: int = 8
-## Damage dealt by the standard attack hit pulse.
-@export var attack_damage: int = 5
-## Fraction through the attack anim at which the damage pulse fires (0–1).
-@export var attack_damage_frac: float = 0.5
+## Probability (0-1) of choosing Grab over a standard Attack.
+@export var grab_chance: float      = 0.25
+## Damage dealt when the grab QTE is failed by the player.
+@export var grab_damage: int        = 12
+## Damage dealt by a successful standard-attack hit.
+@export var attack_damage: int      = 6
+## Fraction of the attack anim length at which the swing hitbox opens.
+@export var swing_start_frac: float = 0.25
+## Fraction at which the swing hitbox closes.
+@export var swing_end_frac: float   = 0.75
+## How long the grab QTE window lasts (seconds).
+@export var qte_duration: float     = 2.5
+## Mouse shakes needed to escape the grab.
+@export var qte_shakes_needed: int  = 5
 
-var _timer: float = 0.0
-var _anim_duration: float = 1.4
-var _chose_grab: bool = false
-var _grab_resolved: bool = false  # true once success/fail has been chosen
-var _damage_pulsed: bool = false
-## Seconds from enter() during which the player can press grab_escape.
-var _escape_window_end: float = 0.0
+# ---- Phase enum ----
+enum Phase { ATTACK, GRAB_REACHING, GRAB_HOLDING, GRAB_RESOLVING, DONE }
+
+var _phase: Phase         = Phase.DONE
+var _timer: float         = 0.0
+var _anim_duration: float = 1.2
+var _damage_dealt: bool   = false
+var _hitboxes_active: bool = false
+var _grab_made_contact: bool = false
+var _qte_hud              = null  # GrabQteHud instance (untyped to avoid preload)
+
+# Cached hand Area3D refs.
+var _hand_left:  Area3D = null
+var _hand_right: Area3D = null
+
+# Path prefix for the new "All zombie fix" model sub-scene.
+const _MODEL := "\"All zombie fix\""
 
 func enter() -> void:
-	_timer = 0.0
-	_grab_resolved = false
-	_damage_pulsed = false
-	_chose_grab = randf() < grab_chance
+	_timer          = 0.0
+	_damage_dealt   = false
+	_hitboxes_active = false
+	_grab_made_contact = false
+	_qte_hud        = null
 
-	var anim: String = ZombieAnims.ZOMBIE_ATTEMPT_GRAB
-	_force_anim(anim)
+	_cache_hand_hitboxes()
+	_set_hand_hitboxes(false)
 
-	if enemy and enemy.anim_player and enemy.anim_player.has_animation(anim):
-		_anim_duration = enemy.anim_player.get_animation(anim).length
+	if randf() < grab_chance:
+		_start_grab_reach()
 	else:
-		_anim_duration = 1.4
-
-	# Escape window = first half of the attempt animation.
-	_escape_window_end = _anim_duration * 0.5
-
-	if _chose_grab:
-		print("[StateAttack] GRAB attempt — mash grab_escape to escape!")
-	else:
-		print("[StateAttack] ATTACK")
+		_start_attack()
 
 func exit() -> void:
-	# Disconnect the animation_finished signal if it's still connected.
-	if enemy and enemy.anim_player:
-		if enemy.anim_player.animation_finished.is_connected(_on_attempt_finished):
-			enemy.anim_player.animation_finished.disconnect(_on_attempt_finished)
+	_set_hand_hitboxes(false)
+	_dismiss_qte()
+	_disconnect_anim_finished()
 
 func physics_update(delta: float) -> void:
 	_timer += delta
-
-	if _chose_grab and not _grab_resolved:
-		# Check if the player pressed grab_escape during the window.
-		if _timer < _escape_window_end:
-			if Input.is_action_just_pressed("grab_escape"):
-				_resolve_grab(false)  # player escaped
-				return
-		else:
-			# Window closed — grab succeeds.
-			_resolve_grab(true)
-			return
-
-	if not _chose_grab and not _damage_pulsed:
-		# Fire the attack damage at the midpoint of the swing.
-		if _timer >= _anim_duration * attack_damage_frac:
-			_damage_pulsed = true
-			_deal_attack_damage()
-
-	# Return to Hunt once animation is done.
-	if _timer >= _anim_duration:
-		state_machine.transition_to("StateHunt")
+	match _phase:
+		Phase.ATTACK:
+			_tick_attack()
+		Phase.GRAB_REACHING:
+			_tick_grab_reach()
+		Phase.GRAB_HOLDING:
+			pass  # QTE drives resolution via signals; nothing to poll here
+		Phase.GRAB_RESOLVING:
+			# Wait for the outro animation to finish (handled via signal).
+			pass
+		Phase.DONE:
+			pass
 
 func handle_hit(hit_data: Dictionary) -> String:
-	var zone: String = hit_data.get("hit_zone", "body")
-	match zone:
-		"head", "foot":
-			return "StateTakedownable"
-		_:
-			return ""  # Body hits don't interrupt an attack.
+	# Can still be staggered during a standard attack swing.
+	if _phase == Phase.ATTACK:
+		var zone: String = hit_data.get("hit_zone", "body")
+		match zone:
+			"head", "foot":
+				return "StateTakedownable"
+	# During grab phases the zombie is committed and absorbs hits.
+	return ""
 
-# ─── Grab resolution ───────────────────────────────────────────────────────
+# =========================================================
+# Attack sub-flow
+# =========================================================
 
-func _resolve_grab(success: bool) -> void:
-	_grab_resolved = true
-	if success:
-		print("[StateAttack] Grab SUCCESS — dealing %d damage" % grab_damage)
-		_force_anim(ZombieAnims.ZOMBIE_GRAB_SUCCESS)
-		_notify_player_grabbed(true)
-		_deal_grab_damage()
-	else:
-		print("[StateAttack] Grab FAIL — player escaped")
-		_force_anim(ZombieAnims.ZOMBIE_GRAB_FAIL)
-		_notify_player_grabbed(false)
-	# Wait for this new anim to finish, then return to Hunt.
-	var finish_anim: String = ZombieAnims.ZOMBIE_GRAB_SUCCESS if success else ZombieAnims.ZOMBIE_GRAB_FAIL
-	if enemy and enemy.anim_player:
-		var ap: AnimationPlayer = enemy.anim_player as AnimationPlayer
-		if ap.has_animation(finish_anim):
-			_anim_duration = _timer + ap.get_animation(finish_anim).length
-		if not ap.animation_finished.is_connected(_on_attempt_finished):
-			ap.animation_finished.connect(_on_attempt_finished, CONNECT_ONE_SHOT)
+func _start_attack() -> void:
+	_phase = Phase.ATTACK
+	var anim: String = ZombieAnims.random_attack()
+	_force_anim(anim)
+	_anim_duration = _anim_length(anim)
+	print("[StateAttack] Attack: %s (%.2fs)" % [anim, _anim_duration])
 
-func _on_attempt_finished(_anim_name: StringName) -> void:
+func _tick_attack() -> void:
+	_update_hitbox_window()
+	# Deal damage once when a hand overlaps the player during the swing window.
+	if _hitboxes_active and not _damage_dealt and _hand_touches_player():
+		_damage_dealt = true
+		_deal_damage(attack_damage, "attack")
+	if _timer >= _anim_duration:
+		_finish()
+
+# =========================================================
+# Grab sub-flow
+# =========================================================
+
+func _start_grab_reach() -> void:
+	_phase = Phase.GRAB_REACHING
+	_force_anim(ZombieAnims.GRAB_REACH)
+	_anim_duration = _anim_length(ZombieAnims.GRAB_REACH)
+	# Enable hands during the reach so contact can be detected.
+	_set_hand_hitboxes(true)
+	_hitboxes_active = true
+	print("[StateAttack] Grab: reaching (%.2fs)" % _anim_duration)
+
+func _tick_grab_reach() -> void:
+	# Check for hand contact with the player every frame.
+	if not _grab_made_contact and _hand_touches_player():
+		_grab_made_contact = true
+		print("[StateAttack] Grab: contact — entering QTE hold")
+		_set_hand_hitboxes(false)
+		_start_grab_hold()
+		return
+	# If the reach animation finishes without contact the grab whiffed.
+	if _timer >= _anim_duration:
+		print("[StateAttack] Grab: whiffed — returning to Hunt")
+		_finish()
+
+func _start_grab_hold() -> void:
+	_phase = Phase.GRAB_HOLDING
+	_force_anim(ZombieAnims.GRAB_HOLD)
+
+	# Spawn the QTE HUD.
+	var hud_script = load("res://scripts/ui/grab_qte_hud.gd")
+	_qte_hud = hud_script.new(qte_duration, qte_shakes_needed)
+	_qte_hud.escaped.connect(_on_qte_escaped)
+	_qte_hud.caught.connect(_on_qte_caught)
+	enemy.get_tree().root.add_child(_qte_hud)
+
+func _on_qte_escaped() -> void:
+	# Player shook free — play fail anim, no damage.
+	print("[StateAttack] Grab: player ESCAPED")
+	_qte_hud = null  # HUD will free itself
+	_phase = Phase.GRAB_RESOLVING
+	_force_anim(ZombieAnims.GRAB_FAIL)
+	_anim_duration = _anim_length(ZombieAnims.GRAB_FAIL)
+	_timer = 0.0
+	_connect_anim_finished()
+
+func _on_qte_caught() -> void:
+	# Player failed the QTE — deal damage, play success anim.
+	print("[StateAttack] Grab: player CAUGHT — %d damage" % grab_damage)
+	_qte_hud = null
+	_deal_damage(grab_damage, "grab")
+	_phase = Phase.GRAB_RESOLVING
+	_force_anim(ZombieAnims.GRAB_SUCCESS)
+	_anim_duration = _anim_length(ZombieAnims.GRAB_SUCCESS)
+	_timer = 0.0
+	_connect_anim_finished()
+
+func _on_anim_finished(_anim_name: StringName) -> void:
+	_finish()
+
+# =========================================================
+# Shared helpers
+# =========================================================
+
+func _finish() -> void:
+	_phase = Phase.DONE
+	_set_hand_hitboxes(false)
+	_dismiss_qte()
 	state_machine.transition_to("StateHunt")
 
-# ─── Damage helpers ────────────────────────────────────────────────────────
+func _update_hitbox_window() -> void:
+	var frac: float = _timer / max(_anim_duration, 0.01)
+	var should: bool = frac >= swing_start_frac and frac <= swing_end_frac
+	if should != _hitboxes_active:
+		_hitboxes_active = should
+		_set_hand_hitboxes(_hitboxes_active)
 
-func _deal_attack_damage() -> void:
-	var player := _get_player()
-	if player and player.has_method("take_damage"):
-		player.take_damage(attack_damage)
-	else:
-		print("[StateAttack] Attack hit player for %d (no take_damage method yet)" % attack_damage)
+func _cache_hand_hitboxes() -> void:
+	# New model: "All zombie fix"/rig_001/Skeleton3D/...
+	var base := "All zombie fix/rig_001/Skeleton3D"
+	_hand_left  = enemy.get_node_or_null(
+		"%s/HitboxAttachLeftHand/HitboxLeftHand" % base)
+	_hand_right = enemy.get_node_or_null(
+		"%s/HitboxAttachRightHand/HitboxRightHand" % base)
 
-func _deal_grab_damage() -> void:
-	var player := _get_player()
-	if player and player.has_method("take_damage"):
-		player.take_damage(grab_damage)
-	else:
-		print("[StateAttack] Grab dealt %d to player (no take_damage method yet)" % grab_damage)
+func _set_hand_hitboxes(enabled: bool) -> void:
+	if _hand_left:
+		_hand_left.monitoring = enabled
+	if _hand_right:
+		_hand_right.monitoring = enabled
 
-func _notify_player_grabbed(success: bool) -> void:
-	## Tell the player to freeze/unfreeze and play the matching Leon anim.
+func _hand_touches_player() -> bool:
 	var player := _get_player()
 	if not player:
-		return
-	if player.has_method("on_grabbed"):
-		player.on_grabbed(success)
-	else:
-		print("[StateAttack] Player grabbed=%s (no on_grabbed method yet)" % success)
+		return false
+	for hitbox in [_hand_left, _hand_right]:
+		if not (hitbox and hitbox.monitoring):
+			continue
+		for body in hitbox.get_overlapping_bodies():
+			if body == player:
+				return true
+	return false
+
+func _deal_damage(amount: int, source: String) -> void:
+	var player := _get_player()
+	if player and player.has_method("take_damage"):
+		player.take_damage(amount)
+	print("[StateAttack] %s dealt %d damage" % [source, amount])
 
 func _get_player() -> Node3D:
-	if enemy and enemy.has_meta("target_position"):
-		# Walk the scene tree to find the node in the 'player' group.
-		var players: Array = enemy.get_tree().get_nodes_in_group("player")
-		if players.size() > 0:
-			return players[0] as Node3D
-	return null
+	var players: Array = enemy.get_tree().get_nodes_in_group("player")
+	return players[0] as Node3D if players.size() > 0 else null
+
+func _anim_length(anim_name: String) -> float:
+	if enemy and enemy.anim_player and enemy.anim_player.has_animation(anim_name):
+		return enemy.anim_player.get_animation(anim_name).length
+	return 1.2  # safe fallback
+
+func _connect_anim_finished() -> void:
+	if enemy and enemy.anim_player:
+		var ap: AnimationPlayer = enemy.anim_player
+		if not ap.animation_finished.is_connected(_on_anim_finished):
+			ap.animation_finished.connect(_on_anim_finished, CONNECT_ONE_SHOT)
+
+func _disconnect_anim_finished() -> void:
+	if enemy and enemy.anim_player:
+		var ap: AnimationPlayer = enemy.anim_player
+		if ap.animation_finished.is_connected(_on_anim_finished):
+			ap.animation_finished.disconnect(_on_anim_finished)
+
+func _dismiss_qte() -> void:
+	if _qte_hud and is_instance_valid(_qte_hud):
+		_qte_hud.queue_free()
+	_qte_hud = null

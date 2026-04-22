@@ -26,6 +26,7 @@ transform = Transform3D(0.8660254, -0.35355338, 0.35355338, 0, 0.70710677, 0.707
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1096472683]
+collision_layer = 3
 
 [node name="GroundMesh" type="MeshInstance3D" parent="Ground" unique_id=351348984]
 
@@ -51,7 +52,6 @@ Z to order Ashley to wait or follow."
 [node name="Camera3D" type="Camera3D" parent="CamRig" unique_id=223642431]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.7547096, 0.6560591, 0, -0.6560591, 0.7547096, 0, 3.1884472, 0.66788864)
-top_level = true
 
 [node name="PhantomCameraHost" type="Node" parent="CamRig/Camera3D" unique_id=775252121]
 process_priority = 300
@@ -67,9 +67,6 @@ tween_resource = SubResource("Resource_ar7ra")
 follow_distance = 4.86
 vertical_rotation_offset = 0.7155849933176751
 spring_length = 4.86
-align_transform_with_view = Callable()
-align_position_with_view = Callable()
-align_rotation_with_view = Callable()
 
 [node name="Ashley" parent="." unique_id=1099023628 instance=ExtResource("6_dvny0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
