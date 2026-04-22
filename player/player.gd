@@ -21,6 +21,7 @@ var anim_playback = "parameters/Main/playback"
 @export var hitboxB: Area3D
 @export var stun_detect: Area3D
 @export var pickup_detect: Area3D
+@export var TD_hand: Area3D
 var HP = MaxHP
 var Hit_info = {
 	"bullet": null,
@@ -29,7 +30,11 @@ var Hit_info = {
 
 #timer
 @onready var knockdown_timer: Timer = $Knockdown_timer
-
+#
+#@export_group("GUN setting")
+#@export var Pistol: Gun
+#@export var Shotgun: Gun
+#@export var Rifle: Gun
 
 #QTE
 @onready var qte: CanvasLayer = $Camera/edgeSpringArm3D/rearSpringArm3D/Camera3D/QTE
@@ -51,27 +56,21 @@ var is_near_stunt:bool = false
 #gun
 @export var gun_controller: GunController
 
-var GunA = {
-	"name": "pistol",
-	"Max_ammo": 10,
-	"ammo": 10,
-	"Super": false
-}
-var GunB = {
-	"name": "shotgun",
-	"Max_ammo": 3,
-	"ammo": 3,
-	"Super": false
-}
-var GunC = {
-	"name": "Gun C",
-	"Max_ammo": 5,
-	"ammo": 5,
-	"Super": false
-}
-var Gun = [GunA,GunB,GunC]
-var curr_gun = Gun[0]
-var curr_gun_index = 0
+#var GunA = {
+	#"name": "pistol",
+	#"Gun" : Pistol
+#}
+#var GunB = {
+	#"name": "shotgun",
+	#"Gun" : Shotgun
+#}
+#var GunC = {
+	#"name": "rifle",
+	#"Gun" : Rifle
+#}
+#var Gun = [GunA,GunB,GunC]
+#var curr_gun = Gun[0]
+#var curr_gun_index = 0
 var near_enemy_list = []
 
 @export_group("Crosshair")
@@ -84,8 +83,8 @@ var near_enemy_list = []
 @onready var cross_hair: TextureRect = $Camera/edgeSpringArm3D/rearSpringArm3D/Camera3D/TextureRect
 @onready var reload_timer: Timer = $Reload_timer
 
-const BULLET = preload("uid://csdtdj7sci5vk")
-@onready var bullet_lo: Node3D = $"Re4Lom Base Rig/rig/Skeleton3D/Gun/MeshInstance3D/Node3D"
+#const BULLET = preload("uid://csdtdj7sci5vk")
+#@@onready var bullet_lo: Node3D = $"Re4Lom Base Rig/rig/Skeleton3D/Gun/MeshInstance3D/Node3D"
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -129,19 +128,19 @@ func set_velocity_from_motion(vel: Vector3)-> void:
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
-func change_gun():
-	if gun_controller:
-		gun_controller.next_gun()
-		curr_gun_index = gun_controller.current_gun_index
-		# We can still keep curr_gun if other systems use it, 
-		# but ideally we should transition to use gun_controller.current_gun
-	else:
-		# Fallback to old system if no gun_controller
-		if curr_gun_index == Gun.size()-1:
-			curr_gun_index = 0
-		else:
-			curr_gun_index +=1
-		curr_gun = Gun[curr_gun_index]
+#func change_gun():
+	#if gun_controller:
+		#gun_controller.next_gun()
+		#curr_gun_index = gun_controller.current_gun_index
+		## We can still keep curr_gun if other systems use it, 
+		## but ideally we should transition to use gun_controller.current_gun
+	#else:
+		## Fallback to old system if no gun_controller
+		#if curr_gun_index == Gun.size()-1:
+			#curr_gun_index = 0
+		#else:
+			#curr_gun_index +=1
+		#curr_gun = Gun[curr_gun_index]
 
 func lost_HP(amount):
 	if HP -amount <= 0:

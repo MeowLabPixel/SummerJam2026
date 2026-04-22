@@ -5,10 +5,7 @@ var D
 func _enter() -> void:
 	print(name)
 	owner.aim_bone_on(true)
-	if owner.HP <= owner.MaxHP/2 :
-		owner.anim.get(owner.anim_playback).travel("Run")
-	else:
-		owner.anim.get(owner.anim_playback).travel("Run")
+	owner.anim.get(owner.anim_playback).travel("Run")	
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):
@@ -66,29 +63,20 @@ func hitback(body: Node3D):
 		owner.Hit_info.location = "back"
 		finished.emit("Get_hit")
 
-func switch_gun(num:float):
+func switch_gun(num:int):
 	if owner.gun_controller:
 		owner.gun_controller.switch_gun(num)
-		owner.curr_gun_index = num
-	else:
-		owner.curr_gun_index = num
-		owner.curr_gun = owner.Gun[owner.curr_gun_index]
-			
-	print("swap to Gun "+ str(num))
-	if num!= owner.curr_gun_index:
-		owner.curr_gun_index = num
-		owner.curr_gun = owner.Gun[owner.curr_gun_index]
 		set_gun_anim()
+		#one shot anim
 
 		#one shot anim
 func set_gun_anim():
-	var index = owner.Gun.find(owner.curr_gun,0)
-	if owner.Gun[owner.curr_gun_index].name == "pistol":
+	if owner.gun_controller.current_gun.get_gun_name() == "Water pistol":
 		owner.anim.set("parameters/Main/Run/conditions/pis",true)
 		owner.anim.set("parameters/Main/Run/conditions/shot",false)
 		if owner.anim.get("parameters/Main/Run/playback").get_current_node() != "Pis":
 			owner.anim.get("parameters/Main/Run/playback").travel("Pis")
-	elif owner.Gun[owner.curr_gun_index].name == "shotgun":
+	elif owner.gun_controller.current_gun.get_gun_name() == "Water shotgun" or owner.gun_controller.current_gun.get_gun_name() == "Water sniper":
 		owner.anim.set("parameters/Main/Run/conditions/pis",false)
 		owner.anim.set("parameters/Main/Run/conditions/shot",true)
 		if owner.anim.get("parameters/Main/Run/playback").get_current_node() != "Shot":

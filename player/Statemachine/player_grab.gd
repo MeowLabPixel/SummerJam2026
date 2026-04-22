@@ -1,7 +1,7 @@
 extends State
 
 var half = false
-var fail_anim = "HIT Body"
+var fail_anim = "LEON GRAB Fail"
 var win_anim ="HIT  Right Arm"
 var mini_done = false
 var is_exiting = false
