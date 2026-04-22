@@ -6,6 +6,15 @@ class_name Gun
 @export var spawn_point: Node3D
 @export var shot_vfx_scene: PackedScene
 @export var hit_vfx_scene: PackedScene
+@export var muzzle_vfx_scene: PackedScene
+
+@export_group("VFX Customization")
+@export var muzzle_scale: Vector3 = Vector3.ONE
+@export var muzzle_offset: Vector3 = Vector3.ZERO
+@export var impact_scale: Vector3 = Vector3.ONE
+@export var impact_offset: Vector3 = Vector3.ZERO
+@export var muzzle_animation_name: String = ""
+@export var impact_animation_name: String = ""
 
 var water_tank: GunController
 
@@ -111,6 +120,27 @@ func fire_pellet():
 	if result:
 		end_pos = result.position
 
+	# Muzzle Flash
+	if muzzle_vfx_scene and spawn_point:
+		var muzzle_vfx: Node3D = muzzle_vfx_scene.instantiate()
+		get_tree().current_scene.add_child(muzzle_vfx)
+		muzzle_vfx.global_transform = spawn_point.global_transform
+		muzzle_vfx.position += spawn_point.global_transform.basis * muzzle_offset
+		muzzle_vfx.scale = muzzle_scale
+		
+		# Play Animation
+		if muzzle_vfx is GPUParticles3D:
+			muzzle_vfx.emitting = true
+		
+		var anim_player = muzzle_vfx.get_node_or_null("AnimationPlayer")
+		if anim_player and anim_player is AnimationPlayer:
+			if muzzle_animation_name != "" and anim_player.has_animation(muzzle_animation_name):
+				anim_player.play(muzzle_animation_name)
+			else:
+				anim_player.play(anim_player.get_animation_list()[0])
+		
+		get_tree().create_timer(0.5).timeout.connect(muzzle_vfx.queue_free)
+
 	if shot_vfx_scene:
 		var shot_vfx: Node = shot_vfx_scene.instantiate()
 		get_tree().current_scene.add_child(shot_vfx)
@@ -118,9 +148,37 @@ func fire_pellet():
 			shot_vfx.set_line(start_pos, end_pos)
 
 	if result and hit_vfx_scene:
-		var hit_vfx: Node = hit_vfx_scene.instantiate()
+		var hit_vfx: Node3D = hit_vfx_scene.instantiate()
 		get_tree().current_scene.add_child(hit_vfx)
-		hit_vfx.global_transform.origin = result.position
+		
+		# Position and Align with Normal
+		var normal = result.normal
+		hit_vfx.global_position = result.position + (normal * 0.01) # Slight offset to prevent clipping
+
+		if normal.is_equal_approx(Vector3.UP):
+			hit_vfx.look_at(hit_vfx.global_position + Vector3.UP, Vector3.FORWARD)
+		elif normal.is_equal_approx(Vector3.DOWN):
+			hit_vfx.look_at(hit_vfx.global_position + Vector3.DOWN, Vector3.BACK)
+		else:
+			hit_vfx.look_at(hit_vfx.global_position + normal, Vector3.UP)
+		
+		# Apply custom offset (local to the hit orientation) and scale
+		hit_vfx.position += hit_vfx.global_transform.basis * impact_offset
+		hit_vfx.scale = impact_scale
+		
+		# Play Animation
+		if hit_vfx is GPUParticles3D:
+			hit_vfx.emitting = true
+			
+		var anim_player = hit_vfx.get_node_or_null("AnimationPlayer")
+		if anim_player and anim_player is AnimationPlayer:
+			if impact_animation_name != "" and anim_player.has_animation(impact_animation_name):
+				anim_player.play(impact_animation_name)
+			else:
+				anim_player.play(anim_player.get_animation_list()[0])
+		
+		get_tree().create_timer(1.0).timeout.connect(hit_vfx.queue_free)
+
 
 func update_accuracy():
 	var t: float = clamp(air / max_air, 0.0, 1.0)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cl3hlvcvi8r50"]
 
-[ext_resource type="Shader" uid="uid://cxeffrqr4ks4o" path="res://BinbunVFX/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_outer.gdshader" id="1_11kf8"]
-[ext_resource type="Shader" uid="uid://dq3rqsr21ys4w" path="res://BinbunVFX/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_flare.gdshader" id="2_4kggc"]
+[ext_resource type="Shader" uid="uid://62ts4vn2kmq3" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/beam_vfx/src/shader/beam_outer.gdshader" id="1_11kf8"]
+[ext_resource type="Shader" uid="uid://c6psxsl3p763s" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/beam_vfx/src/shader/beam_flare.gdshader" id="2_4kggc"]
 [ext_resource type="Shader" uid="uid://jqylukwjbuo" path="res://BinbunVFX/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/glow_particle.gdshader" id="3_m25bi"]
 
 [sub_resource type="Shader" id="Shader_hx6vr"]

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://br7b12d8xsajy" path="res://GunSystem/Scene/WaterLineVFX/WaterHit.tscn" id="4_gnye6"]
 [ext_resource type="PackedScene" uid="uid://ccsuw6xsbxf1o" path="res://Water Gun Glock/Gun_Optimized.fbx" id="5_ak315"]
 [ext_resource type="Script" uid="uid://dy1eg8j8nbca8" path="res://GunSystem/Script/ShotgunWaterGun.gd" id="5_bkwqo"]
+[ext_resource type="PackedScene" uid="uid://gjs0wjhh5kp8" path="res://GunSystem/Scene/WaterLineVFX/WaterMuzzle.tscn" id="5_xnxwk"]
 [ext_resource type="Script" uid="uid://c43b2dn4ajns1" path="res://GunSystem/Script/SniperWaterGun.gd" id="6_8ckxr"]
 [ext_resource type="PackedScene" uid="uid://cwgdfnitjjkj3" path="res://Water Gun Shotty/shotty optimized.fbx" id="7_xnxwk"]
 [ext_resource type="PackedScene" uid="uid://lgnndwwo3bkc" path="res://Water Gun Rifle/rifle_optimized.fbx" id="9_fb0g8"]
@@ -22,7 +23,12 @@ current_water = 200.0
 script = ExtResource("1_nbubd")
 spawn_point = NodePath("Gun_Optimized/SpawnPoint")
 shot_vfx_scene = ExtResource("2_n8a5k")
-hit_vfx_scene = ExtResource("4_gnye6")
+hit_vfx_scene = ExtResource("5_xnxwk")
+muzzle_vfx_scene = ExtResource("5_xnxwk")
+muzzle_scale = Vector3(0.3, 0.3, 0.2)
+impact_scale = Vector3(0.5, 0.5, 0.5)
+muzzle_animation_name = "Muzzle"
+impact_animation_name = "Muzzle"
 air_consumption = 5.0
 shoot_interval = 0.15
 pump_air_gain = 20.0
@@ -40,6 +46,7 @@ script = ExtResource("5_bkwqo")
 spawn_point = NodePath("shotty optimized/SpawnPoint")
 shot_vfx_scene = ExtResource("2_n8a5k")
 hit_vfx_scene = ExtResource("4_gnye6")
+muzzle_vfx_scene = ExtResource("5_xnxwk")
 shoot_interval = 1.0
 pump_air_gain = 20.0
 min_spread = 2.0
@@ -57,6 +64,7 @@ script = ExtResource("6_8ckxr")
 spawn_point = NodePath("SpawnPoint")
 shot_vfx_scene = ExtResource("2_n8a5k")
 hit_vfx_scene = ExtResource("4_gnye6")
+muzzle_vfx_scene = ExtResource("5_xnxwk")
 damage = 40.0
 water_consumption = 10.0
 air_consumption = 100.0
