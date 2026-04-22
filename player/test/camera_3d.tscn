@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cpbmbix0l3ipf"]
+
+[ext_resource type="Script" uid="uid://c5dj88uh580mq" path="res://pre/camera.gd" id="1_5ynud"]
+
+[node name="Camera3D" type="Camera3D" unique_id=1721932799]
+script = ExtResource("1_5ynud")
+
+[node name="Trigger" type="Area3D" parent="." unique_id=673782806 groups=["camera"]]
+top_level = true
+collision_layer = 0
+collision_mask = 5
+
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
