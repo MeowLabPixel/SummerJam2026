@@ -1,19 +1,21 @@
 extends Motion
 
 func _enter() -> void:
-	owner.aim_bone.start()
+	owner.aim_bone_on(true)
 	if owner.is_aimming:
 		finished.emit("Aim")
 	print(name)
+	set_gun_anim()
 	if owner.HP <= owner.MaxHP/2 :
 			owner.anim.get(owner.anim_playback).travel("Idle") #HUrt anim
 	else:	
 			owner.anim.get(owner.anim_playback).travel("Idle")
-	gun_anim()		
+			
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):
 		owner.hitboxB.body_entered.connect(hitback)
+
 
 func _update(_delta:float) -> void:
 	set_direction()
@@ -59,12 +61,21 @@ func hitback(body: Node3D):
 		finished.emit("Get_hit")
 
 func switch_gun(num:float):
-	owner.curr_gun_index = num
-	owner.curr_gun = owner.Gun[owner.curr_gun_index]
-	#one shot anim
+	print("swap to Gun "+ str(num))
+	if num!= owner.curr_gun_index:
+		owner.curr_gun_index = num
+		owner.curr_gun = owner.Gun[owner.curr_gun_index]
+		set_gun_anim()
+		#one shot anim
 	
-func gun_anim():
-	if owner.curr_gun.name == "pistol":
-		owner.anim.get("parameters/Main/Idle/playback").travel("Pis")
-	elif owner.curr_gun.name == "shot":
-		owner.anim.get("parameters/Main/Idle/playback").travel("Shot")
+func set_gun_anim():
+	if owner.Gun[owner.curr_gun_index].name == "pistol":
+		owner.anim.set("parameters/Main/Idle/conditions/pis",true)
+		owner.anim.set("parameters/Main/Idle/conditions/shot",false)
+		if owner.anim.get("parameters/Main/Idle/playback").get_current_node() != "Pis":
+			owner.anim.get("parameters/Main/Idle/playback").travel("Pis")
+	elif owner.Gun[owner.curr_gun_index].name == "shotgun":
+		owner.anim.set("parameters/Main/Idle/conditions/pis",false)
+		owner.anim.set("parameters/Main/Idle/conditions/shot",true)
+		if owner.anim.get("parameters/Main/Idle/playback").get_current_node() != "Shot":
+			owner.anim.get("parameters/Main/Idle/playback").travel("Shot")

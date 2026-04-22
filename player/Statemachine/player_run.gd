@@ -2,29 +2,30 @@ extends Motion
 
 func _enter() -> void:
 	print(name)
-	owner.aim_bone.start()
+	owner.aim_bone_on(true)
+	set_gun_anim()
 	if owner.HP <= owner.MaxHP/2 :
 		owner.anim.get(owner.anim_playback).travel("Run")
 	else:
 		if owner.anim.get(owner.anim_playback).get_current_node() != "Run":
 			owner.anim.get(owner.anim_playback).travel("Run")	
-	gun_anim()
+	#gun_anim()
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):
 		owner.hitboxB.body_entered.connect(hitback)
 
+
 func _update(_delta:float) -> void:
 	set_direction()
 	calculate_velocity(SPEED,direction,_delta)
-	#print(owner.anim.get("parameters/Main/Run/playback").get_current_node())
 	owner.anim.set("parameters/Main/Run/Pis/BlendSpace2D/blend_position",input_dir)
 	owner.anim.set("parameters/Main/Run/Shot/BlendSpace2D/blend_position",input_dir)
 	#owner.anim.get("parameters/Main/Run/Pis/BlendSpace2D/blend_position").set(direction)
-	if owner.anim.get("parameters/Main/Run/playback").get_current_node() == "Start":
-		gun_anim()
+
 	if direction == Vector3.ZERO:
 		finished.emit("Idle")
+
 		
 func _state_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("quick_turn") and not owner.is_quick_turn:
@@ -41,6 +42,8 @@ func _state_input(_event: InputEvent) -> void:
 		switch_gun(2)
 	if Input.is_action_pressed("Takedown") and owner.is_near_stunt:
 		finished.emit("Takedown")
+	if Input.is_action_pressed("aim") :
+		finished.emit("Aim")
 
 func hitfront(body: Node3D):
 	if body.is_in_group("attack"):
@@ -54,16 +57,21 @@ func hitback(body: Node3D):
 		finished.emit("Get_hit")
 
 func switch_gun(num:float):
-	owner.curr_gun_index = num
-	owner.curr_gun = owner.Gun[owner.curr_gun_index]
-	#one shot anim
+	print("swap to Gun "+ str(num))
+	if num!= owner.curr_gun_index:
+		owner.curr_gun_index = num
+		owner.curr_gun = owner.Gun[owner.curr_gun_index]
+		set_gun_anim()
+		#one shot anim
 
-func gun_anim():
-	if owner.curr_gun.name == "pistol":
-		print("A")
+func set_gun_anim():
+	if owner.Gun[owner.curr_gun_index].name == "pistol":
+		owner.anim.set("parameters/Main/Run/conditions/pis",true)
+		owner.anim.set("parameters/Main/Run/conditions/shot",false)
 		if owner.anim.get("parameters/Main/Run/playback").get_current_node() != "Pis":
-			owner.anim.get("parameters/Main/Run/playback").travel("Pis")	
-	elif owner.curr_gun.name == "shot":
-		print("B")
+			owner.anim.get("parameters/Main/Run/playback").travel("Pis")
+	elif owner.Gun[owner.curr_gun_index].name == "shotgun":
+		owner.anim.set("parameters/Main/Run/conditions/pis",false)
+		owner.anim.set("parameters/Main/Run/conditions/shot",true)
 		if owner.anim.get("parameters/Main/Run/playback").get_current_node() != "Shot":
 			owner.anim.get("parameters/Main/Run/playback").travel("Shot")

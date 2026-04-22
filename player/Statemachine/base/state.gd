@@ -18,3 +18,4 @@ func _update(_delta:float) -> void:
 	
 func anim_done(namee: String):
 	return
+	

@@ -2,7 +2,12 @@ extends State
 
 func _enter() -> void:
 	print(name)
-	owner.aim_bone.stop()
+	stop_moving()
+	owner.aim_bone_on(false)
 	owner.anim.get(owner.anim_playback).travel("Die")
 	owner.die.visible = true
 	owner.die_anim.play("in")
+
+func stop_moving():
+	var dire = Vector3.ZERO
+	owner.set_velocity_from_motion(dire)

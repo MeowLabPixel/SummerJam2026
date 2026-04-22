@@ -5,7 +5,8 @@ var reload_anim = "HIT  Right Arm"
 func _enter() -> void:
 	print(name)
 	reloading()
-	owner.aim_bone.stop()
+	stop_moving()
+	owner.aim_bone_on(false)
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):
@@ -58,3 +59,6 @@ func hitback(body: Node3D):
 		owner.Hit_info.bullet = body
 		owner.Hit_info.location = "back"
 		finished.emit("Get_hit")
+func stop_moving():
+	var dire = Vector3.ZERO
+	owner.set_velocity_from_motion(dire)
