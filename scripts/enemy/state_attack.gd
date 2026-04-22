@@ -25,7 +25,7 @@ extends EnemyState
 ## Damage dealt by a successful standard-attack hit.
 @export var attack_damage: int      = 6
 ## Fraction of the attack anim length at which the swing hitbox opens.
-@export var swing_start_frac: float = 0.25
+@export var swing_start_frac: float = 0.5
 ## Fraction at which the swing hitbox closes.
 @export var swing_end_frac: float   = 0.75
 ## How long the grab QTE window lasts (seconds).
@@ -110,7 +110,8 @@ func _start_attack() -> void:
 func _tick_attack() -> void:
 	_update_hitbox_window()
 	# Deal damage once when a hand overlaps the player during the swing window.
-	if _hitboxes_active and not _damage_dealt and _hand_touches_player():
+	if (_hitboxes_active and not _damage_dealt) and _hand_touches_player():
+		print("Player attacked!")
 		_damage_dealt = true
 		_deal_damage(attack_damage, "attack")
 	if _timer >= _anim_duration:
@@ -196,13 +197,15 @@ func _update_hitbox_window() -> void:
 
 func _cache_hand_hitboxes() -> void:
 	# New model: "All zombie fix"/rig_001/Skeleton3D/...
-	var base := "All zombie fix/rig_001/Skeleton3D"
+	var base := "ZombieModel/rig_001/Skeleton3D"
 	_hand_left  = enemy.get_node_or_null(
-		"%s/HitboxAttachLeftHand/HitboxLeftHand" % base)
+		"%s/HitboxAttachLeftHand/AttackHitbox" % base)
 	_hand_right = enemy.get_node_or_null(
-		"%s/HitboxAttachRightHand/HitboxRightHand" % base)
+		"%s/HitboxAttachRightHand/AttackHitbox" % base)
+
 
 func _set_hand_hitboxes(enabled: bool) -> void:
+	
 	if _hand_left:
 		_hand_left.monitoring = enabled
 	if _hand_right:
@@ -213,11 +216,15 @@ func _hand_touches_player() -> bool:
 	if not player:
 		return false
 	for hitbox in [_hand_left, _hand_right]:
+		
 		if not (hitbox and hitbox.monitoring):
 			continue
 		for body in hitbox.get_overlapping_bodies():
+			
 			if body == player:
+				print("Player found!")
 				return true
+	
 	return false
 
 func _deal_damage(amount: int, source: String) -> void:
@@ -231,9 +238,9 @@ func _get_player() -> Node3D:
 	return players[0] as Node3D if players.size() > 0 else null
 
 func _anim_length(anim_name: String) -> float:
-	if enemy and enemy.anim_player and enemy.anim_player.has_animation(anim_name):
-		return enemy.anim_player.get_animation(anim_name).length
-	return 1.2  # safe fallback
+	#if enemy and enemy.anim_player and enemy.anim_player.has_animation(anim_name):
+		#return enemy.anim_player.get_animation(anim_name).length
+	return 2.0  # safe fallback
 
 func _connect_anim_finished() -> void:
 	if enemy and enemy.anim_player:
