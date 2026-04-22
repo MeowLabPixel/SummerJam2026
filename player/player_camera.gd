@@ -11,12 +11,12 @@ extends Node3D
 @export var aim_fov:float =55
 @export var sprint_fov:float =90
 @export var sprint_tween_speed:float =0.5
-@export var bone: Skeleton3D
-@export var look_bone: String = "DEF-spine.002"
+@export var target: Marker3D
+@export var targetref: Marker3D
 
 var camera_rotation: Vector2= Vector2.ZERO
 var mouse_sensitivity: float = 0.002
-var max_y_rot:float= 1.2
+var max_y_rot:float= 0.5
 
 var camera_tween:Tween
 enum cameraalign{LEFT=-1,RIGHT=1,CENTER=0}
@@ -60,7 +60,9 @@ func camera_look(mouse_movement: Vector2)-> void:
 		character.rotate_object_local(Vector3(0,1,0),-camera_rotation.x)
 	rotate_object_local(Vector3(1,0,0),-camera_rotation.y)	
 	
-	camera_rotation.y = clamp(camera_rotation.y,-max_y_rot,+max_y_rot)
+	camera_rotation.y = clamp(camera_rotation.y,-max_y_rot,max_y_rot)
+	target.global_transform = targetref.global_transform
+	target.global_position.y = -targetref.global_position.y
 
 func swap_camera_align()-> void:
 	match current_camera_align:

@@ -1,20 +1,25 @@
 extends State
-
+var anim_node = "parameters/Main/Aim/"
 func _enter() -> void:
 	print(name)
+	stop_moving()
 	owner.is_aimming = true
-	if owner.anim.get("parameters/playback").get_current_node() != "Idle":
-		owner.anim.get("parameters/playback").travel("Idle")
+	set_gun_anim()
+	if owner.anim.get(owner.anim_playback).get_current_node() != "Aim":
+		owner.anim.get(owner.anim_playback).travel("Aim")
 	owner.cross_hair.visible = true
-	owner.aim_bone.start()
+	owner.aim_bone_on(true)
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):
 		owner.hitboxB.body_entered.connect(hitback)
+	if not Input.is_action_pressed("aim") :
+		owner.is_aimming = false
+		finished.emit("Idle")
 
 	
 func _exit() -> void:
-	owner.is_aimming = false
+	#owner.is_aimming = false
 	owner.cross_hair.visible = false
 	
 func hitfront(body: Node3D):
@@ -32,6 +37,7 @@ func _state_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("quick_turn") and not owner.is_quick_turn:
 		finished.emit("Quick_turn")
 	if Input.is_action_just_released("aim") :
+		owner.is_aimming = false
 		finished.emit("Idle")
 	if Input.is_action_pressed("Reload") :
 		finished.emit("Reload")
@@ -56,6 +62,23 @@ func _state_input(event: InputEvent) -> void:
 			owner.curr_gun.ammo-=1
 
 func switch_gun(num:float):
-	owner.curr_gun_index = num
-	owner.curr_gun = owner.Gun[owner.curr_gun_index]
-	#one shot anim
+	if num!= owner.curr_gun_index:
+		owner.curr_gun_index = num
+		owner.curr_gun = owner.Gun[owner.curr_gun_index]
+		#one shot anim
+		
+func set_gun_anim():
+	if owner.Gun[owner.curr_gun_index].name == "pistol":
+		owner.anim.set(anim_node + "conditions/pis",true)
+		owner.anim.set(anim_node + "conditions/shot",false)
+		if owner.anim.get(anim_node + "playback").get_current_node() != "Pis":
+			owner.anim.get(anim_node + "playback").travel("Pis")
+	elif owner.Gun[owner.curr_gun_index].name == "shotgun":
+		owner.anim.set(anim_node + "conditions/pis",false)
+		owner.anim.set(anim_node + "conditions/shot",true)
+		if owner.anim.get(anim_node + "playback").get_current_node() != "Shot":
+			owner.anim.get(anim_node + "playback").travel("Shot")
+
+func stop_moving():
+	var dire = Vector3.ZERO
+	owner.set_velocity_from_motion(dire)

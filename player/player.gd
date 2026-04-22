@@ -6,12 +6,14 @@ class_name Player extends CharacterBody3D
 @export var trun_speed:= 180.0
 @export var quick_trun_speed:= 0.3 #in second
 @export var run_speed:=380.0
-@export var aim_bone: SkeletonIK3D
+@export var aim_bone: LookAtModifier3D
+@export var aim_bone2: LookAtModifier3D
 
 @export_group("animation setting")
 #@export var anim_player:AnimationPlayer
 @export var default_blend_time:= 0.5
 @export var anim: AnimationTree
+var anim_playback = "parameters/Main/playback"
 
 @export_group("Data setting")
 @export var MaxHP = 100
@@ -50,13 +52,13 @@ var is_near_stunt:bool = false
 @export var gun_controller: GunController
 
 var GunA = {
-	"name": "Gun A",
+	"name": "pistol",
 	"Max_ammo": 10,
 	"ammo": 10,
 	"Super": false
 }
 var GunB = {
-	"name": "Gun B",
+	"name": "shotgun",
 	"Max_ammo": 3,
 	"ammo": 3,
 	"Super": false
@@ -83,7 +85,7 @@ var near_enemy_list = []
 @onready var reload_timer: Timer = $Reload_timer
 
 const BULLET = preload("uid://csdtdj7sci5vk")
-@onready var bullet_lo: Node3D = $MeshInstance3D2/Node3D
+@onready var bullet_lo: Node3D = $"Re4Lom Base Rig/rig/Skeleton3D/Gun/MeshInstance3D/Node3D2"
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -173,3 +175,7 @@ func check_if_near_stun():
 func pickup_detect_area(body: Node3D):
 	if body.is_in_group("object"):
 		pass
+		
+func aim_bone_on(value):
+	aim_bone.active = value
+	aim_bone2.active = value

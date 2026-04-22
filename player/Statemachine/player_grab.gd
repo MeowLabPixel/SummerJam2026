@@ -8,7 +8,8 @@ var is_exiting = false
 
 func _enter() -> void:
 	print(name)
-	owner.aim_bone.stop()
+	stop_moving()
+	owner.aim_bone_on(false)
 	owner.qte.visible = true
 	half = false
 	owner.anim.get("parameters/playback").travel("Grab")
@@ -60,3 +61,6 @@ func anim_done(namee: String):
 		finished.emit("Idle")
 	if namee == win_anim:
 		finished.emit("Idle")
+func stop_moving():
+	var dire = Vector3.ZERO
+	owner.set_velocity_from_motion(dire)

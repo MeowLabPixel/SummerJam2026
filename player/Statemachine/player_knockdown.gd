@@ -5,8 +5,9 @@ var start_anim_name = "HIT head act 3-take down"
 
 func _enter() -> void:
 	print(name)
-	owner.aim_bone.stop()
-	owner.anim.get("parameters/playback").travel("Knockdown")
+	stop_moving()
+	owner.aim_bone_on(false)
+	owner.anim.get(owner.anim_playback).travel("Knockdown")
 	if not owner.anim.animation_finished.is_connected(anim_done):
 		owner.anim.animation_finished.connect(anim_done)
 	owner.hitboxF.monitoring = false
@@ -22,7 +23,9 @@ func anim_done(namee: String):
 		owner.knockdown_timer.timeout.connect(knock_timeout)
 		owner.knockdown_timer.start()
 
-
+func stop_moving():
+	var dire = Vector3.ZERO
+	owner.set_velocity_from_motion(dire)
 		
 func knock_timeout():
 	owner.anim.get("parameters/Knockdown/playback").travel("out")

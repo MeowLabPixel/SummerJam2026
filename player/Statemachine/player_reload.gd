@@ -5,7 +5,8 @@ var reload_anim = "HIT  Right Arm"
 func _enter() -> void:
 	print(name)
 	reloading()
-	owner.aim_bone.stop()
+	stop_moving()
+	owner.aim_bone_on(false)
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):
@@ -19,11 +20,9 @@ func _state_input(event: InputEvent) -> void:
 func reloading():
 	if owner.gun_controller and owner.gun_controller.current_gun:
 		owner.gun_controller.current_gun.pump_air()
-		
-		# Animation and state management
-		owner.anim.get("parameters/playback").travel("Reload")
-		# owner.anim.get("parameters/playback").start("Reload") # start() can be intrusive if already playing
-		
+		owner.anim.get(owner.anim_playback).travel("Reload")
+		owner.anim.get(owner.anim_playback).start("Reload")
+
 		if not owner.anim.animation_finished.is_connected(anim_done):
 			owner.anim.animation_finished.connect(anim_done)
 		
@@ -37,6 +36,10 @@ func reloading():
 		owner.curr_gun.ammo = min(next_ammo, owner.curr_gun.Max_ammo)
 		
 		owner.anim.get("parameters/playback").travel("Reload")
+		owner.curr_gun.ammo +=1
+		#reload anim
+		owner.anim.get(owner.anim_playback).travel("Reload")
+		owner.anim.get(owner.anim_playback).start("Reload")
 		if not owner.anim.animation_finished.is_connected(anim_done):
 			owner.anim.animation_finished.connect(anim_done)
 		if not owner.reload_timer.timeout.is_connected(reload_timeout):
@@ -47,7 +50,7 @@ func reloading():
 func anim_done(namee:String):
 	print(namee)
 	if namee == reload_anim:
-		owner.anim.get("parameters/playback").travel("Idle")
+		owner.anim.get(owner.anim_playback).travel("Idle")
 		owner.reload_timer.start()
 	
 func reload_timeout():
@@ -63,3 +66,6 @@ func hitback(body: Node3D):
 		owner.Hit_info.bullet = body
 		owner.Hit_info.location = "back"
 		finished.emit("Get_hit")
+func stop_moving():
+	var dire = Vector3.ZERO
+	owner.set_velocity_from_motion(dire)
