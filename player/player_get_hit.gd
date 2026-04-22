@@ -9,11 +9,11 @@ func _enter() -> void:
 	owner.aim_bone.stop()
 	owner.lost_HP(1)
 	if owner.Hit_info.location == "front":
-		owner.anim.get("parameters/playback").travel("Hit")
+		owner.anim.get(owner.anim_playback).travel("Hit")
 	elif owner.Hit_info.location == "back":
-		owner.anim.get("parameters/playback").travel("Hit")
+		owner.anim.get(owner.anim_playback).travel("Hit")
 	else:
-		owner.anim.get("parameters/playback").travel("Hit")
+		owner.anim.get(owner.anim_playback).travel("Hit")
 	if not owner.anim.animation_finished.is_connected(anim_done):
 		owner.anim.animation_finished.connect(anim_done)
 		

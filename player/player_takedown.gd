@@ -5,7 +5,7 @@ var anim_name = "HIT Left arm"
 func _enter() -> void:
 	print(name)
 	owner.aim_bone.stop()
-	owner.anim.get("parameters/playback").travel("Takedown")
+	owner.anim.get(owner.anim_playback).travel("Takedown")
 	if not owner.anim.animation_finished.is_connected(anim_done):
 		owner.anim.animation_finished.connect(anim_done)
 		

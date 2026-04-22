@@ -6,9 +6,10 @@ func _enter() -> void:
 		finished.emit("Aim")
 	print(name)
 	if owner.HP <= owner.MaxHP/2 :
-			owner.anim.get("parameters/playback").travel("Idle") #HUrt anim
+			owner.anim.get(owner.anim_playback).travel("Idle") #HUrt anim
 	else:	
-			owner.anim.get("parameters/playback").travel("Idle")
+			owner.anim.get(owner.anim_playback).travel("Idle")
+	gun_anim()		
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):
@@ -61,3 +62,9 @@ func switch_gun(num:float):
 	owner.curr_gun_index = num
 	owner.curr_gun = owner.Gun[owner.curr_gun_index]
 	#one shot anim
+	
+func gun_anim():
+	if owner.curr_gun.name == "pistol":
+		owner.anim.get("parameters/Main/Idle/playback").travel("Pis")
+	elif owner.curr_gun.name == "shot":
+		owner.anim.get("parameters/Main/Idle/playback").travel("Shot")

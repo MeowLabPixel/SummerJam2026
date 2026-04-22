@@ -2,8 +2,8 @@ extends State
 
 func _enter() -> void:
 	print(name)
-	if owner.anim.get("parameters/playback").get_current_node() != "Idle":
-		owner.anim.get("parameters/playback").travel("Idle")
+	if owner.anim.get(owner.anim_playback).get_current_node() != "Idle":
+		owner.anim.get(owner.anim_playback).travel("Idle")
 	quick_turn()
 	owner.aim_bone.stop()
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
@@ -20,8 +20,12 @@ func quick_turn():
 	tween.finished.connect(func(): owner.camera.camera_rotation.x += PI; owner.is_quick_turn = false; finished.emit("Idle"))
 	
 func _state_input(event: InputEvent) -> void:
-	if Input.is_action_pressed("gun swap") :
-		owner.change_gun()
+	if Input.is_action_pressed("Gun1"):
+		switch_gun(0)
+	if Input.is_action_pressed("Gun2"):
+		switch_gun(1)
+	if Input.is_action_pressed("Gun3"):
+		switch_gun(2)
 
 func hitfront(body: Node3D):
 	if body.is_in_group("attack"):
@@ -33,3 +37,8 @@ func hitback(body: Node3D):
 		owner.Hit_info.bullet = body
 		owner.Hit_info.location = "back"
 		finished.emit("Get_hit")
+
+func switch_gun(num:float):
+	owner.curr_gun_index = num
+	owner.curr_gun = owner.Gun[owner.curr_gun_index]
+	#one shot anim

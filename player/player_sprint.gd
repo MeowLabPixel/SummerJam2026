@@ -3,9 +3,9 @@ extends Motion
 func _enter() -> void:
 	print(name)
 	if owner.HP <= owner.MaxHP/2 :
-		owner.anim.get("parameters/playback").travel("Run")
+		owner.anim.get(owner.anim_playback).travel("Run")
 	else:
-		owner.anim.get("parameters/playback").travel("Run")
+		owner.anim.get(owner.anim_playback).travel("Run")
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):

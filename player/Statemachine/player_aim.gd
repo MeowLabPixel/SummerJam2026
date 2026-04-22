@@ -3,8 +3,8 @@ extends State
 func _enter() -> void:
 	print(name)
 	owner.is_aimming = true
-	if owner.anim.get("parameters/playback").get_current_node() != "Idle":
-		owner.anim.get("parameters/playback").travel("Idle")
+	if owner.anim.get(owner.anim_playback).get_current_node() != "Idle":
+		owner.anim.get(owner.anim_playback).travel("Idle")
 	owner.cross_hair.visible = true
 	owner.aim_bone.start()
 	if not owner.hitboxF.body_entered.is_connected(hitfront):

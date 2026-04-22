@@ -6,7 +6,7 @@ var start_anim_name = "HIT head act 3-take down"
 func _enter() -> void:
 	print(name)
 	owner.aim_bone.stop()
-	owner.anim.get("parameters/playback").travel("Knockdown")
+	owner.anim.get(owner.anim_playback).travel("Knockdown")
 	if not owner.anim.animation_finished.is_connected(anim_done):
 		owner.anim.animation_finished.connect(anim_done)
 	owner.hitboxF.monitoring = false

@@ -4,9 +4,11 @@ func _enter() -> void:
 	print(name)
 	owner.aim_bone.start()
 	if owner.HP <= owner.MaxHP/2 :
-		owner.anim.get("parameters/playback").travel("Run")
+		owner.anim.get(owner.anim_playback).travel("Run")
 	else:
-		owner.anim.get("parameters/playback").travel("Run")
+		if owner.anim.get(owner.anim_playback).get_current_node() != "Run":
+			owner.anim.get(owner.anim_playback).travel("Run")	
+	gun_anim()
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):
@@ -15,7 +17,12 @@ func _enter() -> void:
 func _update(_delta:float) -> void:
 	set_direction()
 	calculate_velocity(SPEED,direction,_delta)
-	
+	#print(owner.anim.get("parameters/Main/Run/playback").get_current_node())
+	owner.anim.set("parameters/Main/Run/Pis/BlendSpace2D/blend_position",input_dir)
+	owner.anim.set("parameters/Main/Run/Shot/BlendSpace2D/blend_position",input_dir)
+	#owner.anim.get("parameters/Main/Run/Pis/BlendSpace2D/blend_position").set(direction)
+	if owner.anim.get("parameters/Main/Run/playback").get_current_node() == "Start":
+		gun_anim()
 	if direction == Vector3.ZERO:
 		finished.emit("Idle")
 		
@@ -50,3 +57,13 @@ func switch_gun(num:float):
 	owner.curr_gun_index = num
 	owner.curr_gun = owner.Gun[owner.curr_gun_index]
 	#one shot anim
+
+func gun_anim():
+	if owner.curr_gun.name == "pistol":
+		print("A")
+		if owner.anim.get("parameters/Main/Run/playback").get_current_node() != "Pis":
+			owner.anim.get("parameters/Main/Run/playback").travel("Pis")	
+	elif owner.curr_gun.name == "shot":
+		print("B")
+		if owner.anim.get("parameters/Main/Run/playback").get_current_node() != "Shot":
+			owner.anim.get("parameters/Main/Run/playback").travel("Shot")

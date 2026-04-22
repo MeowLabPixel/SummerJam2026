@@ -23,15 +23,15 @@ func reloading():
 	if next_ammo > owner.curr_gun.Max_ammo:
 		#play super pump
 		#super shot here
-		owner.anim.get("parameters/playback").travel("Reload")
-		owner.anim.get("parameters/playback").start("Reload")
+		owner.anim.get(owner.anim_playback).travel("Reload")
+		owner.anim.get(owner.anim_playback).start("Reload")
 		if not owner.anim.animation_finished.is_connected(anim_done):
 			owner.anim.animation_finished.connect(anim_done)
 	else:
 		owner.curr_gun.ammo +=1
 		#reload anim
-		owner.anim.get("parameters/playback").travel("Reload")
-		owner.anim.get("parameters/playback").start("Reload")
+		owner.anim.get(owner.anim_playback).travel("Reload")
+		owner.anim.get(owner.anim_playback).start("Reload")
 		if not owner.anim.animation_finished.is_connected(anim_done):
 			owner.anim.animation_finished.connect(anim_done)
 		if not owner.reload_timer.timeout.is_connected(reload_timeout):
@@ -42,7 +42,7 @@ func reloading():
 func anim_done(namee:String):
 	print(namee)
 	if namee == reload_anim:
-		owner.anim.get("parameters/playback").travel("Idle")
+		owner.anim.get(owner.anim_playback).travel("Idle")
 		owner.reload_timer.start()
 	
 func reload_timeout():

@@ -12,6 +12,7 @@ class_name Player extends CharacterBody3D
 #@export var anim_player:AnimationPlayer
 @export var default_blend_time:= 0.5
 @export var anim: AnimationTree
+var anim_playback = "parameters/Main/playback"
 
 @export_group("Data setting")
 @export var MaxHP = 100
@@ -48,13 +49,13 @@ var is_near_stunt:bool = false
 
 #gun
 var GunA = {
-	"name": "Gun A",
+	"name": "pistol",
 	"Max_ammo": 10,
 	"ammo": 10,
 	"Super": false
 }
 var GunB = {
-	"name": "Gun B",
+	"name": "shotgun",
 	"Max_ammo": 3,
 	"ammo": 3,
 	"Super": false
