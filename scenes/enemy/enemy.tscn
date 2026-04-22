@@ -56,4 +56,4 @@ script = ExtResource("10_8ed2q")
 [node name="StateDefeated" type="Node" parent="EnemyStateMachine" unique_id=1877558210]
 script = ExtResource("11_wk82e")
 
-[node name="All zombie fix" parent="." unique_id=867409154 instance=ExtResource("12_2f3il")]
+[node name="ZombieModel" parent="." unique_id=867409154 instance=ExtResource("12_2f3il")]

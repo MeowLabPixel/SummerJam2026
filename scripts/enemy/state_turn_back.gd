@@ -17,6 +17,8 @@ func enter() -> void:
 	print("[StateTurnBack] Turning 180°.")
 	# Compute target basis: rotate enemy 180° around Y from current facing.
 	_target_basis = enemy.global_transform.basis.rotated(Vector3.UP, PI)
+	# No dedicated turn anim — play idle during the pivot so it doesn't freeze.
+	_play_anim(ZombieAnims.IDLE)
 
 func exit() -> void:
 	pass

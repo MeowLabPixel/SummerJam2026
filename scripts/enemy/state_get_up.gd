@@ -13,7 +13,10 @@ var _timer: float = 0.0
 func enter() -> void:
 	_timer = 0.0
 	print("[StateGetUp] Enemy getting up.")
-	_play_anim(ZombieAnims.HIT_HEAD_ACT4_TAKEDOWN_IDLE)
+	_play_anim(ZombieAnims.HIT_HEAD_ACT5_GET_UP)
+	# Sync duration to actual anim length.
+	if enemy and enemy.anim_player and enemy.anim_player.has_animation(ZombieAnims.HIT_HEAD_ACT5_GET_UP):
+		getup_duration = enemy.anim_player.get_animation(ZombieAnims.HIT_HEAD_ACT5_GET_UP).length
 
 func exit() -> void:
 	pass

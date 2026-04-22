@@ -15,7 +15,8 @@ func enter() -> void:
 	player_is_aiming = false
 	_was_aiming = false
 	print("[StateDefeated] Enemy defeated!")
-	_play_anim(ZombieAnims.IDLE)  # Placeholder — swap for a real defeated-collapse anim when available.
+	# TODO: swap for a dedicated defeated-collapse anim when available.
+	_play_anim(ZombieAnims.IDLE)
 
 func exit() -> void:
 	pass  # Defeated is a terminal state — should never exit normally.
@@ -23,10 +24,12 @@ func exit() -> void:
 func physics_update(_delta: float) -> void:
 	if player_is_aiming and not _was_aiming:
 		_was_aiming = true
-		print("[StateDefeated]")
+		print("[StateDefeated] Enemy waves — no more Songkran!")
+		# No dedicated wave anim yet — use WALK_3 as a stand-in gesture.
+		_play_anim(ZombieAnims.WALK_3)
 	elif not player_is_aiming and _was_aiming:
 		_was_aiming = false
-		# TODO: return to defeated idle animation.
+		_play_anim(ZombieAnims.IDLE)
 
 ## Defeated enemies cannot be hit further.
 func handle_hit(_hit_data: Dictionary) -> String:
