@@ -68,11 +68,11 @@ func hitback(body: Node3D):
 
 func switch_gun(num:float):
 	if owner.gun_controller:
-			owner.gun_controller.switch_gun(num)
-			owner.curr_gun_index = num
-		else:
-			owner.curr_gun_index = num
-			owner.curr_gun = owner.Gun[owner.curr_gun_index]
+		owner.gun_controller.switch_gun(num)
+		owner.curr_gun_index = num
+	else:
+		owner.curr_gun_index = num
+		owner.curr_gun = owner.Gun[owner.curr_gun_index]
 			
 	print("swap to Gun "+ str(num))
 	if num!= owner.curr_gun_index:

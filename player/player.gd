@@ -85,7 +85,7 @@ var near_enemy_list = []
 @onready var reload_timer: Timer = $Reload_timer
 
 const BULLET = preload("uid://csdtdj7sci5vk")
-@onready var bullet_lo: Node3D = $"Re4Lom Base Rig/rig/Skeleton3D/Gun/MeshInstance3D/Node3D2"
+@onready var bullet_lo: Node3D = $"Re4Lom Base Rig/rig/Skeleton3D/Gun/MeshInstance3D/Node3D"
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5

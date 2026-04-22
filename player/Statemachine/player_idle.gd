@@ -68,7 +68,7 @@ func switch_gun(num:int):
 		print("swap to Gun "+ str(num))
 	if num!= owner.curr_gun_index:
 		owner.curr_gun_index = num
-			owner.curr_gun = owner.Gun[owner.curr_gun_index]
+		owner.curr_gun = owner.Gun[owner.curr_gun_index]
 		set_gun_anim()
 		#one shot anim
 	
