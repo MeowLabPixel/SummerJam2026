@@ -48,6 +48,9 @@ func _process(delta):
 			
 	update_accuracy()
 
+func get_gun_name() -> String:
+	return gun_name
+
 func on_super_end():
 	air = max_air # Default behavior
 

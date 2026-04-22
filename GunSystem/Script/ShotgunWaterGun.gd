@@ -3,6 +3,9 @@ class_name ShotgunWaterGun
 
 @export var pellet_count: int = 5
 
+func _ready():
+	gun_name = "Water shotgun"
+
 func fire_projectiles():
 	if is_super_active:
 		# Super Shot

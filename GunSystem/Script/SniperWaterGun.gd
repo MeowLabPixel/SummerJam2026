@@ -1,6 +1,9 @@
 extends Gun
 class_name SniperWaterGun
 
+func _ready():
+	gun_name = "Water sniper"
+
 func fire_projectiles():
 	if is_super_active:
 		fire_sniper_super_shot()
