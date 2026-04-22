@@ -46,19 +46,19 @@ func hitback(body: Node3D):
 		owner.Hit_info.location = "back"
 		finished.emit("Get_hit")
 
-func switch_gun(num:float):
-	owner.curr_gun_index = num
-	owner.curr_gun = owner.Gun[owner.curr_gun_index]
-	set_gun_anim()
-	#one shot anim
+func switch_gun(num:int):
+	if owner.gun_controller:
+		owner.gun_controller.switch_gun(num)
+		set_gun_anim()
+		#one shot anim
 
 func set_gun_anim():
-	if owner.Gun[owner.curr_gun_index].name == "pistol":
+	if owner.gun_controller.current_gun.get_gun_name() == "Water pistol":
 		owner.anim.set(anim_node + "conditions/pis",true)
 		owner.anim.set(anim_node + "conditions/shot",false)
 		if owner.anim.get(anim_node + "playback").get_current_node() != "Pis":
 			owner.anim.get(anim_node + "playback").travel("Pis")
-	elif owner.Gun[owner.curr_gun_index].name == "shotgun":
+	elif owner.gun_controller.current_gun.get_gun_name() == "Water shotgun" or owner.gun_controller.current_gun.get_gun_name() == "Water sniper":
 		owner.anim.set(anim_node + "conditions/pis",false)
 		owner.anim.set(anim_node + "conditions/shot",true)
 		if owner.anim.get(anim_node + "playback").get_current_node() != "Shot":

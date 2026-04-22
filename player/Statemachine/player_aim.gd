@@ -4,7 +4,7 @@ func _enter() -> void:
 	print(name)
 	stop_moving()
 	owner.is_aimming = true
-	set_gun_anim()
+	#set_gun_anim()
 	if owner.anim.get(owner.anim_playback).get_current_node() != "Aim":
 		owner.anim.get(owner.anim_playback).travel("Aim")
 	owner.cross_hair.visible = true
@@ -50,34 +50,26 @@ func _state_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("click"):
 		if owner.gun_controller and owner.gun_controller.current_gun:
 			owner.gun_controller.current_gun.shoot()
-		elif owner.curr_gun.ammo != 0:
-			# Fallback to old system
-			print("pew")
-			var instance = owner.BULLET.instantiate()
-			var lo = owner.bullet_lo.global_position
-			instance.position = lo
-			instance.transform.basis = owner.bullet_lo.transform.basis
-			instance.add_to_group("bullet")
-			get_parent().add_child(instance)
-			owner.curr_gun.ammo-=1
+			owner.anim.set("parameters/Main/Aim/BlendTree/OneShot/request",AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
-func switch_gun(num:float):
-	if num!= owner.curr_gun_index:
-		owner.curr_gun_index = num
-		owner.curr_gun = owner.Gun[owner.curr_gun_index]
+
+func switch_gun(num:int):
+	if owner.gun_controller:
+		owner.gun_controller.switch_gun(num)
+		#set_gun_anim()
 		#one shot anim
 		
-func set_gun_anim():
-	if owner.Gun[owner.curr_gun_index].name == "pistol":
-		owner.anim.set(anim_node + "conditions/pis",true)
-		owner.anim.set(anim_node + "conditions/shot",false)
-		if owner.anim.get(anim_node + "playback").get_current_node() != "Pis":
-			owner.anim.get(anim_node + "playback").travel("Pis")
-	elif owner.Gun[owner.curr_gun_index].name == "shotgun":
-		owner.anim.set(anim_node + "conditions/pis",false)
-		owner.anim.set(anim_node + "conditions/shot",true)
-		if owner.anim.get(anim_node + "playback").get_current_node() != "Shot":
-			owner.anim.get(anim_node + "playback").travel("Shot")
+#func set_gun_anim():
+	#if owner.gun_controller.current_gun.get_gun_name() == "Water pistol":
+		#owner.anim.set(anim_node + "conditions/pis",true)
+		#owner.anim.set(anim_node + "conditions/shot",false)
+		#if owner.anim.get(anim_node + "playback").get_current_node() != "Pis":
+			#owner.anim.get(anim_node + "playback").travel("Pis")
+	#elif owner.gun_controller.current_gun.get_gun_name() == "Water shotgun" or owner.gun_controller.current_gun.get_gun_name() == "Water sniper":
+		#owner.anim.set(anim_node + "conditions/pis",false)
+		#owner.anim.set(anim_node + "conditions/shot",true)
+		#if owner.anim.get(anim_node + "playback").get_current_node() != "Shot":
+			#owner.anim.get(anim_node + "playback").travel("Shot")
 
 func stop_moving():
 	var dire = Vector3.ZERO

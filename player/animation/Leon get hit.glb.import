@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cgfqvsinwtiyl"
-path="res://.godot/imported/Grab Leon fail.glb-2de3a4cc2e8830d30e235aa8d69a99e9.scn"
+uid="uid://nfs1ovp24q65"
+path="res://.godot/imported/Leon get hit.glb-fa117a5ec1c7c430d44cd34ba3dab58f.scn"
 
 [deps]
 
-source_file="res://player/animation/Grab Leon fail.glb"
-dest_files=["res://.godot/imported/Grab Leon fail.glb-2de3a4cc2e8830d30e235aa8d69a99e9.scn"]
+source_file="res://player/animation/Leon get hit.glb"
+dest_files=["res://.godot/imported/Leon get hit.glb-fa117a5ec1c7c430d44cd34ba3dab58f.scn"]
 
 [params]
 
@@ -39,11 +39,11 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "animations": {
-"LEON GRAB Fail": {
+"Leon hit": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://player/animation/LEON GRAB Fail.res",
+"save_to_file/fallback_path": "res://player/animation/Leon hit.res",
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "uid://d1nesf735tjg8",
+"save_to_file/path": "uid://cpcq5yam2grcg",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,

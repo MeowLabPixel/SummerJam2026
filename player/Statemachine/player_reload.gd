@@ -1,6 +1,6 @@
 extends State
 
-var reload_anim = "HIT  Right Arm"
+var reload_anim = "RR/re"
 
 func _enter() -> void:
 	print(name)
@@ -18,32 +18,21 @@ func _state_input(event: InputEvent) -> void:
 		reloading()
 		
 func reloading():
-	if owner.gun_controller and owner.gun_controller.current_gun:
-		owner.gun_controller.current_gun.pump_air()
-		owner.anim.get(owner.anim_playback).travel("Reload")
-		owner.anim.get(owner.anim_playback).start("Reload")
+	if owner.gun_controller:
+		if not owner.gun_controller.current_gun.is_super_ready:
+			owner.gun_controller.current_gun.pump_air()
+			owner.anim.get(owner.anim_playback).travel("Reload")
+			owner.anim.get(owner.anim_playback).start("Reload")
+			if owner.gun_controller.current_gun.is_super_ready:
+				owner.anim.set("parameters/Main/Reload/BlendTree/TimeScale/scale",0.5)
 
-		if not owner.anim.animation_finished.is_connected(anim_done):
-			owner.anim.animation_finished.connect(anim_done)
-		
-		# Restart timer if they pump again
-		owner.reload_timer.start()
-		if not owner.reload_timer.timeout.is_connected(reload_timeout):
-			owner.reload_timer.timeout.connect(reload_timeout)
-	else:
-		# Fallback to old system
-		var next_ammo = owner.curr_gun.ammo + 1
-		owner.curr_gun.ammo = min(next_ammo, owner.curr_gun.Max_ammo)
-		
-		owner.anim.get("parameters/playback").travel("Reload")
-		owner.curr_gun.ammo +=1
-		#reload anim
-		owner.anim.get(owner.anim_playback).travel("Reload")
-		owner.anim.get(owner.anim_playback).start("Reload")
-		if not owner.anim.animation_finished.is_connected(anim_done):
-			owner.anim.animation_finished.connect(anim_done)
-		if not owner.reload_timer.timeout.is_connected(reload_timeout):
-			owner.reload_timer.timeout.connect(reload_timeout)	
+			if not owner.anim.animation_finished.is_connected(anim_done):
+				owner.anim.animation_finished.connect(anim_done)
+			
+			# Restart timer if they pump again
+			owner.reload_timer.start()
+			if not owner.reload_timer.timeout.is_connected(reload_timeout):
+				owner.reload_timer.timeout.connect(reload_timeout)	
 
 	
 	
@@ -52,6 +41,7 @@ func anim_done(namee:String):
 	if namee == reload_anim:
 		owner.anim.get(owner.anim_playback).travel("Idle")
 		owner.reload_timer.start()
+		owner.anim.set("parameters/Main/Reload/BlendTree/TimeScale/scale",1)
 	
 func reload_timeout():
 	finished.emit("Idle")

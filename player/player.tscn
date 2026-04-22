@@ -12,7 +12,7 @@
 [ext_resource type="Animation" uid="uid://bmgcq32l8bytq" path="res://player/animation/gun shot/shotgun_idle.res" id="4_s7qer"]
 [ext_resource type="Texture2D" uid="uid://clnvrh31jwlfm" path="res://player/Re4Lom Base Rig_Base_Cloth_Body.png" id="5_b8hi5"]
 [ext_resource type="PackedScene" uid="uid://bfy7etesnxt5w" path="res://GunSystem/Scene/WaterGun/Gun.tscn" id="5_e7oew"]
-[ext_resource type="Animation" uid="uid://cr30jmey3vdhy" path="res://player/animation/gun-pis/aim/Base.res" id="5_g4c7l"]
+[ext_resource type="Animation" uid="uid://bmsvi842pndtm" path="res://player/animation/gun-pis/aim/Base.res" id="5_g4c7l"]
 [ext_resource type="Script" uid="uid://bkree4hn7lmpd" path="res://player/Statemachine/player_state_machine.gd" id="5_qjkh3"]
 [ext_resource type="Animation" uid="uid://hnj0wtwu4hx5" path="res://player/animation/QT/Base.res" id="5_s7qer"]
 [ext_resource type="Texture2D" uid="uid://be13604uyycgm" path="res://player/Re4Lom Base Rig_Base_Pant.png" id="6_2uvqg"]
@@ -30,8 +30,13 @@
 [ext_resource type="Script" uid="uid://88nqcyhvt3qh" path="res://player/Statemachine/player_grab.gd" id="10_32hag"]
 [ext_resource type="Script" uid="uid://cpdbw6oifs8m2" path="res://player/Statemachine/player_knockdown.gd" id="11_tqiix"]
 [ext_resource type="Script" uid="uid://bhn03nq0rsppn" path="res://player/Statemachine/player_die.gd" id="12_e7oew"]
+[ext_resource type="Animation" uid="uid://bn6ivlrce2lo3" path="res://player/animation/walk/LEON GRAB Fail.res" id="12_pnw6m"]
+[ext_resource type="Animation" uid="uid://mdx0kojgga3t" path="res://player/animation/LEON GRAB Sucess.res" id="13_1so5t"]
 [ext_resource type="Script" uid="uid://dg7m7j6ceo13t" path="res://player/player_get_hit.gd" id="15_wodsf"]
 [ext_resource type="Script" uid="uid://duyd0oy3clg7i" path="res://player/player_takedown.gd" id="16_32hag"]
+[ext_resource type="Animation" uid="uid://cij2uwvfs73sx" path="res://player/animation/Leon hit.res" id="16_55jnj"]
+[ext_resource type="Animation" uid="uid://drl5gxvemmbi8" path="res://player/animation/reload/re.res" id="18_dx5ib"]
+[ext_resource type="Animation" uid="uid://bxocvk7r0qax5" path="res://player/animation/TD/Take down anim.res" id="19_a2xo5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32hag"]
 size = Vector3(1, 1.7070923, 0.24279785)
@@ -1529,7 +1534,36 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bthmv")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_pnw6m"]
+radius = 0.27165684
+
+[sub_resource type="Animation" id="Animation_pnw6m"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rig/Skeleton3D:ORG-shoulder.L")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.16849858, 0.05579039, 0.0031467846)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rig/Skeleton3D:ORG-shoulder.R")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1so5t"]
+_data = {
+&"RESET": SubResource("Animation_pnw6m")
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rptt4"]
+_data = {
+&"LEON GRAB Fail": ExtResource("12_pnw6m"),
+&"LEON GRAB Sucess": ExtResource("13_1so5t")
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7pn3"]
 _data = {
@@ -1537,16 +1571,47 @@ _data = {
 &"shotgun_idle": ExtResource("4_s7qer")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8hi5"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_art4l"]
+_data = {
+&"Leon hit": ExtResource("16_55jnj")
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bjvpn"]
 _data = {
 &"Base": ExtResource("5_s7qer")
 }
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjxoa"]
+_data = {
+&"re": ExtResource("18_dx5ib")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gswnw"]
+_data = {
+&"Take down anim": ExtResource("19_a2xo5")
+}
+
+[sub_resource type="Animation" id="Animation_55jnj"]
+length = 0.25
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rig/Skeleton3D:ORG-shoulder.R")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.055462606, -0.58840823, -0.80656064, 0.012639463, 0.13333334, 1, 0.035521, -0.660493, -0.749954, -0.007572, 0.23333333, 1, 0.055462576, -0.58840823, -0.8065606, 0.01263949)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rig/Skeleton3D:ORG-shoulder.L")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.07336422, 0.55897343, 0.8258879, 0.008687138, 0.13334335, 1, 0.053084, 0.638293, 0.767847, -0.013228, 0.23333333, 1, 0.07336422, 0.55897343, 0.8258879, 0.008687138)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2uvqg"]
 _data = {
-&"pis_aim": ExtResource("5_g4c7l")
+&"pis_aim": ExtResource("5_g4c7l"),
+&"shot": SubResource("Animation_55jnj")
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1s1yo"]
@@ -1687,32 +1752,36 @@ states/Front/position = Vector2(369.2, 49.6)
 transitions = ["Start", "Front", SubResource("AnimationNodeStateMachineTransition_n0b8q"), "Start", "Back", SubResource("AnimationNodeStateMachineTransition_jfgyi"), "Front", "End", SubResource("AnimationNodeStateMachineTransition_237xx"), "Back", "End", SubResource("AnimationNodeStateMachineTransition_wpyo2")]
 graph_offset = Vector2(-134.91035, 0)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jd2rm"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dx5ib"]
+animation = &"gun_aim/shot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a2xo5"]
 animation = &"gun_aim/pis_aim"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b8hi5"]
-animation = &"gun_aim/pis_aim"
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_art4l"]
+filter_enabled = true
+filters = ["rig/Skeleton3D:ORG-shoulder.L", "rig/Skeleton3D:ORG-shoulder.R"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q28gw"]
-xfade_time = 0.2
-advance_mode = 2
-advance_condition = &"pis"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ge24q"]
-xfade_time = 0.2
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fjxoa"]
+graph_offset = Vector2(90.13115, 71.083595)
+nodes/output/position = Vector2(768, 80)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_art4l")
+nodes/OneShot/position = Vector2(544, 48)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_a2xo5")
+nodes/Animation/position = Vector2(320, -48)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_dx5ib")
+"nodes/Animation 2/position" = Vector2(144, 144)
+node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"Animation", &"OneShot", 1, &"Animation 2"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fmu53"]
 advance_mode = 2
-advance_condition = &"shot"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w7j2h"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vgvch"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pnw6m"]
-states/Pis/node = SubResource("AnimationNodeAnimation_jd2rm")
-states/Pis/position = Vector2(430, 68)
-states/Shot/node = SubResource("AnimationNodeAnimation_b8hi5")
-states/Shot/position = Vector2(429.2, 141.6)
-transitions = ["Start", "Pis", SubResource("AnimationNodeStateMachineTransition_q28gw"), "Pis", "End", SubResource("AnimationNodeStateMachineTransition_ge24q"), "Start", "Shot", SubResource("AnimationNodeStateMachineTransition_fmu53"), "Shot", "End", SubResource("AnimationNodeStateMachineTransition_w7j2h")]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_fjxoa")
+states/BlendTree/position = Vector2(472.4, 108.8)
+transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_fmu53"), "BlendTree", "End", SubResource("AnimationNodeStateMachineTransition_vgvch")]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1so5t"]
 animation = &"Gun_idle/pis_idle"
@@ -1729,11 +1798,8 @@ advance_mode = 2
 advance_condition = &"shot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_art4l"]
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjxoa"]
-switch_mode = 2
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b8hi5"]
 xfade_time = 0.2
@@ -1828,7 +1894,31 @@ states/Shot/node = SubResource("AnimationNodeBlendTree_2uvqg")
 states/Shot/position = Vector2(425.2, 153.6)
 transitions = ["Start", "Pis", SubResource("AnimationNodeStateMachineTransition_1s1yo"), "Start", "Shot", SubResource("AnimationNodeStateMachineTransition_5ejfk"), "Pis", "End", SubResource("AnimationNodeStateMachineTransition_jd2rm"), "Shot", "End", SubResource("AnimationNodeStateMachineTransition_pnw6m"), "Pis", "Shot", SubResource("AnimationNodeStateMachineTransition_mmwog"), "Shot", "Pis", SubResource("AnimationNodeStateMachineTransition_8pxes")]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pnw6m"]
+animation = &"RR/re"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_1so5t"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_55jnj"]
+nodes/output/position = Vector2(672, 80)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_pnw6m")
+nodes/Animation/position = Vector2(235.2, 150)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_1so5t")
+nodes/TimeScale/position = Vector2(448, 48)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w7j2h"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7crtr"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vgvch"]
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_55jnj")
+states/BlendTree/position = Vector2(529.2, 117.399994)
+transitions = ["Start", "BlendTree", SubResource("AnimationNodeStateMachineTransition_w7j2h"), "BlendTree", "End", SubResource("AnimationNodeStateMachineTransition_7crtr")]
+graph_offset = Vector2(108, -17)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xcnuv"]
 animation = &"Gun_idle/pis_idle"
@@ -1938,7 +2028,21 @@ states/Shot/position = Vector2(325.2, 190.4)
 states/Start/position = Vector2(96, 117.6)
 transitions = ["Start", "Pis", SubResource("AnimationNodeStateMachineTransition_3dxkp"), "Start", "Shot", SubResource("AnimationNodeStateMachineTransition_6wior"), "Pis", "End", SubResource("AnimationNodeStateMachineTransition_p5tca"), "Shot", "End", SubResource("AnimationNodeStateMachineTransition_jbx34"), "Pis", "Shot", SubResource("AnimationNodeStateMachineTransition_1so5t"), "Shot", "Pis", SubResource("AnimationNodeStateMachineTransition_hjies")]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a1u5o"]
+animation = &"TD/Take down anim"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jdjat"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j420s"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a1u5o"]
+"states/TD_Take down anim/node" = SubResource("AnimationNodeAnimation_a1u5o")
+"states/TD_Take down anim/position" = Vector2(513, 94)
+transitions = ["Start", "TD_Take down anim", SubResource("AnimationNodeStateMachineTransition_jdjat"), "TD_Take down anim", "End", SubResource("AnimationNodeStateMachineTransition_j420s")]
+graph_offset = Vector2(99, -34)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_35wys"]
 advance_mode = 2
@@ -1974,6 +2078,15 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_utr5e"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kewli"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kcq4v"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qavcc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bd26m"]
 switch_mode = 2
 advance_mode = 2
 
@@ -1989,9 +2102,9 @@ states/Reload/position = Vector2(560.8, 25.679998)
 states/Run/node = SubResource("AnimationNodeStateMachine_s3g0c")
 states/Run/position = Vector2(375.28003, 248.8)
 states/Takedown/node = SubResource("AnimationNodeStateMachine_a1u5o")
-states/Takedown/position = Vector2(630.4, 126.32001)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_35wys"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_pjwc4"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_or4qq"), "Idle", "Aim", SubResource("AnimationNodeStateMachineTransition_hggc2"), "Aim", "Idle", SubResource("AnimationNodeStateMachineTransition_b2j0d"), "QT", "Idle", SubResource("AnimationNodeStateMachineTransition_55jnj"), "Aim", "QT", SubResource("AnimationNodeStateMachineTransition_gswnw"), "Idle", "QT", SubResource("AnimationNodeStateMachineTransition_xcnuv"), "Run", "QT", SubResource("AnimationNodeStateMachineTransition_j55il"), "Aim", "Reload", SubResource("AnimationNodeStateMachineTransition_s3g0c"), "Run", "Reload", SubResource("AnimationNodeStateMachineTransition_7l6ig"), "Idle", "Reload", SubResource("AnimationNodeStateMachineTransition_utr5e"), "Reload", "Idle", SubResource("AnimationNodeStateMachineTransition_kewli")]
-graph_offset = Vector2(-134, -31)
+states/Takedown/position = Vector2(675.2, 130.064)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_35wys"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_pjwc4"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_or4qq"), "Idle", "Aim", SubResource("AnimationNodeStateMachineTransition_hggc2"), "Aim", "Idle", SubResource("AnimationNodeStateMachineTransition_b2j0d"), "QT", "Idle", SubResource("AnimationNodeStateMachineTransition_55jnj"), "Aim", "QT", SubResource("AnimationNodeStateMachineTransition_gswnw"), "Idle", "QT", SubResource("AnimationNodeStateMachineTransition_xcnuv"), "Run", "QT", SubResource("AnimationNodeStateMachineTransition_j55il"), "Aim", "Reload", SubResource("AnimationNodeStateMachineTransition_s3g0c"), "Run", "Reload", SubResource("AnimationNodeStateMachineTransition_7l6ig"), "Idle", "Reload", SubResource("AnimationNodeStateMachineTransition_utr5e"), "Reload", "Idle", SubResource("AnimationNodeStateMachineTransition_kewli"), "Idle", "Takedown", SubResource("AnimationNodeStateMachineTransition_kcq4v"), "Run", "Takedown", SubResource("AnimationNodeStateMachineTransition_qavcc"), "Takedown", "Idle", SubResource("AnimationNodeStateMachineTransition_bd26m")]
+graph_offset = Vector2(-35, 7)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j3r50"]
 advance_mode = 2
@@ -2020,9 +2133,9 @@ states/Hit/position = Vector2(332.6, -3.0740929)
 states/Main/node = SubResource("AnimationNodeStateMachine_7l6ig")
 states/Main/position = Vector2(332.59998, 94.52592)
 transitions = ["Start", "Main", SubResource("AnimationNodeStateMachineTransition_j3r50"), "Main", "Hit", SubResource("AnimationNodeStateMachineTransition_do7qw"), "Hit", "Main", SubResource("AnimationNodeStateMachineTransition_2h6tc"), "Main", "Die", SubResource("AnimationNodeStateMachineTransition_8rogd"), "Grab", "Main", SubResource("AnimationNodeStateMachineTransition_48p26"), "Main", "Grab", SubResource("AnimationNodeStateMachineTransition_anp34")]
-graph_offset = Vector2(33, -12.474091)
+graph_offset = Vector2(22, -9.474091)
 
-[node name="player" type="CharacterBody3D" unique_id=324464419 node_paths=PackedStringArray("aim_bone", "aim_bone2", "anim", "hitboxF", "hitboxB", "stun_detect", "pickup_detect", "gun_controller")]
+[node name="player" type="CharacterBody3D" unique_id=324464419 node_paths=PackedStringArray("aim_bone", "aim_bone2", "anim", "hitboxF", "hitboxB", "stun_detect", "pickup_detect", "TD_hand", "gun_controller")]
 collision_layer = 2
 script = ExtResource("1_4eg07")
 aim_bone = NodePath("Re4Lom Base Rig/rig/Skeleton3D/LookAtModifier3D")
@@ -2032,6 +2145,7 @@ hitboxF = NodePath("Re4Lom Base Rig/rig/Skeleton3D/spine02/Hitbox_F2")
 hitboxB = NodePath("Re4Lom Base Rig/rig/Skeleton3D/spine02/Hitbox_B2")
 stun_detect = NodePath("Re4Lom Base Rig/rig/Skeleton3D/spine02/Stunned detect2")
 pickup_detect = NodePath("Re4Lom Base Rig/rig/Skeleton3D/spine02/Pickup2")
+TD_hand = NodePath("Re4Lom Base Rig/rig/Skeleton3D/takedown/Area3D")
 gun_controller = NodePath("Re4Lom Base Rig/rig/Skeleton3D/Gun/GunController")
 crosshair_texture = ExtResource("2_e7oew")
 min_scale = 0.02
@@ -2044,160 +2158,159 @@ shape = SubResource("BoxShape3D_32hag")
 [node name="Re4Lom Base Rig" parent="." unique_id=449863350 instance=ExtResource("2_uw77l")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="metarig" parent="Re4Lom Base Rig" index="0" unique_id=1822762823]
+[node name="metarig" parent="Re4Lom Base Rig" index="0" unique_id=1321575196]
 visible = false
 
-[node name="Skeleton3D" parent="Re4Lom Base Rig/metarig" index="0" unique_id=235444190]
+[node name="Skeleton3D" parent="Re4Lom Base Rig/metarig" index="0" unique_id=1946074539]
 visible = false
 
-[node name="Left_Foot2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="1" unique_id=1662327926]
+[node name="Skeleton3D" parent="Re4Lom Base Rig/rig" parent_id_path=PackedInt32Array(449863350, 87671751) index="0" unique_id=2113791123]
+bones/115/position = Vector3(0.16849858, 0.05579039, 0.0031467846)
+bones/145/rotation = Quaternion(0, 0, 0, -1)
+bones/145/scale = Vector3(0.99999994, 1, 1)
+
+[node name="Left_Foot2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="1" unique_id=1662327926]
 material_override = SubResource("StandardMaterial3D_2uvqg")
 mesh = SubResource("ArrayMesh_ommdp")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Left_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="2" unique_id=1631477450]
+[node name="Left_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="2" unique_id=1873930308]
 visible = false
 
-[node name="Left_Hand2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="3" unique_id=292257819]
+[node name="Left_Hand2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="3" unique_id=292257819]
 material_override = ExtResource("3_b8hi5")
 mesh = SubResource("ArrayMesh_6uv4j")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Left_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="4" unique_id=2000056194]
+[node name="Left_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="4" unique_id=270463046]
 visible = false
 
-[node name="Lower_Left_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="5" unique_id=1922193244]
+[node name="Lower_Left_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="5" unique_id=1922193244]
 material_override = ExtResource("3_b8hi5")
 mesh = SubResource("ArrayMesh_5crh5")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="6" unique_id=1445250425]
+[node name="Lower_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="6" unique_id=1973403323]
 visible = false
 
-[node name="Lower_Left_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="7" unique_id=2109481531]
+[node name="Lower_Left_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="7" unique_id=2109481531]
 material_override = ExtResource("3_b8hi5")
 mesh = SubResource("ArrayMesh_24k8y")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="8" unique_id=2092845823]
+[node name="Lower_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="8" unique_id=678171871]
 visible = false
 
-[node name="Lower_Right_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="9" unique_id=2138199178]
+[node name="Lower_Right_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="9" unique_id=2138199178]
 material_override = ExtResource("3_b8hi5")
 mesh = SubResource("ArrayMesh_ql24w")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="10" unique_id=1315930453]
+[node name="Lower_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="10" unique_id=673349960]
 visible = false
 
-[node name="Lower_Right_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="11" unique_id=1962797067]
+[node name="Lower_Right_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="11" unique_id=1962797067]
 material_override = ExtResource("3_b8hi5")
 mesh = SubResource("ArrayMesh_2uvpk")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="12" unique_id=1205143949]
+[node name="Lower_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="12" unique_id=428969569]
 visible = false
 
-[node name="Lower_Torso2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="13" unique_id=1043565669]
+[node name="Lower_Torso2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="13" unique_id=1043565669]
 material_override = ExtResource("3_b8hi5")
 mesh = SubResource("ArrayMesh_108eo")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="14" unique_id=327219423]
+[node name="Lower_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="14" unique_id=4846958]
 visible = false
 
-[node name="Lower_Torso_003" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="15" unique_id=1513886634]
+[node name="Lower_Torso_003" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="15" unique_id=1513886634]
 material_override = ExtResource("3_b8hi5")
 mesh = SubResource("ArrayMesh_y46lt")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Neck" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="16" unique_id=969455140]
-visible = false
-
-[node name="Lower_Torso_004" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="17" unique_id=644548460]
+[node name="Lower_Torso_004" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="17" unique_id=644548460]
 material_override = SubResource("StandardMaterial3D_5ejfk")
 mesh = SubResource("ArrayMesh_sb2o4")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Right_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="18" unique_id=1838072442]
+[node name="Neck" parent="Re4Lom Base Rig/rig/Skeleton3D" index="19" unique_id=1269428863]
 visible = false
 
-[node name="Right_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="19" unique_id=1554052284]
-visible = false
-
-[node name="Neck2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="20" unique_id=427565865]
+[node name="Neck2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="20" unique_id=427565865]
 material_override = SubResource("StandardMaterial3D_jd2rm")
 mesh = SubResource("ArrayMesh_a2hvb")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="21" unique_id=643662412]
+[node name="Right_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="21" unique_id=1404336031]
 visible = false
 
-[node name="Right_Foot2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="22" unique_id=1211675697]
+[node name="Right_Foot2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="22" unique_id=1211675697]
 material_override = SubResource("StandardMaterial3D_q28gw")
 mesh = SubResource("ArrayMesh_gugl7")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="23" unique_id=1270806968]
+[node name="Right_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="23" unique_id=1653735284]
 visible = false
 
-[node name="Right_Hand2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="24" unique_id=1236208469]
+[node name="Right_Hand2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="24" unique_id=1236208469]
 material_override = SubResource("StandardMaterial3D_ge24q")
 mesh = SubResource("ArrayMesh_ftvxt")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="25" unique_id=1921224634]
+[node name="Upper_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="25" unique_id=946960593]
 visible = false
 
-[node name="Upper_Left_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="26" unique_id=1192374377]
+[node name="Upper_Left_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="26" unique_id=1192374377]
 material_override = SubResource("StandardMaterial3D_pnw6m")
 mesh = SubResource("ArrayMesh_ws357")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="27" unique_id=1064730118]
+[node name="Upper_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="27" unique_id=955136206]
 visible = false
 
-[node name="Upper_Left_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="28" unique_id=129140695]
+[node name="Upper_Left_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="28" unique_id=129140695]
 material_override = SubResource("StandardMaterial3D_1so5t")
 mesh = SubResource("ArrayMesh_wc1rn")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="29" unique_id=1063686088]
+[node name="Upper_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="29" unique_id=981704904]
 visible = false
 
-[node name="Upper_Right_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="30" unique_id=1792517897]
+[node name="Upper_Right_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="30" unique_id=1792517897]
 material_override = SubResource("StandardMaterial3D_55jnj")
 mesh = SubResource("ArrayMesh_42wea")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Right_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="31" unique_id=573184817]
+[node name="Upper_Right_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="31" unique_id=573184817]
 material_override = SubResource("StandardMaterial3D_dx5ib")
 mesh = SubResource("ArrayMesh_oepej")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Torso2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="32" unique_id=1187250016]
+[node name="Upper_Torso2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="32" unique_id=1187250016]
 material_override = SubResource("StandardMaterial3D_a2xo5")
 mesh = SubResource("ArrayMesh_gf56v")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="spine02" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="33" unique_id=1439561867]
+[node name="spine02" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="33" unique_id=1439561867]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -0.99999994, 0, -2.1085544e-10, 0.98627657, -0.028864913)
 bone_name = "torso"
 bone_idx = 13
@@ -2230,17 +2343,17 @@ collision_mask = 1024
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 3.9304304e-08, -0.44958887, -0.10107422)
 shape = SubResource("CylinderShape3D_32hag")
 
-[node name="Head2" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="34" unique_id=1035016296]
-transform = Transform3D(1, -5.919162e-09, 2.4021622e-07, 6.518553e-08, 0.9688911, -0.24748728, -2.3127848e-07, 0.24748725, 0.9688908, -2.0555844e-09, 1.426215, -0.007207185)
-bone_name = "DEF-spine.005"
-bone_idx = 6
+[node name="Head2" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="34" unique_id=1035016296]
+transform = Transform3D(1, 1.7763568e-13, 0, -1.4210855e-14, 0.9999999, 5.662441e-07, -1.4210855e-13, -5.364418e-07, 0.99999964, -2.1084239e-10, 1.4609292, 0.01034321)
+bone_name = "DEF-spine.006"
+bone_idx = 7
 
-[node name="Hair_003" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D/Head2" unique_id=1682622077]
-transform = Transform3D(0.9938647, 6.3329956e-08, 0.110603735, -0.030143922, 0.9621447, 0.2708673, -0.10641674, -0.27253935, 0.95624167, 0.0022922866, 0.2214644, -0.06411904)
+[node name="Hair_003" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D/Head2" unique_id=59996165]
+transform = Transform3D(1, 4.3774225e-08, -2.3571293e-07, -4.987492e-08, 0.99966323, -0.025944838, 2.3449772e-07, 0.025944704, 0.9996633, 0.0055796835, 0.17864525, 0.002933409)
 mesh = SubResource("ArrayMesh_idgg3")
 
-[node name="body" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="35" unique_id=1745119389]
-transform = Transform3D(1, -6.18574e-09, 2.383383e-07, -7.584727e-09, 0.9983319, 0.05773376, -2.3829794e-07, -0.05773373, 0.99833184, -2.1086173e-10, 1.128021, -0.0003770776)
+[node name="body" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="35" unique_id=1745119389]
+transform = Transform3D(1, -2.842171e-14, 2.3841855e-07, -7.584727e-09, 0.9994937, 0.031812847, -2.3829794e-07, -0.03181283, 0.99949366, -2.1086173e-10, 1.128021, -0.0003770776)
 bone_name = "DEF-spine.002"
 bone_idx = 3
 
@@ -2256,7 +2369,7 @@ mesh = SubResource("ArrayMesh_ljemt")
 transform = Transform3D(1, -5.127463e-08, -3.9165613e-09, 5.1124037e-08, 0.9994941, -0.031812504, 5.545786e-09, 0.03181252, 0.9994942, 5.804823e-08, -1.1274624, -0.03550834)
 mesh = SubResource("ArrayMesh_1nkw4")
 
-[node name="pantsR" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="36" unique_id=1876225339]
+[node name="pantsR" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="36" unique_id=1876225339]
 transform = Transform3D(0.95972264, -0.18210809, 0.21393979, -0.15014568, -0.97607064, -0.1572979, 0.2374652, 0.11884004, -0.96410066, -0.07514033, 0.85070574, -0.061462503)
 bone_name = "DEF-thigh.R"
 bone_idx = 86
@@ -2265,7 +2378,7 @@ bone_idx = 86
 transform = Transform3D(0.9597225, -0.15014555, 0.23746416, -0.18210828, -0.97607064, 0.118842416, 0.21393797, -0.1573, -0.9640995, 0.21443869, 0.8239696, 0.0906354)
 mesh = SubResource("ArrayMesh_kgi35")
 
-[node name="pantsL" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="37" unique_id=98757272]
+[node name="pantsL" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="37" unique_id=98757272]
 transform = Transform3D(0.95972246, 0.18210804, -0.21393868, 0.1501457, -0.97607046, -0.1572979, -0.23746435, 0.11884032, -0.96409965, 0.07514033, 0.85070574, -0.061462503)
 bone_name = "DEF-thigh.L"
 bone_idx = 67
@@ -2274,8 +2387,8 @@ bone_idx = 67
 transform = Transform3D(0.9597226, 0.15014587, -0.23746356, 0.18210839, -0.97607064, 0.11884202, -0.21393739, -0.1572995, -0.96409965, -0.21443893, 0.82396954, 0.09063493)
 mesh = SubResource("ArrayMesh_xftu5")
 
-[node name="armL" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="38" unique_id=1113185792]
-transform = Transform3D(0.19813998, 0.9217903, 0.33323124, -0.033293836, -0.333446, 0.94218093, 0.97960794, -0.19777843, -0.035379063, 0.16870818, 1.3207333, -0.009354677)
+[node name="armL" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="38" unique_id=1113185792]
+transform = Transform3D(0.19814, 0.9217903, 0.3332312, 0.13329276, -0.36215323, 0.9225387, 0.971068, -0.13837463, -0.19462508, 0.16870818, 1.3192619, -0.017729558)
 bone_name = "shoulder.L"
 bone_idx = 181
 
@@ -2283,8 +2396,8 @@ bone_idx = 181
 transform = Transform3D(0.19814034, 0.13329303, 0.9710682, 0.92179036, -0.36215344, -0.13837478, 0.33323124, 0.92253906, -0.19462533, -0.1920597, 0.3198084, -1.2767402)
 mesh = SubResource("ArrayMesh_7yey3")
 
-[node name="armR" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="39" unique_id=50284477]
-transform = Transform3D(0.19814023, -0.9217902, -0.3332314, 0.0332938, -0.3334462, 0.94218075, -0.9796079, -0.19777864, -0.03537926, -0.16870818, 1.3207333, -0.009354679)
+[node name="armR" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="39" unique_id=50284477]
+transform = Transform3D(0.19814022, -0.9217902, -0.33323142, -0.1332928, -0.36215353, 0.9225385, -0.97106797, -0.13837479, -0.19462527, -0.16870818, 1.3192619, -0.01772956)
 bone_name = "shoulder.R"
 bone_idx = 182
 
@@ -2292,7 +2405,7 @@ bone_idx = 182
 transform = Transform3D(0.1981404, -0.1332931, -0.9710686, -0.9217904, -0.3621538, -0.13837464, -0.33323154, 0.9225391, -0.19462554, 0.1920598, 0.3198088, -1.2767402)
 mesh = SubResource("ArrayMesh_lrer3")
 
-[node name="pelvisR" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="40" unique_id=49481325]
+[node name="pelvisR" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="40" unique_id=49481325]
 transform = Transform3D(-0.40723982, -0.702516, 0.5836325, 0.2626011, 0.5219736, 0.81153184, -0.8747547, 0.48375076, -0.028086988, -0.0024585326, 0.9148123, -0.03420146)
 bone_name = "DEF-pelvis.R"
 bone_idx = 25
@@ -2301,7 +2414,7 @@ bone_idx = 25
 transform = Transform3D(-0.40724, 0.26260126, -0.8747553, -0.702516, 0.5219737, 0.48375088, 0.58363265, 0.81153214, -0.028086983, -0.27115, -0.46269017, -0.74192536)
 mesh = SubResource("ArrayMesh_bagj0")
 
-[node name="pelvisL" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="41" unique_id=954830190]
+[node name="pelvisL" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="41" unique_id=954830190]
 transform = Transform3D(-0.40724, 0.7025161, -0.5836324, -0.26260117, 0.5219734, 0.81153184, 0.87475497, 0.4837507, -0.028086893, 0.0024585281, 0.9148124, -0.03420151)
 bone_name = "DEF-pelvis.L"
 bone_idx = 23
@@ -2310,7 +2423,7 @@ bone_idx = 23
 transform = Transform3D(-0.40723988, -0.26260117, 0.874755, 0.7025161, 0.5219736, 0.48375094, -0.5836325, 0.81153244, -0.028086886, 0.27114996, -0.46269006, -0.74192566)
 mesh = SubResource("ArrayMesh_87amd")
 
-[node name="crouch" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="42" unique_id=518215061]
+[node name="crouch" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="42" unique_id=518215061]
 transform = Transform3D(1, -2.842171e-14, 2.3841854e-07, 5.2091735e-08, 0.97583956, -0.21848844, -2.3265824e-07, 0.21848845, 0.9758395, -2.1085544e-10, 0.9311731, -0.041202486)
 bone_name = "DEF-spine"
 bone_idx = 1
@@ -2319,7 +2432,7 @@ bone_idx = 1
 transform = Transform3D(1, 5.209166e-08, -2.3265828e-07, 3.1974423e-14, 0.9758396, 0.21848847, 2.3841856e-07, -0.21848848, 0.9758397, -5.7881593e-08, -0.89967334, 0.2436576)
 mesh = SubResource("ArrayMesh_7ocgj")
 
-[node name="FootR" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="43" unique_id=791941642]
+[node name="FootR" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="43" unique_id=791941642]
 transform = Transform3D(0.99998087, 0.006279096, -0.00045349402, 0.00011670217, -0.09051763, -0.99589515, -0.0062949657, 0.9958766, -0.09051703, -0.2032969, 0.035294384, -0.05908616)
 bone_name = "DEF-foot.R"
 bone_idx = 90
@@ -2328,7 +2441,7 @@ bone_idx = 90
 transform = Transform3D(0.9999804, 0.00012198725, -0.0062945737, 0.0062799044, -0.09051818, 0.99588335, -0.00044832495, -0.99587876, -0.09051505, 0.20291655, 0.063314065, 0.029710345)
 mesh = SubResource("ArrayMesh_pt3hm")
 
-[node name="FootL" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="44" unique_id=1773510117]
+[node name="FootL" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="44" unique_id=1773510117]
 transform = Transform3D(0.99998045, -0.0062799454, 0.00045257527, -0.00011767261, -0.09051749, -0.9958947, 0.0062951297, 0.9958751, -0.0905165, 0.2032969, 0.035294637, -0.059085973)
 bone_name = "DEF-foot.L"
 bone_idx = 71
@@ -2337,22 +2450,22 @@ bone_idx = 71
 transform = Transform3D(0.99998003, -0.00012187948, 0.0062947595, -0.0062799184, -0.09051768, 0.9958831, 0.000448455, -0.99587816, -0.09051436, -0.20291656, 0.063314095, 0.029710228)
 mesh = SubResource("ArrayMesh_xquxd")
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="45" unique_id=1249922509]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="45" unique_id=1249922509]
 target_node = NodePath("../../../../Aim_target")
 bone_name = "DEF-spine.002"
 bone = 3
 primary_rotation_axis = 0
 use_secondary_rotation = false
 
-[node name="LookAtModifier3D2" type="LookAtModifier3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="46" unique_id=1439458440]
+[node name="LookAtModifier3D2" type="LookAtModifier3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="46" unique_id=1439458440]
 target_node = NodePath("../../../../Aim_target")
 bone_name = "ORG-spine.003"
 bone = 114
 primary_rotation_axis = 0
 use_secondary_rotation = false
 
-[node name="Gun" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="47" unique_id=622329853]
-transform = Transform3D(-0.47705904, -0.80947816, 0.34228486, 0.55864924, -0.57995284, -0.592929, 0.6784726, -0.09164511, 0.72888654, -0.6198709, 1.129122, -0.06302597)
+[node name="Gun" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="47" unique_id=622329853]
+transform = Transform3D(-0.47705913, -0.8094783, 0.34228492, 0.66560316, -0.5870944, -0.46075165, 0.57392216, 0.008020125, 0.8188704, -0.6198709, 1.1213245, -0.038133603)
 bone_name = "ORG-hand.R"
 bone_idx = 148
 
@@ -2360,13 +2473,76 @@ bone_idx = 148
 transform = Transform3D(0.7792694, 0.46710962, -0.41778883, -0.36529633, -0.20312189, -0.9084604, -0.50921243, 0.8605523, 0.012346774, 0.1689255, 0.25054866, 0.14309338)
 camera = NodePath("../../../../../Camera/edgeSpringArm3D/rearSpringArm3D/Camera3D")
 
-[node name="takedown" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" parent_id_path=PackedInt32Array(449863350, 1316697359) index="48" unique_id=834940999]
+[node name="takedown" type="BoneAttachment3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="48" unique_id=834940999]
+transform = Transform3D(-0.47705883, 0.80947864, -0.34228513, -0.6656028, -0.5870945, -0.46075165, -0.57392234, 0.00802011, 0.8188698, 0.61966133, 1.1283119, -0.033458445)
+bone_name = "ORG-hand.L"
+bone_idx = 118
+
+[node name="Area3D" type="Area3D" parent="Re4Lom Base Rig/rig/Skeleton3D/takedown" unique_id=1889038103]
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Re4Lom Base Rig/rig/Skeleton3D/takedown/Area3D" unique_id=1937731592]
+transform = Transform3D(1.0000001, 1.1175871e-08, -2.9802322e-08, -1.1920929e-07, 1.0000004, 7.450581e-09, -2.9802322e-08, -1.4901161e-08, 1.0000002, -0.022198975, 0.08922519, -0.00944525)
+shape = SubResource("SphereShape3D_pnw6m")
+
+[node name="Upper_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="49" unique_id=652782802]
+visible = false
+
+[node name="Upper_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="50" unique_id=1169890560]
+visible = false
+
+[node name="Cloth_Body" parent="Re4Lom Base Rig" index="2" unique_id=582463024]
+visible = false
+
+[node name="Pant" parent="Re4Lom Base Rig" index="3" unique_id=928972204]
+visible = false
+
+[node name="Plane_001" parent="Re4Lom Base Rig" index="4" unique_id=1771849711]
+visible = false
+
+[node name="Lower_Right_Pant" parent="Re4Lom Base Rig" index="5" unique_id=1847617824]
+visible = false
+
+[node name="Cloth_Body_001" parent="Re4Lom Base Rig" index="6" unique_id=2132811876]
+visible = false
+
+[node name="Right_Legging" parent="Re4Lom Base Rig" index="7" unique_id=1711779853]
+visible = false
+
+[node name="Lower_Leftt_Pant" parent="Re4Lom Base Rig" index="8" unique_id=1655480298]
+visible = false
+
+[node name="Left_Legging" parent="Re4Lom Base Rig" index="9" unique_id=1146086922]
+visible = false
+
+[node name="Cloth_Right_Arm" parent="Re4Lom Base Rig" index="10" unique_id=1977686105]
+visible = false
+
+[node name="Cloth_Left_Arm" parent="Re4Lom Base Rig" index="11" unique_id=1238765351]
+visible = false
+
+[node name="Right__Flipflop" parent="Re4Lom Base Rig" index="12" unique_id=331896481]
+visible = false
+
+[node name="Hair_002" parent="Re4Lom Base Rig" index="13" unique_id=93447061]
+visible = false
+
+[node name="Left__Flipflop" parent="Re4Lom Base Rig" index="14" unique_id=650467329]
+visible = false
+
+[node name="WGT-rig_001_spine_fk" parent="Re4Lom Base Rig" index="15" unique_id=1424279343]
+visible = false
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Re4Lom Base Rig" unique_id=675223807]
+libraries/ = SubResource("AnimationLibrary_1so5t")
 libraries/Grab = SubResource("AnimationLibrary_rptt4")
 libraries/Gun_idle = SubResource("AnimationLibrary_r7pn3")
-libraries/Idle = SubResource("AnimationLibrary_b8hi5")
+libraries/Hit = SubResource("AnimationLibrary_art4l")
 libraries/QT = SubResource("AnimationLibrary_bjvpn")
+libraries/RR = SubResource("AnimationLibrary_fjxoa")
+libraries/TD = SubResource("AnimationLibrary_gswnw")
 libraries/gun_aim = SubResource("AnimationLibrary_2uvqg")
 libraries/rest = SubResource("AnimationLibrary_1s1yo")
 libraries/walk = SubResource("AnimationLibrary_5ejfk")
@@ -2527,8 +2703,9 @@ tree_root = SubResource("AnimationNodeStateMachine_wodsf")
 anim_player = NodePath("../Re4Lom Base Rig/AnimationPlayer2")
 parameters/Hit/conditions/back = false
 parameters/Hit/conditions/front = false
-parameters/Main/Aim/conditions/pis = false
-parameters/Main/Aim/conditions/shot = false
+parameters/Main/Aim/BlendTree/OneShot/active = false
+parameters/Main/Aim/BlendTree/OneShot/internal_active = false
+parameters/Main/Aim/BlendTree/OneShot/request = 0
 parameters/Main/Idle/conditions/pis = false
 parameters/Main/Idle/conditions/shot = false
 parameters/Main/QT/conditions/pis = false
@@ -2537,6 +2714,7 @@ parameters/Main/QT/Pis/Blend2/blend_amount = 1.0
 parameters/Main/QT/Pis/TimeScale/scale = 2.0
 parameters/Main/QT/Shot/Blend2/blend_amount = 1.0
 parameters/Main/QT/Shot/TimeScale/scale = 2.0
+parameters/Main/Reload/BlendTree/TimeScale/scale = 1.0
 parameters/Main/Run/conditions/pis = false
 parameters/Main/Run/conditions/shot = false
 parameters/Main/Run/Pis/BlendSpace2D/blend_position = Vector2(0.0037487745, -0.047904134)

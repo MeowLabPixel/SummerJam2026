@@ -3,7 +3,7 @@ extends State
 var hit_animF = "HIT Body"
 var hit_animB = "HIT Body"
 var hit_anim = "HIT Body"
-
+#เติมกระเด็นไปข้างหน้า/หลัง
 func _enter() -> void:
 	print(name)
 	owner.aim_bone_on(false)
