@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpy3nwhhkmiyi"
-path.s3tc="res://.godot/imported/placeholder.png-8b2c48d5af0f0d21e0685ec0d09ce960.s3tc.ctex"
+path.s3tc="res://.godot/imported/placeholder.png-94fcec2994cb61ecfd1532259af96004.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://VFX_Water/BinbunVFXs/shared/texture/placeholder.png"
-dest_files=["res://.godot/imported/placeholder.png-8b2c48d5af0f0d21e0685ec0d09ce960.s3tc.ctex"]
+source_file="res://Jomp_Folder/VFX_Water/BinbunVFXs/shared/texture/placeholder.png"
+dest_files=["res://.godot/imported/placeholder.png-94fcec2994cb61ecfd1532259af96004.s3tc.ctex"]
 
 [params]
 

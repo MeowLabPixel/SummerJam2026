@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://k5a3bwu0vqie"]
 
-[ext_resource type="Script" uid="uid://c74le8e1ab6op" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/script/vfx_beam_controller.gd" id="1_ebs2f"]
-[ext_resource type="Shader" uid="uid://dmykglgtyfjqi" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_ball.gdshader" id="2_pqdqv"]
-[ext_resource type="Shader" uid="uid://bvmabxdggohq0" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_core.gdshader" id="3_gmcti"]
-[ext_resource type="Shader" uid="uid://0i3m3bvegkqm" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_outer.gdshader" id="4_rywfr"]
-[ext_resource type="Shader" uid="uid://bkj7m81o5nt7c" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_flare.gdshader" id="5_4gao2"]
-[ext_resource type="Shader" uid="uid://bwkkq8vv7od6e" path="res://VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/glow_particle.gdshader" id="6_w4bq1"]
+[ext_resource type="Script" uid="uid://c74le8e1ab6op" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/script/vfx_beam_controller.gd" id="1_ebs2f"]
+[ext_resource type="Shader" uid="uid://dmykglgtyfjqi" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_ball.gdshader" id="2_pqdqv"]
+[ext_resource type="Shader" uid="uid://bvmabxdggohq0" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_core.gdshader" id="3_gmcti"]
+[ext_resource type="Shader" uid="uid://0i3m3bvegkqm" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_outer.gdshader" id="4_rywfr"]
+[ext_resource type="Shader" uid="uid://bkj7m81o5nt7c" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/beam_flare.gdshader" id="5_4gao2"]
+[ext_resource type="Shader" uid="uid://bwkkq8vv7od6e" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/glow_particle.gdshader" id="6_w4bq1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2lygp"]
 render_priority = 0
