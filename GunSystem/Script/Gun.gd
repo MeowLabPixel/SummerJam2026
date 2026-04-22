@@ -1,7 +1,7 @@
 extends Node3D
 class_name Gun
 
-@export var gun_name: String = "Base Gun"
+@export var gun_name: String = "Water pistol"
 @export var camera: Camera3D
 @export var spawn_point: Node3D
 @export var shot_vfx_scene: PackedScene
