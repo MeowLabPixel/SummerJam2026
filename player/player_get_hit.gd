@@ -8,7 +8,7 @@ func _enter() -> void:
 	print(name)
 	owner.aim_bone_on(false)
 	stop_moving()
-	owner.lost_HP(1)
+	owner.lost_HP(owner.Hit_info.bullet.get_node("HitboxZone").base_damage)
 	owner.anim.get("parameters/playback").travel("Hit")
 	knock_back()
 	if not owner.anim.animation_finished.is_connected(anim_done):

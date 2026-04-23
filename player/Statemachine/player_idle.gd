@@ -46,12 +46,12 @@ func _state_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("Takedown") and owner.is_near_stunt:
 		finished.emit("Takedown")
 
-func hitfront(body: Node3D):
+func hitfront(body: Area3D):
 	if body.is_in_group("attack"):
 		owner.Hit_info.bullet = body
 		owner.Hit_info.location = "front"
 		finished.emit("Get_hit")
-func hitback(body: Node3D):
+func hitback(body: Area3D):
 	if body.is_in_group("attack"):
 		owner.Hit_info.bullet = body
 		owner.Hit_info.location = "back"

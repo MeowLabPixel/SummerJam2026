@@ -25,12 +25,12 @@ func _exit() -> void:
 	#owner.is_aimming = false
 	owner.cross_hair.visible = false
 	
-func hitfront(body: Node3D):
+func hitfront(body: Area3D):
 	if body.is_in_group("attack"):
 		owner.Hit_info.bullet = body
 		owner.Hit_info.location = "front"
 		finished.emit("Get_hit")
-func hitback(body: Node3D):
+func hitback(body: Area3D):
 	if body.is_in_group("attack"):
 		owner.Hit_info.bullet = body
 		owner.Hit_info.location = "back"

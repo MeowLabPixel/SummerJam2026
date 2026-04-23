@@ -29,6 +29,7 @@
 [ext_resource type="Script" uid="uid://xou4sjteglpa" path="res://player/Statemachine/player_aim.gd" id="9_wodsf"]
 [ext_resource type="Script" uid="uid://88nqcyhvt3qh" path="res://player/Statemachine/player_grab.gd" id="10_32hag"]
 [ext_resource type="Animation" uid="uid://d4do3x03ypcvo" path="res://player/animation/TD/Ded.res" id="12_1so5t"]
+[ext_resource type="Script" uid="uid://l36clnjlgj6g" path="res://player/TD_info.gd" id="12_dx5ib"]
 [ext_resource type="Script" uid="uid://bhn03nq0rsppn" path="res://player/Statemachine/player_die.gd" id="12_e7oew"]
 [ext_resource type="Animation" uid="uid://bn6ivlrce2lo3" path="res://player/animation/walk/LEON GRAB Fail.res" id="12_pnw6m"]
 [ext_resource type="Animation" uid="uid://b5f5xyglbpwow" path="res://player/animation/Grab/loo/LEON GRAB Sucess.res" id="13_55jnj"]
@@ -2377,13 +2378,13 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -0.99999994, 0, -2.1085544e-10, 0.9
 bone_name = "torso"
 bone_idx = 13
 
-[node name="Hitbox_F2" type="Area3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02" unique_id=1551963273]
+[node name="Hitbox_F2" type="Area3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02" unique_id=1551963273 groups=["player_hitbox"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02/Hitbox_F2" unique_id=1515902247]
 transform = Transform3D(1.0000031, 9.872019e-08, -4.172325e-07, 4.172325e-07, 8.940697e-08, 1.0000086, 1.17346644e-07, -1.0000058, -5.364418e-07, -0.0005399616, -0.106884, -0.06766713)
 shape = SubResource("BoxShape3D_32hag")
 
-[node name="Hitbox_B2" type="Area3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02" unique_id=70355079]
+[node name="Hitbox_B2" type="Area3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02" unique_id=70355079 groups=["player_hitbox"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02/Hitbox_B2" unique_id=1913926803]
 transform = Transform3D(1.0000031, 9.872019e-08, -4.172325e-07, 4.172325e-07, 8.940697e-08, 1.0000086, 1.17346644e-07, -1.0000058, -5.364418e-07, -0.000539968, 0.10313402, -0.06766707)
@@ -2544,6 +2545,7 @@ bone_idx = 118
 collision_mask = 0
 monitoring = false
 monitorable = false
+script = ExtResource("12_dx5ib")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Re4Lom Base Rig/rig/Skeleton3D/takedown/Area3D" unique_id=1937731592]
 transform = Transform3D(1.0000001, 1.1175871e-08, -2.9802322e-08, -1.1920929e-07, 1.0000004, 7.450581e-09, -2.9802322e-08, -1.4901161e-08, 1.0000002, -0.022198975, 0.08922519, -0.00944525)
@@ -2782,10 +2784,6 @@ parameters/Main/Run/Shot/BlendSpace2D/blend_position = Vector2(0, 0)
 parameters/Main/Run/Shot/TimeScale/scale = 1.0
 
 [node name="Reload_timer" type="Timer" parent="." unique_id=400400754]
-wait_time = 0.5
-one_shot = true
-
-[node name="Knockdown_timer" type="Timer" parent="." unique_id=1818415604]
 wait_time = 0.5
 one_shot = true
 

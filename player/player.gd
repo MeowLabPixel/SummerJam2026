@@ -17,7 +17,6 @@ var anim_playback = "parameters/Main/playback"
 
 @export_group("Data setting")
 @export var MaxHP = 100
-@export var Take_down_damage = 20 
 @export var hitboxF: Area3D
 @export var hitboxB: Area3D
 @export var stun_detect: Area3D
@@ -164,7 +163,7 @@ func Heal(amount):
 		HP +=amount
 		
 func stun_detect_in (body: Node3D):
-	if body.is_in_group("enemy"):
+	if body is EnemyBase and body.a:
 		near_enemy_list.append(body)
 	check_if_near_stun()
 
