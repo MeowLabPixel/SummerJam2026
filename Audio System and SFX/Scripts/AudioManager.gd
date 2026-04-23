@@ -96,7 +96,7 @@ func _build_dialogue_pool() -> void:
 
 func _build_ui_player() -> void:
 	_ui_player = AudioStreamPlayer.new()
-	_ui_player.bus = BUS_SFX   # UI sounds route through SFX bus
+	_ui_player.bus = "UI"   # UI sounds route through SFX bus
 	_ui_player.name = "UIPlayer"
 	add_child(_ui_player)
 
