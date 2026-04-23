@@ -97,6 +97,12 @@ func shoot():
 func fire_projectiles():
 	fire_pellet()
 
+func _add_collision_objects_recursive(node: Node, exclude_array: Array):
+	if node is CollisionObject3D:
+		exclude_array.append(node)
+	for child in node.get_children():
+		_add_collision_objects_recursive(child, exclude_array)
+
 func fire_pellet():
 # ... (rest of fire_pellet unchanged)
 	var horizontal_spread: float = deg_to_rad(randf_range(-current_spread, current_spread))
@@ -114,8 +120,20 @@ func fire_pellet():
 	var query = PhysicsRayQueryParameters3D.create(from, to)
 	query.collide_with_areas = true
 	query.collide_with_bodies = true
-	# Layer 4 (value 8) = player hitboxes. Exclude so shots never self-register.
-	query.collision_mask = query.collision_mask & ~8
+	
+	var exclude_nodes: Array = []
+	var node: Node = self
+	while node:
+		if node is CollisionObject3D:
+			exclude_nodes.append(node)
+		node = node.get_parent()
+	
+	# Exclude all nodes in the "player" group and their descendants that are CollisionObject3D
+	for player_node in get_tree().get_nodes_in_group("player"):
+		_add_collision_objects_recursive(player_node, exclude_nodes)
+	
+	query.exclude = exclude_nodes
+	
 	var result: Dictionary = space_state.intersect_ray(query)
 	
 	var start_pos: Vector3 = spawn_point.global_transform.origin if spawn_point else from
@@ -123,6 +141,7 @@ func fire_pellet():
 	
 	if result:
 		end_pos = result.position
+		print("Ray hit: ", result["collider"].name)
 		# Apply damage to any enemy hit by the raycast
 		_apply_damage_to_result(result)
 
@@ -183,7 +202,7 @@ func fire_pellet():
 			else:
 				anim_player.play(anim_player.get_animation_list()[0])
 		
-		get_tree().create_timer(1.0).timeout.connect(hit_vfx.queue_free)
+		get_tree().create_timer(10).timeout.connect(hit_vfx.queue_free)
 
 
 func update_accuracy():

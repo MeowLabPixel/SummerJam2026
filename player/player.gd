@@ -129,16 +129,16 @@ func set_velocity_from_motion(vel: Vector3)-> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
-func change_gun():
-	if gun_controller:
-		gun_controller.next_gun()
-		curr_gun_index = gun_controller.current_gun_index
-	else:
-		if curr_gun_index == gun_list.size()-1:
-			curr_gun_index = 0
-		else:
-			curr_gun_index +=1
-		curr_gun = gun_list[curr_gun_index]
+#func change_gun():
+#	if gun_controller:
+#		gun_controller.next_gun()
+#		curr_gun_index = gun_controller.current_gun_index
+#	else:
+#		if curr_gun_index == gun_list.size()-1:
+#			curr_gun_index = 0
+#		else:
+#			curr_gun_index +=1
+#		curr_gun = gun_list[curr_gun_index]
 
 func take_damage(amount: int) -> void:
 	lost_HP(amount)

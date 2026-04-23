@@ -69,7 +69,7 @@ material = SubResource("StandardMaterial3D_8tv4d")
 
 [node name="player" parent="." unique_id=324464419 instance=ExtResource("2_1da4k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.067429, 0.056225806, -11.089496)
-collision_layer = 6
+collision_layer = 14
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=831039779]
 environment = SubResource("Environment_1da4k")

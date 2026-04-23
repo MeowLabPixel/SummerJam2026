@@ -2,152 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bbre8s2owdelg" path="res://GunSystem/Script/WaterLine.gd" id="1_5ca5g"]
 [ext_resource type="Shader" uid="uid://62ts4vn2kmq3" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/beam_vfx/src/shader/beam_outer.gdshader" id="2_uqlva"]
-[ext_resource type="Shader" uid="uid://c6psxsl3p763s" path="res://Jomp_Folder/VFX_Water/BinbunVFXs/beam_vfx/src/shader/beam_flare.gdshader" id="3_vhpc0"]
-[ext_resource type="Shader" uid="uid://jqylukwjbuo" path="res://BinbunVFX/GodotBeamVFXFree/assets/BinbunVFX/beam_vfx/src/shader/glow_particle.gdshader" id="4_8akjg"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g5pye"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_evm2p"]
-render_priority = 0
-shader = ExtResource("3_vhpc0")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_g5pye")
-shader_parameter/noise_twist = 0.0
-shader_parameter/scroll_speed = Vector2(0, 2)
-shader_parameter/beam_length = 4.0
-shader_parameter/secondary_color = Color(0.5845778, 0.8850181, 0.97916895, 0.3764706)
-shader_parameter/tertiary_color = Color(0.30401206, 0.6512851, 0.8747005, 1)
-shader_parameter/emission = 1.67999996244864
-shader_parameter/is_tertiary = true
-shader_parameter/open_amount = 1.0
-shader_parameter/speed_scale = 1.0
-shader_parameter/edge_softness = 0.5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_0tm5n"]
-top_radius = 0.3
-bottom_radius = 1.005
-height = 2.1
-cap_bottom = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_aox3o"]
-render_priority = 0
-shader = ExtResource("3_vhpc0")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_g5pye")
-shader_parameter/noise_twist = 0.0
-shader_parameter/scroll_speed = Vector2(0, 2)
-shader_parameter/beam_length = 4.0
-shader_parameter/secondary_color = Color(0.21176471, 0.6862745, 0.8117647, 0.3764706)
-shader_parameter/tertiary_color = Color(0.63875264, 0.75818527, 1, 1)
-shader_parameter/emission = 3.0
-shader_parameter/is_tertiary = false
-shader_parameter/open_amount = 1.0
-shader_parameter/speed_scale = 1.0
-shader_parameter/edge_softness = 0.5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_t1445"]
-top_radius = 0.3
-bottom_radius = 0.51
-height = 1.1
-cap_bottom = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdm01"]
-render_priority = 0
-shader = ExtResource("4_8akjg")
-shader_parameter/tertiary_color = Color(8.4228816e-07, 0.28496748, 0.40009478, 1)
-shader_parameter/emission = 7.0499998424184
-
-[sub_resource type="Curve" id="Curve_qsavy"]
-
-[sub_resource type="Curve" id="Curve_pno7k"]
-
-[sub_resource type="Curve" id="Curve_offx3"]
-_limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_oeabl"]
-curve_x = SubResource("Curve_qsavy")
-curve_y = SubResource("Curve_pno7k")
-curve_z = SubResource("Curve_offx3")
-
-[sub_resource type="Curve" id="Curve_0t4t8"]
-_data = [Vector2(0, 0), 0.0, 7.7099075, 0, 0, Vector2(0.30405408, 0.94382024), -1.2791698, -1.2791698, 0, 0, Vector2(1, 0), -0.39127585, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_5njuh"]
-curve = SubResource("Curve_0t4t8")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bmp1o"]
-particle_flag_align_y = true
-emission_shape_scale = Vector3(1, 1, 0)
-emission_shape = 2
-emission_sphere_radius = 0.3
-angle_min = -720.0
-angle_max = 720.0
-direction = Vector3(0, 0, -1)
-spread = 15.0
-initial_velocity_min = 4.0
-initial_velocity_max = 8.0
-orbit_velocity_min = -0.49999994
-orbit_velocity_max = 0.5000001
-orbit_velocity_curve = SubResource("CurveXYZTexture_oeabl")
-gravity = Vector3(0, 0, 0)
-radial_accel_min = -5.000002
-radial_accel_max = -5.000002
-scale_curve = SubResource("CurveTexture_5njuh")
-
-[sub_resource type="SphereMesh" id="SphereMesh_utvca"]
-radius = 0.05
-height = 0.3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujtjq"]
-render_priority = 0
-shader = ExtResource("4_8akjg")
-shader_parameter/tertiary_color = Color(0.5794059, 0.8583318, 0.9999998, 1)
-shader_parameter/emission = 0.50999998860048
-
-[sub_resource type="Curve" id="Curve_7lg3t"]
-
-[sub_resource type="Curve" id="Curve_k1yll"]
-
-[sub_resource type="Curve" id="Curve_uijlg"]
-_limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_bdgjd"]
-curve_x = SubResource("Curve_7lg3t")
-curve_y = SubResource("Curve_k1yll")
-curve_z = SubResource("Curve_uijlg")
-
-[sub_resource type="Curve" id="Curve_qllcx"]
-_data = [Vector2(0, 0), 0.0, 7.7099075, 0, 0, Vector2(0.30405408, 0.94382024), -1.2791698, -1.2791698, 0, 0, Vector2(1, 0), -0.39127585, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_jffsw"]
-curve = SubResource("Curve_qllcx")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8klq2"]
-particle_flag_align_y = true
-emission_shape_scale = Vector3(1, 1, 0)
-emission_shape = 2
-emission_sphere_radius = 0.3
-angle_min = -720.0
-angle_max = 720.0
-direction = Vector3(0, 0, -1)
-spread = 15.0
-initial_velocity_min = 4.0
-initial_velocity_max = 8.0
-orbit_velocity_min = -0.49999994
-orbit_velocity_max = 0.5000001
-orbit_velocity_curve = SubResource("CurveXYZTexture_bdgjd")
-gravity = Vector3(0, 0, 0)
-radial_accel_min = -5.000002
-radial_accel_max = -5.000002
-scale_curve = SubResource("CurveTexture_jffsw")
-
-[sub_resource type="SphereMesh" id="SphereMesh_2dhvn"]
-radius = 0.04
-height = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3puto"]
 albedo_color = Color(0.31764707, 0.87058824, 1, 1)
@@ -220,13 +74,15 @@ shader_parameter/open_amount = 1.0
 shader_parameter/speed_scale = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_miaar"]
-top_radius = 0.2
+top_radius = 0.1
 bottom_radius = 0.2
 height = 1.0
 radial_segments = 32
 rings = 64
 cap_top = false
 cap_bottom = false
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g5pye"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n4wb0"]
 render_priority = 0
@@ -247,8 +103,8 @@ shader_parameter/speed_scale = 1.0
 shader_parameter/edge_softness = 0.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_wx4ac"]
-top_radius = 0.25
-bottom_radius = 0.25
+top_radius = 0.15
+bottom_radius = 0.15
 height = 1.0
 radial_segments = 32
 rings = 64
@@ -277,44 +133,6 @@ shader_parameter/edge_softness = 0.5
 script = ExtResource("1_5ca5g")
 life_time = 0.06
 
-[node name="WaterBeam" type="Node3D" parent="." unique_id=468320930]
-transform = Transform3D(0.29999995, 2.4815418e-24, -4.349082e-25, 0, 0.29999995, 0, -4.1633363e-17, -1.7763568e-15, 0.3569938, -6.5424953e-25, -1.7763568e-15, 0.5370398)
-
-[node name="BeamScalor" type="Node3D" parent="WaterBeam" unique_id=1978590834]
-transform = Transform3D(1, 6.938894e-18, 2.130549e-08, 0, 1, -1.0652745e-08, -3.7252903e-09, 1.8626451e-09, 5.719148, 0, 0, 0)
-
-[node name="BeamFlare1" type="MeshInstance3D" parent="WaterBeam" unique_id=1960624357]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1)
-sorting_offset = 1.0
-material_override = SubResource("ShaderMaterial_evm2p")
-mesh = SubResource("CylinderMesh_0tm5n")
-
-[node name="BeamFlare2" type="MeshInstance3D" parent="WaterBeam" unique_id=1113428005]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.5)
-sorting_offset = 2.0
-material_override = SubResource("ShaderMaterial_aox3o")
-mesh = SubResource("CylinderMesh_t1445")
-
-[node name="BeamParticles3" type="GPUParticles3D" parent="WaterBeam" unique_id=275330598]
-transform = Transform3D(1, -4.6566134e-10, -4.496779e-09, 4.6566134e-10, 1, 0, 3.4037708e-09, -1.5850045e-18, 1.3211168, 0, 0, -0.3347106)
-material_override = SubResource("ShaderMaterial_tdm01")
-amount = 64
-lifetime = 0.5
-local_coords = true
-draw_order = 3
-process_material = SubResource("ParticleProcessMaterial_bmp1o")
-draw_pass_1 = SubResource("SphereMesh_utvca")
-
-[node name="BeamParticles" type="GPUParticles3D" parent="WaterBeam" unique_id=451189224]
-transform = Transform3D(0.99999994, 0, 0, 2.3283064e-10, 0.99999994, 0, 1.8626451e-09, 0, 0.99999994, 0, 0, 0)
-material_override = SubResource("ShaderMaterial_ujtjq")
-amount = 30
-lifetime = 0.5
-local_coords = true
-draw_order = 3
-process_material = SubResource("ParticleProcessMaterial_8klq2")
-draw_pass_1 = SubResource("SphereMesh_2dhvn")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=647306067]
 mesh = SubResource("BoxMesh_5ca5g")
 
@@ -332,6 +150,7 @@ mesh = SubResource("CylinderMesh_wx4ac")
 
 [node name="BeamOuter3" type="MeshInstance3D" parent="MeshInstance3D" unique_id=637366122]
 transform = Transform3D(0.19860424, -3.0505376e-10, -0.023587221, -0.023587221, -5.155151e-09, -0.19860424, -6.101075e-11, 1, -1.0310303e-09, 6.1755664e-08, 0, 0)
+layers = 9
 material_override = SubResource("ShaderMaterial_6gyqw")
 mesh = SubResource("CylinderMesh_wx4ac")
 

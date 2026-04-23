@@ -175,7 +175,7 @@ _data = {
 }
 
 [node name="WaterMuzzle" type="Node3D" unique_id=1655217680]
-transform = Transform3D(0.5, -4.1086523e-31, 8.326675e-17, 0, 0.5, 3.5527145e-15, -6.938895e-17, -2.9605953e-15, 0.6, 0, 0, 0)
+transform = Transform3D(0.1, -8.2173044e-32, 1.3877791e-17, 0, 0.1, 5.9211907e-16, -1.3877791e-17, -5.9211907e-16, 0.1, 0, 0, 0)
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1848220667]
 transform = Transform3D(1, 0, 1.323489e-23, 0, 1, 0, -1.323489e-23, 0, 1, 0, 0, 0)
@@ -185,6 +185,7 @@ transform = Transform3D(1.0000001, 6.9388956e-18, 2.130549e-08, -4.7331654e-30, 
 
 [node name="BeamFlare1" type="MeshInstance3D" parent="Node3D" unique_id=496147892]
 transform = Transform3D(1.0000001, 1.323489e-23, 0, 0, -4.3711392e-08, -1.0000001, 1.323489e-23, 1, -4.371139e-08, -1.323489e-23, -1.2705494e-21, -1)
+layers = 9
 sorting_offset = 1.0
 material_override = SubResource("ShaderMaterial_evm2p")
 mesh = SubResource("CylinderMesh_0tm5n")
