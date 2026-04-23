@@ -38,3 +38,6 @@ func knock_back():
 	elif owner.Hit_info == "back":
 		input_dir = Vector2(0,-1)
 	direction = owner.global_transform.basis * Vector3(input_dir.x,0,input_dir.y)
+
+func is_grab():
+	pass

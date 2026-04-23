@@ -163,12 +163,12 @@ func Heal(amount):
 		HP +=amount
 		
 func stun_detect_in (body: Node3D):
-	if body is EnemyBase and body.a:
+	if body is EnemyBase :
 		near_enemy_list.append(body)
 	check_if_near_stun()
 
 func stun_detect_out (body: Node3D):
-	if body.is_in_group("enemy"):
+	if body is EnemyBase and  near_enemy_list.has(body):
 		var index = near_enemy_list.find(body,0)
 		near_enemy_list.remove_at(index)
 	check_if_near_stun()
@@ -176,7 +176,7 @@ func stun_detect_out (body: Node3D):
 func check_if_near_stun():
 	is_near_stunt = false
 	for i in near_enemy_list:
-		if i.stun:
+		if i.get_node("EnemyStateMachine").current_state == i.get_node("EnemyStateMachine").state_map["StateStun"]:
 			is_near_stunt = true
 			
 		

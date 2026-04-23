@@ -47,12 +47,11 @@ func _state_input(_event: InputEvent) -> void:
 		finished.emit("Takedown")
 
 func hitfront(body: Area3D):
-	if body.is_in_group("attack"):
 		owner.Hit_info.bullet = body
 		owner.Hit_info.location = "front"
 		finished.emit("Get_hit")
 func hitback(body: Area3D):
-	if body.is_in_group("attack"):
+
 		owner.Hit_info.bullet = body
 		owner.Hit_info.location = "back"
 		finished.emit("Get_hit")

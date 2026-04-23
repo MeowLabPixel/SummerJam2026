@@ -2379,12 +2379,16 @@ bone_name = "torso"
 bone_idx = 13
 
 [node name="Hitbox_F2" type="Area3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02" unique_id=1551963273 groups=["player_hitbox"]]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02/Hitbox_F2" unique_id=1515902247]
 transform = Transform3D(1.0000031, 9.872019e-08, -4.172325e-07, 4.172325e-07, 8.940697e-08, 1.0000086, 1.17346644e-07, -1.0000058, -5.364418e-07, -0.0005399616, -0.106884, -0.06766713)
 shape = SubResource("BoxShape3D_32hag")
 
 [node name="Hitbox_B2" type="Area3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02" unique_id=70355079 groups=["player_hitbox"]]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Re4Lom Base Rig/rig/Skeleton3D/spine02/Hitbox_B2" unique_id=1913926803]
 transform = Transform3D(1.0000031, 9.872019e-08, -4.172325e-07, 4.172325e-07, 8.940697e-08, 1.0000086, 1.17346644e-07, -1.0000058, -5.364418e-07, -0.000539968, 0.10313402, -0.06766707)
