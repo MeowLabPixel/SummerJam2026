@@ -43,4 +43,3 @@ func update_display() -> void:
 			water.text = "Ammo: " + str(player.curr_gun.ammo)
 		if air:
 			air.text = "Air: N/A"
-

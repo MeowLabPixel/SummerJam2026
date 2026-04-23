@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dmuyas6lt2gpa" path="res://player/Re4Lom Base Rig_Base_Leon_Hair.png" id="3_rptt4"]
 [ext_resource type="Texture2D" uid="uid://d3bni5a554y5h" path="res://player/Re4Lom Base Rig_Base Songkran Jacket.png" id="4_r7pn3"]
 [ext_resource type="Animation" uid="uid://bmgcq32l8bytq" path="res://player/animation/gun shot/shotgun_idle.res" id="4_s7qer"]
-[ext_resource type="Script" uid="uid://rk4yb4oq18ft" path="res://scripts/enemy/hitbox_zone.gd" id="5_a2xo5"]
+[ext_resource type="Script" uid="uid://co48cilacgwiu" path="res://player/player_hitbox_zone.gd" id="5_a2xo5"]
 [ext_resource type="Texture2D" uid="uid://clnvrh31jwlfm" path="res://player/Re4Lom Base Rig_Base_Cloth_Body.png" id="5_b8hi5"]
 [ext_resource type="PackedScene" uid="uid://bfy7etesnxt5w" path="res://GunSystem/Scene/WaterGun/Gun.tscn" id="5_e7oew"]
 [ext_resource type="Animation" uid="uid://bmsvi842pndtm" path="res://player/animation/gun-pis/aim/Base.res" id="5_g4c7l"]
@@ -33,8 +33,8 @@
 [ext_resource type="Script" uid="uid://l36clnjlgj6g" path="res://player/TD_info.gd" id="12_dx5ib"]
 [ext_resource type="Script" uid="uid://bhn03nq0rsppn" path="res://player/Statemachine/player_die.gd" id="12_e7oew"]
 [ext_resource type="Animation" uid="uid://bn6ivlrce2lo3" path="res://player/animation/walk/LEON GRAB Fail.res" id="12_pnw6m"]
-[ext_resource type="Animation" uid="uid://b5f5xyglbpwow" path="res://player/animation/Grab/loo/LEON GRAB Sucess.res" id="13_55jnj"]
-[ext_resource type="Animation" uid="uid://b8pxt7ey3gvjn" path="res://player/animation/Grab/HIT Rightleg act 5 (get_up ).res" id="14_dx5ib"]
+[ext_resource type="Animation" uid="uid://chs4b0qdux5go" path="res://player/animation/Grab/loo/LEON GRAB Sucess.res" id="13_55jnj"]
+[ext_resource type="Animation" uid="uid://ct2ixau863yci" path="res://player/animation/Grab/HIT Rightleg act 5 (get_up ).res" id="14_dx5ib"]
 [ext_resource type="Script" uid="uid://dg7m7j6ceo13t" path="res://player/player_get_hit.gd" id="15_wodsf"]
 [ext_resource type="Script" uid="uid://duyd0oy3clg7i" path="res://player/player_takedown.gd" id="16_32hag"]
 [ext_resource type="Animation" uid="uid://cpcq5yam2grcg" path="res://player/animation/Leon hit.res" id="16_55jnj"]
@@ -2219,13 +2219,13 @@ shape = SubResource("BoxShape3D_32hag")
 [node name="Re4Lom Base Rig" parent="." unique_id=449863350 instance=ExtResource("2_uw77l")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="metarig" parent="Re4Lom Base Rig" index="0" unique_id=291192499]
+[node name="metarig" parent="Re4Lom Base Rig" index="0" unique_id=1088425360]
 visible = false
 
-[node name="Skeleton3D" parent="Re4Lom Base Rig/metarig" index="0" unique_id=1446824060]
+[node name="Skeleton3D" parent="Re4Lom Base Rig/metarig" index="0" unique_id=1203708343]
 visible = false
 
-[node name="Skeleton3D" parent="Re4Lom Base Rig/rig" parent_id_path=PackedInt32Array(449863350, 670005384) index="0" unique_id=1306754124]
+[node name="Skeleton3D" parent="Re4Lom Base Rig/rig" parent_id_path=PackedInt32Array(449863350, 1125132773) index="0" unique_id=1003786065]
 bones/115/position = Vector3(0.16849858, 0.05579039, 0.0031467846)
 bones/145/rotation = Quaternion(0, 0, 0, -1)
 bones/145/scale = Vector3(0.99999994, 1, 1)
@@ -2236,7 +2236,7 @@ mesh = SubResource("ArrayMesh_ommdp")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Left_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="2" unique_id=2018992440]
+[node name="Left_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="2" unique_id=209999622]
 visible = false
 
 [node name="Left_Hand2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="3" unique_id=292257819]
@@ -2245,7 +2245,7 @@ mesh = SubResource("ArrayMesh_6uv4j")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Left_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="4" unique_id=26867514]
+[node name="Left_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="4" unique_id=1507544270]
 visible = false
 
 [node name="Lower_Left_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="5" unique_id=1922193244]
@@ -2254,7 +2254,7 @@ mesh = SubResource("ArrayMesh_5crh5")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="6" unique_id=1036816400]
+[node name="Lower_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="6" unique_id=712155174]
 visible = false
 
 [node name="Lower_Left_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="7" unique_id=2109481531]
@@ -2263,7 +2263,7 @@ mesh = SubResource("ArrayMesh_24k8y")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="8" unique_id=504992085]
+[node name="Lower_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="8" unique_id=1451899084]
 visible = false
 
 [node name="Lower_Right_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="9" unique_id=2138199178]
@@ -2272,7 +2272,7 @@ mesh = SubResource("ArrayMesh_ql24w")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="10" unique_id=840083974]
+[node name="Lower_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="10" unique_id=1792457586]
 visible = false
 
 [node name="Lower_Right_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="11" unique_id=1962797067]
@@ -2281,7 +2281,7 @@ mesh = SubResource("ArrayMesh_2uvpk")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="12" unique_id=575168026]
+[node name="Lower_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="12" unique_id=1332973731]
 visible = false
 
 [node name="Lower_Torso2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="13" unique_id=1043565669]
@@ -2290,7 +2290,7 @@ mesh = SubResource("ArrayMesh_108eo")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="14" unique_id=1696169896]
+[node name="Lower_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="14" unique_id=1334430385]
 visible = false
 
 [node name="Lower_Torso_003" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="15" unique_id=1513886634]
@@ -2305,7 +2305,7 @@ mesh = SubResource("ArrayMesh_sb2o4")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Neck" parent="Re4Lom Base Rig/rig/Skeleton3D" index="19" unique_id=1127740473]
+[node name="Neck" parent="Re4Lom Base Rig/rig/Skeleton3D" index="19" unique_id=1280892910]
 visible = false
 
 [node name="Neck2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="20" unique_id=427565865]
@@ -2314,7 +2314,7 @@ mesh = SubResource("ArrayMesh_a2hvb")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Right_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="21" unique_id=2075917640]
+[node name="Right_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="21" unique_id=231471319]
 visible = false
 
 [node name="Right_Foot2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="22" unique_id=1211675697]
@@ -2323,7 +2323,7 @@ mesh = SubResource("ArrayMesh_gugl7")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Right_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="23" unique_id=59863306]
+[node name="Right_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="23" unique_id=1527904227]
 visible = false
 
 [node name="Right_Hand2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="24" unique_id=1236208469]
@@ -2332,7 +2332,7 @@ mesh = SubResource("ArrayMesh_ftvxt")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="25" unique_id=1222160443]
+[node name="Upper_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="25" unique_id=1430022701]
 visible = false
 
 [node name="Upper_Left_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="26" unique_id=1192374377]
@@ -2341,7 +2341,7 @@ mesh = SubResource("ArrayMesh_ws357")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="27" unique_id=199499283]
+[node name="Upper_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="27" unique_id=1831558136]
 visible = false
 
 [node name="Upper_Left_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="28" unique_id=129140695]
@@ -2350,7 +2350,7 @@ mesh = SubResource("ArrayMesh_wc1rn")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="29" unique_id=1623847498]
+[node name="Upper_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="29" unique_id=199854668]
 visible = false
 
 [node name="Upper_Right_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="30" unique_id=1792517897]
@@ -2563,52 +2563,52 @@ script = ExtResource("12_dx5ib")
 transform = Transform3D(1.0000001, 1.1175871e-08, -2.9802322e-08, -1.1920929e-07, 1.0000004, 7.450581e-09, -2.9802322e-08, -1.4901161e-08, 1.0000002, -0.022198975, 0.08922519, -0.00944525)
 shape = SubResource("SphereShape3D_pnw6m")
 
-[node name="Upper_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="49" unique_id=1836833]
+[node name="Upper_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="49" unique_id=1303145223]
 visible = false
 
-[node name="Upper_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="50" unique_id=969471929]
+[node name="Upper_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="50" unique_id=103831576]
 visible = false
 
-[node name="Cloth_Body" parent="Re4Lom Base Rig" index="2" unique_id=89057063]
+[node name="Cloth_Body" parent="Re4Lom Base Rig" index="2" unique_id=1241296381]
 visible = false
 
-[node name="Pant" parent="Re4Lom Base Rig" index="3" unique_id=789384782]
+[node name="Pant" parent="Re4Lom Base Rig" index="3" unique_id=419361031]
 visible = false
 
-[node name="Plane_001" parent="Re4Lom Base Rig" index="4" unique_id=1230626333]
+[node name="Plane_001" parent="Re4Lom Base Rig" index="4" unique_id=767691349]
 visible = false
 
-[node name="Lower_Right_Pant" parent="Re4Lom Base Rig" index="5" unique_id=107297586]
+[node name="Lower_Right_Pant" parent="Re4Lom Base Rig" index="5" unique_id=985709093]
 visible = false
 
-[node name="Cloth_Body_001" parent="Re4Lom Base Rig" index="6" unique_id=683596475]
+[node name="Cloth_Body_001" parent="Re4Lom Base Rig" index="6" unique_id=85819558]
 visible = false
 
-[node name="Right_Legging" parent="Re4Lom Base Rig" index="7" unique_id=488549458]
+[node name="Right_Legging" parent="Re4Lom Base Rig" index="7" unique_id=583516559]
 visible = false
 
-[node name="Lower_Leftt_Pant" parent="Re4Lom Base Rig" index="8" unique_id=146586004]
+[node name="Lower_Leftt_Pant" parent="Re4Lom Base Rig" index="8" unique_id=1123880802]
 visible = false
 
-[node name="Left_Legging" parent="Re4Lom Base Rig" index="9" unique_id=2106435008]
+[node name="Left_Legging" parent="Re4Lom Base Rig" index="9" unique_id=1855900122]
 visible = false
 
-[node name="Cloth_Right_Arm" parent="Re4Lom Base Rig" index="10" unique_id=1457653015]
+[node name="Cloth_Right_Arm" parent="Re4Lom Base Rig" index="10" unique_id=1513957521]
 visible = false
 
-[node name="Cloth_Left_Arm" parent="Re4Lom Base Rig" index="11" unique_id=661267318]
+[node name="Cloth_Left_Arm" parent="Re4Lom Base Rig" index="11" unique_id=621717975]
 visible = false
 
-[node name="Right__Flipflop" parent="Re4Lom Base Rig" index="12" unique_id=1362177795]
+[node name="Right__Flipflop" parent="Re4Lom Base Rig" index="12" unique_id=1259945592]
 visible = false
 
-[node name="Hair_002" parent="Re4Lom Base Rig" index="13" unique_id=1800819470]
+[node name="Hair_002" parent="Re4Lom Base Rig" index="13" unique_id=516101630]
 visible = false
 
-[node name="Left__Flipflop" parent="Re4Lom Base Rig" index="14" unique_id=1073726803]
+[node name="Left__Flipflop" parent="Re4Lom Base Rig" index="14" unique_id=1698069445]
 visible = false
 
-[node name="WGT-rig_001_spine_fk" parent="Re4Lom Base Rig" index="15" unique_id=2087407458]
+[node name="WGT-rig_001_spine_fk" parent="Re4Lom Base Rig" index="15" unique_id=1624141485]
 visible = false
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Re4Lom Base Rig" unique_id=675223807]

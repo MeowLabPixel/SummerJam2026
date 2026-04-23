@@ -32,7 +32,6 @@ background_energy_multiplier = 2.39
 ambient_light_energy = 5.49
 
 [node name="world" type="Node3D" unique_id=198855876]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5740967)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=400746355]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -141,8 +140,7 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 41
 text = "AAAAAA"
 
-[node name="Enemy" parent="." unique_id=1434836882 instance=ExtResource("9_ffbsx")]
-process_mode = 4
-
 [node name="Ashley" parent="." unique_id=1099023628 instance=ExtResource("10_1pr3x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9785824, 0, -1.0953765)
+
+[node name="Enemy" parent="." unique_id=1434836882 instance=ExtResource("9_ffbsx")]
