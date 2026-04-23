@@ -76,7 +76,7 @@ size = Vector3(0.30628967, 0.17455387, 0.17154694)
 [node name="All zombie fix" unique_id=867409154 instance=ExtResource("1_e035i")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="rig_001" parent_id_path=PackedInt32Array(1804184091) index="0" unique_id=858999214]
+[node name="Skeleton3D" parent="rig_001" parent_id_path=PackedInt32Array(1025897828) index="0" unique_id=612810231]
 bones/0/position = Vector3(-0.0055161086, 0.883087, -0.02838752)
 bones/0/rotation = Quaternion(0.004789689, 0.082570255, -0.032586094, 0.9960409)
 bones/0/scale = Vector3(0.9999987, 0.9999989, 0.9999976)
@@ -172,7 +172,7 @@ shape = SubResource("BoxShape3D_qof7f")
 
 [node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachLeftFoot/HitboxLeftFoot" index="1" unique_id=1439883841]
 script = ExtResource("2_bnhrn")
-zone_name = "foot"
+zone_name = "left_leg"
 base_damage = 2
 
 [node name="HitboxAttachRightFoot" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="18" unique_id=1295094372]
@@ -190,7 +190,7 @@ shape = SubResource("BoxShape3D_dhc5f")
 
 [node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachRightFoot/HitboxRightFoot" index="1" unique_id=1368614239]
 script = ExtResource("2_bnhrn")
-zone_name = "foot"
+zone_name = "right_leg"
 base_damage = 2
 
 [node name="HitboxAttachRightForeArm" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="19" unique_id=1031889170]
@@ -333,7 +333,7 @@ shape = SubResource("CapsuleShape3D_vpt1t")
 
 [node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachLeftThigh/HitboxLeftThigh" index="1" unique_id=698037140]
 script = ExtResource("2_bnhrn")
-zone_name = "foot"
+zone_name = "left_leg"
 
 [node name="HitboxAttachLeftShin" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="26" unique_id=1686875359]
 transform = Transform3D(0.7682501, 0.06181678, -0.64347243, 0.054224677, -0.9889159, -0.046528906, -0.644941, -0.0077800388, -0.7703296, 0.23885298, 0.24769574, 0.0932814)
@@ -350,7 +350,7 @@ shape = SubResource("CapsuleShape3D_qof7f")
 
 [node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachLeftShin/HitboxLeftShin" index="1" unique_id=381063157]
 script = ExtResource("2_bnhrn")
-zone_name = "foot"
+zone_name = "left_leg"
 base_damage = 2
 
 [node name="HitboxAttachRightShin" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="27" unique_id=1777576202]
@@ -368,7 +368,7 @@ shape = SubResource("CapsuleShape3D_87tvm")
 
 [node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachRightShin/HitboxRightShin" index="1" unique_id=1442578211]
 script = ExtResource("2_bnhrn")
-zone_name = "foot"
+zone_name = "right_leg"
 base_damage = 2
 
 [node name="HitboxAttachRightThigh" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="28" unique_id=747430121]
@@ -386,7 +386,7 @@ shape = SubResource("CapsuleShape3D_7qy5o")
 
 [node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachRightThigh/HitboxRightThigh" index="1" unique_id=1534556595]
 script = ExtResource("2_bnhrn")
-zone_name = "foot"
+zone_name = "right_leg"
 
 [node name="HitboxAttachWaist" type="BoneAttachment3D" parent="rig_001/Skeleton3D" index="29" unique_id=889463265]
 transform = Transform3D(0.98606026, 0.025189595, 0.16446166, -0.021307185, 0.9994512, -0.025328405, -0.16500972, 0.021471158, 0.9860556, 0.0019043284, 0.99577737, -0.027917689)
@@ -436,6 +436,6 @@ shape = SubResource("BoxShape3D_bnhrn")
 [node name="HitboxZone" type="Node" parent="rig_001/Skeleton3D/HitboxAttachPelvis/HitboxPelvis" index="1" unique_id=96601982]
 script = ExtResource("2_bnhrn")
 
-[node name="AnimationPlayer" parent="." index="162" unique_id=1453495977]
+[node name="AnimationPlayer" parent="." index="162" unique_id=1350784634]
 "libraries/Left Foot" = SubResource("AnimationLibrary_dhc5f")
 "libraries/Right Foot" = SubResource("AnimationLibrary_qof7f")
