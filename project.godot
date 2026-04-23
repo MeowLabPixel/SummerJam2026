@@ -21,13 +21,14 @@ buses/default_bus_layout="uid://bwabc5j3e71wj"
 
 [autoload]
 
+MCPRuntime="*uid://d2fgo7emir4ey"
 AudioManager="*uid://btgaj7wtiq84f"
-MusicStateManager="*uid://bfdp4ru1q7kb2"
+MusicStateManager="*uid://jj5u5qw051fo"
 AudioSettings="*uid://d3h2ge18y0vsv"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_audio_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_audio_manager/plugin.cfg", "res://addons/godot_mcp/plugin.cfg")
 
 [file_customization]
 

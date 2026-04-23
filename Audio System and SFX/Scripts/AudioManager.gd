@@ -47,7 +47,7 @@ const BUS_MUSIC    := "Music"
 # POOL SIZES — how many simultaneous sounds per category
 # ---------------------------------------------------------------------------
 const SFX_POOL_SIZE      := 8
-const DIALOGUE_POOL_SIZE := 2
+const DIALOGUE_POOL_SIZE := 3
 
 # ---------------------------------------------------------------------------
 # NODES
@@ -93,6 +93,30 @@ func _build_dialogue_pool() -> void:
 		p.name = "Dialogue_%d" % i
 		add_child(p)
 		_dialogue_pool.append(p)
+		
+const DIALOGUE_LIBRARY: Dictionary = {
+	
+	"Cutscene1Taxi": [
+		"res://Audio System and SFX/Cutscene/Cutscene1Taxi.MP3", 
+	],
+	"Cutscene1End": [
+		"res://Audio System and SFX/Cutscene/Cutscene1end.wav", 
+	],
+	
+	"player_hurt": [
+		"res://audio/dialogue/player_hurt_01.ogg",  # ← your actual file paths
+		"res://audio/dialogue/player_hurt_02.ogg",
+		"res://audio/dialogue/player_hurt_03.ogg",
+	],
+
+	"leon_talk": [
+		"res://audio/dialogue/leon_line_01.ogg",
+		"res://audio/dialogue/leon_line_02.ogg",
+	],
+	"ashley_greet": [
+		"res://audio/dialogue/ashley_hello.ogg",
+	],
+}
 
 func _build_ui_player() -> void:
 	_ui_player = AudioStreamPlayer.new()
