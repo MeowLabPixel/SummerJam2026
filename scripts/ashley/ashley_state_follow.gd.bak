@@ -10,6 +10,7 @@ extends AshleyState
 ## Ashley stops moving toward the player once within this distance.
 @export var follow_stop_distance: float = 2.0
 ## Ashley won't start moving again until the player is this far away.
+## The gap between start and stop is the dead zone that prevents oscillation.
 @export var follow_start_distance: float = 3.2
 ## Threat repulsion radius — zombie influence fades beyond this (units).
 @export var repulsion_radius: float = 4.0
@@ -50,7 +51,8 @@ func physics_update(delta: float) -> void:
 	to_target.y = 0.0
 	var dist_to_target: float = to_target.length()
 
-	# Hysteresis: rest state only changes on threshold crossings.
+	# ── Hysteresis: rest state only changes on threshold crossings, never
+	# re-evaluated mid-frame from a live distance. Prevents oscillation.
 	if _is_resting:
 		if dist_to_target > follow_start_distance:
 			_is_resting = false
@@ -59,7 +61,7 @@ func physics_update(delta: float) -> void:
 		if dist_to_target <= follow_stop_distance:
 			_is_resting = true
 
-	# Build repulsion vector from all nearby threats.
+	# ── Build repulsion vector (used while moving only).
 	var repulsion_vec: Vector3 = Vector3.ZERO
 	var strongest_threat_dist: float = repulsion_radius
 	for threat in ashley.nearby_threats:
@@ -75,8 +77,8 @@ func physics_update(delta: float) -> void:
 		if d < strongest_threat_dist:
 			strongest_threat_dist = d
 
-	# Resting: full stop, no repulsion nudges.
-	# Accumulate cornered timer while a zombie is actively pushing.
+	# ── Resting: full stop. No steering, no repulsion nudges.
+	# A cornered timer accumulates while a zombie is actively pushing.
 	if _is_resting:
 		ashley.velocity = Vector3.ZERO
 		ashley.move_and_slide()
@@ -92,7 +94,7 @@ func physics_update(delta: float) -> void:
 			state_machine.transition_to("AshleyStateDuck")
 		return
 
-	# Moving: follow + repulsion blend.
+	# ── Moving: follow + repulsion blend.
 	var steer: Vector3 = to_target.normalized() + repulsion_vec
 	steer.y = 0.0
 	if steer.length() < 0.01:
@@ -110,6 +112,7 @@ func physics_update(delta: float) -> void:
 	_face_toward(move_dir, delta)
 	_play_anim(AshleyAnims.WALK)
 
+# ─── Helpers ───────────────────────────────────────────────────────────────
 func _face_toward(dir: Vector3, delta: float) -> void:
 	var look_target: Vector3 = ashley.global_position + dir
 	var target_basis: Basis = ashley.global_transform.looking_at(look_target, Vector3.UP).basis

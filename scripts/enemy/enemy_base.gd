@@ -78,6 +78,7 @@ func _ready() -> void:
 func take_hit(hit_data: Dictionary) -> void:
 	if is_defeated:
 		return
+	print(hit_data.get("damage"))
 	print("[EnemyBase] take_hit — zone:'%s' dmg:%d state:%s hp:%d" % [
 		hit_data.get("hit_zone", "?"),
 		hit_data.get("damage", 0),

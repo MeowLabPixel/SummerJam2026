@@ -9,7 +9,10 @@ extends EnemyState
 ## Half-angle (degrees) of the forward attack cone.
 @export var attack_cone_half_angle: float = 45.0
 ## Distance at which the enemy will attempt to attack.
-@export var attack_range: float = 1.8
+@export var attack_range: float = 0.8
+## Name of the state to transition to when in attack range.
+## Change to "StateRangedAttack" on ranged enemy scenes.
+@export var attack_state: String = "StateAttack"
 
 @onready var nav_agent: NavigationAgent3D = enemy.get_node_or_null("NavigationAgent3D") if enemy else null
 
@@ -54,7 +57,7 @@ func physics_update(_delta: float) -> void:
 	if flat_dist <= attack_range:
 		var angle_to_target: float = rad_to_deg(acos(clampf(dot, -1.0, 1.0)))
 		if angle_to_target <= attack_cone_half_angle:
-			state_machine.transition_to("StateAttack")
+			state_machine.transition_to(attack_state)
 			return
 
 	# ── Move toward target via nav agent ────────────────────────────────
@@ -79,7 +82,7 @@ func physics_update(_delta: float) -> void:
 func handle_hit(hit_data: Dictionary) -> String:
 	var zone: String = hit_data.get("hit_zone", "body")
 	match zone:
-		"head", "foot":
+		"head", "foot", "left_leg", "right_leg":
 			return "StateTakedownable"
 		_:
 			return "StateStun"

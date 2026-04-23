@@ -196,12 +196,13 @@ func _update_hitbox_window() -> void:
 		_set_hand_hitboxes(_hitboxes_active)
 
 func _cache_hand_hitboxes() -> void:
-	# New model: "All zombie fix"/rig_001/Skeleton3D/...
 	var base := "ZombieModel/rig_001/Skeleton3D"
-	_hand_left  = enemy.get_node_or_null(
-		"%s/HitboxAttachLeftHand/AttackHitbox" % base)
-	_hand_right = enemy.get_node_or_null(
-		"%s/HitboxAttachRightHand/AttackHitbox" % base)
+	_hand_left  = enemy.get_node_or_null("%s/HitboxAttachLeftHand/AttackHitbox" % base)
+	_hand_right = enemy.get_node_or_null("%s/HitboxAttachRightHand/AttackHitbox" % base)
+	if not _hand_left:
+		push_warning("[StateAttack] AttackHitbox not found on left hand")
+	if not _hand_right:
+		push_warning("[StateAttack] AttackHitbox not found on right hand")
 
 
 func _set_hand_hitboxes(enabled: bool) -> void:
@@ -240,7 +241,7 @@ func _get_player() -> Node3D:
 func _anim_length(anim_name: String) -> float:
 	#if enemy and enemy.anim_player and enemy.anim_player.has_animation(anim_name):
 		#return enemy.anim_player.get_animation(anim_name).length
-	return 2.0  # safe fallback
+	return 1.5  # safe fallback
 
 func _connect_anim_finished() -> void:
 	if enemy and enemy.anim_player:

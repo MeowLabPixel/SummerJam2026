@@ -1,68 +1,97 @@
 ## ZombieAnims: single source of truth for all zombie animation names.
-## Every enemy state imports this so animation name changes only need
-## to happen in one place.
+## All constants match the .res filenames in AnimationsExport/Zombies/
+## Strip the .res extension to get the animation name used in AnimationPlayer.
 class_name ZombieAnims
 
 # Locomotion
-const IDLE   := "Idle"
-const WALK_1 := "Walk zom va1 "
-const WALK_2 := "Walk zombie va2 "
-const WALK_3 := "Non binary walk"
+const IDLE           := "Idle"
+const WALK_1         := "Walk zom va1 "
+const WALK_2         := "Walk zombie va2 "
+const WALK_NONBINARY := "Non binary walk"
+const WALK_BACKWARD  := "Back ward"
 
-# Standard attacks (one-shot, play then return to Hunt)
-const ATTACK_1 := "Attack 1"
-const ATTACK_2  := "Attack 2"
+# Melee attack and grab
+const ATTACK_1       := "Attack 1"  # melee swing animation
+const ATTACK_2       := "Attack 2"  # melee swing animation
+const GRAB_REACH   := "Zombie Attempt Grab"  # reach phase of grab
+const GRAB_SUCCESS := "Zombie Grab success"  # zombie wins grab QTE
+const GRAB_FAIL    := "Zombie Grab fail"     # player escapes grab
+const GRAB_HOLD    := "action 2 loop"        # looping hold during QTE window
 
+# Ranged zombie (water gun)
+const RANGE_IDLE  := "Range Zombie Idle"
+const RANGE_SHOOT := "Range Zombie  shot"    # two spaces match the filename
 
-# Grab sequence (three-phase)
-## Phase 1: zombie lunges / reaches toward the player.
-const GRAB_REACH   := "Zombie Attempt Grab"
-## Phase 2: zombie locks on (loops while QTE is active).
-const GRAB_HOLD    := "Zombie Grab success"
-## Phase 3a: bite/damage — QTE failed, zombie wins.
-const GRAB_SUCCESS := "Zombie Grab success"
-## Phase 3b: player shook free — QTE succeeded.
-const GRAB_FAIL    := "Zombie Grab fail"
+# Balloon zombie
+const BALLOON_IDLE  := "Balloone Zombie Idle"
+const BALLOON_THROW := "Balloone Zombie throw"
 
-# Hit reactions (one-shot, play-and-return)
+# Defeated
+const DEAD      := "dEAD ZOMBIE"
+const DEAD_WALK := "dEAD ZOMBIE walking"
+
+# Body and arm hit reactions (one-shot)
 const HIT_BODY      := "HIT Body"
-const HIT_RIGHT_ARM := "HIT  Right Arm"
-const HIT_LEFT_ARM  := "HIT Left arm"
-## Act 1: initial jerk when a head/foot shot lands.
-const HIT_HEAD_ACT1 := "HIT head act 1 - when get hit"
+const HIT_LEFT_ARM  := "HIT Left arm"     # lowercase a matches filename
+const HIT_RIGHT_ARM := "HIT  Right Arm"   # two spaces match filename
 
-# Head/Foot stun states (looping)
-## Act 2: looping stun-idle while the zombie is TAKEDOWNable.
-const HIT_HEAD_ACT2_STUN_IDLE    := "HIT head act 2(Stun_idle) "  # trailing space is intentional
-## Act 3: transition animation into takedown fall.
+# Head hit sequence
+const HIT_HEAD_ACT1               := "HIT head act 1 - when get hit"
+const HIT_HEAD_ACT2_STUN          := "HIT head act 2(Stun_idle) "
 const HIT_HEAD_ACT3_TAKEDOWN      := "HIT head act 3-take down"
-## Act 4: idle loop on the ground while takedown executes.
 const HIT_HEAD_ACT4_TAKEDOWN_IDLE := "HIT head act 4 (Take_down_idle)"
+const HIT_HEAD_ACT5_GETUP         := "HIT head act 5 (get_up )"
 
-const HIT_HEAD_ACT5_GET_UP := "HIT head act 5 (get_up )"
+# Left leg hit sequence
+const HIT_LLEG_ACT1_SLIP          := "Hit Leg act 1 Slipping"
+const HIT_LLEG_ACT2_SLIP_IDLE     := "Hit Leg act 2 (Slipping_Ilde) -loop_aa "
+const HIT_LLEG_ACT3_TAKEDOWN      := "Hit Leg act 3 (Take_down) "
+# Left leg shares head acts 4 and 5
+const HIT_LLEG_ACT4_TAKEDOWN_IDLE := "HIT head act 4 (Take_down_idle) "
+const HIT_LLEG_ACT5_GETUP         := "HIT head act 5 (get_up ) "
+
+# Right leg hit sequence
+const HIT_RLEG_ACT1_SLIP          := "Hit RightLeg act 1 Slipping "
+const HIT_RLEG_ACT2_SLIP_IDLE     := "Hit RightLeg act 2 (Slipping_Ilde) "
+const HIT_RLEG_ACT3_TAKEDOWN      := "Hit RightLeg act 3 (Take_down) "
+const HIT_RLEG_ACT4_TAKEDOWN_IDLE := "HIT Rightleg act 4 (Take_down_idle) "
+const HIT_RLEG_ACT5_GETUP         := "HIT Rightleg act 5 (get_up ) "
 
 # Helpers
 
-## Returns a random walk animation name (50/50 between the two walk variants).
 static func random_walk() -> String:
 	return WALK_1 if randf() < 0.5 else WALK_2
 
-## Returns a random standard-attack animation.
 static func random_attack() -> String:
-	var roll := randf()
-	if roll < 0.5:
-		return ATTACK_1
-	else:
-		return ATTACK_2
+	return ATTACK_1 if randf() < 0.5 else ATTACK_2
 
-## Returns the appropriate one-shot hit-reaction animation for a given zone_name.
 static func hit_reaction(hit_zone: String) -> String:
 	match hit_zone:
-		"head", "foot":
-			return HIT_HEAD_ACT1
-		"right_arm":
-			return HIT_RIGHT_ARM
-		"left_arm":
-			return HIT_LEFT_ARM
-		_:
-			return HIT_BODY
+		"head":      return HIT_HEAD_ACT1
+		"left_leg":  return HIT_LLEG_ACT1_SLIP
+		"right_leg": return HIT_RLEG_ACT1_SLIP
+		"foot":      return HIT_LLEG_ACT1_SLIP
+		"right_arm": return HIT_RIGHT_ARM
+		"left_arm":  return HIT_LEFT_ARM
+		_:           return HIT_BODY
+
+static func stun_idle(hit_zone: String) -> String:
+	match hit_zone:
+		"head":              
+			print(HIT_HEAD_ACT2_STUN)
+			return HIT_HEAD_ACT2_STUN
+		"left_leg", "foot": return HIT_LLEG_ACT2_SLIP_IDLE
+		"right_leg":        return HIT_RLEG_ACT2_SLIP_IDLE
+		_:                  return HIT_HEAD_ACT2_STUN
+
+static func takedown_anim(hit_zone: String) -> String:
+	match hit_zone:
+		"left_leg", "foot": return HIT_LLEG_ACT3_TAKEDOWN
+		"right_leg":        return HIT_RLEG_ACT3_TAKEDOWN
+		_:                  return HIT_HEAD_ACT3_TAKEDOWN
+
+static func takedown_idle(hit_zone: String) -> String:
+	return HIT_RLEG_ACT4_TAKEDOWN_IDLE if hit_zone == "right_leg" else HIT_LLEG_ACT4_TAKEDOWN_IDLE
+
+static func get_up_anim(hit_zone: String) -> String:
+	return HIT_RLEG_ACT5_GETUP if hit_zone == "right_leg" else HIT_LLEG_ACT5_GETUP

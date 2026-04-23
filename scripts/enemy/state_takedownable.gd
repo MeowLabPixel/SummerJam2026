@@ -30,7 +30,12 @@ func enter() -> void:
 func _start_act1() -> void:
 	_in_act1 = true
 	_act1_timer = 0.0
-	_force_anim(ZombieAnims.HIT_HEAD_ACT1)
+	_force_anim(ZombieAnims.hit_reaction(stun_type))
+	# Sync act1_duration to actual animation length.
+	if enemy and enemy.anim_player:
+		var anim := ZombieAnims.hit_reaction(stun_type)
+		#if enemy.anim_player.has_animation(anim):
+			#act1_duration = enemy.anim_player.get_animation(anim).length
 
 func exit() -> void:
 	stun_type = "head"
@@ -44,10 +49,14 @@ func physics_update(delta: float) -> void:
 
 	# Advance Act 1 timer; once it elapses, switch to looping Act 2.
 	if _in_act1:
+		#print(_act1_timer)
 		_act1_timer += delta
+		#print(_act1_timer >= act1_duration)
+		#print(act1_duration)
 		if _act1_timer >= act1_duration:
 			_in_act1 = false
-			_force_anim(ZombieAnims.HIT_HEAD_ACT2_STUN_IDLE)
+			#print(_in_act1)
+			_force_anim(ZombieAnims.stun_idle(stun_type))
 
 	_timer += delta
 	if _timer >= takedown_window:

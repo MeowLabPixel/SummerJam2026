@@ -102,7 +102,7 @@ func _check_shoot() -> void:
 	if not hitbox_zone or hitbox_zone._enemy != enemy:
 		return
 
-	var hit_data := {"damage": 5, "hit_zone": hitbox_zone.zone_name}
+	var hit_data := {"damage": hitbox_zone.base_damage, "hit_zone": hitbox_zone.zone_name}
 	print("[TestWorld] Shot! zone=%s" % hitbox_zone.zone_name)
 	enemy.take_hit(hit_data)
 	if ashley:

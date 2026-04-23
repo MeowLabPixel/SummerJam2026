@@ -34,7 +34,7 @@ func physics_update(delta: float) -> void:
 func handle_hit(hit_data: Dictionary) -> String:
 	var zone: String = hit_data.get("hit_zone", "body")
 	match zone:
-		"head", "foot":
+		"head", "foot", "left_leg", "right_leg":
 			return "StateTakedownable"
 		_:
 			# Re-stun: restart the timer AND replay the flinch animation.

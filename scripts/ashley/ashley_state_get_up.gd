@@ -14,7 +14,7 @@ func enter() -> void:
 	_timer = 0.0
 	ashley.velocity = Vector3.ZERO
 	print("[AshleyStateGetUp] Getting up.")
-	_play_anim("rig|GetUp")
+	_play_anim(AshleyAnims.GET_UP)
 
 func exit() -> void:
 	pass

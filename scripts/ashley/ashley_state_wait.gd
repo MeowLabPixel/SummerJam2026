@@ -8,7 +8,7 @@ extends AshleyState
 func enter() -> void:
 	ashley.velocity = Vector3.ZERO
 	print("[AshleyStateWait] Waiting.")
-	_play_anim("rig|Idle")
+	_play_anim(AshleyAnims.IDLE)
 
 func exit() -> void:
 	pass

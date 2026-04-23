@@ -47,7 +47,7 @@ func handle_hit(_hit_data: Dictionary) -> String:
 	combat_initiated = true
 	var zone: String = _hit_data.get("hit_zone", "body")
 	match zone:
-		"head", "foot":
+		"head", "foot", "left_leg", "right_leg":
 			return "StateTakedownable"
 		_:
 			return "StateStun"

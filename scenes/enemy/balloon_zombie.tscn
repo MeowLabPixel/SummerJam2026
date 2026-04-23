@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cct03w215xpte"]
+
+[ext_resource type="Script" uid="uid://dbsdvbgtyd0jy" path="res://scripts/enemy/enemy_base.gd" id="1_rxue5"]
+[ext_resource type="Script" uid="uid://crh7ttepk8wbr" path="res://scripts/enemy/enemy_state_machine.gd" id="2_0d34x"]
+[ext_resource type="Script" uid="uid://saf7ighv0nbi" path="res://scripts/enemy/state_idle.gd" id="3_vc6hu"]
+[ext_resource type="Script" uid="uid://fxr5osux372y" path="res://scripts/enemy/state_hunt.gd" id="4_nilsf"]
+[ext_resource type="Script" uid="uid://1jjtk7wfl20v" path="res://scripts/enemy/state_ranged_attack.gd" id="5_imbof"]
+[ext_resource type="Script" uid="uid://cq5ffbhr6djco" path="res://scripts/enemy/state_turn_back.gd" id="6_oe4a6"]
+[ext_resource type="Script" uid="uid://dh488idnaj836" path="res://scripts/enemy/state_stun.gd" id="7_r40o8"]
+[ext_resource type="Script" uid="uid://bn4tk2qb16e3" path="res://scripts/enemy/state_takedownable.gd" id="8_hl7fk"]
+[ext_resource type="Script" uid="uid://beiq7i7sumyfv" path="res://scripts/enemy/state_knockdown.gd" id="9_eet5s"]
+[ext_resource type="Script" uid="uid://c2380ydsn0sgi" path="res://scripts/enemy/state_get_up.gd" id="10_6307m"]
+[ext_resource type="Script" uid="uid://dv0tmkky7d57f" path="res://scripts/enemy/state_defeated.gd" id="11_fr4no"]
+[ext_resource type="PackedScene" uid="uid://bd7pagsi67ay5" path="res://scenes/enemy/all_zombie_fix.tscn" id="12_0d34x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vc6hu"]
+radius = 0.09240723
+
+[node name="BalloonZombie" type="CharacterBody3D" unique_id=525148414]
+script = ExtResource("1_rxue5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1933648247]
+shape = SubResource("SphereShape3D_vc6hu")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1076845861]
+
+[node name="EnemyStateMachine" type="Node" parent="." unique_id=1753259370]
+script = ExtResource("2_0d34x")
+
+[node name="StateIdle" type="Node" parent="EnemyStateMachine" unique_id=160649676]
+script = ExtResource("3_vc6hu")
+
+[node name="StateHunt" type="Node" parent="EnemyStateMachine" unique_id=482900293]
+script = ExtResource("4_nilsf")
+
+[node name="StateRangedAttack" type="Node" parent="EnemyStateMachine" unique_id=1971326827]
+script = ExtResource("5_imbof")
+
+[node name="StateTurnBack" type="Node" parent="EnemyStateMachine" unique_id=419919674]
+script = ExtResource("6_oe4a6")
+
+[node name="StateStun" type="Node" parent="EnemyStateMachine" unique_id=410363672]
+script = ExtResource("7_r40o8")
+
+[node name="StateTakedownable" type="Node" parent="EnemyStateMachine" unique_id=2123906327]
+script = ExtResource("8_hl7fk")
+
+[node name="StateKnockdown" type="Node" parent="EnemyStateMachine" unique_id=1068817465]
+script = ExtResource("9_eet5s")
+
+[node name="StateGetUp" type="Node" parent="EnemyStateMachine" unique_id=1495640184]
+script = ExtResource("10_6307m")
+
+[node name="StateDefeated" type="Node" parent="EnemyStateMachine" unique_id=2112495230]
+script = ExtResource("11_fr4no")
+
+[node name="All zombie fix" parent="." unique_id=867409154 instance=ExtResource("12_0d34x")]

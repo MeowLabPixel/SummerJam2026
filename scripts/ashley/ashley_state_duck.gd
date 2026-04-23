@@ -18,8 +18,8 @@ func enter() -> void:
 	_timer = 0.0
 	print("[AshleyStateDuck] Ducking!")
 	# Only play duck if not already playing it — prevents restart on re-entry.
-	if ashley and ashley.anim_player and ashley.anim_player.current_animation != "rig|Duck":
-		ashley.anim_player.play("rig|Duck")
+	if ashley and ashley.anim_player and ashley.anim_player.current_animation != AshleyAnims.DUCK:
+		ashley.anim_player.play(AshleyAnims.DUCK)
 
 func exit() -> void:
 	ashley.is_cornered = false
