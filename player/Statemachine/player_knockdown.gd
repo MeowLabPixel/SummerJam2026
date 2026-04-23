@@ -13,13 +13,13 @@ func _enter() -> void:
 	owner.hitboxF.monitoring = false
 	owner.hitboxB.monitoring = false
 	
-func anim_done(namee: String):
-	print(namee)
-	if namee == exit_anim_name:
+func anim_done(_namee: String):
+	print(_namee)
+	if _namee == exit_anim_name:
 		finished.emit("Idle")
 		owner.hitboxF.monitoring = true
 		owner.hitboxB.monitoring = true
-	if namee == start_anim_name:
+	if _namee == start_anim_name:
 		owner.knockdown_timer.timeout.connect(knock_timeout)
 		owner.knockdown_timer.start()
 

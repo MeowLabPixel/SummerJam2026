@@ -8,7 +8,7 @@ func _enter() -> void:
 		owner.change_gun()
 	#play gunswap anim
 
-func anim_done(namee: String):
+func anim_done(_namee: String):
 	pass
 
 func _update(_delta:float) -> void:

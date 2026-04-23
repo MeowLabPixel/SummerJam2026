@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c6uqvqrlxwm0g"]
+
+[ext_resource type="Script" uid="uid://d20webbkc4idu" path="res://scripts/ashley/ashley_base.gd" id="1_ak0x7"]
+[ext_resource type="PackedScene" uid="uid://cr7ev7nt45a37" path="res://models/ashley/ashley_test.tscn" id="2_6r0d4"]
+[ext_resource type="Script" uid="uid://b2k54i3g80daa" path="res://scripts/ashley/ashley_state_machine.gd" id="2_soyvl"]
+[ext_resource type="Script" uid="uid://bjkr24175n87i" path="res://scripts/ashley/ashley_state_follow.gd" id="3_6r0d4"]
+[ext_resource type="Script" uid="uid://d2bipf7o1w5vp" path="res://scripts/ashley/ashley_state_evade.gd" id="4_i4tsk"]
+[ext_resource type="Script" uid="uid://bovwopvhjxcu8" path="res://scripts/ashley/ashley_state_duck.gd" id="5_4jr6e"]
+[ext_resource type="Script" uid="uid://vjg241m71x3j" path="res://scripts/ashley/ashley_state_get_up.gd" id="7_6r0d4"]
+[ext_resource type="Script" uid="uid://bpynr0rvl5xy1" path="res://scripts/ashley/ashley_state_wait.gd" id="8_i4tsk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ak0x7"]
+radius = 0.35351563
+height = 1.6469727
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i4tsk"]
+radius = 3.0
+
+[node name="Ashley" type="CharacterBody3D" unique_id=1099023628]
+script = ExtResource("1_ak0x7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=982274225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8234863, 0)
+shape = SubResource("CapsuleShape3D_ak0x7")
+
+[node name="Ashley_Test" parent="." unique_id=883596392 instance=ExtResource("2_6r0d4")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1256189685]
+
+[node name="ThreatArea" type="Area3D" parent="." unique_id=1298103914]
+
+[node name="ThreatShape" type="CollisionShape3D" parent="ThreatArea" unique_id=2031670638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_i4tsk")
+
+[node name="AshleyStateMachine" type="Node" parent="." unique_id=2076411736]
+script = ExtResource("2_soyvl")
+
+[node name="AshleyStateFollow" type="Node" parent="AshleyStateMachine" unique_id=971160823]
+script = ExtResource("3_6r0d4")
+
+[node name="AshleyStateEvade" type="Node" parent="AshleyStateMachine" unique_id=1332248064]
+script = ExtResource("4_i4tsk")
+
+[node name="AshleyStateDuck" type="Node" parent="AshleyStateMachine" unique_id=2060801514]
+script = ExtResource("5_4jr6e")
+
+[node name="AshleyStateGetUp" type="Node" parent="AshleyStateMachine" unique_id=521092294]
+script = ExtResource("7_6r0d4")
+
+[node name="AshleyStateWait" type="Node" parent="AshleyStateMachine" unique_id=571980857]
+script = ExtResource("8_i4tsk")
+
+[node name="HelpLabel" type="Label3D" parent="." unique_id=1391055199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+visible = false
+billboard = 1
+modulate = Color(1, 0.76862746, 0.52156866, 1)
+text = "Leon, help!"
+font_size = 100

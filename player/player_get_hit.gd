@@ -22,12 +22,12 @@ func _exit() -> void:
 		owner.Hit_info.location = null
 		owner.Hit_info.bullet = null
 	
-func anim_done(namee: String):
-	if namee == hit_anim:
+func anim_done(_namee: String):
+	if _namee == hit_anim:
 		finished.emit("Idle")
-	elif namee == hit_animF and owner.Hit_info.location == "front":
+	elif _namee == hit_animF and owner.Hit_info.location == "front":
 		finished.emit("Idle")
-	elif namee == hit_animB and owner.Hit_info.location == "back":
+	elif _namee == hit_animB and owner.Hit_info.location == "back":
 		finished.emit("Idle")
 
 func stop_moving():

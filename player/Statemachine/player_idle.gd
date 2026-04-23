@@ -22,7 +22,7 @@ func _update(_delta:float) -> void:
 	if direction != Vector3.ZERO:
 		finished.emit("Run")
 
-func _state_input(event: InputEvent) -> void:
+func _state_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("quick_turn") and not owner.is_quick_turn:
 		finished.emit("Quick_turn")
 	if Input.is_action_pressed("aim") :

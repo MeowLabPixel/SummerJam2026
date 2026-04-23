@@ -1,0 +1,45 @@
+## STATE: Knockdown
+## Enemy falls to the ground. Plays knockdown animation for a brief period,
+## then automatically transitions to GetUp.
+class_name StateKnockdown
+extends EnemyState
+
+## How long Act 3 (takedown animation) plays before switching to Act 4 (ground idle).
+@export var act3_duration: float = 1.15
+## How long the enemy sits in the ground idle before getting up.
+@export var knockdown_duration: float = 2.0
+
+var _timer: float = 0.0
+var _act3_timer: float = 0.0
+var _in_act3: bool = false
+
+var stun_type: String = "head"  # Inherited from StateTakedownable via state machine pre-load.
+
+func enter() -> void:
+	_timer = 0.0
+	_act3_timer = 0.0
+	_in_act3 = true
+	print("[StateKnockdown] Enemy knocked down! Zone: %s" % stun_type)
+	_force_anim(ZombieAnims.takedown_anim(stun_type))
+
+func exit() -> void:
+	_in_act3 = false
+
+func physics_update(delta: float) -> void:
+	if _in_act3:
+		_act3_timer += delta
+		if _act3_timer >= act3_duration:
+			_in_act3 = false
+			_force_anim(ZombieAnims.takedown_idle(stun_type))
+	else:
+		_timer += delta
+		if _timer >= knockdown_duration:
+			# Forward zone to GetUp so it plays the correct animation.
+			var getup = state_machine._states.get("StateGetUp")
+			if getup:
+				getup.stun_type = stun_type
+			state_machine.transition_to("StateGetUp")
+
+## Cannot be stunned while on the ground.
+func handle_hit(_hit_data: Dictionary) -> String:
+	return ""

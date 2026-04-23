@@ -47,6 +47,7 @@ spawn_point = NodePath("shotty optimized/SpawnPoint")
 shot_vfx_scene = ExtResource("2_n8a5k")
 hit_vfx_scene = ExtResource("4_gnye6")
 muzzle_vfx_scene = ExtResource("5_xnxwk")
+damage = 5.0
 shoot_interval = 1.0
 pump_air_gain = 20.0
 min_spread = 2.0

@@ -112,6 +112,10 @@ func fire_pellet():
 
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.collide_with_areas = true
+	query.collide_with_bodies = true
+	# Layer 4 (value 8) = player hitboxes. Exclude so shots never self-register.
+	query.collision_mask = query.collision_mask & ~8
 	var result: Dictionary = space_state.intersect_ray(query)
 	
 	var start_pos: Vector3 = spawn_point.global_transform.origin if spawn_point else from
@@ -119,6 +123,8 @@ func fire_pellet():
 	
 	if result:
 		end_pos = result.position
+		# Apply damage to any enemy hit by the raycast
+		_apply_damage_to_result(result)
 
 	# Muzzle Flash
 	if muzzle_vfx_scene and spawn_point:
@@ -184,11 +190,46 @@ func update_accuracy():
 	var t: float = clamp(air / max_air, 0.0, 1.0)
 	current_spread = lerp(max_spread, min_spread, t)	
 
+func _apply_damage_to_result(result: Dictionary) -> void:
+	var collider = result.get("collider")
+	if collider == null:
+		return
+
+	# ✅ Case 1: Hit an Area3D (hitbox)
+	if collider is Area3D and not collider.is_in_group("player_hitbox"):
+		var _hitbox_script = collider.get_child(0) if collider.get_child_count() > 0 else null
+		
+		# Better: search for HitboxZone
+		var hitbox_zone: HitboxZone = collider.get_node_or_null("HitboxZone")
+		
+		if hitbox_zone:
+			var enemy = hitbox_zone._enemy
+			
+			if enemy:
+				enemy.take_hit({
+					"damage": int(damage),
+					"hit_zone": hitbox_zone.zone_name,
+					"position": result.position
+				})
+				return
+
+	# ✅ Fallback (direct hit)
+	var node = collider
+	while node and not node.has_method("take_hit"):
+		node = node.get_parent()
+
+	if node:
+		node.take_hit({
+			"damage": int(damage),
+			"hit_zone": "body",
+			"position": result.position
+		})
+
 func pump_air():
 	if is_super_active:
 		return
 
-	var old_air = air
+	var _old_air = air
 	
 	if air < max_air:
 		air += pump_air_gain

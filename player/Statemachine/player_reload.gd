@@ -13,7 +13,7 @@ func _enter() -> void:
 		owner.hitboxB.body_entered.connect(hitback)
 	
 	
-func _state_input(event: InputEvent) -> void:
+func _state_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Reload"):
 		reloading()
 		
