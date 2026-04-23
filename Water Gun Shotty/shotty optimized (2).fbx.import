@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://4piwip56p4ju"
-path="res://.godot/imported/Tent.fbx-678043aa4a7c07b73754109bdd70d1d4.scn"
+uid="uid://c8f8pqwf0brik"
+path="res://.godot/imported/shotty optimized (2).fbx-bdc012f771189ac7aea5be29fca6def3.scn"
 
 [deps]
 
-source_file="res://Prop/Tent.fbx"
-dest_files=["res://.godot/imported/Tent.fbx-678043aa4a7c07b73754109bdd70d1d4.scn"]
+source_file="res://Water Gun Shotty/shotty optimized (2).fbx"
+dest_files=["res://.godot/imported/shotty optimized (2).fbx-bdc012f771189ac7aea5be29fca6def3.scn"]
 
 [params]
 
@@ -34,7 +34,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-materials/extract=1
+materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
