@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b6f88aqs0k45d"
-path="res://.godot/imported/Noise_Punch_006.wav-972e60177705b245a65fe77d86c83b0d.sample"
+path="res://.godot/imported/Noise_Punch_006.wav-133a1d4ca8abbbe1426861c7b82ddde4.sample"
 
 [deps]
 
-source_file="res://SFX/Noise_Punch_006.wav"
-dest_files=["res://.godot/imported/Noise_Punch_006.wav-972e60177705b245a65fe77d86c83b0d.sample"]
+source_file="res://Audio System and SFX/SFX/Noise_Punch_006.wav"
+dest_files=["res://.godot/imported/Noise_Punch_006.wav-133a1d4ca8abbbe1426861c7b82ddde4.sample"]
 
 [params]
 

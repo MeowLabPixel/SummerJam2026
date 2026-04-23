@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bly0idmnkpwhy"
-path="res://.godot/imported/Comedic_006.wav-e3ea88215c958fa68c2dbb2a3c48627c.sample"
+path="res://.godot/imported/Comedic_006.wav-5ef919092ba2859973be2207f8006f54.sample"
 
 [deps]
 
-source_file="res://SFX/Comedic_006.wav"
-dest_files=["res://.godot/imported/Comedic_006.wav-e3ea88215c958fa68c2dbb2a3c48627c.sample"]
+source_file="res://Audio System and SFX/SFX/Comedic_006.wav"
+dest_files=["res://.godot/imported/Comedic_006.wav-5ef919092ba2859973be2207f8006f54.sample"]
 
 [params]
 

@@ -11,12 +11,29 @@ config_version=5
 [application]
 
 config/name="Songkran Hazard 4-Lom"
+run/main_scene="uid://n5m17a8leco1"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://bwabc5j3e71wj"
+
+[autoload]
+
+AudioManager="*uid://btgaj7wtiq84f"
+MusicStateManager="*uid://bfdp4ru1q7kb2"
+AudioSettings="*uid://d3h2ge18y0vsv"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_audio_manager/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Audio System and SFX/": "red"
+}
 
 [global_group]
 
