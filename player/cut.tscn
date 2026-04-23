@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dpkasxeyfq02d"]
+
+[ext_resource type="PackedScene" uid="uid://daks23cho6mef" path="res://player/animation/New folder/Fix_TukTuk/Fix_tuktuk.fbx" id="1_3dmw5"]
+
+[node name="Node3D" type="Node3D" unique_id=1698517796]
+
+[node name="Fix_tuktuk" parent="." unique_id=757272873 instance=ExtResource("1_3dmw5")]
+transform = Transform3D(-0.465, 0, -7.021305e-08, 0, 0.465, 0, 7.021305e-08, 0, -0.465, 1.5303707, 0.17329955, -0.8386936)

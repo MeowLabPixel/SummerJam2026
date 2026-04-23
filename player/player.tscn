@@ -28,13 +28,15 @@
 [ext_resource type="Script" uid="uid://cxhknelq4t202" path="res://player/player_sprint.gd" id="9_kb6p2"]
 [ext_resource type="Script" uid="uid://xou4sjteglpa" path="res://player/Statemachine/player_aim.gd" id="9_wodsf"]
 [ext_resource type="Script" uid="uid://88nqcyhvt3qh" path="res://player/Statemachine/player_grab.gd" id="10_32hag"]
-[ext_resource type="Script" uid="uid://cpdbw6oifs8m2" path="res://player/Statemachine/player_knockdown.gd" id="11_tqiix"]
+[ext_resource type="Animation" uid="uid://d4do3x03ypcvo" path="res://player/animation/TD/Ded.res" id="12_1so5t"]
 [ext_resource type="Script" uid="uid://bhn03nq0rsppn" path="res://player/Statemachine/player_die.gd" id="12_e7oew"]
 [ext_resource type="Animation" uid="uid://bn6ivlrce2lo3" path="res://player/animation/walk/LEON GRAB Fail.res" id="12_pnw6m"]
-[ext_resource type="Animation" uid="uid://mdx0kojgga3t" path="res://player/animation/LEON GRAB Sucess.res" id="13_1so5t"]
+[ext_resource type="Animation" uid="uid://b5f5xyglbpwow" path="res://player/animation/Grab/loo/LEON GRAB Sucess.res" id="13_55jnj"]
+[ext_resource type="Animation" uid="uid://b8pxt7ey3gvjn" path="res://player/animation/Grab/HIT Rightleg act 5 (get_up ).res" id="14_dx5ib"]
 [ext_resource type="Script" uid="uid://dg7m7j6ceo13t" path="res://player/player_get_hit.gd" id="15_wodsf"]
 [ext_resource type="Script" uid="uid://duyd0oy3clg7i" path="res://player/player_takedown.gd" id="16_32hag"]
 [ext_resource type="Animation" uid="uid://cpcq5yam2grcg" path="res://player/animation/Leon hit.res" id="16_55jnj"]
+[ext_resource type="Animation" uid="uid://c2isqpuf8ltm4" path="res://player/animation/Grab/New folder/LEON GRAB Sucess.res" id="16_dx5ib"]
 [ext_resource type="Animation" uid="uid://drl5gxvemmbi8" path="res://player/animation/reload/re.res" id="18_dx5ib"]
 [ext_resource type="Animation" uid="uid://depe2qh3b3ptn" path="res://player/animation/TD/Take down anim.res" id="19_a2xo5"]
 
@@ -1559,10 +1561,17 @@ _data = {
 &"RESET": SubResource("Animation_pnw6m")
 }
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_55jnj"]
+_data = {
+&"Ded": ExtResource("12_1so5t")
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rptt4"]
 _data = {
+&"Grab loop": ExtResource("13_55jnj"),
+&"HIT Rightleg act 5 (get_up )": ExtResource("14_dx5ib"),
 &"LEON GRAB Fail": ExtResource("12_pnw6m"),
-&"LEON GRAB Sucess": ExtResource("13_1so5t")
+&"LEON GRAB Sucess": ExtResource("16_dx5ib")
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7pn3"]
@@ -1719,38 +1728,83 @@ _data = {
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2uvqg"]
-animation = &"QT/Base"
+animation = &"Dead/Ded"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1s1yo"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_art4l"]
+animation = &"Grab/LEON GRAB Fail"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5ejfk"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gswnw"]
+animation = &"Grab/HIT Rightleg act 5 (get_up )"
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jd2rm"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jfgyi"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n0b8q"]
 switch_mode = 2
 advance_mode = 2
-advance_condition = &"front"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jfgyi"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wpyo2"]
+"states/Grab_getup - 1/node" = SubResource("AnimationNodeAnimation_gswnw")
+"states/Grab_getup - 1/position" = Vector2(466, 90.4)
+transitions = ["Start", "Grab_getup - 1", SubResource("AnimationNodeStateMachineTransition_jfgyi"), "Grab_getup - 1", "End", SubResource("AnimationNodeStateMachineTransition_n0b8q")]
+graph_offset = Vector2(205, -28)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vgvch"]
+animation = &"Grab/Grab loop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3dxkp"]
+animation = &"Grab/LEON GRAB Sucess"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lufic"]
 advance_mode = 2
-advance_condition = &"back"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_237xx"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nxclr"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_onxu2"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gci7n"]
+xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpyo2"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tcwf7"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_20bc7"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_1s1yo"]
+states/Fail/node = SubResource("AnimationNodeAnimation_art4l")
+states/Fail/position = Vector2(449.99997, 42.399994)
+states/Getup/node = SubResource("AnimationNodeStateMachine_wpyo2")
+states/Getup/position = Vector2(640.39996, 42.399994)
+states/Grab/node = SubResource("AnimationNodeAnimation_vgvch")
+states/Grab/position = Vector2(325.2, 86.4)
+states/Start/position = Vector2(200, 99.840004)
+states/Win/node = SubResource("AnimationNodeAnimation_3dxkp")
+states/Win/position = Vector2(518.8, 152.79999)
+transitions = ["Start", "Grab", SubResource("AnimationNodeStateMachineTransition_lufic"), "Grab", "Fail", SubResource("AnimationNodeStateMachineTransition_nxclr"), "Grab", "Win", SubResource("AnimationNodeStateMachineTransition_onxu2"), "Win", "End", SubResource("AnimationNodeStateMachineTransition_gci7n"), "Fail", "Getup", SubResource("AnimationNodeStateMachineTransition_tcwf7"), "Getup", "End", SubResource("AnimationNodeStateMachineTransition_20bc7")]
+graph_offset = Vector2(135, -10)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jfgxe"]
+animation = &"Hit/Leon hit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yg0n1"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qjt2w"]
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7crtr"]
-states/Back/node = SubResource("AnimationNodeStateMachine_5ejfk")
-states/Back/position = Vector2(430.8, 130.4)
-states/Front/node = SubResource("AnimationNodeStateMachine_jd2rm")
-states/Front/position = Vector2(369.2, 49.6)
-transitions = ["Start", "Front", SubResource("AnimationNodeStateMachineTransition_n0b8q"), "Start", "Back", SubResource("AnimationNodeStateMachineTransition_jfgyi"), "Front", "End", SubResource("AnimationNodeStateMachineTransition_237xx"), "Back", "End", SubResource("AnimationNodeStateMachineTransition_wpyo2")]
-graph_offset = Vector2(-134.91035, 0)
+"states/Hit_Leon hit/node" = SubResource("AnimationNodeAnimation_jfgxe")
+"states/Hit_Leon hit/position" = Vector2(472.88965, 67.8)
+transitions = ["Start", "Hit_Leon hit", SubResource("AnimationNodeStateMachineTransition_yg0n1"), "Hit_Leon hit", "End", SubResource("AnimationNodeStateMachineTransition_qjt2w")]
+graph_offset = Vector2(86.089645, -21)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dx5ib"]
 animation = &"gun_aim/shot"
@@ -2107,20 +2161,24 @@ states/Run/position = Vector2(375.28003, 248.8)
 states/Takedown/node = SubResource("AnimationNodeStateMachine_a1u5o")
 states/Takedown/position = Vector2(675.2, 130.064)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_35wys"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_pjwc4"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_or4qq"), "Idle", "Aim", SubResource("AnimationNodeStateMachineTransition_hggc2"), "Aim", "Idle", SubResource("AnimationNodeStateMachineTransition_b2j0d"), "QT", "Idle", SubResource("AnimationNodeStateMachineTransition_55jnj"), "Aim", "QT", SubResource("AnimationNodeStateMachineTransition_gswnw"), "Idle", "QT", SubResource("AnimationNodeStateMachineTransition_xcnuv"), "Run", "QT", SubResource("AnimationNodeStateMachineTransition_j55il"), "Aim", "Reload", SubResource("AnimationNodeStateMachineTransition_s3g0c"), "Run", "Reload", SubResource("AnimationNodeStateMachineTransition_7l6ig"), "Idle", "Reload", SubResource("AnimationNodeStateMachineTransition_utr5e"), "Reload", "Idle", SubResource("AnimationNodeStateMachineTransition_kewli"), "Idle", "Takedown", SubResource("AnimationNodeStateMachineTransition_kcq4v"), "Run", "Takedown", SubResource("AnimationNodeStateMachineTransition_qavcc"), "Takedown", "Idle", SubResource("AnimationNodeStateMachineTransition_bd26m")]
-graph_offset = Vector2(-35, 7)
+graph_offset = Vector2(-31, 71)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j3r50"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_do7qw"]
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2h6tc"]
+xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8rogd"]
+xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_48p26"]
+xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
@@ -2136,7 +2194,7 @@ states/Hit/position = Vector2(332.6, -3.0740929)
 states/Main/node = SubResource("AnimationNodeStateMachine_7l6ig")
 states/Main/position = Vector2(332.59998, 94.52592)
 transitions = ["Start", "Main", SubResource("AnimationNodeStateMachineTransition_j3r50"), "Main", "Hit", SubResource("AnimationNodeStateMachineTransition_do7qw"), "Hit", "Main", SubResource("AnimationNodeStateMachineTransition_2h6tc"), "Main", "Die", SubResource("AnimationNodeStateMachineTransition_8rogd"), "Grab", "Main", SubResource("AnimationNodeStateMachineTransition_48p26"), "Main", "Grab", SubResource("AnimationNodeStateMachineTransition_anp34")]
-graph_offset = Vector2(22, -9.474091)
+graph_offset = Vector2(2, -40.47409)
 
 [node name="player" type="CharacterBody3D" unique_id=324464419 node_paths=PackedStringArray("aim_bone", "aim_bone2", "anim", "hitboxF", "hitboxB", "stun_detect", "pickup_detect", "TD_hand", "gun_controller")]
 collision_layer = 10
@@ -2162,13 +2220,13 @@ shape = SubResource("BoxShape3D_32hag")
 [node name="Re4Lom Base Rig" parent="." unique_id=449863350 instance=ExtResource("2_uw77l")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="metarig" parent="Re4Lom Base Rig" index="0" unique_id=1245753346]
+[node name="metarig" parent="Re4Lom Base Rig" index="0" unique_id=291192499]
 visible = false
 
-[node name="Skeleton3D" parent="Re4Lom Base Rig/metarig" index="0" unique_id=1541456125]
+[node name="Skeleton3D" parent="Re4Lom Base Rig/metarig" index="0" unique_id=1446824060]
 visible = false
 
-[node name="Skeleton3D" parent="Re4Lom Base Rig/rig" parent_id_path=PackedInt32Array(449863350, 1443134758) index="0" unique_id=1701278539]
+[node name="Skeleton3D" parent="Re4Lom Base Rig/rig" parent_id_path=PackedInt32Array(449863350, 670005384) index="0" unique_id=1306754124]
 bones/115/position = Vector3(0.16849858, 0.05579039, 0.0031467846)
 bones/145/rotation = Quaternion(0, 0, 0, -1)
 bones/145/scale = Vector3(0.99999994, 1, 1)
@@ -2179,7 +2237,7 @@ mesh = SubResource("ArrayMesh_ommdp")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Left_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="2" unique_id=702832035]
+[node name="Left_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="2" unique_id=2018992440]
 visible = false
 
 [node name="Left_Hand2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="3" unique_id=292257819]
@@ -2188,7 +2246,7 @@ mesh = SubResource("ArrayMesh_6uv4j")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Left_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="4" unique_id=670426848]
+[node name="Left_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="4" unique_id=26867514]
 visible = false
 
 [node name="Lower_Left_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="5" unique_id=1922193244]
@@ -2197,7 +2255,7 @@ mesh = SubResource("ArrayMesh_5crh5")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="6" unique_id=277567294]
+[node name="Lower_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="6" unique_id=1036816400]
 visible = false
 
 [node name="Lower_Left_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="7" unique_id=2109481531]
@@ -2206,7 +2264,7 @@ mesh = SubResource("ArrayMesh_24k8y")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="8" unique_id=1725244455]
+[node name="Lower_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="8" unique_id=504992085]
 visible = false
 
 [node name="Lower_Right_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="9" unique_id=2138199178]
@@ -2215,7 +2273,7 @@ mesh = SubResource("ArrayMesh_ql24w")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="10" unique_id=2146197935]
+[node name="Lower_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="10" unique_id=840083974]
 visible = false
 
 [node name="Lower_Right_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="11" unique_id=1962797067]
@@ -2224,7 +2282,7 @@ mesh = SubResource("ArrayMesh_2uvpk")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="12" unique_id=1877405224]
+[node name="Lower_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="12" unique_id=575168026]
 visible = false
 
 [node name="Lower_Torso2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="13" unique_id=1043565669]
@@ -2233,7 +2291,7 @@ mesh = SubResource("ArrayMesh_108eo")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Lower_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="14" unique_id=1016714298]
+[node name="Lower_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="14" unique_id=1696169896]
 visible = false
 
 [node name="Lower_Torso_003" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="15" unique_id=1513886634]
@@ -2248,7 +2306,7 @@ mesh = SubResource("ArrayMesh_sb2o4")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Neck" parent="Re4Lom Base Rig/rig/Skeleton3D" index="19" unique_id=1751774306]
+[node name="Neck" parent="Re4Lom Base Rig/rig/Skeleton3D" index="19" unique_id=1127740473]
 visible = false
 
 [node name="Neck2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="20" unique_id=427565865]
@@ -2257,7 +2315,7 @@ mesh = SubResource("ArrayMesh_a2hvb")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Right_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="21" unique_id=1840493102]
+[node name="Right_Foot" parent="Re4Lom Base Rig/rig/Skeleton3D" index="21" unique_id=2075917640]
 visible = false
 
 [node name="Right_Foot2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="22" unique_id=1211675697]
@@ -2266,7 +2324,7 @@ mesh = SubResource("ArrayMesh_gugl7")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Right_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="23" unique_id=1194977830]
+[node name="Right_Hand" parent="Re4Lom Base Rig/rig/Skeleton3D" index="23" unique_id=59863306]
 visible = false
 
 [node name="Right_Hand2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="24" unique_id=1236208469]
@@ -2275,7 +2333,7 @@ mesh = SubResource("ArrayMesh_ftvxt")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="25" unique_id=78300293]
+[node name="Upper_Left_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="25" unique_id=1222160443]
 visible = false
 
 [node name="Upper_Left_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="26" unique_id=1192374377]
@@ -2284,7 +2342,7 @@ mesh = SubResource("ArrayMesh_ws357")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="27" unique_id=1162209891]
+[node name="Upper_Left_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="27" unique_id=199499283]
 visible = false
 
 [node name="Upper_Left_Leg2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="28" unique_id=129140695]
@@ -2293,7 +2351,7 @@ mesh = SubResource("ArrayMesh_wc1rn")
 skin = SubResource("Skin_tvle8")
 skeleton = NodePath("..")
 
-[node name="Upper_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="29" unique_id=956961591]
+[node name="Upper_Right_Arm" parent="Re4Lom Base Rig/rig/Skeleton3D" index="29" unique_id=1623847498]
 visible = false
 
 [node name="Upper_Right_Arm2" type="MeshInstance3D" parent="Re4Lom Base Rig/rig/Skeleton3D" index="30" unique_id=1792517897]
@@ -2491,56 +2549,57 @@ monitorable = false
 transform = Transform3D(1.0000001, 1.1175871e-08, -2.9802322e-08, -1.1920929e-07, 1.0000004, 7.450581e-09, -2.9802322e-08, -1.4901161e-08, 1.0000002, -0.022198975, 0.08922519, -0.00944525)
 shape = SubResource("SphereShape3D_pnw6m")
 
-[node name="Upper_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="49" unique_id=605182356]
+[node name="Upper_Right_Leg" parent="Re4Lom Base Rig/rig/Skeleton3D" index="49" unique_id=1836833]
 visible = false
 
-[node name="Upper_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="50" unique_id=62393380]
+[node name="Upper_Torso" parent="Re4Lom Base Rig/rig/Skeleton3D" index="50" unique_id=969471929]
 visible = false
 
-[node name="Cloth_Body" parent="Re4Lom Base Rig" index="2" unique_id=1945651687]
+[node name="Cloth_Body" parent="Re4Lom Base Rig" index="2" unique_id=89057063]
 visible = false
 
-[node name="Pant" parent="Re4Lom Base Rig" index="3" unique_id=618058403]
+[node name="Pant" parent="Re4Lom Base Rig" index="3" unique_id=789384782]
 visible = false
 
-[node name="Plane_001" parent="Re4Lom Base Rig" index="4" unique_id=1143521007]
+[node name="Plane_001" parent="Re4Lom Base Rig" index="4" unique_id=1230626333]
 visible = false
 
-[node name="Lower_Right_Pant" parent="Re4Lom Base Rig" index="5" unique_id=351879778]
+[node name="Lower_Right_Pant" parent="Re4Lom Base Rig" index="5" unique_id=107297586]
 visible = false
 
-[node name="Cloth_Body_001" parent="Re4Lom Base Rig" index="6" unique_id=492433049]
+[node name="Cloth_Body_001" parent="Re4Lom Base Rig" index="6" unique_id=683596475]
 visible = false
 
-[node name="Right_Legging" parent="Re4Lom Base Rig" index="7" unique_id=2057301204]
+[node name="Right_Legging" parent="Re4Lom Base Rig" index="7" unique_id=488549458]
 visible = false
 
-[node name="Lower_Leftt_Pant" parent="Re4Lom Base Rig" index="8" unique_id=1377702223]
+[node name="Lower_Leftt_Pant" parent="Re4Lom Base Rig" index="8" unique_id=146586004]
 visible = false
 
-[node name="Left_Legging" parent="Re4Lom Base Rig" index="9" unique_id=1582557496]
+[node name="Left_Legging" parent="Re4Lom Base Rig" index="9" unique_id=2106435008]
 visible = false
 
-[node name="Cloth_Right_Arm" parent="Re4Lom Base Rig" index="10" unique_id=29613158]
+[node name="Cloth_Right_Arm" parent="Re4Lom Base Rig" index="10" unique_id=1457653015]
 visible = false
 
-[node name="Cloth_Left_Arm" parent="Re4Lom Base Rig" index="11" unique_id=616369165]
+[node name="Cloth_Left_Arm" parent="Re4Lom Base Rig" index="11" unique_id=661267318]
 visible = false
 
-[node name="Right__Flipflop" parent="Re4Lom Base Rig" index="12" unique_id=1793300787]
+[node name="Right__Flipflop" parent="Re4Lom Base Rig" index="12" unique_id=1362177795]
 visible = false
 
-[node name="Hair_002" parent="Re4Lom Base Rig" index="13" unique_id=92447600]
+[node name="Hair_002" parent="Re4Lom Base Rig" index="13" unique_id=1800819470]
 visible = false
 
-[node name="Left__Flipflop" parent="Re4Lom Base Rig" index="14" unique_id=1891160088]
+[node name="Left__Flipflop" parent="Re4Lom Base Rig" index="14" unique_id=1073726803]
 visible = false
 
-[node name="WGT-rig_001_spine_fk" parent="Re4Lom Base Rig" index="15" unique_id=1869213702]
+[node name="WGT-rig_001_spine_fk" parent="Re4Lom Base Rig" index="15" unique_id=2087407458]
 visible = false
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Re4Lom Base Rig" unique_id=675223807]
 libraries/ = SubResource("AnimationLibrary_1so5t")
+libraries/Dead = SubResource("AnimationLibrary_55jnj")
 libraries/Grab = SubResource("AnimationLibrary_rptt4")
 libraries/Gun_idle = SubResource("AnimationLibrary_r7pn3")
 libraries/Hit = SubResource("AnimationLibrary_art4l")
@@ -2689,9 +2748,6 @@ script = ExtResource("9_wodsf")
 [node name="Grab" type="Node" parent="Statemachine" unique_id=1256774596]
 script = ExtResource("10_32hag")
 
-[node name="Knockdown" type="Node" parent="Statemachine" unique_id=1528629056]
-script = ExtResource("11_tqiix")
-
 [node name="Die" type="Node" parent="Statemachine" unique_id=17486247]
 script = ExtResource("12_e7oew")
 
@@ -2705,8 +2761,6 @@ script = ExtResource("16_32hag")
 root_node = NodePath("../Re4Lom Base Rig")
 tree_root = SubResource("AnimationNodeStateMachine_wodsf")
 anim_player = NodePath("../Re4Lom Base Rig/AnimationPlayer2")
-parameters/Hit/conditions/back = false
-parameters/Hit/conditions/front = false
 parameters/Main/Aim/BlendTree/OneShot/active = false
 parameters/Main/Aim/BlendTree/OneShot/internal_active = false
 parameters/Main/Aim/BlendTree/OneShot/request = 0

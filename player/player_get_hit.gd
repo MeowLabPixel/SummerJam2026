@@ -26,10 +26,6 @@ func _update(_delta:float) -> void:
 func anim_done(_namee: String):
 	if _namee == hit_anim:
 		finished.emit("Idle")
-	elif _namee == hit_animF and owner.Hit_info.location == "front":
-		finished.emit("Idle")
-	elif _namee == hit_animB and owner.Hit_info.location == "back":
-		finished.emit("Idle")
 
 func stop_moving():
 	var dire = Vector3.ZERO

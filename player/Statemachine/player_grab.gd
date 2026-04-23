@@ -1,8 +1,8 @@
 extends State
 
 var half = false
-var fail_anim = "LEON GRAB Fail"
-var win_anim ="HIT  Right Arm"
+var fail_anim = "Grab/HIT Rightleg act 5 (get_up )"
+var win_anim ="Grab/LEON GRAB Sucess"
 var mini_done = false
 var is_exiting = false
 
