@@ -29,7 +29,7 @@ var Hit_info = {
 }
 
 #timer
-@onready var knockdown_timer: Timer = $Knockdown_timer
+#@onready var knockdown_timer: Timer = $Knockdown_timer
 #
 #@export_group("GUN setting")
 #@export var Pistol: Gun

@@ -32,8 +32,6 @@ func _state_input(_event: InputEvent) -> void:
 		finished.emit("Sprint")
 	if Input.is_action_pressed("Reload") :
 		finished.emit("Reload")
-	if Input.is_action_pressed("gun swap") :
-		finished.emit("Gun_swap")
 	if Input.is_action_pressed("Gun1"):
 		switch_gun(0)
 	if Input.is_action_pressed("Gun2"):

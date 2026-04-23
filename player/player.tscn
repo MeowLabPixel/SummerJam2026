@@ -1856,7 +1856,6 @@ advance_condition = &"shot"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjxoa"]
-switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b8hi5"]
@@ -1869,7 +1868,7 @@ xfade_time = 0.2
 states/Pis/node = SubResource("AnimationNodeAnimation_1so5t")
 states/Pis/position = Vector2(314, 56.799995)
 states/Shot/node = SubResource("AnimationNodeAnimation_55jnj")
-states/Shot/position = Vector2(330.80002, 142.4)
+states/Shot/position = Vector2(330.80002, 143.2)
 states/Start/position = Vector2(52.000004, 99.84)
 transitions = ["Start", "Pis", SubResource("AnimationNodeStateMachineTransition_dx5ib"), "Start", "Shot", SubResource("AnimationNodeStateMachineTransition_a2xo5"), "Shot", "End", SubResource("AnimationNodeStateMachineTransition_art4l"), "Pis", "End", SubResource("AnimationNodeStateMachineTransition_fjxoa"), "Pis", "Shot", SubResource("AnimationNodeStateMachineTransition_b8hi5"), "Shot", "Pis", SubResource("AnimationNodeStateMachineTransition_2uvqg")]
 

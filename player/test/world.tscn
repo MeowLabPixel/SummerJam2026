@@ -142,6 +142,7 @@ theme_override_font_sizes/font_size = 41
 text = "AAAAAA"
 
 [node name="Enemy" parent="." unique_id=1434836882 instance=ExtResource("9_ffbsx")]
+process_mode = 4
 
 [node name="Ashley" parent="." unique_id=1099023628 instance=ExtResource("10_1pr3x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9785824, 0, -1.0953765)
