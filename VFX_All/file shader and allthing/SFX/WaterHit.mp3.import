@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b723p8b6n312p"
+path="res://.godot/imported/WaterHit.mp3-cc340bfd191c0b82e73c475e3d29400e.mp3str"
+
+[deps]
+
+source_file="res://VFX_All/file shader and allthing/SFX/WaterHit.mp3"
+dest_files=["res://.godot/imported/WaterHit.mp3-cc340bfd191c0b82e73c475e3d29400e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

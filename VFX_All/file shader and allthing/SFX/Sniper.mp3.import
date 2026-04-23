@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://q8gfk87pthxe"
+path="res://.godot/imported/Sniper.mp3-e94c76b90827589c2982e098d59dfec3.mp3str"
+
+[deps]
+
+source_file="res://VFX_All/file shader and allthing/SFX/Sniper.mp3"
+dest_files=["res://.godot/imported/Sniper.mp3-e94c76b90827589c2982e098d59dfec3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
