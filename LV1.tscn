@@ -16,8 +16,6 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_u3a0x"]
 material = SubResource("StandardMaterial3D_bq3e6")
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_8fvpl"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u3a0x"]
 albedo_color = Color(0.49354547, 0.49354553, 0.49354553, 1)
 
@@ -36,13 +34,6 @@ mesh = SubResource("PlaneMesh_u3a0x")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=957887896]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.1030753, 0)
-
-[node name="Ground2" type="MeshInstance3D" parent="." unique_id=2049595519]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_8fvpl")
-
-[node name="Camera3D" type="Camera3D" parent="Ground2" unique_id=1063968446]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52181697, 0.23495209)
 
 [node name="FootPath" type="MeshInstance3D" parent="." unique_id=1620390864]
 transform = Transform3D(150, 0, 0, 0, 0.36300004, 0, 0, 0, 14.5199995, 9.357798, 0.27705002, -21.832401)
