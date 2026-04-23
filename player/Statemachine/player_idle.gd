@@ -6,8 +6,7 @@ func _enter() -> void:
 		finished.emit("Aim")
 	print(name)
 	set_gun_anim()
-	owner.anim.get(owner.anim_playback).travel("Idle")
-			
+	owner.anim.get(owner.anim_playback).travel("Idle")	
 	if not owner.hitboxF.body_entered.is_connected(hitfront):
 		owner.hitboxF.body_entered.connect(hitfront)
 	if not owner.hitboxB.body_entered.is_connected(hitback):
