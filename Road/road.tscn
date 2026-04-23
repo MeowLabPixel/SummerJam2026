@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cnp4qc3ttx7t6"]
+
+[ext_resource type="PackedScene" uid="uid://bb81nioepsbju" path="res://Road/Road.fbx" id="1_feo05"]
+[ext_resource type="Texture2D" uid="uid://du8x8g8x8klcr" path="res://Road/road.png" id="2_hff0c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4pjer"]
+albedo_texture = ExtResource("2_hff0c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q418u"]
+albedo_texture = ExtResource("2_hff0c")
+
+[node name="Road" unique_id=831564484 instance=ExtResource("1_feo05")]
+
+[node name="pPlane1" parent="." index="0" unique_id=1951481091]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_4pjer")
+
+[node name="pCube1" parent="." index="1" unique_id=964046251]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -1.85, 0, 0)
+material_override = SubResource("StandardMaterial3D_q418u")
