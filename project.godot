@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Songkran Hazard 4-Lom"
-run/main_scene="uid://sx2lfrw3gahc"
+run/main_scene="uid://n5m17a8leco1"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

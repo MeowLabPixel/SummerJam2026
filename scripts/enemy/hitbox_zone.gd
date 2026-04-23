@@ -40,7 +40,7 @@ func _ready() -> void:
 		push_error("[HitboxZone] Parent must be Area3D (zone '%s')" % zone_name)
 
 func _on_body_entered(body: Node3D) -> void:
-	if not (body.is_in_group("player_projectile") or body.is_in_group("player")):
+	if not (body.is_in_group("player_projectile") or body.is_in_group("bullet") or body.is_in_group("player_attack")):
 		return
 	_enemy.take_hit({
 		"damage": base_damage,

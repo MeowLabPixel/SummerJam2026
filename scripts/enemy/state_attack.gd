@@ -204,28 +204,41 @@ func _cache_hand_hitboxes() -> void:
 	if not _hand_right:
 		push_warning("[StateAttack] AttackHitbox not found on right hand")
 
+	# Configure layers so hand hitboxes can overlap player hitbox areas.
+	# Layer 5 (bit 4, value 16): enemy attack hitboxes.
+	# Layer 4 (bit 3, value 8): player hitboxes.
+	# AttackHitbox must:
+	#   - be on layer 5 so it's monitorable by anything scanning layer 5
+	#   - scan layer 4 (collision_mask includes layer 4) to find player hitboxes
+	#   - have monitorable=true so player hitbox areas can see it via area_entered
+	for hand in [_hand_left, _hand_right]:
+		if not hand:
+			continue
+		hand.collision_layer = 16  # layer 5
+		hand.collision_mask  = 8   # layer 4
+		hand.monitorable     = true
+		hand.monitoring      = false  # starts disabled; _set_hand_hitboxes enables it
+		if not hand.is_in_group("enemy_attack"):
+			hand.add_to_group("enemy_attack")
+
 
 func _set_hand_hitboxes(enabled: bool) -> void:
-	
 	if _hand_left:
-		_hand_left.monitoring = enabled
+		_hand_left.monitoring  = enabled
+		_hand_left.monitorable = enabled
 	if _hand_right:
-		_hand_right.monitoring = enabled
+		_hand_right.monitoring  = enabled
+		_hand_right.monitorable = enabled
 
 func _hand_touches_player() -> bool:
-	var player := _get_player()
-	if not player:
-		return false
 	for hitbox in [_hand_left, _hand_right]:
-		
 		if not (hitbox and hitbox.monitoring):
 			continue
-		for body in hitbox.get_overlapping_bodies():
-			
-			if body == player:
+		# Check overlapping areas — player hitboxes are Area3D, not bodies.
+		for area in hitbox.get_overlapping_areas():
+			if area.is_in_group("player_hitbox"):
 				print("Player found!")
 				return true
-	
 	return false
 
 func _deal_damage(amount: int, source: String) -> void:

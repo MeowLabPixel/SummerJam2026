@@ -46,7 +46,7 @@ func _exit() -> void:
 	owner.hitboxB.monitoring = true
 	
 		
-func _state_input(event: InputEvent) -> void:
+func _state_input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("ui_left") :
 		half = true
 	if Input.is_action_just_released("ui_right") and half:
@@ -55,8 +55,8 @@ func _state_input(event: InputEvent) -> void:
 		half = false
 		owner.qte_bar.value+=20
 		
-func anim_done(namee: String):
-	if namee == fail_anim:
+func anim_done(_namee: String):
+	if _namee == fail_anim:
 		finished.emit("Idle")
-	if namee == win_anim:
+	if _namee == win_anim:
 		finished.emit("Idle")

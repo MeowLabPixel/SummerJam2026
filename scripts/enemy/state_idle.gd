@@ -28,7 +28,11 @@ func exit() -> void:
 func physics_update(delta: float) -> void:
 	# ── Proximity check ─────────────────────────────────────────────────
 	# TODO: swap enemy.get_player_position() with real player node lookup.
-	var player_pos: Vector3 = _get_placeholder_target_position()
+	var player = _get_player()
+	if not player:
+		return
+
+	var player_pos: Vector3 = player.global_position
 	var dist: float = enemy.global_position.distance_to(player_pos)
 	if dist <= detection_radius or combat_initiated:
 		state_machine.transition_to("StateHunt")
@@ -62,3 +66,7 @@ func _get_placeholder_target_position() -> Vector3:
 	if enemy and enemy.has_meta("target_position"):
 		return enemy.get_meta("target_position")
 	return Vector3(9999, 0, 9999)  # fallback: far away so idle stays idle
+
+func _get_player() -> Node3D:
+	var players = enemy.get_tree().get_nodes_in_group("player")
+	return players[0] if players.size() > 0 else null

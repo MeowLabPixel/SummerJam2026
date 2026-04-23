@@ -9,6 +9,6 @@ func _enter() -> void:
 	if not owner.anim.animation_finished.is_connected(anim_done):
 		owner.anim.animation_finished.connect(anim_done)
 		
-func anim_done(namee: String):
-	if namee == anim_name:
+func anim_done(_namee: String):
+	if _namee == anim_name:
 		finished.emit("Idle")

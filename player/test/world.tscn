@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ek1ncjc2swrw" path="res://player/test/temp_enemi.tscn" id="7_ih2au"]
 [ext_resource type="Script" uid="uid://dxr0w5vn4oq5s" path="res://player/test/UI.gd" id="8_6c3wv"]
 [ext_resource type="PackedScene" uid="uid://qeaipwg5cq4v" path="res://scenes/enemy/enemy.tscn" id="9_ffbsx"]
+[ext_resource type="PackedScene" uid="uid://c6uqvqrlxwm0g" path="res://scenes/ashley/ashley.tscn" id="10_1pr3x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljqf5"]
 albedo_texture = ExtResource("2_1fcdn")
@@ -142,3 +143,6 @@ theme_override_font_sizes/font_size = 41
 text = "AAAAAA"
 
 [node name="Enemy" parent="." unique_id=1434836882 instance=ExtResource("9_ffbsx")]
+
+[node name="Ashley" parent="." unique_id=1099023628 instance=ExtResource("10_1pr3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9785824, 0, -1.0953765)

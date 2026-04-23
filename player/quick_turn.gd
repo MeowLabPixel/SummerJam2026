@@ -19,7 +19,7 @@ func quick_turn():
 	tween.tween_property(owner,"rotation:y",traget_y_rotation,owner.quick_trun_speed)
 	tween.finished.connect(func(): owner.camera.camera_rotation.x += PI; owner.is_quick_turn = false; finished.emit("Idle"))
 	
-func _state_input(event: InputEvent) -> void:
+func _state_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("gun swap") :
 		owner.change_gun()
 

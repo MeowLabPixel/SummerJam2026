@@ -31,7 +31,8 @@ var _bob_offset: float = 0.0
 @onready var _mesh_instance: MeshInstance3D = $MeshInstance3D
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	add_to_group("object")
+	#body_entered.connect(_on_body_entered)
 	_bob_offset = randf() * TAU
 	_apply_mesh()
 
@@ -90,10 +91,10 @@ func _type_color() -> Color:
 		"ammo":   return Color(0.3, 0.7,  1.0)
 		_:        return Color(0.8, 0.8,  0.8)
 
-## Called when a body enters the pickup area.
-func _on_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		_collect()
+### Called when a body enters the pickup area.
+#func _on_body_entered(body: Node3D) -> void:
+	#if body.is_in_group("player"):
+		#_collect()
 
 func _collect() -> void:
 	collected.emit(item_type, value)

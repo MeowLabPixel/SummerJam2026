@@ -67,8 +67,8 @@ var GunC = {
 	"ammo": 5,
 	"Super": false
 }
-var Gun = [GunA,GunB,GunC]
-var curr_gun = Gun[0]
+var gun_list = [GunA, GunB, GunC]
+var curr_gun = gun_list[0]
 var curr_gun_index = 0
 var near_enemy_list = []
 
@@ -83,15 +83,15 @@ var near_enemy_list = []
 @onready var reload_timer: Timer = $Reload_timer
 
 const BULLET = preload("uid://csdtdj7sci5vk")
-@onready var bullet_lo: Node3D = $MeshInstance3D2/Node3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 func _ready() -> void:
+	add_to_group("player")
 	stun_detect.body_entered.connect(stun_detect_in)
 	stun_detect.body_exited.connect(stun_detect_out)
-	pickup_detect.body_entered.connect(pickup_detect_area)
+	pickup_detect.area_entered.connect(pickup_detect_area)
 
 	if cross_hair:
 		cross_hair.visible = false
@@ -124,22 +124,26 @@ func update_crosshair_accuracy(delta: float) -> void:
 func set_velocity_from_motion(vel: Vector3)-> void:
 	velocity = vel
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func change_gun():
 	if gun_controller:
 		gun_controller.next_gun()
 		curr_gun_index = gun_controller.current_gun_index
-		# We can still keep curr_gun if other systems use it, 
-		# but ideally we should transition to use gun_controller.current_gun
 	else:
-		# Fallback to old system if no gun_controller
-		if curr_gun_index == Gun.size()-1:
+		if curr_gun_index == gun_list.size()-1:
 			curr_gun_index = 0
 		else:
 			curr_gun_index +=1
-		curr_gun = Gun[curr_gun_index]
+		curr_gun = gun_list[curr_gun_index]
+
+func take_damage(amount: int) -> void:
+	lost_HP(amount)
+	print("[Player] Took %d damage — HP: %d/%d" % [amount, HP, MaxHP])
+
+	if HP <= 0:
+		print("[Player] Dead")
 
 func lost_HP(amount):
 	if HP -amount <= 0:
@@ -170,6 +174,6 @@ func check_if_near_stun():
 		if i.stun:
 			is_near_stunt = true
 			
-func pickup_detect_area(body: Node3D):
-	if body.is_in_group("object"):
-		pass
+func pickup_detect_area(area: Area3D):
+	if area.is_in_group("object"):
+		area._collect()

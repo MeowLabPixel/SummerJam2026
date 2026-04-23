@@ -89,6 +89,11 @@ func handle_hit(hit_data: Dictionary) -> String:
 
 # ─── Helpers ───────────────────────────────────────────────────────────────
 func _get_target_position() -> Vector3:
-	if enemy and enemy.has_meta("target_position"):
-		return enemy.get_meta("target_position")
+	var player = _get_player()
+	if player:
+		return player.global_position
 	return enemy.global_position
+
+func _get_player() -> Node3D:
+	var players = enemy.get_tree().get_nodes_in_group("player")
+	return players[0] if players.size() > 0 else null

@@ -10,7 +10,7 @@ signal enemy_defeated()
 signal enemy_hit(hit_data: Dictionary)
 
 # ─── HP Constants ──────────────────────────────────────────────────────────
-const MAX_HP: int = 40
+const MAX_HP: int = 50
 
 # ─── State ─────────────────────────────────────────────────────────────────
 var current_hp: int = MAX_HP
@@ -62,12 +62,26 @@ func _ready() -> void:
 		push_error("[EnemyBase] No AnimationPlayer with gameplay animations found under ZombieModel")
 	else:
 		print("[EnemyBase] AnimationPlayer found at: %s (animations: %d)" % [anim_player.get_path(), anim_player.get_animation_list().size()])
-		# Print every animation name so we can verify ZombieAnims constants match exactly.
 		for anim_name in anim_player.get_animation_list():
 			print("  [ANIM] '%s'" % anim_name)
-	# Boot into Idle once the scene tree is fully built.
+	# Guarantee attack hitboxes are off before any state runs.
+	_disable_attack_hitboxes()
 	state_machine.initialize("StateIdle")
 	state_machine.state_changed.connect(_on_state_changed)
+
+## Hard-disables both hand attack hitboxes.
+## Called once on ready so they're guaranteed off before any state starts.
+## StateAttack is the only thing that ever enables them.
+func _disable_attack_hitboxes() -> void:
+	var base := "ZombieModel/rig_001/Skeleton3D"
+	for hand_path in [
+		"%s/HitboxAttachLeftHand/AttackHitbox" % base,
+		"%s/HitboxAttachRightHand/AttackHitbox" % base,
+	]:
+		var hitbox := get_node_or_null(hand_path)
+		if hitbox:
+			hitbox.monitoring  = false
+			hitbox.monitorable = false
 
 # ─── HP / Damage ───────────────────────────────────────────────────────────
 
