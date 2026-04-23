@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://v08k6o15r2gl"
+path="res://.godot/imported/flowerhead - Somewhat Good- Beach - 01 Dolphin Shores.ogg-fd4e340fea162ee8b4d1c3033dd78165.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio System and SFX/Music/flowerhead - Somewhat Good- Beach - 01 Dolphin Shores.ogg"
+dest_files=["res://.godot/imported/flowerhead - Somewhat Good- Beach - 01 Dolphin Shores.ogg-fd4e340fea162ee8b4d1c3033dd78165.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

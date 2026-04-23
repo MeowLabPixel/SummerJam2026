@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dqfxw87p6wsxi"
+path="res://.godot/imported/flowerhead - Somewhat Good- Beach - 02 Castles Made Out Of Sand.ogg-76e83e6aa08e401ebec64623efee6836.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio System and SFX/Music/flowerhead - Somewhat Good- Beach - 02 Castles Made Out Of Sand.ogg"
+dest_files=["res://.godot/imported/flowerhead - Somewhat Good- Beach - 02 Castles Made Out Of Sand.ogg-76e83e6aa08e401ebec64623efee6836.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

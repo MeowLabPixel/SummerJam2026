@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bdg06c8cf8wxi"
+path="res://.godot/imported/flowerhead - Somewhat Good- Beach - 05 Bubble Lagoon.ogg-4212acd47f97a89fe164ae8485f5ef22.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio System and SFX/Music/flowerhead - Somewhat Good- Beach - 05 Bubble Lagoon.ogg"
+dest_files=["res://.godot/imported/flowerhead - Somewhat Good- Beach - 05 Bubble Lagoon.ogg-4212acd47f97a89fe164ae8485f5ef22.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
