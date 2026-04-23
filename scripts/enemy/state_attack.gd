@@ -28,6 +28,10 @@ extends EnemyState
 @export var swing_start_frac: float = 0.5
 ## Fraction at which the swing hitbox closes.
 @export var swing_end_frac: float   = 0.75
+
+@export var grab_start_frac: float = 0.5
+@export var grab_end_frac: float   = 0.9
+
 ## How long the grab QTE window lasts (seconds).
 @export var qte_duration: float     = 2.5
 ## Mouse shakes needed to escape the grab.
@@ -102,6 +106,9 @@ func handle_hit(hit_data: Dictionary) -> String:
 
 func _start_attack() -> void:
 	_phase = Phase.ATTACK
+	for hand in [_hand_left, _hand_right]:
+		if hand and hand is AttackHitbox:
+			hand.attack_type = "attack"
 	var anim: String = ZombieAnims.random_attack()
 	_force_anim(anim)
 	_anim_duration = _anim_length(anim)
@@ -124,21 +131,25 @@ func _tick_attack() -> void:
 func _start_grab_reach() -> void:
 	_phase = Phase.GRAB_REACHING
 	_force_anim(ZombieAnims.GRAB_REACH)
+	for hand in [_hand_left, _hand_right]:
+		if hand and hand is AttackHitbox:
+			hand.attack_type = "grab"
 	_anim_duration = _anim_length(ZombieAnims.GRAB_REACH)
 	# Enable hands during the reach so contact can be detected.
-	_set_hand_hitboxes(true)
-	_hitboxes_active = true
+
 	print("[StateAttack] Grab: reaching (%.2fs)" % _anim_duration)
 
 func _tick_grab_reach() -> void:
-	# Check for hand contact with the player every frame.
-	if not _grab_made_contact and _hand_touches_player():
+	_update_grab_window()
+
+	# Only allow grab if window is active
+	if _hitboxes_active and not _grab_made_contact and _hand_touches_player():
 		_grab_made_contact = true
 		print("[StateAttack] Grab: contact — entering QTE hold")
 		_set_hand_hitboxes(false)
 		_start_grab_hold()
 		return
-	# If the reach animation finishes without contact the grab whiffed.
+
 	if _timer >= _anim_duration:
 		print("[StateAttack] Grab: whiffed — returning to Hunt")
 		_finish()
@@ -191,6 +202,14 @@ func _finish() -> void:
 func _update_hitbox_window() -> void:
 	var frac: float = _timer / max(_anim_duration, 0.01)
 	var should: bool = frac >= swing_start_frac and frac <= swing_end_frac
+	if should != _hitboxes_active:
+		_hitboxes_active = should
+		_set_hand_hitboxes(_hitboxes_active)
+
+func _update_grab_window() -> void:
+	var frac: float = _timer / max(_anim_duration, 0.01)
+	var should: bool = frac >= grab_start_frac and frac <= grab_end_frac
+
 	if should != _hitboxes_active:
 		_hitboxes_active = should
 		_set_hand_hitboxes(_hitboxes_active)

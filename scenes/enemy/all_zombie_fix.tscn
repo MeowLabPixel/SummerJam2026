@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dm3rgmlareuxk" path="res://models/enemies/All zombie fix.glb" id="1_e035i"]
 [ext_resource type="Script" uid="uid://rk4yb4oq18ft" path="res://scripts/enemy/hitbox_zone.gd" id="2_bnhrn"]
+[ext_resource type="Script" uid="uid://dhc80rjjahn72" path="res://scenes/enemy/attack_hitbox.gd" id="3_dhc5f"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dhc5f"]
 radius = 0.17520592
@@ -76,7 +77,7 @@ size = Vector3(0.30628967, 0.17455387, 0.17154694)
 [node name="All zombie fix" unique_id=867409154 instance=ExtResource("1_e035i")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="rig_001" parent_id_path=PackedInt32Array(1025897828) index="0" unique_id=612810231]
+[node name="Skeleton3D" parent="rig_001" parent_id_path=PackedInt32Array(547526448) index="0" unique_id=322698158]
 bones/0/position = Vector3(-0.0055161086, 0.883087, -0.02838752)
 bones/0/rotation = Quaternion(0.004789689, 0.082570255, -0.032586094, 0.9960409)
 bones/0/scale = Vector3(0.9999987, 0.9999989, 0.9999976)
@@ -234,6 +235,7 @@ collision_layer = 16
 collision_mask = 0
 monitoring = false
 monitorable = false
+script = ExtResource("3_dhc5f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightHand/AttackHitbox" index="0" unique_id=384214826]
 transform = Transform3D(0.97929996, 0.20202643, 0.012530467, -0.20174213, 0.9691321, 0.14171484, 0.016486466, -0.14130926, 0.9898282, 0.009399533, 0.074212424, -0.0065079927)
@@ -299,6 +301,7 @@ collision_layer = 16
 collision_mask = 0
 monitoring = false
 monitorable = false
+script = ExtResource("3_dhc5f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftHand/AttackHitbox" index="0" unique_id=811769937]
 transform = Transform3D(0.98108923, -0.19322237, -0.01136158, 0.19296278, 0.9718027, 0.13551734, -0.015143769, -0.13514696, 0.99070984, -0.014081597, 0.070249274, -0.009748161)
@@ -446,6 +449,6 @@ shape = SubResource("BoxShape3D_bnhrn")
 script = ExtResource("2_bnhrn")
 base_damage = 2
 
-[node name="AnimationPlayer" parent="." index="162" unique_id=1350784634]
+[node name="AnimationPlayer" parent="." index="162" unique_id=1731823164]
 "libraries/Left Foot" = SubResource("AnimationLibrary_dhc5f")
 "libraries/Right Foot" = SubResource("AnimationLibrary_qof7f")

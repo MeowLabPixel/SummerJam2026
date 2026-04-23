@@ -15,6 +15,9 @@ extends Node
 @export var zone_name: String = "body"
 @export var base_damage: int = 5
 
+signal Grabbed
+signal Attacked
+
 var _player: Player = null
 
 func _ready() -> void:
@@ -49,7 +52,19 @@ func _ready() -> void:
 	area.area_entered.connect(_on_area_entered)
 
 func _on_area_entered(area: Area3D) -> void:
-	if not (area.is_in_group("enemy_projectile") or area.is_in_group("bullet") or area.is_in_group("enemy_attack")):
+	if not area.is_in_group("enemy_attack"):
 		return
-	print("Player was attacked!")
-	_player.take_damage(base_damage)
+
+	var attack_type := "attack"
+
+	if area is AttackHitbox:
+		attack_type = area.attack_type
+
+	match attack_type:
+		"grab":
+			print("Player grabbed!")
+			Grabbed.emit()
+		"attack":
+			print("Player attacked!")
+			Attacked.emit()
+			_player.take_damage(base_damage)
