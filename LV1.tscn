@@ -2280,7 +2280,7 @@ transform = Transform3D(0.64464414, 0, 0.7644828, 0, 1, 0, -0.7644828, 0, 0.6446
 transform = Transform3D(0.725086, 0, 0.68865836, 0, 1, 0, -0.68865836, 0, 0.725086, -45.236237, 0, -2.7635736)
 
 [node name="Tent5" parent="Umbrella" unique_id=1515263033 instance=ExtResource("9_n7qxm")]
-transform = Transform3D(0.6886583, 0, -0.72508603, 0, 1, 0, 0.72508603, 0, 0.6886583, -82.61081, 0, -3.3834238)
+transform = Transform3D(0.725086, 0, 0.68865836, 0, 1, 0, -0.68865836, 0, 0.725086, -82.61081, 0, -3.3834238)
 
 [node name="Tent3" parent="Umbrella" unique_id=1019117875 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(0.85692453, 0, -0.5154419, 0, 1, 0, 0.5154419, 0, 0.85692453, -11.388683, 1.9073486e-06, -19.492697)
@@ -2350,8 +2350,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.387737, 0, -20.234476)
 [node name="Sign01" parent="Sign" unique_id=1395883774 instance=ExtResource("4_bq3e6")]
 transform = Transform3D(-0.2199962, 0, -0.82103693, 0, 0.85, 0, 0.82103693, 0, -0.2199962, -61.163994, 2.3841858e-07, -15.706232)
 
-[node name="Sign03" parent="Sign" unique_id=297242605 instance=ExtResource("5_vb6c5")]
-transform = Transform3D(-0.35182428, 0, -0.5465524, 0, 0.65, 0, 0.5465524, 0, -0.35182428, -56.613922, -9.536743e-07, -16.495275)
+[node name="Sign03" parent="Sign" unique_id=1929784979 instance=ExtResource("5_vb6c5")]
+transform = Transform3D(-0.35481203, -0.0016396045, -0.5446151, -0.00050012243, 0.6499977, -0.0016310365, 0.54461735, -0.0004712748, -0.3548121, -56.613922, -9.536743e-07, -16.495275)
 
 [node name="TREE01" type="MeshInstance3D" parent="." unique_id=1795749762]
 
