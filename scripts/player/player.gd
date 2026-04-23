@@ -2,7 +2,7 @@
 ## WASD movement on the XZ plane.
 ## Faces the mouse cursor position projected onto the ground plane.
 ## Belongs to the "player" group so Ashley and pickups can identify it.
-class_name Player
+#class_name Player
 extends CharacterBody3D
 
 @export var move_speed: float = 5.0
