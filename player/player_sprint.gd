@@ -24,6 +24,8 @@ func _update(_delta:float) -> void:
 	D=_delta
 	if direction == Vector3.ZERO:
 		finished.emit("Idle")
+	if owner.HP <= 0:
+		finished.emit("Die")
 		
 func _exit() -> void:
 	owner.anim.set("parameters/Main/Run/Pis/TimeScale/scale",1.0)

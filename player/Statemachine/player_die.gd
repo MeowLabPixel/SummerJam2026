@@ -4,7 +4,7 @@ func _enter() -> void:
 	print(name)
 	stop_moving()
 	owner.aim_bone_on(false)
-	owner.anim.get(owner.anim_playback).travel("Die")
+	owner.anim.get("parameters/playback").travel("Die")
 	owner.die.visible = true
 	owner.die_anim.play("in")
 

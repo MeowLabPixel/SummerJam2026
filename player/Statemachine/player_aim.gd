@@ -17,6 +17,9 @@ func _enter() -> void:
 		owner.is_aimming = false
 		finished.emit("Idle")
 
+func _update(_delta:float) -> void:
+	if owner.HP <= 0:
+		finished.emit("Die")
 	
 func _exit() -> void:
 	#owner.is_aimming = false

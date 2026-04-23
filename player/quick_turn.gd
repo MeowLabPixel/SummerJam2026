@@ -18,6 +18,9 @@ func _enter() -> void:
 	if not owner.hitboxB.body_entered.is_connected(hitback):
 		owner.hitboxB.body_entered.connect(hitback)
 
+func _update(_delta:float) -> void:
+	if owner.HP <= 0:
+		finished.emit("Die")
 	
 func quick_turn():
 	owner.is_quick_turn =true

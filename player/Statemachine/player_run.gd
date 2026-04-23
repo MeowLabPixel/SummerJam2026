@@ -21,6 +21,8 @@ func _update(_delta:float) -> void:
 
 	if direction == Vector3.ZERO:
 		finished.emit("Idle")
+	if owner.HP <= 0:
+			finished.emit("Die")
 
 		
 func _state_input(_event: InputEvent) -> void:

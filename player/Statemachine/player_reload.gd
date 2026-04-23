@@ -12,6 +12,9 @@ func _enter() -> void:
 	if not owner.hitboxB.body_entered.is_connected(hitback):
 		owner.hitboxB.body_entered.connect(hitback)
 	
+func _update(_delta:float) -> void:
+	if owner.HP <= 0:
+		finished.emit("Die")
 	
 func _state_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Reload"):

@@ -17,6 +17,7 @@ var anim_playback = "parameters/Main/playback"
 
 @export_group("Data setting")
 @export var MaxHP = 100
+@export var Take_down_damage = 20 
 @export var hitboxF: Area3D
 @export var hitboxB: Area3D
 @export var stun_detect: Area3D
@@ -35,6 +36,9 @@ var Hit_info = {
 #@export var Pistol: Gun
 #@export var Shotgun: Gun
 #@export var Rifle: Gun
+
+
+
 
 #QTE
 @onready var qte: CanvasLayer = $Camera/edgeSpringArm3D/rearSpringArm3D/Camera3D/QTE

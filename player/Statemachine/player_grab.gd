@@ -18,6 +18,8 @@ func _enter() -> void:
 	is_exiting = false
 	
 func _update(_delta:float) -> void:
+	if owner.HP <= 0:
+		finished.emit("Die")
 	if not is_exiting:
 		if owner.qte_bar.value == 100:
 			owner.anim.get("parameters/Grab/playback").travel("Win")
