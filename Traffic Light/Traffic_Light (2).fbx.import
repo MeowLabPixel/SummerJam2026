@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://4piwip56p4ju"
-path="res://.godot/imported/Tent.fbx-678043aa4a7c07b73754109bdd70d1d4.scn"
+uid="uid://n67bkxit88ox"
+path="res://.godot/imported/Traffic_Light (2).fbx-1dc1468ef48fd9482ab44d25571e47c3.scn"
 
 [deps]
 
-source_file="res://Prop/Tent.fbx"
-dest_files=["res://.godot/imported/Tent.fbx-678043aa4a7c07b73754109bdd70d1d4.scn"]
+source_file="res://Traffic Light/Traffic_Light (2).fbx"
+dest_files=["res://.godot/imported/Traffic_Light (2).fbx-1dc1468ef48fd9482ab44d25571e47c3.scn"]
 
 [params]
 
@@ -34,7 +34,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-materials/extract=1
+materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}
