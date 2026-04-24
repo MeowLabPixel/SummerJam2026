@@ -15,6 +15,9 @@ func _enter() -> void:
 		owner.anim.animation_finished.connect(anim_done)
 		
 func _exit() -> void:
+		# Disconnect animation callback to avoid duplicate connections
+		if owner.anim and owner.anim.animation_finished.is_connected(anim_done):
+			owner.anim.animation_finished.disconnect(anim_done)
 		owner.Hit_info.location = null
 		owner.Hit_info.bullet = null
 

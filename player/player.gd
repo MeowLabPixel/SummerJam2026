@@ -21,7 +21,7 @@ var anim_playback = "parameters/Main/playback"
 @export var hitboxB: Area3D
 @export var stun_detect: Area3D
 @export var pickup_detect: Area3D
-@export var TD_hand: Area3D
+
 var HP = MaxHP
 var Hit_info = {
 	"bullet": null,
@@ -55,6 +55,8 @@ var is_reload:bool = false
 var is_grab:bool = false
 var is_knockdown:bool = false
 var is_near_stunt:bool = false
+var _last_grab_area: Area3D = null
+var _last_grabber: Node = null
 
 #gun
 @export var gun_controller: GunController
@@ -94,9 +96,12 @@ const JUMP_VELOCITY = 4.5
 
 func _ready() -> void:
 	add_to_group("player")
-	stun_detect.body_entered.connect(stun_detect_in)
-	stun_detect.body_exited.connect(stun_detect_out)
+	stun_detect.area_entered.connect(stun_detect_in)
+	stun_detect.area_exited.connect(stun_detect_out)
 	pickup_detect.area_entered.connect(pickup_detect_area)
+
+	# Connect player hitbox zone signals (Grabbed/Attacked) to handlers
+	_connect_player_hitboxes()
 
 	if cross_hair:
 		cross_hair.visible = false
@@ -162,12 +167,14 @@ func Heal(amount):
 	else:
 		HP +=amount
 		
-func stun_detect_in (body: Node3D):
+func stun_detect_in (area: Area3D):
+	var body = _find_enemy_from_area(area)
 	if body is EnemyBase :
 		near_enemy_list.append(body)
 	check_if_near_stun()
 
-func stun_detect_out (body: Node3D):
+func stun_detect_out (area: Area3D):
+	var body = _find_enemy_from_area(area)
 	if body is EnemyBase and  near_enemy_list.has(body):
 		var index = near_enemy_list.find(body,0)
 		near_enemy_list.remove_at(index)
@@ -176,10 +183,10 @@ func stun_detect_out (body: Node3D):
 func check_if_near_stun():
 	is_near_stunt = false
 	for i in near_enemy_list:
-		if i.get_node("EnemyStateMachine").current_state == i.get_node("EnemyStateMachine").state_map["StateStun"]:
+		var sm = i.get_node_or_null("EnemyStateMachine")
+		if sm.current_state == sm._states["StateTakedownable"]:
 			is_near_stunt = true
-			
-		
+
 func aim_bone_on(value):
 	aim_bone.active = value
 	aim_bone2.active = value
@@ -187,3 +194,89 @@ func aim_bone_on(value):
 func pickup_detect_area(area: Area3D):
 	if area.is_in_group("object"):
 		area._collect()
+
+func _connect_player_hitboxes() -> void:
+	var nodes = get_tree().get_nodes_in_group("player_hitbox")
+	for area in nodes:
+		for child in area.get_children():
+			if child is PlayerHitboxZone:
+				# Connect with argument (the area that triggered the grab)
+				if not child.Grabbed.is_connected(on_hitbox_grabbed_with_area):
+					child.Grabbed.connect(on_hitbox_grabbed_with_area)
+
+func on_hitbox_grabbed_with_area(area: Area3D) -> void:
+	# Store the last grab source so player_grab can reference enemy UI
+	self._last_grab_area = area
+	# Try to find an enemy node associated with the area
+	var possible_enemy = null
+	if area.has_node("../"):
+		# area is likely child of a BoneAttachment or enemy node
+		possible_enemy = area.get_parent()
+	# set a property for debugging/usage by states
+	self._last_grabber = possible_enemy
+	# Switch to Grab state on player's state machine
+	var sm = get_node_or_null("Statemachine")
+	if sm:
+		sm._change_state("Grab")
+
+func attempt_takedown() -> void:
+	# Called when player presses takedown and is_near_stunt is true.
+
+	if not stun_detect:
+		return
+	# First try overlapping bodies on the takedown Area
+	var areas := stun_detect.get_overlapping_areas()
+	for a in areas:
+		if not a:
+			continue
+
+		var enemy := _find_enemy_from_area(a)
+		if enemy:
+			
+			var sm = enemy.get_node_or_null("EnemyStateMachine")
+			if sm:
+				
+				var td = sm.get_node_or_null("StateTakedownable")
+				if td:
+					td.trigger_takedown()
+					return
+	# Fallback: use near_enemy_list (populated by stun_detect) to find a takedownable enemy
+	for e in near_enemy_list:
+		if not e:
+			continue
+		var sm2 = e.get_node_or_null("EnemyStateMachine")
+		if sm2:
+			var td2 = sm2.get_node_or_null("StateTakedownable")
+			if td2:
+				
+				td2.trigger_takedown()
+				return
+	# Final fallback: search nearby enemies by group within a small radius
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	var radius := 2.0
+	for en in enemies:
+		if not en:
+			continue
+		if en.global_position.distance_to(global_position) <= radius:
+			var sm3 = en.get_node_or_null("EnemyStateMachine")
+			if sm3:
+				var td3 = sm3.get_node_or_null("StateTakedownable")
+				if td3:
+					td3.trigger_takedown()
+					return
+
+func _find_enemy_from_area(area: Area3D) -> Node:
+	var node = area
+	while node:
+		if node is EnemyBase:
+			return node
+		node = node.get_parent()
+	return null
+
+
+func _on_stunned_detect_2_area_entered(area: Area3D) -> void:
+	pass # Replace with function body.
+
+
+func _on_stunned_detect_2_area_exited(area: Area3D) -> void:
+	pass # Replace with function body.

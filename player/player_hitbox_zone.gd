@@ -15,7 +15,8 @@ extends Node
 @export var zone_name: String = "body"
 @export var base_damage: int = 5
 
-signal Grabbed
+
+signal Grabbed(area: Area3D)
 signal Attacked
 
 var _player: Player = null
@@ -63,7 +64,8 @@ func _on_area_entered(area: Area3D) -> void:
 	match attack_type:
 		"grab":
 			print("Player grabbed!")
-			Grabbed.emit()
+			# Emit the area that caused the grab so the player can identify the grabber
+			Grabbed.emit(area)
 		"attack":
 			print("Player attacked!")
 			Attacked.emit()

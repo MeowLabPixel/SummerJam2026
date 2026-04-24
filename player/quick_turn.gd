@@ -2,9 +2,11 @@ extends State
 
 var anim_node = "parameters/Main/QT/"
 var QT_anim = "QT/Base"
+var _exited: bool = false
 
 func _enter() -> void:
 	print(name)
+	_exited = false
 	stop_moving()
 	set_gun_anim()
 	if owner.anim.get(owner.anim_playback).get_current_node() != "QT":
@@ -18,6 +20,12 @@ func _enter() -> void:
 	if not owner.hitboxB.body_entered.is_connected(hitback):
 		owner.hitboxB.body_entered.connect(hitback)
 
+func _exit() -> void:
+	# Clean up animation callback to avoid duplicate connections
+	_exited = true
+	if owner.anim and owner.anim.animation_finished.is_connected(anim_done):
+		owner.anim.animation_finished.disconnect(anim_done)
+
 func _update(_delta:float) -> void:
 	if owner.HP <= 0:
 		finished.emit("Die")
@@ -29,6 +37,11 @@ func quick_turn():
 	var tween:= create_tween() as Tween
 	tween.tween_property(owner,"rotation:y",traget_y_rotation,owner.quick_trun_speed)
 	tween.finished.connect(func(): owner.camera.camera_rotation.x += PI; owner.is_quick_turn = false)
+
+	# Safety fallback: if animation/anim_done doesn't fire, ensure we exit quick turn
+	var fallback_time: float = owner.quick_trun_speed + 0.2
+	var timer := get_tree().create_timer(fallback_time)
+	timer.timeout.connect(_qt_fallback_timeout)
 	
 func _state_input(event: InputEvent) -> void:
 	if Input.is_action_pressed("Gun1"):
@@ -68,7 +81,13 @@ func set_gun_anim():
 			owner.anim.get(anim_node + "playback").travel("Shot")
 
 func anim_done(namee: String):
-	if namee == QT_anim:
+	print("[QuickTurn] anim_done fired: ", namee)  # remove after debugging
+	if not _exited and namee == QT_anim:
+		finished.emit("Idle")
+
+func _qt_fallback_timeout() -> void:
+	if not _exited:
+		owner.is_quick_turn = false
 		finished.emit("Idle")
 
 func stop_moving():

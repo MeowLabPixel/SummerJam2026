@@ -46,7 +46,9 @@ var _anim_duration: float = 1.2
 var _damage_dealt: bool   = false
 var _hitboxes_active: bool = false
 var _grab_made_contact: bool = false
+var _go_knockdown_after_anim := false
 var _qte_hud              = null  # GrabQteHud instance (untyped to avoid preload)
+
 
 # Cached hand Area3D refs.
 var _hand_left:  Area3D = null
@@ -65,10 +67,16 @@ func enter() -> void:
 	_cache_hand_hitboxes()
 	_set_hand_hitboxes(false)
 
-	if randf() < grab_chance:
+	var player := _get_player()
+
+	# Block grabs if player already grabbed
+	if player and player.is_grab:
+		_start_attack()
+	elif randf() < grab_chance:
 		_start_grab_reach()
 	else:
 		_start_attack()
+
 
 func exit() -> void:
 	_set_hand_hitboxes(false)
@@ -144,11 +152,18 @@ func _tick_grab_reach() -> void:
 
 	# Only allow grab if window is active
 	if _hitboxes_active and not _grab_made_contact and _hand_touches_player():
+		var player := _get_player()
+		if player and player.is_grab:
+			print("[StateAttack] Grab blocked — player already grabbed")
+			_finish()
+			return
+		
 		_grab_made_contact = true
 		print("[StateAttack] Grab: contact — entering QTE hold")
 		_set_hand_hitboxes(false)
 		_start_grab_hold()
 		return
+
 
 	if _timer >= _anim_duration:
 		print("[StateAttack] Grab: whiffed — returning to Hunt")
@@ -166,18 +181,34 @@ func _start_grab_hold() -> void:
 	enemy.get_tree().root.add_child(_qte_hud)
 
 func _on_qte_escaped() -> void:
-	# Player shook free — play fail anim, no damage.
 	print("[StateAttack] Grab: player ESCAPED")
-	_qte_hud = null  # HUD will free itself
+
+	var player := _get_player()
+	var sm = player.get_node("Statemachine")
+	if sm:
+		var grab_state = sm.get_node("Grab")
+		if grab_state:
+			grab_state.resolve_grab(false)
+
+	_qte_hud = null
+
 	_phase = Phase.GRAB_RESOLVING
+	_go_knockdown_after_anim = true
+
 	_force_anim(ZombieAnims.GRAB_FAIL)
-	_anim_duration = _anim_length(ZombieAnims.GRAB_FAIL)
 	_timer = 0.0
 	_connect_anim_finished()
 
 func _on_qte_caught() -> void:
 	# Player failed the QTE — deal damage, play success anim.
 	print("[StateAttack] Grab: player CAUGHT — %d damage" % grab_damage)
+	_go_knockdown_after_anim = false
+	var player := _get_player()
+	var sm = player.get_node("Statemachine")
+	if sm:
+		var grab_state = sm.get_node("Grab")
+		if grab_state:
+			grab_state.resolve_grab(true)
 	_qte_hud = null
 	_deal_damage(grab_damage, "grab")
 	_phase = Phase.GRAB_RESOLVING
@@ -187,7 +218,15 @@ func _on_qte_caught() -> void:
 	_connect_anim_finished()
 
 func _on_anim_finished(_anim_name: StringName) -> void:
-	_finish()
+	if _go_knockdown_after_anim:
+		var knockdown = state_machine._states.get("StateKnockdown")
+		if knockdown:
+			knockdown.skip_act3 = true
+		
+		state_machine.transition_to("StateKnockdown")
+	else:
+		_finish()
+
 
 # =========================================================
 # Shared helpers

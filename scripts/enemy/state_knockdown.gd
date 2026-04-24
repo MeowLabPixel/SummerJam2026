@@ -14,16 +14,27 @@ var _act3_timer: float = 0.0
 var _in_act3: bool = false
 
 var stun_type: String = "head"  # Inherited from StateTakedownable via state machine pre-load.
+var skip_act3: bool = false
+
 
 func enter() -> void:
 	_timer = 0.0
 	_act3_timer = 0.0
-	_in_act3 = true
-	print("[StateKnockdown] Enemy knocked down! Zone: %s" % stun_type)
-	_force_anim(ZombieAnims.takedown_anim(stun_type))
+	
+	if skip_act3:
+		_in_act3 = false
+		_force_anim(ZombieAnims.takedown_idle(stun_type))
+	else:
+		_in_act3 = true
+		_force_anim(ZombieAnims.takedown_anim(stun_type))
+
+	print("[StateKnockdown] Enemy knocked down! Zone: %s | skip_act3=%s" % [stun_type, skip_act3])
+
 
 func exit() -> void:
 	_in_act3 = false
+	skip_act3 = false
+
 
 func physics_update(delta: float) -> void:
 	if _in_act3:

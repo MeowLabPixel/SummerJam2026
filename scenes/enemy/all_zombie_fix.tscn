@@ -77,7 +77,7 @@ size = Vector3(0.30628967, 0.17455387, 0.17154694)
 [node name="All zombie fix" unique_id=867409154 instance=ExtResource("1_e035i")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="rig_001" parent_id_path=PackedInt32Array(547526448) index="0" unique_id=322698158]
+[node name="Skeleton3D" parent="rig_001" parent_id_path=PackedInt32Array(1025897828) index="0" unique_id=612810231]
 bones/0/position = Vector3(-0.0055161086, 0.883087, -0.02838752)
 bones/0/rotation = Quaternion(0.004789689, 0.082570255, -0.032586094, 0.9960409)
 bones/0/scale = Vector3(0.9999987, 0.9999989, 0.9999976)
@@ -146,7 +146,7 @@ bone_name = "DEF-spine.006"
 bone_idx = 6
 
 [node name="HitboxHead" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachHead" index="0" unique_id=1799077663]
-collision_layer = 6
+collision_layer = 8198
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachHead/HitboxHead" index="0" unique_id=1793753342]
@@ -164,7 +164,7 @@ bone_name = "DEF-foot.L"
 bone_idx = 13
 
 [node name="HitboxLeftFoot" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftFoot" index="0" unique_id=800396227]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftFoot/HitboxLeftFoot" index="0" unique_id=1692041369]
@@ -182,7 +182,7 @@ bone_name = "DEF-foot.R"
 bone_idx = 19
 
 [node name="HitboxRightFoot" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightFoot" index="0" unique_id=154506703]
-collision_layer = 6
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightFoot/HitboxRightFoot" index="0" unique_id=1007857737]
@@ -200,7 +200,7 @@ bone_name = "DEF-forearm.R.001"
 bone_idx = 31
 
 [node name="HitboxRightArm" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightForeArm" index="0" unique_id=1375651829]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightForeArm/HitboxRightArm" index="0" unique_id=2141598236]
@@ -218,7 +218,7 @@ bone_name = "DEF-hand.R"
 bone_idx = 32
 
 [node name="HitboxRightHand" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightHand" index="0" unique_id=525467876]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightHand/HitboxRightHand" index="0" unique_id=971953859]
@@ -248,7 +248,7 @@ bone_name = "DEF-shoulder.R"
 bone_idx = 27
 
 [node name="HitboxRightArm" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightUpperArm" index="0" unique_id=2080401500]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightUpperArm/HitboxRightArm" index="0" unique_id=206497425]
@@ -266,7 +266,7 @@ bone_name = "DEF-forearm.L.001"
 bone_idx = 25
 
 [node name="HitboxLeftArm" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftForeArm" index="0" unique_id=116977318]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftForeArm/HitboxLeftArm" index="0" unique_id=161971513]
@@ -284,7 +284,7 @@ bone_name = "DEF-hand.L"
 bone_idx = 26
 
 [node name="HitboxLeftHand" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftHand" index="0" unique_id=180617104]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftHand/HitboxLeftHand" index="0" unique_id=719339786]
@@ -314,7 +314,7 @@ bone_name = "DEF-shoulder.L"
 bone_idx = 21
 
 [node name="HitboxLeftArm" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftUpperArm" index="0" unique_id=690016286]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftUpperArm/HitboxLeftArm" index="0" unique_id=1138611587]
@@ -332,7 +332,7 @@ bone_name = "DEF-thigh.L.001"
 bone_idx = 10
 
 [node name="HitboxLeftThigh" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftThigh" index="0" unique_id=1712311608]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftThigh/HitboxLeftThigh" index="0" unique_id=652191664]
@@ -350,7 +350,7 @@ bone_name = "DEF-shin.L.001"
 bone_idx = 12
 
 [node name="HitboxLeftShin" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachLeftShin" index="0" unique_id=1413230357]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachLeftShin/HitboxLeftShin" index="0" unique_id=2117827460]
@@ -368,7 +368,7 @@ bone_name = "DEF-shin.R.001"
 bone_idx = 18
 
 [node name="HitboxRightShin" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightShin" index="0" unique_id=336856980]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightShin/HitboxRightShin" index="0" unique_id=1019735599]
@@ -386,7 +386,7 @@ bone_name = "DEF-thigh.R.001"
 bone_idx = 16
 
 [node name="HitboxRightThigh" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachRightThigh" index="0" unique_id=864676159]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachRightThigh/HitboxRightThigh" index="0" unique_id=151401403]
@@ -404,7 +404,7 @@ bone_name = "DEF-spine.001"
 bone_idx = 1
 
 [node name="HitboxWaist" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachWaist" index="0" unique_id=1323472362]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachWaist/HitboxWaist" index="0" unique_id=136977158]
@@ -421,7 +421,7 @@ bone_name = "DEF-spine.003"
 bone_idx = 3
 
 [node name="HitboxChest" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachChest" index="0" unique_id=919464083]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachChest/HitboxChest" index="0" unique_id=1134875331]
@@ -438,7 +438,7 @@ bone_name = "DEF-spine"
 bone_idx = 0
 
 [node name="HitboxPelvis" type="Area3D" parent="rig_001/Skeleton3D/HitboxAttachPelvis" index="0" unique_id=181850101]
-collision_layer = 4
+collision_layer = 8196
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="rig_001/Skeleton3D/HitboxAttachPelvis/HitboxPelvis" index="0" unique_id=1584050123]
@@ -449,6 +449,6 @@ shape = SubResource("BoxShape3D_bnhrn")
 script = ExtResource("2_bnhrn")
 base_damage = 2
 
-[node name="AnimationPlayer" parent="." index="162" unique_id=1731823164]
+[node name="AnimationPlayer" parent="." index="162" unique_id=1350784634]
 "libraries/Left Foot" = SubResource("AnimationLibrary_dhc5f")
 "libraries/Right Foot" = SubResource("AnimationLibrary_qof7f")

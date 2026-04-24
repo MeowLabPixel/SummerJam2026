@@ -62,7 +62,8 @@ func camera_look(mouse_movement: Vector2)-> void:
 	
 	camera_rotation.y = clamp(camera_rotation.y,-max_y_rot,max_y_rot)
 	target.global_transform = targetref.global_transform
-	target.global_position.y = -targetref.global_position.y
+	# Keep aim target Y the same as the reference (negating it inverted pitch)
+	target.global_position.y = targetref.global_position.y
 
 func swap_camera_align()-> void:
 	match current_camera_align:

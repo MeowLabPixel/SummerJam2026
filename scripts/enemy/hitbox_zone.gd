@@ -36,6 +36,7 @@ func _ready() -> void:
 	var area := get_parent() as Area3D
 	if area:
 		area.body_entered.connect(_on_body_entered)
+		area.add_to_group("enemy")
 	else:
 		push_error("[HitboxZone] Parent must be Area3D (zone '%s')" % zone_name)
 

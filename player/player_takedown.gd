@@ -4,7 +4,7 @@ var anim_name = "TD/Take down anim"
 
 func _enter() -> void:
 	print(name)
-	owner.TD_hand.monitorable = true
+	owner.stun_detect.monitorable = true
 	owner.aim_bone_on(false)
 	stop_moving()
 	owner.anim.get(owner.anim_playback).travel("Takedown")
@@ -14,7 +14,9 @@ func _enter() -> void:
 	owner.hitboxB.monitoring = false
 		
 func _exit() -> void:
-	owner.TD_hand.monitorable =false
+	owner.stun_detect.monitorable =false
+	if owner.anim and owner.anim.animation_finished.is_connected(anim_done):
+		owner.anim.animation_finished.disconnect(anim_done)
 
 func anim_done(namee: String):
 	if namee == anim_name:

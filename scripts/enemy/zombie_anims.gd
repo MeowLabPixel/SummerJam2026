@@ -48,7 +48,7 @@ const HIT_LLEG_ACT2_SLIP_IDLE     := "Hit Leg act 2 (Slipping_Ilde) -loop"
 const HIT_LLEG_ACT3_TAKEDOWN      := "Hit Leg act 3 (Take_down) "
 # Left leg shares head acts 4 and 5
 const HIT_LLEG_ACT4_TAKEDOWN_IDLE := "HIT head act 4 (Take_down_idle) "
-const HIT_LLEG_ACT5_GETUP         := "HIT Leg act 5 (get_up )"
+const HIT_LLEG_ACT5_GETUP         := "HIT Leg act 5 (get_up ) "
 
 # Right leg hit sequence
 const HIT_RLEG_ACT1_SLIP          := "Hit RightLeg act 1 Slipping "
@@ -91,7 +91,16 @@ static func takedown_anim(hit_zone: String) -> String:
 		_:                  return HIT_HEAD_ACT3_TAKEDOWN
 
 static func takedown_idle(hit_zone: String) -> String:
-	return HIT_RLEG_ACT4_TAKEDOWN_IDLE if hit_zone == "right_leg" else HIT_LLEG_ACT4_TAKEDOWN_IDLE
+	match hit_zone:
+		"right_leg":
+			return HIT_RLEG_ACT4_TAKEDOWN_IDLE
+		"left_leg", "foot":
+			return HIT_LLEG_ACT4_TAKEDOWN_IDLE
+		"head":
+			return HIT_HEAD_ACT4_TAKEDOWN_IDLE 
+		_:
+			return HIT_HEAD_ACT4_TAKEDOWN_IDLE
+
 
 static func get_up_anim(hit_zone: String) -> String:
 	return HIT_RLEG_ACT5_GETUP if hit_zone == "right_leg" else HIT_LLEG_ACT5_GETUP
