@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://buva485v33obt"]
+
+[ext_resource type="PackedScene" uid="uid://lo05s0li2kdh" path="res://Landmark/Landmark1.fbx" id="1_xnhmo"]
+
+[node name="Landmark1" unique_id=1848665811 instance=ExtResource("1_xnhmo")]
