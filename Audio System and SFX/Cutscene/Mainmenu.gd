@@ -13,6 +13,7 @@ extends Control
 @onready var dialogue_slider := $MenuContainer/AudioSettingsPanel/VBoxContainer/DialogueSlider
 @onready var music_slider := $MenuContainer/AudioSettingsPanel/VBoxContainer/MusicSlider
 @onready var close_btn := $MenuContainer/AudioSettingsPanel/VBoxContainer/CloseButton
+@onready var fade: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	# Load custom font
@@ -126,7 +127,8 @@ func _on_play_input(event: InputEvent) -> void:
 		
 		# Hide menu UI
 		$MenuContainer.visible = false
-		await get_tree().create_timer(1.5).timeout
+		fade.play('logo_out')
+		await get_tree().create_timer(1.2).timeout
 		# Start the cutscene animation
 		if anim and anim.has_animation("FullCutscene"):
 			anim.play("FullCutscene")

@@ -97,8 +97,12 @@ const UI_LIBRARY: Dictionary = {
 	"accept": ["res://sound/Souls/Unholy UI - Souls (14).wav"
 	],
 	"start_game":["res://sound/Souls/Unholy UI - Souls (1).wav"],
-	"cancle":["res://sound/Souls/Unholy UI - Souls (13).wav"]
-	
+	"cancle":["res://sound/Souls/Unholy UI - Souls (13).wav"],
+	"Title":[
+		"res://sound/Songkran Hazard 4lom VA/Title Game/สงกราน-ฮาสาด-สีลม-2.ogg",
+		"res://sound/Songkran Hazard 4lom VA/Title Game/สงกราน-ฮาสาด-สีลม.ogg"
+		
+	]
 }
 
 const Leon_SFX_LIBRARY: Dictionary = {
