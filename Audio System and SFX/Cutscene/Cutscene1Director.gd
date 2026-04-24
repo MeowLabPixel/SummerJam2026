@@ -2,7 +2,7 @@ extends Node3D
 
 ## Cutscene1Director.gd
 ## Handles video playback during cutscene animation
-## NO auto-start — waits for external trigger
+## Listens for logo_out to finish, then plays FullCutscene
 
 signal cutscene_finished
 
@@ -21,17 +21,34 @@ func _ready() -> void:
 		video_player.stream = load(video_path)
 		print("[Cutscene1] Video loaded: ", video_path)
 	
-	# Listen for when the FullCutscene animation starts
+	# Listen for when animations start and finish
 	if anim:
 		anim.animation_started.connect(_on_animation_started)
+		anim.animation_finished.connect(_on_animation_finished)
 	
-	print("[Cutscene1] Ready - video handler waiting...")
+	print("[Cutscene1] Ready - waiting for logo_out to finish...")
 
 func _on_animation_started(anim_name: String) -> void:
 	if anim_name == "FullCutscene" and not cutscene_started:
 		cutscene_started = true
 		print("[Cutscene1] FullCutscene started - triggering video...")
 		start_video_countdown()
+
+func _on_animation_finished(anim_name: String) -> void:
+	# When logo_out finishes, play FullCutscene
+	if anim_name == "logo_out":
+		print("[Cutscene1] logo_out finished - starting FullCutscene...")
+		
+		# Activate cutscene camera
+		await get_tree().process_frame
+		cutscene_cam.make_current()
+		
+		# Play FullCutscene
+		if anim.has_animation("FullCutscene"):
+			anim.play("FullCutscene")
+			print("[Cutscene1] Playing FullCutscene animation")
+		else:
+			push_error("[Cutscene1] FullCutscene animation not found!")
 
 func start_video_countdown() -> void:
 	# Wait for the video trigger time

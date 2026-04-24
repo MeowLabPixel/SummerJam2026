@@ -126,7 +126,7 @@ func _on_play_input(event: InputEvent) -> void:
 			anim.stop()
 		
 		# Hide menu UI
-		$MenuContainer.visible = false
+
 		fade.play('logo_out')
 		await get_tree().create_timer(1.2).timeout
 		# Start the cutscene animation
