@@ -19,7 +19,9 @@ func physics_update(_delta: float) -> void:
 func update(_delta: float) -> void:
 	pass
 
-## Plays an animation only if it isn't already playing.
+## Plays an animation only if it isn't already playing. No-ops if no AnimationPlayer.
 func _play_anim(anim_name: String) -> void:
-	if ashley and ashley.anim_player and ashley.anim_player.current_animation != anim_name:
+	if not ashley or not ashley.anim_player:
+		return
+	if ashley.anim_player.current_animation != anim_name:
 		ashley.anim_player.play(anim_name)

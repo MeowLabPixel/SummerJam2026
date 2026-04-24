@@ -12,7 +12,12 @@ signal threat_cleared()
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var threat_area: Area3D = $ThreatArea
 @onready var help_label: Label3D = $HelpLabel
-@onready var anim_player: AnimationPlayer = $Ashley_Test/AnimationPlayer
+var anim_player: AnimationPlayer = null  # assigned at runtime once model is finalized
+
+# ─── Health ────────────────────────────────────────────────────────────────
+@export var max_health: int = 100
+var health: int = max_health
+var is_dead: bool = false
 
 # ─── Threat tracking ───────────────────────────────────────────────────────
 ## All CharacterBody3D nodes (enemies) currently inside the threat radius.
@@ -30,15 +35,40 @@ var is_cornered: bool = false:
 			help_label.visible = value
 
 func _ready() -> void:
+	health = max_health
 	help_label.visible = false
-	if not anim_player:
-		push_error("[AshleyBase] AnimationPlayer not found — check path Ashley_Test3/AnimationPlayer")
+	add_to_group("ashley")
 	threat_area.body_entered.connect(_on_threat_entered)
 	threat_area.body_exited.connect(_on_threat_exited)
 	state_machine.initialize("AshleyStateFollow")
 	state_machine.state_changed.connect(_on_state_changed)
 
-# ─── Threat sensor callbacks ───────────────────────────────────────────────
+func _unhandled_input(event: InputEvent) -> void:
+	if is_dead:
+		return
+	if event.is_action_pressed("ashley_wait"):
+		var current := state_machine.get_current_state_name()
+		if current == "AshleyStateWait":
+			state_machine.transition_to("AshleyStateFollow")
+			print("[Ashley] Follow")
+		elif current == "AshleyStateFollow":
+			state_machine.transition_to("AshleyStateWait")
+			print("[Ashley] Wait")
+
+## Called by enemy attack hitboxes to damage Ashley.
+func take_damage(amount: int, _hit_data: Dictionary = {}) -> void:
+	if is_dead:
+		return
+	health -= amount
+	print("[Ashley] Took %d damage -- HP: %d/%d" % [amount, health, max_health])
+	if health <= 0:
+		health = 0
+		is_dead = true
+		print("[Ashley] Dead.")
+		return
+	state_machine.transition_to("AshleyStateHit")
+
+# --- Threat sensor callbacks ---
 func _on_threat_entered(body: Node3D) -> void:
 	# Only track CharacterBody3D nodes that aren't Ashley herself.
 	if body == self:
@@ -58,10 +88,11 @@ func _on_threat_exited(body: Node3D) -> void:
 
 # ─── Helpers for states ────────────────────────────────────────────────────
 
-## Returns the world-space follow target (mouse position placeholder).
+## Returns the world-space position to follow — the player's actual position.
 func get_follow_target() -> Vector3:
-	if has_meta("target_position"):
-		return get_meta("target_position")
+	var players := get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		return (players[0] as Node3D).global_position
 	return global_position
 
 ## Returns the nearest threat position, or Vector3.ZERO if none.

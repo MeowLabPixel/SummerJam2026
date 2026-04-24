@@ -40,6 +40,9 @@ func _find_anim_player() -> AnimationPlayer:
 # ─── Ready ─────────────────────────────────────────────────────────────────
 func _ready() -> void:
 	current_hp = MAX_HP
+	if not anim_set:
+		anim_set = ZombieAnimSet.new()
+		push_warning("[EnemyBase] anim_set not assigned in Inspector — using defaults")
 	anim_player = _find_anim_player()
 	if anim_player:
 		print("[EnemyBase] AnimationPlayer found: %s" % anim_player.get_path())
