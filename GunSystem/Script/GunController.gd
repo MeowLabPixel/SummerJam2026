@@ -11,6 +11,7 @@ class_name GunController
 @export var current_water: float = 100.0
 
 var guns: Array[Gun] = []
+var unlocked_guns: Array[bool] = [true, false, false] # Pistol unlocked by default, Shotgun/Sniper locked
 var current_gun_index: int = 0
 var current_gun: Gun
 
@@ -23,8 +24,17 @@ func _ready() -> void:
 			gun.water_tank = self
 	switch_gun(0)
 
+func unlock_gun(index: int) -> void:
+	if index >= 0 and index < unlocked_guns.size():
+		unlocked_guns[index] = true
+		print("Gun unlocked at index: ", index)
+
 func switch_gun(index: int) -> void:
 	if index < 0 or index >= guns.size():
+		return
+	
+	if not unlocked_guns[index]:
+		print("Gun at index ", index, " is locked!")
 		return
 
 	current_gun_index = index
@@ -35,11 +45,16 @@ func switch_gun(index: int) -> void:
 			guns[i].visible = i == current_gun_index
 
 func next_gun() -> void:
-	var next_index := current_gun_index + 1
-	if next_index >= guns.size():
-		next_index = 0
-
-	switch_gun(next_index)
+	var next_index := (current_gun_index + 1) % guns.size()
+	
+	# Loop until we find an unlocked gun or we've checked all of them
+	var checked_count = 0
+	while not unlocked_guns[next_index] and checked_count < guns.size():
+		next_index = (next_index + 1) % guns.size()
+		checked_count += 1
+		
+	if unlocked_guns[next_index]:
+		switch_gun(next_index)
 
 func get_current_gun() -> Gun:
 	return current_gun

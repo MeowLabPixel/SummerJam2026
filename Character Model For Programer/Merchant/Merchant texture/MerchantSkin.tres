@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d2vm4uffu3aad"]
+
+[ext_resource type="Texture2D" uid="uid://ute1ugrrubmr" path="res://Character Model For Programer/Merchant/Merchant texture/MerchantBody.png" id="1_8j2hs"]
+
+[resource]
+albedo_texture = ExtResource("1_8j2hs")

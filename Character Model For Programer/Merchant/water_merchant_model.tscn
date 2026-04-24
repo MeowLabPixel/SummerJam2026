@@ -1,19 +1,16 @@
 [gd_scene format=3 uid="uid://dk5noejjahp0k"]
 
 [ext_resource type="PackedScene" uid="uid://gbbwlig2563b" path="res://Character Model For Programer/Merchant/water merchant.glb" id="1_thg1q"]
-[ext_resource type="Material" path="res://Character Model For Programer/Merchant/Merchant texture/MerchantSkin.tres" id="2_p7gic"]
+[ext_resource type="Script" uid="uid://bf7b8tqffrfe2" path="res://Character Model For Programer/Merchant/Merchant.gd" id="2_l3mh0"]
+[ext_resource type="Material" uid="uid://d2vm4uffu3aad" path="res://Character Model For Programer/Merchant/Merchant texture/MerchantSkin.tres" id="2_p7gic"]
 
-[node name="water merchant" unique_id=1398557210 instance=ExtResource("1_thg1q")]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p7gic"]
 
-[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(387730697) index="0" unique_id=1096267113]
-bones/8/rotation = Quaternion(0.15419601, 0.9400046, 0.25547454, 0.1653717)
-bones/8/scale = Vector3(1, 14.921207, 1)
-bones/9/rotation = Quaternion(-0.15419604, 0.9400044, 0.25547493, -0.16537176)
-bones/9/scale = Vector3(1, 14.921221, 1)
-bones/10/rotation = Quaternion(0.94815826, 0.10669793, -0.294435, 0.054033376)
-bones/10/scale = Vector3(1, 19.220362, 1)
-bones/11/rotation = Quaternion(0.94815826, -0.10669793, 0.294435, 0.054033376)
-bones/11/scale = Vector3(1, 19.22036, 1)
+[node name="water merchant" unique_id=1398557210 node_paths=PackedStringArray("anim_player") instance=ExtResource("1_thg1q")]
+script = ExtResource("2_l3mh0")
+anim_player = NodePath("AnimationPlayer2")
+
+[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(679487584) index="0" unique_id=746586973]
 bones/28/scale = Vector3(0.9999999, 0.9999997, 1.0000165)
 bones/29/rotation = Quaternion(-0.068543956, 0.9955786, -0.06406965, -0.004484009)
 bones/29/scale = Vector3(1.0000055, 1, 0.99998385)
@@ -43,44 +40,50 @@ bones/216/rotation = Quaternion(0.99896824, 0.0031470256, -8.39037e-05, -0.04530
 bones/218/scale = Vector3(1, 1, 0.99998325)
 bones/219/rotation = Quaternion(0.0012549853, 0.018907202, 0.997238, -0.07181477)
 
-[node name="Left_Foot" parent="rig/Skeleton3D" index="2" unique_id=1313248929]
+[node name="Left_Foot" parent="rig/Skeleton3D" index="2" unique_id=459077633]
 material_override = ExtResource("2_p7gic")
 
-[node name="Left_Hand" parent="rig/Skeleton3D" index="3" unique_id=296953961]
+[node name="Left_Hand" parent="rig/Skeleton3D" index="3" unique_id=793158106]
 material_override = ExtResource("2_p7gic")
 
-[node name="Lower_Left_Arm" parent="rig/Skeleton3D" index="4" unique_id=813916091]
+[node name="Lower_Left_Arm" parent="rig/Skeleton3D" index="4" unique_id=1782277482]
 material_override = ExtResource("2_p7gic")
 
-[node name="Lower_Left_Leg" parent="rig/Skeleton3D" index="5" unique_id=1600301189]
+[node name="Lower_Left_Leg" parent="rig/Skeleton3D" index="5" unique_id=2082913539]
 material_override = ExtResource("2_p7gic")
 
-[node name="Lower_Right_Arm" parent="rig/Skeleton3D" index="6" unique_id=1781786236]
+[node name="Lower_Right_Arm" parent="rig/Skeleton3D" index="6" unique_id=885047241]
 material_override = ExtResource("2_p7gic")
 
-[node name="Lower_Right_Leg" parent="rig/Skeleton3D" index="7" unique_id=1414311498]
+[node name="Lower_Right_Leg" parent="rig/Skeleton3D" index="7" unique_id=597950231]
 material_override = ExtResource("2_p7gic")
 
-[node name="Neck" parent="rig/Skeleton3D" index="11" unique_id=135352186]
+[node name="Neck" parent="rig/Skeleton3D" index="11" unique_id=1283533071]
 material_override = ExtResource("2_p7gic")
 
-[node name="Right_Foot" parent="rig/Skeleton3D" index="12" unique_id=135330633]
+[node name="Right_Foot" parent="rig/Skeleton3D" index="12" unique_id=503720827]
 material_override = ExtResource("2_p7gic")
 
-[node name="Right_Hand" parent="rig/Skeleton3D" index="13" unique_id=543801959]
+[node name="Right_Hand" parent="rig/Skeleton3D" index="13" unique_id=447587396]
 material_override = ExtResource("2_p7gic")
 
-[node name="Upper_Left_Arm" parent="rig/Skeleton3D" index="14" unique_id=1764130682]
+[node name="Upper_Left_Arm" parent="rig/Skeleton3D" index="14" unique_id=628829637]
 material_override = ExtResource("2_p7gic")
 
-[node name="Upper_Left_Leg" parent="rig/Skeleton3D" index="15" unique_id=1450743073]
+[node name="Upper_Left_Leg" parent="rig/Skeleton3D" index="15" unique_id=479788383]
 material_override = ExtResource("2_p7gic")
 
-[node name="Upper_Right_Arm" parent="rig/Skeleton3D" index="16" unique_id=2055361954]
+[node name="Upper_Right_Arm" parent="rig/Skeleton3D" index="16" unique_id=1183271180]
 material_override = ExtResource("2_p7gic")
 
-[node name="Upper_Right_Leg" parent="rig/Skeleton3D" index="17" unique_id=1959810502]
+[node name="Upper_Right_Leg" parent="rig/Skeleton3D" index="17" unique_id=546467107]
 material_override = ExtResource("2_p7gic")
 
-[node name="Upper_Torso" parent="rig/Skeleton3D" index="18" unique_id=614244188]
+[node name="Upper_Torso" parent="rig/Skeleton3D" index="18" unique_id=2029785578]
 material_override = ExtResource("2_p7gic")
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="183" unique_id=11540086]
+tree_root = SubResource("AnimationNodeStateMachine_p7gic")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="184" unique_id=2078144967]
