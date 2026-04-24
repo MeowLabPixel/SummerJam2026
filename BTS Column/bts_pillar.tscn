@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dh48geh0vsot6"]
+
+[ext_resource type="PackedScene" uid="uid://16r10x33yhhy" path="res://BTS Column/BTSPillar.fbx" id="1_ph234"]
+[ext_resource type="Texture2D" uid="uid://b8wsknkrqrw8y" path="res://BTS Column/openPBR_shader1_Base_color.png" id="2_d3s0b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw5xu"]
+albedo_texture = ExtResource("2_d3s0b")
+
+[node name="BTSPillar" unique_id=2105019417 instance=ExtResource("1_ph234")]
+
+[node name="BTSPillar" parent="." index="0" unique_id=1471481967]
+material_override = SubResource("StandardMaterial3D_uw5xu")

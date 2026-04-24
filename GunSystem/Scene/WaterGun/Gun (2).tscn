@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bfy7etesnxt5w"]
+
+[ext_resource type="Script" uid="uid://cd2m7xntr1tlt" path="res://GunSystem/Script/GunController.gd" id="1_controller"]
+[ext_resource type="Script" uid="uid://b0gdn4ftbjtl2" path="res://GunSystem/Script/PistolWaterGun.gd" id="1_nbubd"]
+[ext_resource type="PackedScene" uid="uid://bljas2yeqo4rd" path="res://GunSystem/Scene/WaterLineVFX/WaterLine.tscn" id="2_n8a5k"]
+[ext_resource type="PackedScene" uid="uid://br7b12d8xsajy" path="res://GunSystem/Scene/WaterLineVFX/WaterHit.tscn" id="4_gnye6"]
+[ext_resource type="PackedScene" uid="uid://ccsuw6xsbxf1o" path="res://Water Gun Glock/Gun_Optimized.fbx" id="5_ak315"]
+[ext_resource type="Script" uid="uid://dy1eg8j8nbca8" path="res://GunSystem/Script/ShotgunWaterGun.gd" id="5_bkwqo"]
+[ext_resource type="Script" uid="uid://c43b2dn4ajns1" path="res://GunSystem/Script/SniperWaterGun.gd" id="6_8ckxr"]
+[ext_resource type="PackedScene" uid="uid://cwgdfnitjjkj3" path="res://Water Gun Shotty/shotty optimized.fbx" id="7_xnxwk"]
+[ext_resource type="PackedScene" uid="uid://lgnndwwo3bkc" path="res://Water Gun Rifle/rifle_optimized.fbx" id="9_fb0g8"]
+
+[node name="GunController" type="Node3D" unique_id=870463544 node_paths=PackedStringArray("pistol_gun", "shotgun_gun", "sniper_gun")]
+script = ExtResource("1_controller")
+pistol_gun = NodePath("Pistol")
+shotgun_gun = NodePath("Shotgun")
+sniper_gun = NodePath("Sniper")
+max_water = 200.0
+current_water = 200.0
+
+[node name="Pistol" type="Node3D" parent="." unique_id=1327767996 node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("1_nbubd")
+spawn_point = NodePath("Gun_Optimized/SpawnPoint")
+shot_vfx_scene = ExtResource("2_n8a5k")
+hit_vfx_scene = ExtResource("4_gnye6")
+air_consumption = 5.0
+shoot_interval = 0.15
+pump_air_gain = 20.0
+max_spread = 4.0
+
+[node name="Gun_Optimized" parent="Pistol" unique_id=2081630820 instance=ExtResource("5_ak315")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.15755624, 0.124977455)
+
+[node name="SpawnPoint" type="Node3D" parent="Pistol/Gun_Optimized" unique_id=932306106]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.0013518886, 0.1734836, 0.41170013)
+
+[node name="Shotgun" type="Node3D" parent="." unique_id=1222397405 node_paths=PackedStringArray("spawn_point")]
+visible = false
+script = ExtResource("5_bkwqo")
+spawn_point = NodePath("shotty optimized/SpawnPoint")
+shot_vfx_scene = ExtResource("2_n8a5k")
+hit_vfx_scene = ExtResource("4_gnye6")
+shoot_interval = 1.0
+pump_air_gain = 20.0
+min_spread = 2.0
+max_spread = 4.0
+
+[node name="shotty optimized" parent="Shotgun" unique_id=1270350009 instance=ExtResource("7_xnxwk")]
+transform = Transform3D(-0.8, 0, -1.2079664e-07, 0, 0.8, 0, 1.2079664e-07, 0, -0.8, -0.028518584, -0.05921176, 0.32622385)
+
+[node name="SpawnPoint" type="Node3D" parent="Shotgun/shotty optimized" unique_id=858527331]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.029973796, 0.09514346, 1.2754395)
+
+[node name="Sniper" type="Node3D" parent="." unique_id=1877853685 node_paths=PackedStringArray("spawn_point")]
+visible = false
+script = ExtResource("6_8ckxr")
+spawn_point = NodePath("SpawnPoint")
+shot_vfx_scene = ExtResource("2_n8a5k")
+hit_vfx_scene = ExtResource("4_gnye6")
+damage = 40.0
+water_consumption = 10.0
+air_consumption = 100.0
+shoot_interval = 0.1
+pump_air_gain = 50.0
+super_threshold = 150.0
+min_spread = 0.0
+max_spread = 1.0
+
+[node name="rifle_optimized" parent="Sniper" unique_id=62709240 instance=ExtResource("9_fb0g8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.03736916, 0.0071575064, 0.02236018)
+
+[node name="SpawnPoint" type="Node3D" parent="Sniper" unique_id=130137317]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.03310444, -0.01666484, -0.40025687)

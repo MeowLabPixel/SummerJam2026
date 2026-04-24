@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cqj0rsehq7jrj"]
+
+[ext_resource type="PackedScene" uid="uid://d20vx5ajpu1kb" path="res://Buildings/Building.fbx" id="1_m0122"]
+[ext_resource type="Texture2D" uid="uid://dyyim2t6hn2d1" path="res://Buildings/building1.png" id="2_4o2jj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhj1u"]
+albedo_texture = ExtResource("2_4o2jj")
+
+[node name="Building" unique_id=1102072921 instance=ExtResource("1_m0122")]
+
+[node name="pCube1" parent="." index="0" unique_id=2132895659]
+material_overlay = SubResource("StandardMaterial3D_uhj1u")
