@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bljas2yeqo4rd" path="res://GunSystem/Scene/WaterLineVFX/WaterLine.tscn" id="2_n8a5k"]
 [ext_resource type="PackedScene" uid="uid://ccsuw6xsbxf1o" path="res://Water Gun Glock/Gun_Optimized.fbx" id="5_ak315"]
 [ext_resource type="Script" uid="uid://dy1eg8j8nbca8" path="res://GunSystem/Script/ShotgunWaterGun.gd" id="5_bkwqo"]
-[ext_resource type="PackedScene" uid="uid://ck35242fk6dck" path="res://GunSystem/Scene/WaterLineVFX/WaterMuzzle.tscn" id="5_xnxwk"]
+[ext_resource type="PackedScene" uid="uid://gjs0wjhh5kp8" path="res://GunSystem/Scene/WaterLineVFX/WaterMuzzle.tscn" id="5_xnxwk"]
 [ext_resource type="Script" uid="uid://c43b2dn4ajns1" path="res://GunSystem/Script/SniperWaterGun.gd" id="6_8ckxr"]
 [ext_resource type="PackedScene" uid="uid://cwgdfnitjjkj3" path="res://Water Gun Shotty/shotty optimized.fbx" id="7_xnxwk"]
 [ext_resource type="PackedScene" uid="uid://lgnndwwo3bkc" path="res://Water Gun Rifle/rifle_optimized.fbx" id="9_fb0g8"]
@@ -28,6 +28,7 @@ muzzle_scale = Vector3(0.2, 0.2, 0.2)
 impact_scale = Vector3(0.4, 0.4, 0.4)
 muzzle_animation_name = "Muzzle"
 impact_animation_name = "Muzzle"
+damage = 2.0
 air_consumption = 5.0
 shoot_interval = 0.15
 pump_air_gain = 20.0

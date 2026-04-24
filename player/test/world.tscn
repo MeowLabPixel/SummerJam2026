@@ -8,8 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://cfa0r7igmb3vg" path="res://player/img/kenney_prototype-textures/PNG/Light/texture_09.png" id="5_33i3r"]
 [ext_resource type="PackedScene" uid="uid://ek1ncjc2swrw" path="res://player/test/temp_enemi.tscn" id="7_ih2au"]
 [ext_resource type="Script" uid="uid://dxr0w5vn4oq5s" path="res://player/test/UI.gd" id="8_6c3wv"]
-[ext_resource type="PackedScene" uid="uid://qeaipwg5cq4v" path="res://scenes/enemy/enemy.tscn" id="9_ffbsx"]
 [ext_resource type="PackedScene" uid="uid://c6uqvqrlxwm0g" path="res://scenes/ashley/ashley.tscn" id="10_1pr3x"]
+[ext_resource type="PackedScene" uid="uid://cct03w215xpte" path="res://scenes/enemy/balloon_zombie.tscn" id="11_2sc32"]
+[ext_resource type="PackedScene" uid="uid://bfo2fsp5vncs4" path="res://scenes/enemy/water_gun_zombie.tscn" id="12_3phbt"]
+[ext_resource type="PackedScene" uid="uid://sa4u82tfijxi" path="res://scenes/enemy/female_zombie.tscn" id="13_3phbt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljqf5"]
 albedo_texture = ExtResource("2_1fcdn")
@@ -143,4 +145,11 @@ text = "AAAAAA"
 [node name="Ashley" parent="." unique_id=1099023628 instance=ExtResource("10_1pr3x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9785824, 0, -1.0953765)
 
-[node name="Enemy" parent="." unique_id=1434836882 instance=ExtResource("9_ffbsx")]
+[node name="BalloonZombie" parent="." unique_id=525148414 instance=ExtResource("11_2sc32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.531391, 0, 4.336993)
+
+[node name="WaterGunZombie" parent="." unique_id=1468367870 instance=ExtResource("12_3phbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1601298, 0, 1.5610623)
+
+[node name="Enemy2" parent="." unique_id=247717746 instance=ExtResource("13_3phbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.341727, 0.08199238, 1.3943043)

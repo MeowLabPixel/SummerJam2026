@@ -9,7 +9,7 @@ func _ready() -> void:
 	update_display()
 	hp.text = "HP: " + str(player.HP)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player.HP <=0:
 		self.visible = false
 	update_display()

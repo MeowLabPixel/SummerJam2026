@@ -274,9 +274,9 @@ func _find_enemy_from_area(area: Area3D) -> Node:
 	return null
 
 
-func _on_stunned_detect_2_area_entered(area: Area3D) -> void:
-	pass # Replace with function body.
+func _on_stunned_detect_2_area_entered(_area: Area3D) -> void:
+	pass
 
 
-func _on_stunned_detect_2_area_exited(area: Area3D) -> void:
-	pass # Replace with function body.
+func _on_stunned_detect_2_area_exited(_area: Area3D) -> void:
+	pass

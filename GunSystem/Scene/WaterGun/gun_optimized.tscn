@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://coisehptg6i6y"]
+
+[ext_resource type="PackedScene" uid="uid://ccsuw6xsbxf1o" path="res://Water Gun Glock/Gun_Optimized.fbx" id="1_d6a62"]
+
+[node name="Gun_Optimized" unique_id=1914154594 instance=ExtResource("1_d6a62")]

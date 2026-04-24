@@ -5,7 +5,7 @@ extends Node
 
 # Reference back to the enemy that owns this state machine.
 # Set by EnemyStateMachine on ready.
-var enemy = null  # CharacterBody3D — untyped to avoid circular dependency
+var enemy: EnemyBase = null  # CharacterBody3D — untyped to avoid circular dependency
 var state_machine = null  # EnemyStateMachine — untyped to avoid circular dependency
 
 ## Called when this state becomes active.
@@ -34,16 +34,21 @@ func handle_hit(_hit_data: Dictionary) -> String:
 ## Uses is_playing() + current_animation so a finished one-shot can replay.
 func _play_anim(anim_name: String) -> void:
 	if not (enemy and enemy.anim_player):
+		push_warning("[EnemyState] _play_anim: no anim_player on %s" % enemy.name)
 		return
 	var ap: AnimationPlayer = enemy.anim_player
-	# Only skip if this exact animation is actively running (not just last played).
 	if ap.is_playing() and ap.current_animation == anim_name:
+		return
+	if not ap.has_animation(anim_name):
+		push_warning("[EnemyState] _play_anim: animation '%s' not found on %s" % [anim_name, enemy.name])
 		return
 	ap.play(anim_name)
 
-## Force-replays an animation even if it is currently mid-play.
-## Use this for re-stun hits that must restart the flinch from frame 0.
 func _force_anim(anim_name: String) -> void:
 	if not (enemy and enemy.anim_player):
+		push_warning("[EnemyState] _force_anim: no anim_player on %s" % enemy.name)
+		return
+	if not enemy.anim_player.has_animation(anim_name):
+		push_warning("[EnemyState] _force_anim: animation '%s' not found on %s" % [anim_name, enemy.name])
 		return
 	enemy.anim_player.play(anim_name)

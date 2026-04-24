@@ -66,7 +66,7 @@ func _build_mesh(shape: String) -> Mesh:
 		"sphere":
 			var m := SphereMesh.new()
 			m.radius = 0.12
-			m.height = 0.24
+			m.height = 0.05
 			return m
 		"box":
 			var m := BoxMesh.new()

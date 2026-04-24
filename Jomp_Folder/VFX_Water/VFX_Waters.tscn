@@ -245,7 +245,7 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_bdgjd"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_11kf8"]
 curve_x = SubResource("Curve_brag4")
 curve_y = SubResource("Curve_oof44")
 curve_z = SubResource("Curve_07tbw")
@@ -254,7 +254,7 @@ curve_z = SubResource("Curve_07tbw")
 _data = [Vector2(0, 0), 0.0, 7.7099075, 0, 0, Vector2(0.30405408, 0.94382024), -1.2791698, -1.2791698, 0, 0, Vector2(1, 0), -0.39127585, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_jffsw"]
+[sub_resource type="CurveTexture" id="CurveTexture_4kggc"]
 curve = SubResource("Curve_y57ux")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ecjkn"]
@@ -270,11 +270,11 @@ initial_velocity_min = 4.0
 initial_velocity_max = 8.0
 orbit_velocity_min = -0.49999994
 orbit_velocity_max = 0.5000001
-orbit_velocity_curve = SubResource("CurveXYZTexture_bdgjd")
+orbit_velocity_curve = SubResource("CurveXYZTexture_11kf8")
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -5.000002
 radial_accel_max = -5.000002
-scale_curve = SubResource("CurveTexture_jffsw")
+scale_curve = SubResource("CurveTexture_4kggc")
 
 [sub_resource type="SphereMesh" id="SphereMesh_br3tx"]
 radius = 0.04

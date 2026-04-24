@@ -32,6 +32,7 @@ func _exit() -> void:
 	owner.qte_bar.value = 0
 	is_exiting = false
 	mini_done = false
+	owner.is_grab = false
 	
 	owner.hitboxF.monitoring = true
 	owner.hitboxB.monitoring = true

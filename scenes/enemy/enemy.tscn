@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://beiq7i7sumyfv" path="res://scripts/enemy/state_knockdown.gd" id="9_f5q6l"]
 [ext_resource type="Script" uid="uid://c2380ydsn0sgi" path="res://scripts/enemy/state_get_up.gd" id="10_8ed2q"]
 [ext_resource type="Script" uid="uid://dv0tmkky7d57f" path="res://scripts/enemy/state_defeated.gd" id="11_wk82e"]
-[ext_resource type="PackedScene" uid="uid://bd7pagsi67ay5" path="res://scenes/enemy/all_zombie_fix.tscn" id="12_2f3il"]
+[ext_resource type="PackedScene" uid="uid://dgmp0ctlqhd7t" path="res://models/enemies/female_zombie.tscn" id="12_2f3il"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_peoo5"]
 radius = 0.059456058
@@ -57,4 +57,4 @@ script = ExtResource("10_8ed2q")
 [node name="StateDefeated" type="Node" parent="EnemyStateMachine" unique_id=1877558210]
 script = ExtResource("11_wk82e")
 
-[node name="ZombieModel" parent="." unique_id=867409154 instance=ExtResource("12_2f3il")]
+[node name="ZombieModel" parent="." unique_id=1086894571 instance=ExtResource("12_2f3il")]

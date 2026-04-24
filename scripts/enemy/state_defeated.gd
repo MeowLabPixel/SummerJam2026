@@ -1,38 +1,71 @@
-## STATE: Defeated
-## HP has reached 0. Enemy is out of the fight.
-## Plays defeated animation on loop.
-
 class_name StateDefeated
 extends EnemyState
 
-## Whether the player is currently aiming at this enemy.
-## Set externally by the player's aim/raycasting system.
-var player_is_aiming: bool = false
+@export var move_speed: float = 1.2   # slower shamble than a hunting zombie
 
-var _was_aiming: bool = false
+var player_is_aiming: bool = false
+var _was_aiming: bool      = false
+var _walking: bool         = false   # true once the dead intro anim finishes
 
 func enter() -> void:
 	player_is_aiming = false
-	_was_aiming = false
+	_was_aiming      = false
+	_walking         = false
 	print("[StateDefeated] Enemy defeated!")
-	_play_anim(ZombieAnims.DEAD)
+	_play_anim(enemy.anim_set.dead)
+	enemy.anim_player.animation_finished.connect(_on_dead_anim_finished, CONNECT_ONE_SHOT)
+
+func _on_dead_anim_finished(_anim_name: String) -> void:
+	await get_tree().create_timer(0.6).timeout
+	_walking = true
+	_play_anim(enemy.anim_set.dead_walk)
 
 func exit() -> void:
-	pass  # Defeated is a terminal state — should never exit normally.
+	if enemy.anim_player.animation_finished.is_connected(_on_dead_anim_finished):
+		enemy.anim_player.animation_finished.disconnect(_on_dead_anim_finished)
 
 func physics_update(_delta: float) -> void:
+	if not _walking:
+		return
+
+	# ── Animation toggle when player aims / stops aiming ────────────────────
 	if player_is_aiming and not _was_aiming:
 		_was_aiming = true
-		print("[StateDefeated] Enemy waves — no more Songkran!")
-		_play_anim(ZombieAnims.DEAD_WALK)
+		_play_anim(enemy.anim_set.dead_walk)
 	elif not player_is_aiming and _was_aiming:
 		_was_aiming = false
-		_play_anim(ZombieAnims.DEAD)
+		_play_anim(enemy.anim_set.dead)
 
-## Defeated enemies cannot be hit further.
+	# ── Walk away from the player every frame ───────────────────────────
+	var player := _get_player()
+	if player == null:
+		return
+
+	var to_player: Vector3 = player.global_position - enemy.global_position
+	to_player.y = 0.0
+
+	# Once far enough away, stop moving
+	if to_player.length() > 20.0:
+		enemy.velocity = Vector3.ZERO
+		return
+
+	# Guard: if zombie is directly on top of player, skip movement/rotation
+	if to_player.length() < 0.1:
+		enemy.velocity = Vector3.ZERO
+		return
+
+	var flee_dir: Vector3 = -to_player.normalized()
+	enemy.velocity = flee_dir * move_speed
+	enemy.move_and_slide()
+	enemy.look_at(enemy.global_position + flee_dir, Vector3.UP)
+
 func handle_hit(_hit_data: Dictionary) -> String:
 	return ""
 
-## Call from the player's aiming/raycasting system each frame.
 func set_aimed_at(aimed: bool) -> void:
 	player_is_aiming = aimed
+
+# ── Helpers ────────────────────────────────────────────────────
+func _get_player() -> Node3D:
+	var players := enemy.get_tree().get_nodes_in_group("player")
+	return players[0] if players.size() > 0 else null
