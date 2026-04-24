@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://oaseibf5xttu"]
+
+[ext_resource type="PackedScene" uid="uid://cetefhvkdq71w" path="res://Prop/GreemFence.fbx" id="1_emsif"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n36h6"]
+size = Vector3(0.015249998, 0.0012500004, 0.010547943)
+
+[node name="GreemFence" unique_id=1163978891 instance=ExtResource("1_emsif")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Fence" parent_id_path=PackedInt32Array(1303620885) index="0" unique_id=1932065927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2223609e-09, 0.005260791)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fence/StaticBody3D" index="0" unique_id=1268939059]
+shape = SubResource("BoxShape3D_n36h6")

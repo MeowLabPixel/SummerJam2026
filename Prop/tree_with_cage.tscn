@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://q4iv1sgcq6o2"]
+
+[ext_resource type="PackedScene" uid="uid://cheofbkd8h535" path="res://Tree/Tree_With_Cage.fbx" id="1_rv7ur"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygmdy"]
+size = Vector3(0.009951574, 0.009951574, 0.007603946)
+
+[node name="Tree_With_Cage" unique_id=840975079 instance=ExtResource("1_rv7ur")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=166481330]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0.3801973, -4.5323052e-08)
+shape = SubResource("BoxShape3D_ygmdy")

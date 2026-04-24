@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cr4cfx622j1av"]
+
+[ext_resource type="PackedScene" uid="uid://n67bkxit88ox" path="res://Traffic Light/Traffic_Light (2).fbx" id="1_j127f"]
+[ext_resource type="Texture2D" uid="uid://bwy60qaoapb47" path="res://Traffic Light/openPBR_shader1_Emissive (2).png" id="2_edva0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_37x6b"]
+albedo_texture = ExtResource("2_edva0")
+
+[node name="Traffic_Light (2)" unique_id=1960183157 instance=ExtResource("1_j127f")]
+
+[node name="Traffic_Light" parent="." index="0" unique_id=1788044263]
+material_override = SubResource("StandardMaterial3D_37x6b")

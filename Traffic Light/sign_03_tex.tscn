@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bpbw1m7wu4pgj"]
+
+[ext_resource type="PackedScene" uid="uid://bgyi0cb3exohm" path="res://Prop/Sign03.fbx" id="1_47o18"]
+
+[node name="Sign03" unique_id=1929784979 instance=ExtResource("1_47o18")]

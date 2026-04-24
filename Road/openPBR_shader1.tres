@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dqko1lvigrfgo"]
+
+[ext_resource type="Texture2D" uid="uid://du8x8g8x8klcr" path="res://Road/road.png" id="1_8ngpu"]
+
+[resource]
+resource_name = "openPBR_shader1"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_8ngpu")

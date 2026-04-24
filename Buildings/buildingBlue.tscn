@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bvglnhqqdgwkp"]
+
+[ext_resource type="PackedScene" uid="uid://b5qywpqrvim7j" path="res://Buildings/Building2.fbx" id="1_xwsv8"]
+[ext_resource type="Texture2D" uid="uid://c6oswlfa680f8" path="res://Buildings/building2.png" id="2_noice"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwixy"]
+albedo_texture = ExtResource("2_noice")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_noice"]
+size = Vector3(0.014768025, 0.01, 0.014768025)
+
+[node name="Building2" unique_id=839120530 instance=ExtResource("1_xwsv8")]
+
+[node name="pCube1" parent="." index="0" unique_id=431366998]
+material_override = SubResource("StandardMaterial3D_xwixy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pCube1" index="0" unique_id=1786963268]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pCube1/StaticBody3D" index="0" unique_id=79587033]
+shape = SubResource("BoxShape3D_noice")

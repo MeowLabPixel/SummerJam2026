@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cnp4qc3ttx7t6"]
+
+[ext_resource type="PackedScene" uid="uid://bb81nioepsbju" path="res://Road/Road.fbx" id="1_feo05"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0etb"]
+size = Vector3(0.23309283, 0.001, 0.23309283)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q418u"]
+size = Vector3(0.13435656, 0.01, 0.23309)
+
+[node name="Road" unique_id=215565788 instance=ExtResource("1_feo05")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pPlane1" parent_id_path=PackedInt32Array(1050548151) index="0" unique_id=1506998637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5e-06, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pPlane1/StaticBody3D" index="0" unique_id=79934546]
+shape = SubResource("BoxShape3D_c0etb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pCube1" parent_id_path=PackedInt32Array(1314603698) index="0" unique_id=1420423256]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pCube1/StaticBody3D" index="0" unique_id=1901099659]
+shape = SubResource("BoxShape3D_q418u")
