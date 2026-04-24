@@ -1,79 +1,71 @@
 shader_type canvas_item;
-
-// Liquid Glass UI Shader v2 - by sentinelcmd
-
+// shader by Pcniado
 uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
 
-uniform float blur : hint_range(0.0, 8.0) = 3.5;
-uniform float warp_intensity : hint_range(0.0, 1.0) = 0.4;
-uniform float strength_x : hint_range(0.0, 50.0) = 12.0;
-uniform float strength_y : hint_range(0.0, 50.0) = 12.0;
-uniform float offset_x : hint_range(-1.0, 1.0) = 0.0;
-uniform float offset_y : hint_range(-1.0, 1.0) = 0.0;
+uniform float u_roundness : hint_range(0.0, 1.0) = 1.0;
 
-uniform float corner_radius : hint_range(0.0, 1.0) = 0.3;
-uniform float edge_smoothness : hint_range(0.5, 3.0) = 1.0;
+uniform float u_distortion_intensity = 1.0;
+uniform float u_blur_intensity = 1.2;
 
-uniform vec4 tint : source_color = vec4(0.95, 0.97, 1.0, 0.12);
-uniform vec4 edge_highlight : source_color = vec4(1.0, 1.0, 1.0, 0.3);
-uniform float edge_width : hint_range(0.0, 10.0) = 1.5;
-uniform float chromatic_strength : hint_range(0.0, 5.0) = 5.0;
+float sdf_box(vec2 p, vec2 b, float r) {
+    vec2 d = abs(p) - b + vec2(r);
+    return min(max(d.x, d.y), 0.0) + length(max(d, 0.0)) - r;
+}
 
-float rounded_box(vec2 p, vec2 b, float r) {
-    vec2 q = abs(p) - b + r;
-    return min(max(q.x, q.y), 0.0) + length(max(q, 0.0)) - r;
+vec3 get_blurred_color(sampler2D tex, vec2 screen_uv, vec2 pixel_size, float blur_radius) {
+    vec3 color = vec3(0.0);
+    float total_weight = 0.0;
+
+    for (int x = -2; x <= 2; x++) {
+        for (int y = -2; y <= 2; y++) {
+            vec2 offset = vec2(float(x), float(y)) * blur_radius * pixel_size;
+            float weight = exp(-0.5 * (float(x*x + y*y)) / 2.0);
+
+            color += texture(tex, screen_uv + offset).rgb * weight;
+            total_weight += weight;
+        }
+    }
+    return color / total_weight;
 }
 
 void fragment() {
-    float dx = dFdx(UV.x);
-    float dy = dFdy(UV.y);
+    vec2 pixel_scale = fwidth(UV);
+    vec2 rect_size = 1.0 / pixel_scale;
 
-    dx = sign(dx) * max(abs(dx), 0.0001);
-    dy = sign(dy) * max(abs(dy), 0.0001);
+    vec2 local_pos = (UV - 0.5) * rect_size;
+    vec2 half_size = rect_size * 0.5;
 
-    vec2 size = abs(vec2(1.0 / dx, 1.0 / dy));
+    float max_radius = min(rect_size.x, rect_size.y) * 0.5;
+    float current_radius = max_radius * u_roundness;
 
-    size = clamp(size, vec2(1.0), vec2(4096.0));
+    float dist = sdf_box(local_pos, half_size, current_radius);
 
-    vec2 half_size = size * 0.5;
-    vec2 pixel = UV * size;
-    vec2 centered = pixel - half_size;
-
-    float max_r = min(half_size.x, half_size.y);
-    float r = corner_radius * max_r;
-
-    float sdf = rounded_box(centered, half_size, r);
-    float alpha = 1.0 - smoothstep(-edge_smoothness, edge_smoothness, sdf);
-
-    if (alpha < 0.001) {
+    if (dist > 0.0) {
         discard;
     }
 
-    float max_dist = min(half_size.x, half_size.y) * 0.5;
-    float w = clamp(-sdf / max_dist, 0.0, 1.0);
+    float min_side = min(rect_size.x, rect_size.y);
+    float inversed_sdf = -dist / min_side;
 
-    vec2 uv_dir = length(centered) > 0.001 ? normalize(centered) : vec2(0.0, 1.0);
+    vec2 normalized_glass_coord = normalize(local_pos);
+    float dist_from_center = 1.0 - clamp(inversed_sdf / 0.3, 0.0, 1.0);
 
-    float exp_x = exp(-strength_x * pow(w + offset_x, 2.0));
-    float exp_y = exp(-strength_y * pow(w + offset_y, 2.0));
-    vec2 warp_offset = uv_dir * vec2(exp_x, exp_y) * warp_intensity / 10.0;
-    vec2 warped_uv = SCREEN_UV - warp_offset;
+    float distortion = 1.0 - sqrt(1.0 - pow(dist_from_center, 2.0));
 
-    float edge_proximity = 1.0 - w;
-    vec2 chroma_offset = uv_dir * edge_proximity * chromatic_strength * SCREEN_PIXEL_SIZE;
+    vec2 offset_pixels = distortion * normalized_glass_coord * half_size * u_distortion_intensity;
+    vec2 screen_uv_offset = offset_pixels * SCREEN_PIXEL_SIZE;
+    vec2 target_uv = SCREEN_UV - screen_uv_offset;
+    float current_blur_radius = u_blur_intensity * (1.0 - dist_from_center * 0.5);
 
-    float bg_r = textureLod(screen_texture, warped_uv - chroma_offset, blur).r;
-    float bg_g = textureLod(screen_texture, warped_uv, blur).g;
-    float bg_b = textureLod(screen_texture, warped_uv + chroma_offset, blur).b;
-    vec3 bg = vec3(bg_r, bg_g, bg_b);
+    float edge_factor = smoothstep(0.0, 0.02, inversed_sdf);
+    vec2 chromatic_shift = normalized_glass_coord * edge_factor * 3.0 * SCREEN_PIXEL_SIZE;
 
-    vec3 color = mix(bg, tint.rgb, tint.a);
+    float r = get_blurred_color(screen_texture, target_uv - chromatic_shift, SCREEN_PIXEL_SIZE, current_blur_radius).r;
+    float g = get_blurred_color(screen_texture, target_uv, SCREEN_PIXEL_SIZE, current_blur_radius).g;
+    float b = get_blurred_color(screen_texture, target_uv + chromatic_shift, SCREEN_PIXEL_SIZE, current_blur_radius).b;
 
-    float edge = 1.0 - smoothstep(0.0, edge_width, -sdf);
-    edge *= step(sdf, 0.0);
-    color = mix(color, edge_highlight.rgb, edge * edge_highlight.a);
+    vec3 glass_color = vec3(r, g, b);
+    glass_color *= 0.9;
 
-    color += vec3(smoothstep(0.4, 0.0, UV.y) * 0.08 * w);
-
-    COLOR = vec4(color, alpha);
+    COLOR = vec4(glass_color, 1.0);
 }

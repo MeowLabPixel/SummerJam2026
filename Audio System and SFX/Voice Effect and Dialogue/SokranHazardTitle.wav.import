@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dokgafk0a3el0"
+path="res://.godot/imported/SokranHazardTitle.wav-b936bcd294feabf37e9cd0bab595a0dc.sample"
+
+[deps]
+
+source_file="res://Audio System and SFX/Voice Effect and Dialogue/SokranHazardTitle.wav"
+dest_files=["res://.godot/imported/SokranHazardTitle.wav-b936bcd294feabf37e9cd0bab595a0dc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
