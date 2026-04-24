@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpra1dbg7q6n4"
+path="res://.godot/imported/1. Cutscene Taxi.MP3-a6be17a62e1ce3d83e07144bd02f8a75.mp3str"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/finalize Cutscene (Lee and Anchalee)/1. Cutscene Taxi.MP3"
+dest_files=["res://.godot/imported/1. Cutscene Taxi.MP3-a6be17a62e1ce3d83e07144bd02f8a75.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

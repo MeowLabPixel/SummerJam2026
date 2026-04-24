@@ -90,7 +90,7 @@ func _on_button_hover(button: Panel, hovered: bool) -> void:
 	
 	if hovered:
 		# UI sound
-		AudioManager.play_random_ui.emit("button")
+		AudioManager.play_random_ui.emit("hover")
 		
 		# Apply rainbow shader to the glass panel
 		var rainbow_shader_path = "res://Audio System and SFX/Ui/Rainbow hover.gdshader"
@@ -117,7 +117,7 @@ func _on_button_hover(button: Panel, hovered: bool) -> void:
 
 func _on_play_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		AudioManager.play_random_ui.emit("button")
+		AudioManager.play_random_ui.emit("start_game")
 		print("[MainMenu] Play clicked - starting cutscene animation...")
 		
 		# Stop the menu loop animation
@@ -136,7 +136,7 @@ func _on_play_input(event: InputEvent) -> void:
 
 func _on_settings_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		AudioManager.play_random_ui.emit("button")
+		AudioManager.play_random_ui.emit("accept")
 		print("[MainMenu] Settings clicked - showing audio panel")
 		audio_panel.visible = true
 		
@@ -151,7 +151,7 @@ func _on_settings_input(event: InputEvent) -> void:
 
 func _on_quit_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		AudioManager.play_random_ui.emit("button")
+		AudioManager.play_random_ui.emit("cancel")
 		print("[MainMenu] Quit clicked")
 		get_tree().quit()
 
@@ -174,5 +174,5 @@ func _setup_audio_settings() -> void:
 	print("[MainMenu] Audio settings initialized")
 
 func _on_audio_close() -> void:
-	AudioManager.play_random_ui.emit("button")
+	AudioManager.play_random_ui.emit("cancle")
 	audio_panel.visible = false

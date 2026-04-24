@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://e5ms5wkfxglf"
+path="res://.godot/imported/โดนตี (สมจริง).wav-6be42352a40244d627ac70097e3a4345.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/โดนตี (สมจริง).wav"
+dest_files=["res://.godot/imported/โดนตี (สมจริง).wav-6be42352a40244d627ac70097e3a4345.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

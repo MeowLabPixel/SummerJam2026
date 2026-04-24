@@ -91,13 +91,128 @@ const DIALOGUE_LIBRARY: Dictionary = {
 }
 
 const UI_LIBRARY: Dictionary = {
-	"button": [
-		"res://audio/ui/button_01.ogg",
-		"res://audio/ui/button_02.ogg",
+	"hover": [
+	"res://sound/Souls/Unholy UI - Souls (7).wav"
 	],
-	"error": [
-		"res://audio/ui/error_01.ogg",
+	"accept": ["res://sound/Souls/Unholy UI - Souls (14).wav"
 	],
+	"start_game":["res://sound/Souls/Unholy UI - Souls (1).wav"],
+	"cancle":["res://sound/Souls/Unholy UI - Souls (13).wav"]
+	
+}
+
+const Leon_SFX_LIBRARY: Dictionary = {
+	"attack": [
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Attack2_1.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Attack2_2.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Attack2_3.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Attack3_1.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Attack3_2.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/QA_1.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/QA_3.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/QA_4.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/QA_2.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Ral_attack_2_1.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Ral_attack_2_2.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Ral_attack_2_3.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Ral_attack_2_4.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Real_attack_1.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Real_attack_2.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Real_attack_3.wav",
+	],
+	"Grapple": [
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/Grapple 1.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/Grapple 3.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/Grapple Talk.wav"
+	],
+	"phew": [
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/phew.wav",
+		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/เห้อ แยก.wav",	
+	],
+}
+
+const Zombie_Melee_SFX_LIBRARY: Dictionary = {
+	"attack": [
+	"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/Attack_01.wav", 
+	"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/Attack_02.wav",
+	"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/Attack_03.wav",
+	],
+	"talk": [
+		"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/handsome_01.wav",
+	"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/handsome_02.wav",
+	"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/handsome_04.wav",
+	"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/handsome_03.wav"
+	],
+	"hurt": [
+		"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/shot_01.wav",
+		"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/shot_02.wav",
+		"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/shot_03.wav"
+	],
+	"slapped": [
+		"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/Slapped_01.wav",
+		"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/Slapped_02.wav",
+		"res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/Slapped_03.wav",
+		
+	]
+}
+
+const Zombie_Range_SFX_LIBRARY: Dictionary ={
+	"talk":["res://sound/Songkran Hazard 4lom VA/Zombie Range/ซอมบี้เกรียน ทักทาย.wav"],
+	"hurt":["res://sound/Songkran Hazard 4lom VA/Zombie Range/ซอมบี้เกรียน เจ็บ.wav"],
+	"attack":[
+		"res://sound/Songkran Hazard 4lom VA/Zombie Range/ซอมบี้เกรียน โจมตี.wav",
+		"res://sound/Songkran Hazard 4lom VA/Zombie Range/ซอมบี้เกรียน หัวเราะ.wav"
+		],	
+}
+
+const Anchalee_SFX_LIBRARY: Dictionary ={
+	"hurt":[
+		"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Hurt_01.wav",
+		"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Hurt_02.wav",
+		"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Hurt_03.wav",
+		"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Hurt_04.wav",	
+	],
+	"panting":[
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Panting_01.wav",
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Panting_02.wav"				
+	],
+	"scared": [
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Scared_01.wav",
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Scared_02.wav"			
+	],
+	"surprised": [
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Surprised _03.wav",
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Surprised_01.wav",
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Surprised_02.wav"
+									
+	],
+	"exhausted": [
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Exhausted.wav"
+			
+	],
+}
+
+const Anchalee_Talk_LIBRARY: Dictionary ={
+	"confuse":["res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Confused.wav"],
+	"help":["res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Lee_help_01.wav",
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Lee_help_02.wav",
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Lee_help_03.wav"
+	],
+	"oh_no":["res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Oh_no.wav",
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Oh_no_Lee_01.wav",
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Oh_no_Lee_02.wav"	
+	],
+	"warning":["res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Warning_01.wav",
+	"res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Warning_02.wav"	
+	],
+	"dad":["res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/My_dad_will_hear_about_this.wav"]
+}
+
+
+
+const Mavin_LIBRARY: Dictionary ={
+	"Talk":["res://sound/Songkran Hazard 4lom VA/Mavin/Marvin 1.wav"
+]
 }
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bpjn3mfrqob82"
+path="res://.godot/imported/Scared_01.wav-fe439dd59afa9f7b57150e15eefad90c.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Scared_01.wav"
+dest_files=["res://.godot/imported/Scared_01.wav-fe439dd59afa9f7b57150e15eefad90c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

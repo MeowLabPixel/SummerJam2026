@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wsqh3dbque4h"
+path="res://.godot/imported/Oh_no.wav-6ccdc5efcba02bc451ef81f6b9a88868.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Oh_no.wav"
+dest_files=["res://.godot/imported/Oh_no.wav-6ccdc5efcba02bc451ef81f6b9a88868.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

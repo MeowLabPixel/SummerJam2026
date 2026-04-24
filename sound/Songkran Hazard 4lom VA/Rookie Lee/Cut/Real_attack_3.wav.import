@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cg15w5gkgmd5y"
+path="res://.godot/imported/Real_attack_3.wav-44624c5b1ce69a1efdc4fbb4b7fec140.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Real_attack_3.wav"
+dest_files=["res://.godot/imported/Real_attack_3.wav-44624c5b1ce69a1efdc4fbb4b7fec140.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

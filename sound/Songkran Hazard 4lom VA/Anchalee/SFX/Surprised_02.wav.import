@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dc33qr404m15v"
+path="res://.godot/imported/Surprised_02.wav-9279cf7b8ee28db9f7625c6243264b60.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Surprised_02.wav"
+dest_files=["res://.godot/imported/Surprised_02.wav-9279cf7b8ee28db9f7625c6243264b60.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,25 +1,25 @@
 [gd_resource type="AudioStreamInteractive" format=3 uid="uid://cpv66nbb84s7y"]
 
-[ext_resource type="AudioStream" uid="uid://v08k6o15r2gl" path="res://Audio System and SFX/Music/flowerhead - Somewhat Good- Beach - 01 Dolphin Shores.ogg" id="1_q7j5t"]
-[ext_resource type="AudioStream" uid="uid://dqfxw87p6wsxi" path="res://Audio System and SFX/Music/flowerhead - Somewhat Good- Beach - 02 Castles Made Out Of Sand.ogg" id="2_l6v6o"]
-[ext_resource type="AudioStream" uid="uid://c7ybarx5g4vi1" path="res://Audio System and SFX/Music/flowerhead - Somewhat Good- Beach - 03 Beach Shopping Network.ogg" id="3_7ipq4"]
+[ext_resource type="AudioStream" uid="uid://bvrxgcep5a1fn" path="res://Audio System and SFX/Music/4lom_mainmenu.wav" id="1_q7j5t"]
+[ext_resource type="AudioStream" uid="uid://xearbltmlf4p" path="res://Audio System and SFX/Music/ingame_4lom.wav" id="2_l6v6o"]
+[ext_resource type="AudioStream" uid="uid://bi4pdxe2gmasi" path="res://Audio System and SFX/Music/4lom_combat.ver.wav" id="3_7ipq4"]
 [ext_resource type="AudioStream" uid="uid://cvcqq82q48uvy" path="res://Audio System and SFX/Music/flowerhead - Somewhat Good- Beach - 04 LG GB130 Ringtone.ogg" id="4_7i056"]
-[ext_resource type="AudioStream" uid="uid://bdg06c8cf8wxi" path="res://Audio System and SFX/Music/flowerhead - Somewhat Good- Beach - 05 Bubble Lagoon.ogg" id="5_ivmlt"]
+[ext_resource type="AudioStream" uid="uid://d2biata0o1lyy" path="res://Audio System and SFX/Music/game_over_4lom.wav" id="5_7i056"]
 
 [resource]
 clip_count = 5
-clip_0/name = &"Flowerhead Somewhat Good Beach 01 Dolphin Shores"
+clip_0/name = &"4lom_mainmenu"
 clip_0/stream = ExtResource("1_q7j5t")
 clip_0/auto_advance = 0
-clip_1/name = &"Flowerhead Somewhat Good Beach 02 Castles Made Out Of Sand"
+clip_1/name = &"ingame_4lom"
 clip_1/stream = ExtResource("2_l6v6o")
 clip_1/auto_advance = 0
-clip_2/name = &"Flowerhead Somewhat Good Beach 03 Beach Shopping Network"
+clip_2/name = &"4lom_combat.ver"
 clip_2/stream = ExtResource("3_7ipq4")
 clip_2/auto_advance = 0
 clip_3/name = &"Flowerhead Somewhat Good Beach 04 Lg Gb 130 Ringtone"
 clip_3/stream = ExtResource("4_7i056")
 clip_3/auto_advance = 0
-clip_4/name = &"Flowerhead Somewhat Good Beach 05 Bubble Lagoon"
-clip_4/stream = ExtResource("5_ivmlt")
+clip_4/name = &"game_over_4lom"
+clip_4/stream = ExtResource("5_7i056")
 clip_4/auto_advance = 0
