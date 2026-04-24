@@ -2,18 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0rh7gch3ssxp"
-path.s3tc="res://.godot/imported/sill.png-ff0028789fac084823bf9666530f3a76.s3tc.ctex"
+uid="uid://co17rluglcynn"
+path.s3tc="res://.godot/imported/Police Station1_3.png-c2e6fa7fb2d68e1d1640b49b87341486.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
+generator_parameters={
+"md5": "8d760e6f07f4b83d0845ed4fa296314e"
+}
 
 [deps]
 
-source_file="res://Police Station_model/textures/sill.png"
-dest_files=["res://.godot/imported/sill.png-ff0028789fac084823bf9666530f3a76.s3tc.ctex"]
+source_file="res://Police Station_model/textures/Police Station1_3.png"
+dest_files=["res://.godot/imported/Police Station1_3.png-c2e6fa7fb2d68e1d1640b49b87341486.s3tc.ctex"]
 
 [params]
 

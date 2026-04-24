@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://c133dkel4pjjn" path="res://Shop house buildings_mesh/Shop house buildings Full model.blend" id="15_q0y3q"]
 [ext_resource type="PackedScene" uid="uid://cnp4qc3ttx7t6" path="res://Road/road.tscn" id="16_4h21e"]
 [ext_resource type="PackedScene" uid="uid://b2i2wtery43c1" path="res://Sidewalk/sidewalk.tscn" id="17_3em6w"]
-[ext_resource type="PackedScene" uid="uid://cb4oq4gddtmv2" path="res://Police Station_model/Police Station1.blend" id="18_cxcsb"]
 [ext_resource type="PackedScene" uid="uid://cr4cfx622j1av" path="res://Traffic Light/traffic_light_(2).tscn" id="19_q0y3q"]
+[ext_resource type="PackedScene" uid="uid://dcrb0b5ucpdly" path="res://Police Station_model/Police Station1.fbx" id="20_5smi2"]
 [ext_resource type="PackedScene" uid="uid://da72ca53jqfn6" path="res://Prop/Sign02.fbx" id="20_q0y3q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21hrq"]
@@ -2273,16 +2273,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55195, 0, -4.2154465)
 [node name="Umbra10" parent="Umbrella" unique_id=1992910629 instance=ExtResource("7_1s35x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59039795, 0, -1.7805748)
 
-[node name="Tent" parent="Umbrella" unique_id=447610133 instance=ExtResource("9_n7qxm")]
+[node name="Tent" parent="Umbrella" unique_id=1007351861 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(0.64464414, 0, 0.7644828, 0, 1, 0, -0.7644828, 0, 0.64464414, -12.99114, 0, -3.5477276)
 
-[node name="Tent2" parent="Umbrella" unique_id=122797123 instance=ExtResource("9_n7qxm")]
+[node name="Tent2" parent="Umbrella" unique_id=1909613072 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(0.725086, 0, 0.68865836, 0, 1, 0, -0.68865836, 0, 0.725086, -45.236237, 0, -2.7635736)
 
-[node name="Tent5" parent="Umbrella" unique_id=1515263033 instance=ExtResource("9_n7qxm")]
+[node name="Tent5" parent="Umbrella" unique_id=288778718 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(0.725086, 0, 0.68865836, 0, 1, 0, -0.68865836, 0, 0.725086, -82.61081, 0, -3.3834238)
 
-[node name="Tent3" parent="Umbrella" unique_id=1019117875 instance=ExtResource("9_n7qxm")]
+[node name="Tent3" parent="Umbrella" unique_id=1357391500 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(0.85692453, 0, -0.5154419, 0, 1, 0, 0.5154419, 0, 0.85692453, -11.388683, 1.9073486e-06, -19.492697)
 
 [node name="Umbra03" parent="Umbrella" unique_id=543825861 instance=ExtResource("8_gnpba")]
@@ -2294,7 +2294,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.236202, -9.536743e-07, -1
 [node name="Umbra11" parent="Umbrella" unique_id=1169636864 instance=ExtResource("7_1s35x")]
 transform = Transform3D(0.67470187, 0, -0.7380904, 0, 1, 0, 0.7380904, 0, 0.67470187, -31.18297, 0, -18.77811)
 
-[node name="Tent4" parent="Umbrella" unique_id=432125549 instance=ExtResource("9_n7qxm")]
+[node name="Tent4" parent="Umbrella" unique_id=813179310 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.387737, 0, -20.234476)
 
 [node name="Umbrella2" type="MeshInstance3D" parent="." unique_id=412515405]
@@ -2324,13 +2324,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55195, 0, -4.2154465)
 [node name="Umbra10" parent="Umbrella2" unique_id=148252995 instance=ExtResource("7_1s35x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.59039795, 0, -1.7805748)
 
-[node name="Tent" parent="Umbrella2" unique_id=690724877 instance=ExtResource("9_n7qxm")]
+[node name="Tent" parent="Umbrella2" unique_id=41905049 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(0.64464414, 0, 0.7644828, 0, 1, 0, -0.7644828, 0, 0.64464414, -12.99114, 0, -3.5477276)
 
-[node name="Tent2" parent="Umbrella2" unique_id=1696495002 instance=ExtResource("9_n7qxm")]
+[node name="Tent2" parent="Umbrella2" unique_id=1023281276 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(0.725086, 0, 0.68865836, 0, 1, 0, -0.68865836, 0, 0.725086, -45.236237, 0, -2.7635736)
 
-[node name="Tent3" parent="Umbrella2" unique_id=2113718510 instance=ExtResource("9_n7qxm")]
+[node name="Tent3" parent="Umbrella2" unique_id=1399761692 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(0.85692453, 0, -0.5154419, 0, 1, 0, 0.5154419, 0, 0.85692453, -11.388683, 1.9073486e-06, -19.492697)
 
 [node name="Umbra03" parent="Umbrella2" unique_id=1247598099 instance=ExtResource("8_gnpba")]
@@ -2342,7 +2342,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.236202, -9.536743e-07, -1
 [node name="Umbra11" parent="Umbrella2" unique_id=1104944907 instance=ExtResource("7_1s35x")]
 transform = Transform3D(0.67470187, 0, -0.7380904, 0, 1, 0, 0.7380904, 0, 0.67470187, -31.18297, 0, -18.77811)
 
-[node name="Tent4" parent="Umbrella2" unique_id=1854028637 instance=ExtResource("9_n7qxm")]
+[node name="Tent4" parent="Umbrella2" unique_id=1708644292 instance=ExtResource("9_n7qxm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.387737, 0, -20.234476)
 
 [node name="Sign" type="MeshInstance3D" parent="." unique_id=1818968556]
@@ -2869,7 +2869,7 @@ transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 22.609692, 4, -45.73548)
 
 [node name="Shop01" type="MeshInstance3D" parent="." unique_id=850813322]
 
-[node name="Shop house buildings (2)" parent="Shop01" unique_id=1448903899 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)" parent="Shop01" unique_id=999697023 instance=ExtResource("12_4h21e")]
 transform = Transform3D(-2.1855694e-08, 0, -0.35, 0, 0.2, 0, 0.5, 0, -1.5298985e-08, -45.032898, 1, -22.905912)
 
 [node name="Shop house buildings (3)" parent="Shop01" unique_id=675926667 instance=ExtResource("13_3em6w")]
@@ -2889,7 +2889,7 @@ transform = Transform3D(-1.0927847e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.092784
 
 [node name="Shop02" type="MeshInstance3D" parent="." unique_id=2049180373]
 
-[node name="Shop house buildings (2)2" parent="Shop02" unique_id=1945615653 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)2" parent="Shop02" unique_id=916103246 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, 8.384251, 1, 15.635116)
 
 [node name="Shop house buildings (3)4" parent="Shop02" unique_id=1192157389 instance=ExtResource("13_3em6w")]
@@ -2907,10 +2907,10 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.2, 0, -0.25, 0, 3.278354e-08
 [node name="Shop house buildings Full model2" parent="Shop02" unique_id=420639815 instance=ExtResource("15_q0y3q")]
 transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-08, -16.886734, 0, 16.28746)
 
-[node name="Shop house buildings (2)3" parent="Shop02" unique_id=1722373385 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)3" parent="Shop02" unique_id=310065750 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, -32.61575, 1, 15.635116)
 
-[node name="Shop house buildings (2)4" parent="Shop02" unique_id=2051907607 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)4" parent="Shop02" unique_id=1683878951 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, -53.61575, 1, 17.635117)
 
 [node name="Shop house buildings (3)7" parent="Shop02" unique_id=516667468 instance=ExtResource("13_3em6w")]
@@ -2940,7 +2940,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.2, 0, -0.25, 0, 3.278354e-08
 [node name="Shop house buildings Full model2" parent="Shop04" unique_id=940678150 instance=ExtResource("15_q0y3q")]
 transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-08, -16.886734, 0, 16.28746)
 
-[node name="Shop house buildings (2)3" parent="Shop04" unique_id=516178264 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)3" parent="Shop04" unique_id=220447615 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, -32.61575, 1, 15.635116)
 
 [node name="Shop house buildings (3)7" parent="Shop04" unique_id=1207288449 instance=ExtResource("13_3em6w")]
@@ -2961,7 +2961,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-0
 [node name="Shop05" type="MeshInstance3D" parent="." unique_id=851064790]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -176, 0, 0)
 
-[node name="Shop house buildings (2)2" parent="Shop05" unique_id=1854406177 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)2" parent="Shop05" unique_id=1962091570 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, 8.384251, 1, 15.635116)
 
 [node name="Shop house buildings (3)4" parent="Shop05" unique_id=2094414845 instance=ExtResource("13_3em6w")]
@@ -2979,7 +2979,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.2, 0, -0.25, 0, 3.278354e-08
 [node name="Shop house buildings Full model2" parent="Shop05" unique_id=579369605 instance=ExtResource("15_q0y3q")]
 transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-08, -16.886734, 0, 16.28746)
 
-[node name="Shop house buildings (2)3" parent="Shop05" unique_id=1882426200 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)3" parent="Shop05" unique_id=1516608473 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, -32.61575, 1, 15.635116)
 
 [node name="Shop house buildings (3)7" parent="Shop05" unique_id=99666332 instance=ExtResource("13_3em6w")]
@@ -3000,7 +3000,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-0
 [node name="Shop06" type="MeshInstance3D" parent="." unique_id=369270812]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -230, 0, -12.000004)
 
-[node name="Shop house buildings (2)2" parent="Shop06" unique_id=295346250 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)2" parent="Shop06" unique_id=377267858 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, 8.384251, 1, 15.635116)
 
 [node name="Shop house buildings (3)4" parent="Shop06" unique_id=1134568700 instance=ExtResource("13_3em6w")]
@@ -3018,7 +3018,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.2, 0, -0.25, 0, 3.278354e-08
 [node name="Shop house buildings Full model2" parent="Shop06" unique_id=1794660200 instance=ExtResource("15_q0y3q")]
 transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-08, -16.886734, 0, 16.28746)
 
-[node name="Shop house buildings (2)3" parent="Shop06" unique_id=1949625123 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)3" parent="Shop06" unique_id=1317658786 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, -32.61575, 1, 15.635116)
 
 [node name="Shop house buildings (3)7" parent="Shop06" unique_id=299247543 instance=ExtResource("13_3em6w")]
@@ -3039,7 +3039,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-0
 [node name="Shop07" type="MeshInstance3D" parent="." unique_id=960605672]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -148, 0, -11.999996)
 
-[node name="Shop house buildings (2)2" parent="Shop07" unique_id=164078553 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)2" parent="Shop07" unique_id=1956263502 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, 8.384251, 1, 15.635116)
 
 [node name="Shop house buildings (3)4" parent="Shop07" unique_id=658154690 instance=ExtResource("13_3em6w")]
@@ -3057,7 +3057,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.2, 0, -0.25, 0, 3.278354e-08
 [node name="Shop house buildings Full model2" parent="Shop07" unique_id=492440697 instance=ExtResource("15_q0y3q")]
 transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-08, -16.886734, 0, 14.28746)
 
-[node name="Shop house buildings (2)3" parent="Shop07" unique_id=567434942 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)3" parent="Shop07" unique_id=1457999487 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, -32.61575, 1, 15.635116)
 
 [node name="Shop house buildings (3)7" parent="Shop07" unique_id=2058785280 instance=ExtResource("13_3em6w")]
@@ -3078,7 +3078,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-0
 [node name="Shop03" type="MeshInstance3D" parent="." unique_id=1797818162]
 transform = Transform3D(-0.9, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
 
-[node name="Shop house buildings (2)2" parent="Shop03" unique_id=827916891 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)2" parent="Shop03" unique_id=1434272114 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, 8.384251, 1, 15.635116)
 
 [node name="Shop house buildings (3)4" parent="Shop03" unique_id=1322010543 instance=ExtResource("13_3em6w")]
@@ -3096,7 +3096,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.2, 0, -0.25, 0, 3.278354e-08
 [node name="Shop house buildings Full model2" parent="Shop03" unique_id=1663319462 instance=ExtResource("15_q0y3q")]
 transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-08, -16.886734, 0, 16.28746)
 
-[node name="Shop house buildings (2)3" parent="Shop03" unique_id=2099360591 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)3" parent="Shop03" unique_id=1977680439 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, -32.61575, 1, 15.635116)
 
 [node name="Shop house buildings (3)7" parent="Shop03" unique_id=1667706175 instance=ExtResource("13_3em6w")]
@@ -3117,7 +3117,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-0
 [node name="Shop08" type="MeshInstance3D" parent="." unique_id=977688215]
 transform = Transform3D(0.9, 0, -8.742278e-08, 0, 1, 0, -7.86805e-08, 0, -1, 58, 0, -8)
 
-[node name="Shop house buildings (2)2" parent="Shop08" unique_id=103786924 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)2" parent="Shop08" unique_id=1438693619 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, 8.384251, 1, 15.635116)
 
 [node name="Shop house buildings (3)4" parent="Shop08" unique_id=1281883719 instance=ExtResource("13_3em6w")]
@@ -3135,7 +3135,7 @@ transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.2, 0, -0.25, 0, 3.278354e-08
 [node name="Shop house buildings Full model2" parent="Shop08" unique_id=279331560 instance=ExtResource("15_q0y3q")]
 transform = Transform3D(3.278354e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, 3.278354e-08, -16.886734, 0, 16.28746)
 
-[node name="Shop house buildings (2)3" parent="Shop08" unique_id=22005224 instance=ExtResource("12_4h21e")]
+[node name="Shop house buildings (2)3" parent="Shop08" unique_id=557455155 instance=ExtResource("12_4h21e")]
 transform = Transform3D(6.556708e-08, 0, 0.35, 0, 0.2, 0, -0.5, 0, 4.5896954e-08, -32.61575, 1, 15.635116)
 
 [node name="Shop house buildings (3)7" parent="Shop08" unique_id=1250937294 instance=ExtResource("13_3em6w")]
@@ -3591,9 +3591,6 @@ transform = Transform3D(-25, 0, 3.774895e-06, 0, 95, 0, -3.774895e-06, 0, -25, -
 [node name="Sidewalk7" parent="SideWalkL2" unique_id=578307166 instance=ExtResource("17_3em6w")]
 transform = Transform3D(-25, 0, 3.774895e-06, 0, 95, 0, -3.774895e-06, 0, -25, -60.555, 0, -46.58638)
 
-[node name="Police Station1" parent="." unique_id=624176099 instance=ExtResource("18_cxcsb")]
-transform = Transform3D(-1.0927847e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.0927847e-08, -81.193, 0.52, 14.949)
-
 [node name="Traffic_Light (2)" parent="." unique_id=1960183157 instance=ExtResource("19_q0y3q")]
 transform = Transform3D(-15.653075, 0, -25.5926, 0, 29.999998, 0, 25.5926, 0, -15.653075, -63.013115, 0.4160614, -15.614918)
 
@@ -3620,3 +3617,6 @@ transform = Transform3D(0.864424, 0, 0.5027635, 0, 1, 0, -0.5027635, 0, 0.864424
 
 [node name="Sign05" parent="." unique_id=8130134 instance=ExtResource("20_q0y3q")]
 transform = Transform3D(-0.4999999, 0, -0.8660255, 0, 1, 0, 0.8660255, 0, -0.4999999, -75.043396, 0, 12.955424)
+
+[node name="Police Station2" parent="." unique_id=445490361 instance=ExtResource("20_5smi2")]
+transform = Transform3D(-1.0927847e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.0927847e-08, -81.193, 0.52, 14.949)
