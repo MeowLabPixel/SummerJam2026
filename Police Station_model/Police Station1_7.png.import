@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w71ux0oa0bi1"
-path.s3tc="res://.godot/imported/openPBR_shader1_Base_color.png-706a64dc327be3230c3b078052cd577b.s3tc.ctex"
+uid="uid://dteix01lr5ytj"
+path.s3tc="res://.godot/imported/Police Station1_7.png-af992e021be067986316e30a97c9369f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "af5f86c169fc8170e53c861f512775e0"
+}
 
 [deps]
 
-source_file="res://Landmark/openPBR_shader1_Base_color.png"
-dest_files=["res://.godot/imported/openPBR_shader1_Base_color.png-706a64dc327be3230c3b078052cd577b.s3tc.ctex"]
+source_file="res://Police Station_model/Police Station1_7.png"
+dest_files=["res://.godot/imported/Police Station1_7.png-af992e021be067986316e30a97c9369f.s3tc.ctex"]
 
 [params]
 

@@ -83,13 +83,13 @@ _data = {
 
 [node name="Road" type="Node3D" unique_id=870776209 instance=ExtResource("1_feo05")]
 
-[node name="pPlane1" type="MeshInstance3D" parent="." index="0" unique_id=1211589514]
+[node name="pPlane2" type="MeshInstance3D" parent="." index="0" unique_id=1211589514]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("ArrayMesh_2asvy")
 
-[node name="pCube1" type="MeshInstance3D" parent="." index="1" unique_id=1066174865]
+[node name="pCube2" type="MeshInstance3D" parent="." index="1" unique_id=1066174865]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -1.85, 0, 0)
 mesh = SubResource("ArrayMesh_ncfah")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=138679505]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="2" unique_id=138679505]
 libraries/ = SubResource("AnimationLibrary_vmu15")
