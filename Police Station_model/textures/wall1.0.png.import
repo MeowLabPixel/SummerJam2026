@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwy60qaoapb47"
-path.s3tc="res://.godot/imported/openPBR_shader1_Emissive (2).png-2ceb60a7fe2322a19f68d6628b4450a3.s3tc.ctex"
+uid="uid://bmxaaykre6xkb"
+path.s3tc="res://.godot/imported/wall1.0.png-08655e392e5d02f606509e2b2103b5fc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://Traffic Light/openPBR_shader1_Emissive (2).png"
-dest_files=["res://.godot/imported/openPBR_shader1_Emissive (2).png-2ceb60a7fe2322a19f68d6628b4450a3.s3tc.ctex"]
+source_file="res://Police Station_model/textures/wall1.0.png"
+dest_files=["res://.godot/imported/wall1.0.png-08655e392e5d02f606509e2b2103b5fc.s3tc.ctex"]
 
 [params]
 

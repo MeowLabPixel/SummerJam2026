@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bgyi0cb3exohm"
-path="res://.godot/imported/Sign03.fbx-5c05a27151620ea16872b2591c20532b.scn"
+uid="uid://d20vx5ajpu1kb"
+path="res://.godot/imported/Building.fbx-cc85fff75fc088e4071e1627b4e5f2c5.scn"
 
 [deps]
 
-source_file="res://Prop/Sign03.fbx"
-dest_files=["res://.godot/imported/Sign03.fbx-5c05a27151620ea16872b2591c20532b.scn"]
+source_file="res://Buildings/Building.fbx"
+dest_files=["res://.godot/imported/Building.fbx-cc85fff75fc088e4071e1627b4e5f2c5.scn"]
 
 [params]
 
@@ -34,11 +34,11 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-materials/extract=1
-materials/extract_format=0
+materials/extract=0
+materials/extract_format=2
 materials/extract_path=""
 _subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+fbx/embedded_image_handling=2
 fbx/naming_version=2

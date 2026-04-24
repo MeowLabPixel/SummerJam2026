@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bgyi0cb3exohm"
-path="res://.godot/imported/Sign03.fbx-5c05a27151620ea16872b2591c20532b.scn"
+uid="uid://jqsipytnl4jv"
+path="res://.godot/imported/Shop house buildings.fbx-40bf2c24add8e7a4567bd2cb331a52ea.scn"
 
 [deps]
 
-source_file="res://Prop/Sign03.fbx"
-dest_files=["res://.godot/imported/Sign03.fbx-5c05a27151620ea16872b2591c20532b.scn"]
+source_file="res://Shop house buildings_mesh/Shop house buildings.fbx"
+dest_files=["res://.godot/imported/Shop house buildings.fbx-40bf2c24add8e7a4567bd2cb331a52ea.scn"]
 
 [params]
 
@@ -34,7 +34,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-materials/extract=1
+materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={}

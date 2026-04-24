@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cnp4qc3ttx7t6"]
+
+[ext_resource type="PackedScene" uid="uid://bb81nioepsbju" path="res://Road/Road.fbx" id="1_feo05"]
+
+[node name="Road" unique_id=870776209 instance=ExtResource("1_feo05")]
+
+[node name="pPlane1" parent="." index="0" unique_id=1211589514]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="pCube1" parent="." index="1" unique_id=1066174865]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -1.85, 0, 0)

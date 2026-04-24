@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cqve5fcox7ikg"]
+
+[ext_resource type="Texture2D" uid="uid://du8x8g8x8klcr" path="res://Road/road.png" id="1_wjkrw"]
+
+[resource]
+resource_name = "sidewalk"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.6651851, 0.6651851, 0.6651851, 1)
+albedo_texture = ExtResource("1_wjkrw")
+emission_enabled = true
+emission_energy_multiplier = 0.0

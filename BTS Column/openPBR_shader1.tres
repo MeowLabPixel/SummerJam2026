@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b4up3bsvd8wk2"]
+
+[ext_resource type="Texture2D" uid="uid://b8wsknkrqrw8y" path="res://BTS Column/openPBR_shader1_Base_color.png" id="1_nfa0p"]
+
+[resource]
+resource_name = "openPBR_shader1"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_nfa0p")

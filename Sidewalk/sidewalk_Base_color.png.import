@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwy60qaoapb47"
-path.s3tc="res://.godot/imported/openPBR_shader1_Emissive (2).png-2ceb60a7fe2322a19f68d6628b4450a3.s3tc.ctex"
+uid="uid://bvqdr0k3rrnmf"
+path.s3tc="res://.godot/imported/sidewalk_Base_color.png-74982332aefc016569fe230d23cb9e05.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Traffic Light/openPBR_shader1_Emissive (2).png"
-dest_files=["res://.godot/imported/openPBR_shader1_Emissive (2).png-2ceb60a7fe2322a19f68d6628b4450a3.s3tc.ctex"]
+source_file="res://Sidewalk/sidewalk_Base_color.png"
+dest_files=["res://.godot/imported/sidewalk_Base_color.png-74982332aefc016569fe230d23cb9e05.s3tc.ctex"]
 
 [params]
 

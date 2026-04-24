@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cg4kuxernfcja"]
+
+[ext_resource type="PackedScene" uid="uid://4piwip56p4ju" path="res://Prop/Tent.fbx" id="1_qfhj0"]
+
+[node name="Tent" unique_id=1007351861 instance=ExtResource("1_qfhj0")]

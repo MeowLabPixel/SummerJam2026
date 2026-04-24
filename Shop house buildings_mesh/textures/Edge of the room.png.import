@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwy60qaoapb47"
-path.s3tc="res://.godot/imported/openPBR_shader1_Emissive (2).png-2ceb60a7fe2322a19f68d6628b4450a3.s3tc.ctex"
+uid="uid://cfif1kke3ufvn"
+path.s3tc="res://.godot/imported/Edge of the room.png-58a7de846d8abea524f5533ca8fc00aa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Traffic Light/openPBR_shader1_Emissive (2).png"
-dest_files=["res://.godot/imported/openPBR_shader1_Emissive (2).png-2ceb60a7fe2322a19f68d6628b4450a3.s3tc.ctex"]
+source_file="res://Shop house buildings_mesh/textures/Edge of the room.png"
+dest_files=["res://.godot/imported/Edge of the room.png-58a7de846d8abea524f5533ca8fc00aa.s3tc.ctex"]
 
 [params]
 

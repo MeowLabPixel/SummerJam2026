@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwy60qaoapb47"
-path.s3tc="res://.godot/imported/openPBR_shader1_Emissive (2).png-2ceb60a7fe2322a19f68d6628b4450a3.s3tc.ctex"
+uid="uid://dds2t74uvgkmq"
+path.s3tc="res://.godot/imported/home well.png-0e97953cd98cb65cb9c0ceffd31e3664.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Traffic Light/openPBR_shader1_Emissive (2).png"
-dest_files=["res://.godot/imported/openPBR_shader1_Emissive (2).png-2ceb60a7fe2322a19f68d6628b4450a3.s3tc.ctex"]
+source_file="res://Shop house buildings_mesh/textures/home well.png"
+dest_files=["res://.godot/imported/home well.png-0e97953cd98cb65cb9c0ceffd31e3664.s3tc.ctex"]
 
 [params]
 
