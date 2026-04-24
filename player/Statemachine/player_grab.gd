@@ -6,6 +6,8 @@ var win_anim ="Grab/Win"
 var mini_done = false
 var is_exiting = false
 var is_grab: bool = false
+var last_anim: String
+
 
 func _enter() -> void:
 	print(name)
@@ -16,19 +18,19 @@ func _enter() -> void:
 	owner.hitboxF.monitoring = false
 	owner.hitboxB.monitoring = false
 	is_exiting = false
-	var timer := get_tree().create_timer(5.0)
+	var timer := get_tree().create_timer(2.0)
 	timer.timeout.connect(_grab_fallback)
 
 func _grab_fallback() -> void:
-	if not is_exiting:
-		is_exiting = true
-		owner.is_grab = false
+	print("Idle from Fallback.")
+	if last_anim == win_anim:
 		finished.emit("Idle")
 
 func _exit() -> void:
 
 	owner.start_qte = false
 	owner.qte_bar.value = 0
+	is_exiting = false
 	mini_done = false
 	
 	owner.hitboxF.monitoring = true
@@ -41,13 +43,16 @@ func resolve_grab(success: bool) -> void:
 
 	owner.is_grab = true
 	is_exiting = true
+	
 
 	if success:
 		# Player LOST QTE (grab success)
 		owner.anim.get("parameters/Grab/playback").travel("Fail")
+		last_anim = fail_anim
 	else:
 		# Player ESCAPED
 		owner.anim.get("parameters/Grab/playback").travel("Win")
+		last_anim = win_anim
 
 	if not owner.anim.animation_finished.is_connected(anim_done):
 		owner.anim.animation_finished.connect(anim_done)
@@ -55,10 +60,8 @@ func resolve_grab(success: bool) -> void:
 func anim_done(_namee: String):
 	owner.is_grab = false
 	print("[Grab] anim_done received: ", _namee)
-	if _namee == fail_anim:
-		finished.emit("Idle")
-	if _namee == win_anim:
-		finished.emit("Knockdown")
+	await get_tree().create_timer(1.35).timeout
+	finished.emit("Idle")
 
 func stop_moving():
 	var dire = Vector3.ZERO

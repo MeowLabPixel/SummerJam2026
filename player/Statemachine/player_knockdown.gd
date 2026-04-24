@@ -12,12 +12,18 @@ func _enter() -> void:
 	owner.hitboxB.monitoring = false
 	if not owner.anim.animation_finished.is_connected(anim_done):
 		owner.anim.animation_finished.connect(anim_done)
+	var timer := get_tree().create_timer(3.0)
+	timer.timeout.connect(_knockdown_fallback)
 
 func _exit() -> void:
 	owner.hitboxF.monitoring = true
 	owner.hitboxB.monitoring = true
 	if owner.anim and owner.anim.animation_finished.is_connected(anim_done):
 		owner.anim.animation_finished.disconnect(anim_done)
+
+func _knockdown_fallback() -> void:
+	print("Idle from Fallback.")
+	anim_done(exit_anim_name)
 
 func anim_done(_namee: String):
 	if _namee == exit_anim_name:
