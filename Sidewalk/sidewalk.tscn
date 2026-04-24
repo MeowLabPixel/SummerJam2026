@@ -1,13 +1,8 @@
 [gd_scene format=3 uid="uid://b2i2wtery43c1"]
 
 [ext_resource type="PackedScene" uid="uid://d288t6umvmeda" path="res://Sidewalk/Sidewalk.fbx" id="1_hdt7c"]
-[ext_resource type="Texture2D" uid="uid://bvqdr0k3rrnmf" path="res://Sidewalk/sidewalk_Base_color.png" id="2_0gmkk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7nhrf"]
-albedo_texture = ExtResource("2_0gmkk")
 
 [node name="Sidewalk" unique_id=1937176986 instance=ExtResource("1_hdt7c")]
 
-[node name="pCube1" parent="." index="0" unique_id=1102184908]
+[node name="pCube1" parent="." index="0" unique_id=1156503332]
 transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1, 0.0045114523, 0, 0)
-material_override = SubResource("StandardMaterial3D_7nhrf")
