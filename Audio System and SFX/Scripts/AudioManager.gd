@@ -120,7 +120,7 @@ const Leon_SFX_LIBRARY: Dictionary = {
 		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Real_attack_2.wav",
 		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/Cut/Real_attack_3.wav",
 	],
-	"Grapple": [
+	"grapple": [
 		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/Grapple 1.wav",
 		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/Grapple 3.wav",
 		"res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/Grapple Talk.wav"

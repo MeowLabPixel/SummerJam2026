@@ -117,7 +117,7 @@ func _on_button_hover(button: Panel, hovered: bool) -> void:
 
 func _on_play_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		AudioManager.play_random_ui.emit("start_game")
+		AudioManager.play_random_ui.emit("Title")
 		print("[MainMenu] Play clicked - starting cutscene animation...")
 		
 		# Stop the menu loop animation
@@ -126,7 +126,7 @@ func _on_play_input(event: InputEvent) -> void:
 		
 		# Hide menu UI
 		$MenuContainer.visible = false
-		
+		await get_tree().create_timer(1.5).timeout
 		# Start the cutscene animation
 		if anim and anim.has_animation("FullCutscene"):
 			anim.play("FullCutscene")
