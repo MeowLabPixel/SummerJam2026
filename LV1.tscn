@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://buva485v33obt" path="res://Landmark/landmark_1.tscn" id="21_5smi2"]
 [ext_resource type="PackedScene" uid="uid://m8tuvqbl5gf4" path="res://Buildings/buildingBrown.tscn" id="21_dbf6b"]
 [ext_resource type="PackedScene" uid="uid://bvglnhqqdgwkp" path="res://Buildings/buildingBlue.tscn" id="21_hdjon"]
+[ext_resource type="Material" uid="uid://dh6ykun8bv60u" path="res://Sky/sky/examples/day_sky.tres" id="23_hdjon"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21hrq"]
 albedo_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
@@ -79,10 +80,20 @@ material = SubResource("StandardMaterial3D_dbf6b")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rb2if"]
 
-[node name="LV1" type="Node3D" unique_id=275027474]
+[sub_resource type="Sky" id="Sky_ieg05"]
+sky_material = ExtResource("23_hdjon")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=957887896]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.1030753, 0)
+[sub_resource type="Environment" id="Environment_1eoep"]
+background_mode = 2
+sky = SubResource("Sky_ieg05")
+ambient_light_source = 2
+ambient_light_color = Color(0.45098, 0.333333, 0.309804, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.2
+
+[node name="LV1" type="Node3D" unique_id=275027474]
 
 [node name="MiddleFence01" type="MeshInstance3D" parent="." unique_id=490984769]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
@@ -3792,3 +3803,19 @@ transform = Transform3D(-1.0927847e-06, 0, 25, 0, 25, 0, -25, 0, -1.0927847e-06,
 
 [node name="Road104" parent="MeshInstance3D" unique_id=858252444 instance=ExtResource("16_4h21e")]
 transform = Transform3D(3.2783541e-06, 0, -25, 0, 25, 0, 25, 0, 3.2783541e-06, -213.7601, 0.005, -8.969304)
+
+[node name="Sky" type="Node3D" parent="MeshInstance3D" unique_id=1095217448]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MeshInstance3D/Sky" unique_id=444176979]
+environment = SubResource("Environment_1eoep")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="MeshInstance3D/Sky" unique_id=1065606410]
+transform = Transform3D(0.98419565, 0.11311606, -0.13624913, 0, 0.7694, 0.63876736, 0.17708494, -0.628672, 0.75724006, 0, -25.23386, 0)
+light_energy = 6.624
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="MeshInstance3D/Sky" unique_id=379649200]
+transform = Transform3D(0.9449032, 1.4308916e-08, -0.32734984, 0.32734984, -4.1303032e-08, 0.9449032, 0, -1, -4.371139e-08, 94, 10.128962, 0)
+light_color = Color(0.9372549, 1, 1, 1)
+light_energy = 1.711
+sky_mode = 1
