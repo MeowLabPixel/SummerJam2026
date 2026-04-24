@@ -6,7 +6,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw5xu"]
 albedo_texture = ExtResource("2_d3s0b")
 
-[node name="BTSPillar" unique_id=2105019417 instance=ExtResource("1_ph234")]
+[node name="BTSPillar" unique_id=788259303 instance=ExtResource("1_ph234")]
 
-[node name="BTSPillar" parent="." index="0" unique_id=1471481967]
+[node name="BTSPillar" parent="." index="0" unique_id=716719375]
 material_override = SubResource("StandardMaterial3D_uw5xu")

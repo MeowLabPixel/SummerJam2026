@@ -2100,40 +2100,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
 [node name="BTSPillar" parent="BTS" unique_id=2105019417 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, 8.657806, 0.09555, -3.3124)
 
-[node name="BTSPillar2" parent="BTS" unique_id=1282264734 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar2" parent="BTS" unique_id=969457583 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, -31.272202, 0.09555, -3.3124)
 
-[node name="BTSPillar3" parent="BTS" unique_id=844231939 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar3" parent="BTS" unique_id=694255892 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, -71.56521, 0.09555, -3.3124)
 
-[node name="BTSPillar4" parent="BTS" unique_id=1287628769 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar4" parent="BTS" unique_id=1905272924 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, -111.49521, 0.09555, -3.3124)
 
-[node name="BTSPillar5" parent="BTS" unique_id=1630060504 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar5" parent="BTS" unique_id=2025438472 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, 88.88081, 0.09555, -3.3124)
 
-[node name="BTSPillar6" parent="BTS" unique_id=1838463426 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar6" parent="BTS" unique_id=1588354801 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, 48.9508, 0.09555, -3.3124)
 
 [node name="BTS2" type="MeshInstance3D" parent="." unique_id=971233353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -229, 0, 0)
 
-[node name="BTSPillar" parent="BTS2" unique_id=871479981 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar" parent="BTS2" unique_id=1732573158 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, 8.657806, 0.09555, -3.3124)
 
-[node name="BTSPillar2" parent="BTS2" unique_id=1059497461 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar2" parent="BTS2" unique_id=1075422008 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, -31.272202, 0.09555, -3.3124)
 
-[node name="BTSPillar3" parent="BTS2" unique_id=1594951093 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar3" parent="BTS2" unique_id=930851225 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, -71.56521, 0.09555, -3.3124)
 
-[node name="BTSPillar4" parent="BTS2" unique_id=1288589489 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar4" parent="BTS2" unique_id=1898114613 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, -111.49521, 0.09555, -3.3124)
 
-[node name="BTSPillar5" parent="BTS2" unique_id=58476930 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar5" parent="BTS2" unique_id=543125668 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, 88.88081, 0.09555, -3.3124)
 
-[node name="BTSPillar6" parent="BTS2" unique_id=2142381765 instance=ExtResource("2_ijrag")]
+[node name="BTSPillar6" parent="BTS2" unique_id=1591494388 instance=ExtResource("2_ijrag")]
 transform = Transform3D(45.375, 0, 0, 0, 45.375, 0, 0, 0, 45.375, 48.9508, 0.09555, -3.3124)
 
 [node name="MiddleFence04" type="MeshInstance3D" parent="." unique_id=36623728]
