@@ -2,4 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://lo05s0li2kdh" path="res://Landmark/Landmark1.fbx" id="1_xnhmo"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xnhmo"]
+size = Vector3(0.2504162, 0.56866455, 0.1936865)
+
 [node name="Landmark1" unique_id=1848665811 instance=ExtResource("1_xnhmo")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ITF_Tower" parent_id_path=PackedInt32Array(2135259421) index="0" unique_id=298994910]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ITF_Tower/StaticBody3D" index="0" unique_id=1485777751]
+shape = SubResource("BoxShape3D_xnhmo")

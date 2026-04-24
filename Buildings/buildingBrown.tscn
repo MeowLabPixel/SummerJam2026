@@ -2,4 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://d20vx5ajpu1kb" path="res://Buildings/Building.fbx" id="1_35a6k"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_35a6k"]
+size = Vector3(0.014768025, 0.01, 0.014768025)
+
 [node name="Building" unique_id=2098108201 instance=ExtResource("1_35a6k")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="pCube1" parent_id_path=PackedInt32Array(708379384) index="0" unique_id=1199529423]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pCube1/StaticBody3D" index="0" unique_id=793892584]
+shape = SubResource("BoxShape3D_35a6k")
