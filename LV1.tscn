@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c7xsp36kik4xa" path="res://Shop house buildings_mesh/Shop house buildings (2).blend" id="12_4h21e"]
 [ext_resource type="PackedScene" uid="uid://dv8njfq2wi4or" path="res://Shop house buildings_mesh/Shop house buildings (3).blend" id="13_3em6w"]
 [ext_resource type="PackedScene" uid="uid://b6b0nemd3xadr" path="res://Shop house buildings_mesh/Shop house buildings.blend" id="14_cxcsb"]
+[ext_resource type="Texture2D" uid="uid://bvqdr0k3rrnmf" path="res://Sidewalk/sidewalk_Base_color.png" id="15_dbf6b"]
 [ext_resource type="PackedScene" uid="uid://c133dkel4pjjn" path="res://Shop house buildings_mesh/Shop house buildings Full model.blend" id="15_q0y3q"]
 [ext_resource type="PackedScene" uid="uid://b2i2wtery43c1" path="res://Sidewalk/sidewalk.tscn" id="17_3em6w"]
 [ext_resource type="PackedScene" uid="uid://cr4cfx622j1av" path="res://Traffic Light/traffic_light_(2).tscn" id="19_q0y3q"]
@@ -27,10 +28,25 @@ albedo_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vjvly"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4h21e"]
-albedo_color = Color(0.2973972, 0.3036058, 0.31602657, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdjon"]
+albedo_texture = ExtResource("15_dbf6b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6yba"]
+albedo_texture = ExtResource("15_dbf6b")
+point_size = 79.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_3em6w"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_k6yba")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1q0ss"]
+albedo_texture = ExtResource("15_dbf6b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m18aw"]
+albedo_texture = ExtResource("15_dbf6b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pi2s2"]
+albedo_texture = ExtResource("15_dbf6b")
 
 [node name="LV1" type="Node3D" unique_id=275027474]
 
@@ -2996,22 +3012,22 @@ transform = Transform3D(-25, 0, 3.774895e-06, 0, 95, 0, -3.774895e-06, 0, -25, -
 
 [node name="BIGSIDEWALK" type="MeshInstance3D" parent="SideWalkR2/Bigside" unique_id=2002290369]
 transform = Transform3D(139.99998, 0, 0, 0, 1, 0, 0, 0, 59.999996, 11.999985, 0, -54.999992)
-material_override = SubResource("StandardMaterial3D_4h21e")
+material_override = SubResource("StandardMaterial3D_hdjon")
 mesh = SubResource("BoxMesh_3em6w")
 
 [node name="BIGSIDEWALK2" type="MeshInstance3D" parent="SideWalkR2/Bigside" unique_id=1978740304]
 transform = Transform3D(139.99998, 0, 0, 0, 1, 0, 0, 0, 59.999996, -145.00002, 0, -54.99997)
-material_override = SubResource("StandardMaterial3D_4h21e")
+material_override = SubResource("StandardMaterial3D_1q0ss")
 mesh = SubResource("BoxMesh_3em6w")
 
 [node name="BIGSIDEWALK3" type="MeshInstance3D" parent="SideWalkR2/Bigside" unique_id=508882728]
 transform = Transform3D(139.99998, 0, 0, 0, 1, 0, 0, 0, 59.999996, 12, 0, 46.000004)
-material_override = SubResource("StandardMaterial3D_4h21e")
+material_override = SubResource("StandardMaterial3D_m18aw")
 mesh = SubResource("BoxMesh_3em6w")
 
 [node name="BIGSIDEWALK4" type="MeshInstance3D" parent="SideWalkR2/Bigside" unique_id=2012447693]
 transform = Transform3D(139.99998, 0, 0, 0, 1, 0, 0, 0, 59.999996, -145, 0, 46.00003)
-material_override = SubResource("StandardMaterial3D_4h21e")
+material_override = SubResource("StandardMaterial3D_pi2s2")
 mesh = SubResource("BoxMesh_3em6w")
 
 [node name="SideWalkL" type="MeshInstance3D" parent="." unique_id=489045813]
