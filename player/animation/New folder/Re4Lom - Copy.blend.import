@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://uv257qy1kbmk"
-valid=false
+uid="uid://b0s2bm28ttafs"
+path="res://.godot/imported/Re4Lom - Copy.blend-1a6da866e694a71656b5221e9b5a6450.scn"
 
 [deps]
 
-source_file="res://Audio System and SFX/Cutscene/Cutscene 1.blend"
+source_file="res://player/animation/New folder/Re4Lom - Copy.blend"
+dest_files=["res://.godot/imported/Re4Lom - Copy.blend-1a6da866e694a71656b5221e9b5a6450.scn"]
 
 [params]
 
