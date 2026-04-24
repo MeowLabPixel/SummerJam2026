@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dm5skvyv7http"]
+
+[ext_resource type="PackedScene" uid="uid://dk5noejjahp0k" path="res://Character Model For Programer/Merchant/water_merchant_model.tscn" id="1_aoqj8"]
+
+[node name="Merchant" type="Node3D" unique_id=1234015611]
+
+[node name="water merchant" parent="." unique_id=1398557210 instance=ExtResource("1_aoqj8")]
