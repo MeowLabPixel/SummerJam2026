@@ -1,26 +1,22 @@
 ## STATE: RangedAttack
 ## Used by both the Water Gun zombie and the Balloon zombie.
-## No hand contact required — damage fires when the attack animation reaches
-## its release frame (fraction-based), representing the projectile leaving
-## the zombie's hands.
-##
-## attack_type export selects which animation and damage profile to use.
-## Set this in the inspector on the scene that uses this state.
 class_name StateRangedAttack
 extends EnemyState
 
 enum AttackType { WATER_GUN, BALLOON }
 
-## Which kind of ranged attack this zombie does.
 @export var attack_type: AttackType = AttackType.WATER_GUN
-## Damage dealt when the shot lands (player must be in range).
 @export var attack_damage: int = 4
-## Maximum range the shot can reach (units).
 @export var attack_range: float = 8.0
-## Fraction through the animation at which the "projectile fires" (0-1).
 @export var release_frac: float = 0.5
-## Minimum time between attacks (seconds) — cooldown before returning to Hunt.
 @export var post_attack_delay: float = 0.5
+
+# Balloon-only settings
+@export var balloon_scene: PackedScene
+@export var balloon_arc_height: float = 3.0
+@export var balloon_travel_time: float = 1.2
+@export var balloon_splash_radius: float = 3.0
+@export var balloon_spawn_point: Node3D
 
 var _timer: float = 0.0
 var _anim_duration: float = 1.5
@@ -28,12 +24,13 @@ var _damage_dealt: bool = false
 var _anim_done: bool = false
 
 func enter() -> void:
-	_timer = 0.0
+	_timer        = 0.0
 	_damage_dealt = false
-	_anim_done = false
+	_anim_done    = false
 
 	var anim := _pick_anim()
 	_force_anim(anim)
+
 	if enemy and enemy.anim_player and enemy.anim_player.has_animation(anim):
 		_anim_duration = enemy.anim_player.get_animation(anim).length
 	else:
@@ -47,21 +44,19 @@ func exit() -> void:
 func physics_update(delta: float) -> void:
 	_timer += delta
 
-	# Fire damage at the release frame (once per attack).
+	# Fire at the release frame once per attack
 	if not _damage_dealt and _timer >= _anim_duration * release_frac:
 		_damage_dealt = true
 		_try_deal_damage()
 
-	# Animation finished — wait for post_attack_delay then return to Hunt.
+	# Animation finished — play idle during cooldown
 	if not _anim_done and _timer >= _anim_duration:
 		_anim_done = true
-		# Play idle while waiting out the cooldown.
-		_play_anim(_pick_idle_anim())
+		_force_anim(_pick_idle_anim())
 
 	if _anim_done and _timer >= _anim_duration + post_attack_delay:
 		state_machine.transition_to("StateHunt")
 
-## Body hits still stagger the ranged zombie; head/foot shots take it down.
 func handle_hit(hit_data: Dictionary) -> String:
 	var zone: String = hit_data.get("hit_zone", "body")
 	match zone:
@@ -70,7 +65,7 @@ func handle_hit(hit_data: Dictionary) -> String:
 		_:
 			return "StateStun"
 
-# ─── Helpers ─────────────────────────────────────────────────────────────────
+# ─── Helpers ──────────────────────────────────────────────────────────────────
 
 func _pick_anim() -> String:
 	match attack_type:
@@ -86,13 +81,56 @@ func _try_deal_damage() -> void:
 	var player := _get_player()
 	if not player:
 		return
+
+	match attack_type:
+		AttackType.BALLOON:
+			_throw_balloon(player)
+		AttackType.WATER_GUN:
+			_fire_water_gun(player)
+
+func _fire_water_gun(player: Node3D) -> void:
 	var dist: float = enemy.global_position.distance_to(player.global_position)
 	if dist > attack_range:
-		print("[StateRangedAttack] Shot missed — player out of range (%.1f > %.1f)" % [dist, attack_range])
+		print("[StateRangedAttack] Shot missed — out of range (%.1f > %.1f)" % [dist, attack_range])
 		return
-	if player.has_method("take_damage"):
+
+	# Raycast to check line of sight
+	var from: Vector3 = enemy.global_position + Vector3.UP * 1.5
+	var to   := player.global_position + Vector3.UP * 1.0
+	var space = enemy.get_world_3d().direct_space_state
+	var query := PhysicsRayQueryParameters3D.create(from, to)
+	query.collide_with_bodies = true
+	query.collide_with_areas  = true
+	query.exclude = [enemy.get_rid()]
+	var result = space.intersect_ray(query)
+
+	# Only deal damage if the ray hits the player directly (not a wall)
+	if result and result.collider.is_in_group("player"):
 		player.take_damage(attack_damage)
-	print("[StateRangedAttack] Hit player for %d damage (dist %.1f)" % [attack_damage, dist])
+		print("[StateRangedAttack] Water gun hit player for %d (dist %.1f)" % [attack_damage, dist])
+	else:
+		print("[StateRangedAttack] Water gun blocked by obstacle")
+
+func _throw_balloon(player: Node3D) -> void:
+	if not balloon_scene:
+		push_warning("[StateRangedAttack] No balloon_scene assigned")
+		# Fallback to instant damage if no scene set
+		player.take_damage(attack_damage)
+		return
+
+	var balloon: Node3D = balloon_scene.instantiate()
+	enemy.get_tree().current_scene.add_child(balloon)
+
+	var spawn_pos = balloon_spawn_point.global_position if balloon_spawn_point \
+		else enemy.global_position + Vector3.UP * 1.8
+
+	balloon.global_position = spawn_pos
+
+	if balloon.has_method("launch"):
+		balloon.launch(player.global_position, attack_damage, balloon_splash_radius,
+			balloon_arc_height, balloon_travel_time)
+	else:
+		push_warning("[StateRangedAttack] Balloon scene has no launch() method")
 
 func _get_player() -> Node3D:
 	var players: Array = enemy.get_tree().get_nodes_in_group("player")
