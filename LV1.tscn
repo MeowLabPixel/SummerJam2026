@@ -31,6 +31,19 @@ albedo_color = Color(0.2973972, 0.3036058, 0.31602657, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3em6w"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q0y3q"]
+sky_top_color = Color(0.87184596, 0.9740873, 0.98766285, 1)
+sky_horizon_color = Color(0.086708985, 0.70628375, 0.9999998, 1)
+
+[sub_resource type="Sky" id="Sky_5smi2"]
+sky_material = SubResource("ProceduralSkyMaterial_q0y3q")
+
+[sub_resource type="Environment" id="Environment_dbf6b"]
+background_mode = 2
+background_energy_multiplier = 1.5
+sky = SubResource("Sky_5smi2")
+ambient_light_source = 3
+
 [node name="LV1" type="Node3D" unique_id=275027474]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=957887896]
@@ -3617,3 +3630,6 @@ transform = Transform3D(-0.4999999, 0, -0.8660255, 0, 1, 0, 0.8660255, 0, -0.499
 
 [node name="Police Station2" parent="." unique_id=458260334 instance=ExtResource("20_5smi2")]
 transform = Transform3D(-1.0927847e-08, 0, 0.25, 0, 0.25, 0, -0.25, 0, -1.0927847e-08, -81.193, 0.52, 14.949)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=340964106]
+environment = SubResource("Environment_dbf6b")
