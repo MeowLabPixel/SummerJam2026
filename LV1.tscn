@@ -2624,25 +2624,25 @@ transform = Transform3D(15, 0, 0, 0, 25, 0, 0, 0, 15, -22.328453, 0.99954224, -4
 [node name="Building2" parent="BuildingBG01" unique_id=1825312288 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, -41.256763, 4, -37.28045)
 
-[node name="Building3" parent="BuildingBG01" unique_id=1204327503 instance=ExtResource("11_pgcnv")]
+[node name="Building3" parent="BuildingBG01" unique_id=671925329 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -48.334953, 4, -43.739857)
 
-[node name="Building4" parent="BuildingBG01" unique_id=934989679 instance=ExtResource("11_pgcnv")]
+[node name="Building4" parent="BuildingBG01" unique_id=916406085 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(14.43, 0, 0, 0, 13.86, 0, 0, 0, 10.67, -13.222108, 5, -34.99421)
 
-[node name="Building5" parent="BuildingBG01" unique_id=1218389806 instance=ExtResource("11_pgcnv")]
+[node name="Building5" parent="BuildingBG01" unique_id=361356048 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -2.1807728, 4, -33.923546)
 
-[node name="Building6" parent="BuildingBG01" unique_id=1104895089 instance=ExtResource("11_pgcnv")]
+[node name="Building6" parent="BuildingBG01" unique_id=972850022 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 9.760942, 4, -38.206497)
 
-[node name="Building7" parent="BuildingBG01" unique_id=990937544 instance=ExtResource("11_pgcnv")]
+[node name="Building7" parent="BuildingBG01" unique_id=1955385394 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 3.6941633, 4, -46.778725)
 
-[node name="Building8" parent="BuildingBG01" unique_id=1128722180 instance=ExtResource("11_pgcnv")]
+[node name="Building8" parent="BuildingBG01" unique_id=1121595925 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 15.360514, 4, -46.08731)
 
-[node name="Building9" parent="BuildingBG01" unique_id=1209314495 instance=ExtResource("11_pgcnv")]
+[node name="Building9" parent="BuildingBG01" unique_id=92322394 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 23.17066, 4, -38.00511)
 
 [node name="BuildingBG04" type="MeshInstance3D" parent="." unique_id=1880278930]
@@ -2654,28 +2654,28 @@ transform = Transform3D(10, 0, 0, 0, 20, 0, 0, 0, 10, -28.714844, 0.99954224, -3
 [node name="Building10" parent="BuildingBG04" unique_id=422441883 instance=ExtResource("10_2ccym")]
 transform = Transform3D(15, 0, 0, 0, 25, 0, 0, 0, 15, -22.328453, 0.99954224, -44.722057)
 
-[node name="Building2" parent="BuildingBG04" unique_id=827157054 instance=ExtResource("11_pgcnv")]
+[node name="Building2" parent="BuildingBG04" unique_id=537487301 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, -41.256763, 4, -37.28045)
 
-[node name="Building3" parent="BuildingBG04" unique_id=161851978 instance=ExtResource("11_pgcnv")]
+[node name="Building3" parent="BuildingBG04" unique_id=1564635882 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -48.334953, 4, -43.739857)
 
-[node name="Building4" parent="BuildingBG04" unique_id=1378982936 instance=ExtResource("11_pgcnv")]
+[node name="Building4" parent="BuildingBG04" unique_id=2089643569 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(14.43, 0, 0, 0, 13.86, 0, 0, 0, 10.67, -13.222108, 5, -34.99421)
 
-[node name="Building5" parent="BuildingBG04" unique_id=1366149382 instance=ExtResource("11_pgcnv")]
+[node name="Building5" parent="BuildingBG04" unique_id=591635689 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -2.1807728, 4, -33.923546)
 
-[node name="Building6" parent="BuildingBG04" unique_id=1917719765 instance=ExtResource("11_pgcnv")]
+[node name="Building6" parent="BuildingBG04" unique_id=1523877006 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 9.760942, 4, -38.206497)
 
-[node name="Building7" parent="BuildingBG04" unique_id=1012423603 instance=ExtResource("11_pgcnv")]
+[node name="Building7" parent="BuildingBG04" unique_id=835181661 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 3.6941633, 4, -46.778725)
 
-[node name="Building8" parent="BuildingBG04" unique_id=898963446 instance=ExtResource("11_pgcnv")]
+[node name="Building8" parent="BuildingBG04" unique_id=1509385515 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 15.360514, 4, -46.08731)
 
-[node name="Building9" parent="BuildingBG04" unique_id=1043868731 instance=ExtResource("11_pgcnv")]
+[node name="Building9" parent="BuildingBG04" unique_id=974743454 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 23.17066, 4, -38.00511)
 
 [node name="BuildingBG05" type="MeshInstance3D" parent="." unique_id=1676236181]
@@ -2687,28 +2687,28 @@ transform = Transform3D(10, 0, 0, 0, 20, 0, 0, 0, 10, -28.714844, 0.99954224, -3
 [node name="Building10" parent="BuildingBG05" unique_id=1215235622 instance=ExtResource("10_2ccym")]
 transform = Transform3D(15, 0, 0, 0, 25, 0, 0, 0, 15, -22.328453, 0.99954224, -44.722057)
 
-[node name="Building2" parent="BuildingBG05" unique_id=1164720058 instance=ExtResource("11_pgcnv")]
+[node name="Building2" parent="BuildingBG05" unique_id=266390519 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, -41.256763, 4, -37.28045)
 
-[node name="Building3" parent="BuildingBG05" unique_id=352338883 instance=ExtResource("11_pgcnv")]
+[node name="Building3" parent="BuildingBG05" unique_id=310974304 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -48.334953, 4, -43.739857)
 
-[node name="Building4" parent="BuildingBG05" unique_id=1207907248 instance=ExtResource("11_pgcnv")]
+[node name="Building4" parent="BuildingBG05" unique_id=714483454 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(14.43, 0, 0, 0, 13.86, 0, 0, 0, 10.67, -13.222108, 5, -34.99421)
 
-[node name="Building5" parent="BuildingBG05" unique_id=930653984 instance=ExtResource("11_pgcnv")]
+[node name="Building5" parent="BuildingBG05" unique_id=1270281630 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -2.1807728, 4, -33.923546)
 
-[node name="Building6" parent="BuildingBG05" unique_id=855566103 instance=ExtResource("11_pgcnv")]
+[node name="Building6" parent="BuildingBG05" unique_id=24999040 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 9.760942, 4, -38.206497)
 
-[node name="Building7" parent="BuildingBG05" unique_id=258953477 instance=ExtResource("11_pgcnv")]
+[node name="Building7" parent="BuildingBG05" unique_id=1676773286 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 3.6941633, 4, -46.778725)
 
-[node name="Building8" parent="BuildingBG05" unique_id=1905807258 instance=ExtResource("11_pgcnv")]
+[node name="Building8" parent="BuildingBG05" unique_id=795368939 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 15.360514, 4, -46.08731)
 
-[node name="Building9" parent="BuildingBG05" unique_id=1263447368 instance=ExtResource("11_pgcnv")]
+[node name="Building9" parent="BuildingBG05" unique_id=1251672328 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 23.17066, 4, -38.00511)
 
 [node name="BuildingBG06" type="MeshInstance3D" parent="." unique_id=843046242]
@@ -2720,28 +2720,28 @@ transform = Transform3D(10, 0, 0, 0, 20, 0, 0, 0, 10, -28.714844, 0.99954224, -3
 [node name="Building10" parent="BuildingBG06" unique_id=1957745074 instance=ExtResource("10_2ccym")]
 transform = Transform3D(15, 0, 0, 0, 25, 0, 0, 0, 15, -22.328453, 0.99954224, -44.722057)
 
-[node name="Building2" parent="BuildingBG06" unique_id=535871260 instance=ExtResource("11_pgcnv")]
+[node name="Building2" parent="BuildingBG06" unique_id=64471603 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, -41.256763, 4, -37.28045)
 
-[node name="Building3" parent="BuildingBG06" unique_id=624885807 instance=ExtResource("11_pgcnv")]
+[node name="Building3" parent="BuildingBG06" unique_id=1866902035 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -48.334953, 4, -43.739857)
 
-[node name="Building4" parent="BuildingBG06" unique_id=1277711954 instance=ExtResource("11_pgcnv")]
+[node name="Building4" parent="BuildingBG06" unique_id=416574875 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(14.43, 0, 0, 0, 13.86, 0, 0, 0, 10.67, -13.222108, 5, -34.99421)
 
-[node name="Building5" parent="BuildingBG06" unique_id=282360979 instance=ExtResource("11_pgcnv")]
+[node name="Building5" parent="BuildingBG06" unique_id=1918564733 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -2.1807728, 4, -33.923546)
 
-[node name="Building6" parent="BuildingBG06" unique_id=1432301064 instance=ExtResource("11_pgcnv")]
+[node name="Building6" parent="BuildingBG06" unique_id=765749353 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 9.760942, 4, -38.206497)
 
-[node name="Building7" parent="BuildingBG06" unique_id=1262127594 instance=ExtResource("11_pgcnv")]
+[node name="Building7" parent="BuildingBG06" unique_id=1868477840 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 3.6941633, 4, -46.778725)
 
-[node name="Building8" parent="BuildingBG06" unique_id=1637435684 instance=ExtResource("11_pgcnv")]
+[node name="Building8" parent="BuildingBG06" unique_id=175041368 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 15.360514, 4, -46.08731)
 
-[node name="Building9" parent="BuildingBG06" unique_id=133599264 instance=ExtResource("11_pgcnv")]
+[node name="Building9" parent="BuildingBG06" unique_id=543545922 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 23.17066, 4, -38.00511)
 
 [node name="BuildingBG07" type="MeshInstance3D" parent="." unique_id=731176312]
@@ -2753,28 +2753,28 @@ transform = Transform3D(10, 0, 0, 0, 20, 0, 0, 0, 10, -28.714844, 0.99954224, -3
 [node name="Building10" parent="BuildingBG07" unique_id=276182052 instance=ExtResource("10_2ccym")]
 transform = Transform3D(15, 0, 0, 0, 25, 0, 0, 0, 15, -22.328453, 0.99954224, -44.722057)
 
-[node name="Building2" parent="BuildingBG07" unique_id=1771817068 instance=ExtResource("11_pgcnv")]
+[node name="Building2" parent="BuildingBG07" unique_id=332196392 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, -39.025986, 4, -29.890692)
 
-[node name="Building3" parent="BuildingBG07" unique_id=1691266422 instance=ExtResource("11_pgcnv")]
+[node name="Building3" parent="BuildingBG07" unique_id=1363093393 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -48.334953, 4, -43.739857)
 
-[node name="Building4" parent="BuildingBG07" unique_id=1034395887 instance=ExtResource("11_pgcnv")]
+[node name="Building4" parent="BuildingBG07" unique_id=32642700 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(14.43, 0, 0, 0, 13.86, 0, 0, 0, 10.67, -13.222108, 5, -34.99421)
 
-[node name="Building5" parent="BuildingBG07" unique_id=182438416 instance=ExtResource("11_pgcnv")]
+[node name="Building5" parent="BuildingBG07" unique_id=932976653 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -2.1807728, 4, -33.923546)
 
-[node name="Building6" parent="BuildingBG07" unique_id=1698366689 instance=ExtResource("11_pgcnv")]
+[node name="Building6" parent="BuildingBG07" unique_id=1007164293 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 9.760942, 4, -38.206497)
 
-[node name="Building7" parent="BuildingBG07" unique_id=210030130 instance=ExtResource("11_pgcnv")]
+[node name="Building7" parent="BuildingBG07" unique_id=1782935268 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 3.6941633, 4, -46.778725)
 
-[node name="Building8" parent="BuildingBG07" unique_id=207567009 instance=ExtResource("11_pgcnv")]
+[node name="Building8" parent="BuildingBG07" unique_id=1715368220 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 15.360514, 4, -46.08731)
 
-[node name="Building9" parent="BuildingBG07" unique_id=1155426058 instance=ExtResource("11_pgcnv")]
+[node name="Building9" parent="BuildingBG07" unique_id=1309563362 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 23.17066, 4, -38.00511)
 
 [node name="BuildingBG08" type="MeshInstance3D" parent="." unique_id=1931423837]
@@ -2786,28 +2786,28 @@ transform = Transform3D(10, 0, 0, 0, 20, 0, 0, 0, 10, -28.714844, 0.99954224, -3
 [node name="Building10" parent="BuildingBG08" unique_id=2100935297 instance=ExtResource("10_2ccym")]
 transform = Transform3D(15, 0, 0, 0, 25, 0, 0, 0, 15, -22.328453, 0.99954224, -44.722057)
 
-[node name="Building2" parent="BuildingBG08" unique_id=412602926 instance=ExtResource("11_pgcnv")]
+[node name="Building2" parent="BuildingBG08" unique_id=2108493589 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, -41.256763, 4, -37.28045)
 
-[node name="Building3" parent="BuildingBG08" unique_id=76774401 instance=ExtResource("11_pgcnv")]
+[node name="Building3" parent="BuildingBG08" unique_id=1550201024 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -48.334953, 4, -43.739857)
 
-[node name="Building4" parent="BuildingBG08" unique_id=629371576 instance=ExtResource("11_pgcnv")]
+[node name="Building4" parent="BuildingBG08" unique_id=534628034 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(14.43, 0, 0, 0, 13.86, 0, 0, 0, 10.67, -13.222108, 5, -34.99421)
 
-[node name="Building5" parent="BuildingBG08" unique_id=1812039145 instance=ExtResource("11_pgcnv")]
+[node name="Building5" parent="BuildingBG08" unique_id=576295684 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -2.1807728, 4, -33.923546)
 
-[node name="Building6" parent="BuildingBG08" unique_id=912918814 instance=ExtResource("11_pgcnv")]
+[node name="Building6" parent="BuildingBG08" unique_id=1520002261 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 9.760942, 4, -38.206497)
 
-[node name="Building7" parent="BuildingBG08" unique_id=768867173 instance=ExtResource("11_pgcnv")]
+[node name="Building7" parent="BuildingBG08" unique_id=894462722 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 3.6941633, 4, -46.778725)
 
-[node name="Building8" parent="BuildingBG08" unique_id=569800668 instance=ExtResource("11_pgcnv")]
+[node name="Building8" parent="BuildingBG08" unique_id=2091061541 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 15.360514, 4, -46.08731)
 
-[node name="Building9" parent="BuildingBG08" unique_id=1731678825 instance=ExtResource("11_pgcnv")]
+[node name="Building9" parent="BuildingBG08" unique_id=256014053 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 23.17066, 4, -38.00511)
 
 [node name="BuildingBG02" type="MeshInstance3D" parent="." unique_id=94534559]
@@ -2816,52 +2816,52 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -39,
 [node name="Building" parent="BuildingBG02" unique_id=588908155 instance=ExtResource("10_2ccym")]
 transform = Transform3D(10, 0, 0, 0, 20, 0, 0, 0, 10, -28.714844, 0.99954224, -35.11991)
 
-[node name="Building2" parent="BuildingBG02" unique_id=1292399463 instance=ExtResource("11_pgcnv")]
+[node name="Building2" parent="BuildingBG02" unique_id=691846285 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, -41.256763, 4, -37.28045)
 
-[node name="Building3" parent="BuildingBG02" unique_id=2039799898 instance=ExtResource("11_pgcnv")]
+[node name="Building3" parent="BuildingBG02" unique_id=1092242803 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -48.334953, 4, -43.739857)
 
-[node name="Building4" parent="BuildingBG02" unique_id=2112171269 instance=ExtResource("11_pgcnv")]
+[node name="Building4" parent="BuildingBG02" unique_id=833192867 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(14.43, 0, 0, 0, 13.86, 0, 0, 0, 10.67, -13.222108, 5, -34.99421)
 
-[node name="Building5" parent="BuildingBG02" unique_id=2147137066 instance=ExtResource("11_pgcnv")]
+[node name="Building5" parent="BuildingBG02" unique_id=1040258615 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -2.1807728, 4, -33.923546)
 
-[node name="Building6" parent="BuildingBG02" unique_id=128247579 instance=ExtResource("11_pgcnv")]
+[node name="Building6" parent="BuildingBG02" unique_id=341421445 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 9.760942, 4, -38.206497)
 
-[node name="Building7" parent="BuildingBG02" unique_id=1158152955 instance=ExtResource("11_pgcnv")]
+[node name="Building7" parent="BuildingBG02" unique_id=1104864526 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 3.6941633, 4, -46.778725)
 
-[node name="Building8" parent="BuildingBG02" unique_id=1537336032 instance=ExtResource("11_pgcnv")]
+[node name="Building8" parent="BuildingBG02" unique_id=640418952 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 15.360514, 4, -46.08731)
 
 [node name="BuildingBG03" type="MeshInstance3D" parent="." unique_id=723182687]
 transform = Transform3D(0.9, 0, 8.7422784e-08, 0, 1, 0, 7.86805e-08, 0, -1.0000001, 61, 0, -9)
 
-[node name="Building2" parent="BuildingBG03" unique_id=60090039 instance=ExtResource("11_pgcnv")]
+[node name="Building2" parent="BuildingBG03" unique_id=2127652635 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, -41.256763, 4, -37.28045)
 
-[node name="Building3" parent="BuildingBG03" unique_id=516139430 instance=ExtResource("11_pgcnv")]
+[node name="Building3" parent="BuildingBG03" unique_id=1412038822 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -48.334953, 4, -43.739857)
 
-[node name="Building4" parent="BuildingBG03" unique_id=1799344872 instance=ExtResource("11_pgcnv")]
+[node name="Building4" parent="BuildingBG03" unique_id=1597203112 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(14.43, 0, 0, 0, 13.86, 0, 0, 0, 10.67, -13.222108, 5, -34.99421)
 
-[node name="Building5" parent="BuildingBG03" unique_id=1390526426 instance=ExtResource("11_pgcnv")]
+[node name="Building5" parent="BuildingBG03" unique_id=2142541888 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, -2.1807728, 4, -33.923546)
 
-[node name="Building6" parent="BuildingBG03" unique_id=377548720 instance=ExtResource("11_pgcnv")]
+[node name="Building6" parent="BuildingBG03" unique_id=368851443 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 9.760942, 4, -38.206497)
 
-[node name="Building7" parent="BuildingBG03" unique_id=1679734760 instance=ExtResource("11_pgcnv")]
+[node name="Building7" parent="BuildingBG03" unique_id=1609691743 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 3.6941633, 4, -46.778725)
 
-[node name="Building8" parent="BuildingBG03" unique_id=50564121 instance=ExtResource("11_pgcnv")]
+[node name="Building8" parent="BuildingBG03" unique_id=442183289 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 15, 15.360514, 4, -46.08731)
 
-[node name="Building9" parent="BuildingBG03" unique_id=632373357 instance=ExtResource("11_pgcnv")]
+[node name="Building9" parent="BuildingBG03" unique_id=195874712 instance=ExtResource("11_pgcnv")]
 transform = Transform3D(15, 0, 0, 0, 10, 0, 0, 0, 15, 22.609692, 4, -45.73548)
 
 [node name="Shop01" type="MeshInstance3D" parent="." unique_id=850813322]

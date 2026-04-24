@@ -1,11 +1,95 @@
-[gd_scene format=3 uid="uid://cnp4qc3ttx7t6"]
+[gd_scene format=4 uid="uid://cnp4qc3ttx7t6"]
 
 [ext_resource type="PackedScene" uid="uid://bb81nioepsbju" path="res://Road/Road.fbx" id="1_feo05"]
+[ext_resource type="Material" uid="uid://tonsjxeidv86" path="res://Road/openPBR_shader1.material" id="2_feo05"]
+[ext_resource type="Material" uid="uid://cjal6yjsdqkw5" path="res://Road/sidewalk.material" id="3_hff0c"]
 
-[node name="Road" unique_id=870776209 instance=ExtResource("1_feo05")]
+[sub_resource type="ArrayMesh" id="ArrayMesh_yehbp"]
+_surfaces = [{
+"aabb": AABB(-0.116546415, 0, -0.116546415, 0.23309283, 1e-05, 0.23309283),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"name": "openPBR_shader1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("46/uPQAAAADjr+6946/uPQAAAADjr+4946/uvQAAAADjr+4946/uvQAAAADjr+69")
+}]
+blend_shape_mode = 0
 
-[node name="pPlane1" parent="." index="0" unique_id=1211589514]
+[sub_resource type="ArrayMesh" id="ArrayMesh_2asvy"]
+resource_name = "pPlane1"
+_surfaces = [{
+"aabb": AABB(-0.116546415, 0, -0.116546415, 0.23309283, 1e-05, 0.23309283),
+"attribute_data": PackedByteArray("AACAPwAAAAAAAIA/AACAPwAAAAAAAIA/AAAAAAAAAAA="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"material": ExtResource("2_feo05"),
+"name": "openPBR_shader1",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("46/uPQAAAADjr+6946/uPQAAAADjr+4946/uvQAAAADjr+4946/uvQAAAADjr+69/3///////7//f///////v/9///////+//3///////78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_yehbp")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kkj8k"]
+resource_name = "pPlane1"
+_surfaces = [{
+"aabb": AABB(-0.06717828, -0.005, -0.116545, 0.13435656, 0.01, 0.23309),
+"format": 34359742465,
+"index_count": 72,
+"index_data": PackedByteArray("CgABAAIAAgAFAAoABQACAAYABgAJAAUACQAGAAgABQAJAAsACAALAAkACwAKAAUAAQAKAAAAAAAKAAsAAwABAAAABwALAAgACwAHAAAABwAIAAQAAAAHAAwABAADAA0ADQADAAAABwAEAA4ADQAOAAQABwAOAAwADQAAAA8ADgANAA8ADAAPAAAADwAMAA4A"),
+"lods": [0.06343815, PackedByteArray("AAABAAIAAwABAAAABAADAAAAAgAFAAAABQACAAYAAAAHAAQABwAAAAUABwAIAAQABgAJAAUABQAJAAcACQAGAAgACAAHAAkA")],
+"name": "sidewalk",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("S3yFPQrXozslr+4978tEPQrXo7slr+49xJSJvQrXo7slr+49xJSJPQrXo7slr+49xJSJPQrXo7slr+69xJSJvQrXozslr+49xJSJvQrXo7slr+69S3yFPQrXozslr+6978tEPQrXo7slr+69xJSJvQrXozslr+6978tEPQrXozslr+4978tEPQrXozslr+69rGGIPZqlkDslr+69xJSJPQGfRDslr+49xJSJPQOfRDslr+69rGGIPZqlkDslr+49")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2asvy")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ncfah"]
+resource_name = "pCube1"
+_surfaces = [{
+"aabb": AABB(-0.06717828, -0.005, -0.116545, 0.13435656, 0.01, 0.23309),
+"attribute_data": PackedByteArray("wDxCP87NfT/XQTc/dvxqP2dGNz8K4Ng+FEE3P6z/fz8BQkI/1uDYPmVdET8AAKg2pl0RP9n/fz8AMIM2/v9/PwAAAAAAAPA2dV42P838aj/GWis/BMl9PzuZKz9c19g+blU2PwAAgD/UlDY/0ODYPpNdEj/+/38/iV0SPwAAvDaKgx4/AAC8NpWDHj/+/38/EXAqP/7/fz94dB8/hv9/P1x/Hz8AAAAA9XoqPwAA8DZvPUI/2vxqP2kKQD/+/38/BJhBP1xbfz/iGP0+AACyNmYZ/T7d/38/3WIrPxL4aj8YjC0/Ovx/P8z+Kz/eVn8/3CYbPwAAvDboJhs//v9/PzfVHD8AALw2QtUcP/7/fz8="),
+"format": 34359742487,
+"index_count": 72,
+"index_data": PackedByteArray("FgABAAIAAgAEABYAAQAWAAAAAwABAAAAFwADAAAAFwAAABgAGQAaAAcABwAIABkABgAaABkAGQAFAAYACQAbAAsACwANAAkACgAbAAkACgAJAAwACgAMABwACgAcAB0AHgAfAA4ADgAPAB4AHwAeACAAIAAhAB8AIQAgABAAEAARACEAEgATABQAFAAVABIA"),
+"lods": [0.06343815, PackedByteArray("AAABAAIAAwABAAAAAgAEAAAABQAGAAcABwAIAAUACQAKAAsACgAJAAwACwANAAkADgAPABAAEAARAA4AEgATABQAFAAVABIA")],
+"material": ExtResource("3_hff0c"),
+"name": "sidewalk",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 34,
+"vertex_data": PackedByteArray("S3yFPQrXozslr+4978tEPQrXo7slr+49xJSJvQrXo7slr+49xJSJPQrXo7slr+49xJSJvQrXozslr+49S3yFPQrXozslr+69S3yFPQrXozslr+49xJSJvQrXozslr+49xJSJvQrXozslr+6978tEPQrXo7slr+69S3yFPQrXozslr+69xJSJvQrXozslr+69xJSJPQrXo7slr+69xJSJvQrXo7slr+69xJSJPQrXo7slr+69xJSJPQrXo7slr+49S3yFPQrXozslr+49S3yFPQrXozslr+69xJSJvQrXozslr+49xJSJvQrXo7slr+49xJSJvQrXo7slr+69xJSJvQrXozslr+6978tEPQrXozslr+49xJSJPQGfRDslr+49rGGIPZqlkDslr+4978tEPQrXozslr+6978tEPQrXozslr+4978tEPQrXozslr+69xJSJPQOfRDslr+69rGGIPZqlkDslr+69xJSJPQGfRDslr+49xJSJPQOfRDslr+69rGGIPZqlkDslr+49rGGIPZqlkDslr+69/3//f/p//P//f/9/+n/8//9//3/6f/z//3//f/p//P//f/9/+n/8/+qDE/wT/Am+6oMT/BP8Cb7/f////v//v/9////+//+//////8h/G4D/////yH8bgP/////IfxuA/////8h/GoD/////yH8bgP///3//f///////f/9////qgxP86wP0weqDE/zrA/TBAAD/fwSA//8AAP9/BID//wAA/38EgP//AAD/fwSA////f/9/+n/8//9//3/6f/z//3//f/t//P//f////v//v/9////+//+//////8h/G4D/////yH8bgP/////HfxuAf/h+h4B4P/x/+H6HgHg//P+//7//P//f/7//v/8//98=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kkj8k")
+
+[sub_resource type="Animation" id="Animation_kqpgr"]
+resource_name = "Take 001"
+length = 0.8333333
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmu15"]
+_data = {
+&"Take 001": SubResource("Animation_kqpgr")
+}
+
+[node name="Road" type="Node3D" unique_id=870776209 instance=ExtResource("1_feo05")]
+
+[node name="pPlane1" type="MeshInstance3D" parent="." index="0" unique_id=1211589514]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("ArrayMesh_2asvy")
 
-[node name="pCube1" parent="." index="1" unique_id=1066174865]
+[node name="pCube1" type="MeshInstance3D" parent="." index="1" unique_id=1066174865]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, -1.85, 0, 0)
+mesh = SubResource("ArrayMesh_ncfah")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=138679505]
+libraries/ = SubResource("AnimationLibrary_vmu15")
