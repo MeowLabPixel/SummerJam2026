@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://c5odnwin8fjjm"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dt685o6bquvah"]
 
 [ext_resource type="Shader" uid="uid://ctc5s68igpvj6" path="res://Jomp_Folder/BinbunVFXmagic/shared/shader/transparent.gdshader" id="1_j32br"]
 [ext_resource type="Texture2D" uid="uid://m3fbr4afc2d7" path="res://Jomp_Folder/BinbunVFXmagic/shared/texture/noise/cell/cell_inverted_01.tres" id="2_j32br"]

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://cragwg3j2c001"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dixxtlpssg8bs"]
 
 [ext_resource type="Shader" uid="uid://ctc5s68igpvj6" path="res://Jomp_Folder/BinbunVFXmagic/shared/shader/transparent.gdshader" id="1_aipk1"]
 [ext_resource type="Texture2D" uid="uid://ov8ygtrykiet" path="res://Jomp_Folder/BinbunVFXmagic/shared/texture/noise/warp/warp_blotch_02.tres" id="2_aipk1"]

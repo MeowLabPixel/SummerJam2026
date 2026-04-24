@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://kehbqvguaupp"
+path="res://.godot/imported/Slapped_02.wav-07b8c82001cbc3a32f7602f5b20c8ac2.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Zombie Melee (F)/Slapped_02.wav"
+dest_files=["res://.godot/imported/Slapped_02.wav-07b8c82001cbc3a32f7602f5b20c8ac2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

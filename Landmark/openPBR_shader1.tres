@@ -1,8 +1,5 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://d1ek4iqlqrgur"]
 
-[ext_resource type="Texture2D" uid="uid://w71ux0oa0bi1" path="res://Landmark/openPBR_shader1_Base_color.png" id="1_sot06"]
-
 [resource]
 resource_name = "openPBR_shader1"
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_sot06")

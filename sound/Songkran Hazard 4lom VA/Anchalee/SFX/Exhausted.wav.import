@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://da78t0aywxvvn"
+path="res://.godot/imported/Exhausted.wav-9921e4919b1fdf582ecac4d20739e556.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Anchalee/SFX/Exhausted.wav"
+dest_files=["res://.godot/imported/Exhausted.wav-9921e4919b1fdf582ecac4d20739e556.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

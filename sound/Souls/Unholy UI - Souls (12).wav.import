@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b04sut8m2i065"
+path="res://.godot/imported/Unholy UI - Souls (12).wav-0a8b27fe6445ef0d2ba3f1d3983e6ec9.sample"
+
+[deps]
+
+source_file="res://sound/Souls/Unholy UI - Souls (12).wav"
+dest_files=["res://.godot/imported/Unholy UI - Souls (12).wav-0a8b27fe6445ef0d2ba3f1d3983e6ec9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cu6uucs0bq7x6"
+path="res://.godot/imported/4. Cutscene 3 (Alley).MP3-b08980b60a0ee957a18fc970e74e9ef1.mp3str"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/finalize Cutscene (Lee and Anchalee)/4. Cutscene 3 (Alley).MP3"
+dest_files=["res://.godot/imported/4. Cutscene 3 (Alley).MP3-b08980b60a0ee957a18fc970e74e9ef1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

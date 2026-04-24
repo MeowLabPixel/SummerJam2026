@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bfccs31jl0jqu"
+path="res://.godot/imported/attack 2.wav-d3d3b5cd377a91e32ebe8d436583be9a.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/attack 2.wav"
+dest_files=["res://.godot/imported/attack 2.wav-d3d3b5cd377a91e32ebe8d436583be9a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

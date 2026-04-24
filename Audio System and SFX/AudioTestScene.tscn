@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b7d2xxvpk8pgh"]
+
+[ext_resource type="Script" path="res://Audio System and SFX/audio_test_scene.gd" id="1_l8f2i"]
+
+[node name="root" type="Node" unique_id=1767129711]
+script = ExtResource("1_l8f2i")

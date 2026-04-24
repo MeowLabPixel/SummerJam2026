@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ek1ncjc2swrw"]
+[gd_scene format=3 uid="uid://cqylcyslhyjat"]
 
 [ext_resource type="Texture2D" uid="uid://c42d3fusvwvg5" path="res://player/img/kenney_prototype-textures/PNG/Red/texture_05.png" id="1_ittie"]
 [ext_resource type="Script" uid="uid://605yen57qbii" path="res://player/test/enemy_head.gd" id="2_6us26"]

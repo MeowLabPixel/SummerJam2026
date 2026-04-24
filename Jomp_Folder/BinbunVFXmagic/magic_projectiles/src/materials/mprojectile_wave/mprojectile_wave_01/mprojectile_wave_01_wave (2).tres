@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://cp7tg30vqk2vn"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://hthh3gjmbw56"]
 
 [ext_resource type="Shader" uid="uid://ctc5s68igpvj6" path="res://Jomp_Folder/BinbunVFXmagic/shared/shader/transparent.gdshader" id="1_chq8n"]
 [ext_resource type="Texture2D" uid="uid://brh44ewuar3o" path="res://Jomp_Folder/BinbunVFXmagic/shared/texture/noise/cell/cell_manhattan_01.tres" id="2_chq8n"]

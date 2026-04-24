@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bt422tthu7nsu"
+path="res://.godot/imported/Lee_help_01.wav-1b3e435a5062024d691a8dd409d2a48b.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Anchalee/พูดไปเรื่อย/Lee_help_01.wav"
+dest_files=["res://.godot/imported/Lee_help_01.wav-1b3e435a5062024d691a8dd409d2a48b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

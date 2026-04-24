@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dwpxox7lobj3g"
+path="res://.godot/imported/สงกราน-ฮาสาด-สีลม.ogg-006d5a7f77c511a5627ed8efef00c353.oggvorbisstr"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Title Game/สงกราน-ฮาสาด-สีลม.ogg"
+dest_files=["res://.godot/imported/สงกราน-ฮาสาด-สีลม.ogg-006d5a7f77c511a5627ed8efef00c353.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

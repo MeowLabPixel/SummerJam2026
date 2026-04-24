@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://n5m17a8leco1"]
+[gd_scene format=3 uid="uid://buqpyyamwr1kf"]
 
 [ext_resource type="Material" uid="uid://cr68xbllxnyxx" path="res://player/test/new_standard_material_3d.tres" id="1_vbped"]
 [ext_resource type="PackedScene" uid="uid://ctw3pf8lekk71" path="res://player/player.tscn" id="2_1da4k"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dmh88d8mgj01k"
+path="res://.godot/imported/2. Cutscene Mavin.MP3-eecb6985340acb93a341b5943fec47b5.mp3str"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/finalize Cutscene (Lee and Anchalee)/2. Cutscene Mavin.MP3"
+dest_files=["res://.godot/imported/2. Cutscene Mavin.MP3-eecb6985340acb93a341b5943fec47b5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b2sd5yxdtdlgv"
+path="res://.godot/imported/AMBTran_Hannover Train Station Electric Locomotive Idling Distant Voices_BOLT_H1 9624.wav-453cb03608317f276c4c016f7db5496a.sample"
+
+[deps]
+
+source_file="res://SFX/AMBTran_Hannover Train Station Electric Locomotive Idling Distant Voices_BOLT_H1 9624.wav"
+dest_files=["res://.godot/imported/AMBTran_Hannover Train Station Electric Locomotive Idling Distant Voices_BOLT_H1 9624.wav-453cb03608317f276c4c016f7db5496a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

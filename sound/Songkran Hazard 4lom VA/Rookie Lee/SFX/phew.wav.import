@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bp60q1h8r6vf0"
+path="res://.godot/imported/phew.wav-6a6eff54cd1e2180a4e22defa2f81f47.sample"
+
+[deps]
+
+source_file="res://sound/Songkran Hazard 4lom VA/Rookie Lee/SFX/phew.wav"
+dest_files=["res://.godot/imported/phew.wav-6a6eff54cd1e2180a4e22defa2f81f47.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bfy7etesnxt5w"]
+[gd_scene format=3 uid="uid://fyq63hecf8h4"]
 
 [ext_resource type="Script" uid="uid://cd2m7xntr1tlt" path="res://GunSystem/Script/GunController.gd" id="1_controller"]
 [ext_resource type="Script" uid="uid://b0gdn4ftbjtl2" path="res://GunSystem/Script/PistolWaterGun.gd" id="1_nbubd"]

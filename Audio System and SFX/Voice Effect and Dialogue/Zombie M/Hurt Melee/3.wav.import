@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://co8ubtn2bb3qu"
+path="res://.godot/imported/3.wav-f98d441f0e47ecf813ea0cdc1343e7b6.sample"
+
+[deps]
+
+source_file="res://Audio System and SFX/Voice Effect and Dialogue/Zombie M/Hurt Melee/3.wav"
+dest_files=["res://.godot/imported/3.wav-f98d441f0e47ecf813ea0cdc1343e7b6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

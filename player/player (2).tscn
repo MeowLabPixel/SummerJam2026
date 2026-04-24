@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ctw3pf8lekk71"]
+[gd_scene format=3 uid="uid://22nfa2e2g3ri"]
 
 [ext_resource type="Script" uid="uid://ddvy2c6r527pb" path="res://player/player.gd" id="1_4eg07"]
 [ext_resource type="Texture2D" uid="uid://ecafpdlf4u87" path="res://GunSystem/CrossHair.png" id="2_e7oew"]
