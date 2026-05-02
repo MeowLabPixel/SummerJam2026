@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bpltrarj7pdir"]
+
+[ext_resource type="PackedScene" uid="uid://ij25wda63lc7" path="res://Character Model For Programer/Leon/Leon Face Shadow Fix.glb" id="1_vbgik"]
+
+[node name="Rookie Lee" type="Node3D" unique_id=1269489952]
+
+[node name="Leon Face Shadow Fix" parent="." unique_id=1880376316 instance=ExtResource("1_vbgik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0019060373, 0, 0.035962343)
