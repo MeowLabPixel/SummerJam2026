@@ -4,7 +4,7 @@ extends Control
 @onready var settings_btn := $MenuContainer/VBoxContainer/SettingsButton
 @onready var quit_btn := $MenuContainer/VBoxContainer/QuitButton
 @onready var title := $MenuContainer/VBoxContainer/Title
-@onready var anim := $MenuContainer/VBoxContainer/QuitButton/MainMenu/CutScene1/Cutscene1/AnimationPlayer
+@onready var anim := $"MenuContainer/VBoxContainer/QuitButton/MainMenu/CutScene1/Cutscene1/AnimationPlayer - Cutscene1"
 
 # Audio settings panel
 @onready var audio_panel := $MenuContainer/AudioSettingsPanel
@@ -13,7 +13,7 @@ extends Control
 @onready var dialogue_slider := $MenuContainer/AudioSettingsPanel/VBoxContainer/DialogueSlider
 @onready var music_slider := $MenuContainer/AudioSettingsPanel/VBoxContainer/MusicSlider
 @onready var close_btn := $MenuContainer/AudioSettingsPanel/VBoxContainer/CloseButton
-@onready var fade: AnimationPlayer = $AnimationPlayer
+@onready var fade: AnimationPlayer = $"AnimationPlayer- Logo"
 
 func _ready() -> void:
 	# Load custom font

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cj7p4r01sbwvi"]
+
+[node name="CharacterWithAccessory" type="Node3D" unique_id=1047539569]
+
+[node name="MainSkeleton" type="Skeleton3D" parent="." unique_id=1008197185]
+
+[node name="ChestAttachment" type="BoneAttachment3D" parent="MainSkeleton" unique_id=1180144880]
+bone_name = "chest"
+
+[node name="PhysicsSkeleton" type="Skeleton3D" parent="MainSkeleton/ChestAttachment" unique_id=1604836092]
+
+[node name="AccessoryMesh" type="MeshInstance3D" parent="MainSkeleton/ChestAttachment" unique_id=1286603009]
+skeleton = NodePath("NodePath(\"../PhysicsSkeleton\")")
+
+[node name="CharacterBody" type="MeshInstance3D" parent="." unique_id=1546537756]
+skeleton = NodePath("NodePath(\"../MainSkeleton\")")

@@ -6,7 +6,7 @@ extends Node3D
 
 signal cutscene_finished
 
-@onready var anim         := $"Cutscene1/AnimationPlayer"
+@onready var anim         := $"Cutscene1/AnimationPlayer - Cutscene1"
 @onready var cutscene_cam := $"Cutscene1/Camera"
 @onready var video_player := $CanvasLayer/VideoPlayerFullscreen
 
