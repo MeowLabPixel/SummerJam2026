@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://du18ctk8v40vf"]
+
+[ext_resource type="PackedScene" uid="uid://dkaiq7ymgcmwl" path="res://Character Model For Programer/Ashley/asley.glb" id="1_852jp"]
+
+[node name="asley" unique_id=997329394 instance=ExtResource("1_852jp")]

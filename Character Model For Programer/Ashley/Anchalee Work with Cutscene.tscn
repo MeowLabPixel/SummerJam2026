@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cf63bbcsu81gq"]
+
+[ext_resource type="PackedScene" uid="uid://dkaiq7ymgcmwl" path="res://Character Model For Programer/Ashley/asley.glb" id="1_te6s1"]
+
+[node name="Node3D" type="Node3D" unique_id=1343218748]
+
+[node name="asley" parent="." unique_id=1046644641 instance=ExtResource("1_te6s1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2169264, 0, 3.754478)
+
+[editable path="asley"]
